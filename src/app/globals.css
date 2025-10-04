@@ -1,0 +1,185 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 60 43% 98%;
+    --foreground: 75 8% 9.4%;
+    --card: 60 43% 98%;
+    --card-foreground: 75 8% 9.4%;
+    --popover: 60 43% 98%;
+    --popover-foreground: 75 8% 9.4%;
+    --primary: 163 100% 21%;
+    --primary-foreground: 163 63% 92%;
+    --secondary: 158 14% 34%;
+    --secondary-foreground: 60 8% 90%;
+    --muted: 153 38% 86%;
+    --muted-foreground: 160 18% 45%;
+    --accent: 331 100% 37%;
+    --accent-foreground: 341 100% 95%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 195 12% 78%;
+    --input: 195 12% 78%;
+    --ring: 163 100% 21%;
+    --radius: 0.5rem;
+
+    --chart-1: 163 100% 21%;
+    --chart-2: 331 100% 37%;
+    --chart-3: 195 12% 48%;
+    --chart-4: 158 14% 34%;
+    --chart-5: 60 43% 88%;
+  }
+
+  .dark {
+    --background: 75 8% 9.4%;
+    --foreground: 60 8% 90%;
+    --card: 75 8% 9.4%;
+    --card-foreground: 60 8% 90%;
+    --popover: 75 8% 9.4%;
+    --popover-foreground: 60 8% 90%;
+    --primary: 163 63% 62%;
+    --primary-foreground: 163 100% 11%;
+    --secondary: 160 18% 25%;
+    --secondary-foreground: 60 8% 90%;
+    --muted: 160 18% 25%;
+    --muted-foreground: 160 18% 65%;
+    --accent: 341 100% 85%;
+    --accent-foreground: 331 100% 37%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 195 12% 24%;
+    --input: 195 12% 24%;
+    --ring: 163 63% 62%;
+    
+    --chart-1: 163 63% 62%;
+    --chart-2: 341 100% 85%;
+    --chart-3: 195 12% 54%;
+    --chart-4: 160 18% 25%;
+    --chart-5: 75 8% 20%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    overflow-x: hidden;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid hsl(var(--primary));
+  animation:
+    l20-1 0.8s infinite linear alternate,
+    l20-2 1.6s infinite linear;
+}
+@keyframes l20-1 {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 50% 0, 50% 0, 50% 0, 50% 0);
+  }
+  12.5% {
+    clip-path: polygon(50% 50%, 0 0, 50% 0, 100% 0, 100% 0, 100% 0);
+  }
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 50% 0, 100% 0, 100% 50%, 100% 50%);
+  }
+  50% {
+    clip-path: polygon(
+      50% 50%,
+      0 0,
+      50% 0,
+      100% 0,
+      100% 50%,
+      100% 100%,
+      100% 100%
+    );
+  }
+  62.5% {
+    clip-path: polygon(
+      50% 50%,
+      0 0,
+      50% 0,
+      100% 0,
+      100% 50%,
+      100% 100%,
+      50% 100%
+    );
+  }
+  75% {
+    clip-path: polygon(
+      50% 50%,
+      0 0,
+      50% 0,
+      100% 0,
+      100% 50%,
+      100% 100%,
+      50% 100%,
+      0 100%
+    );
+  }
+  87.5% {
+    clip-path: polygon(
+      50% 50%,
+      0 0,
+      50% 0,
+      100% 0,
+      100% 50%,
+      100% 100%,
+      50% 100%,
+      0 100%,
+      0 50%
+    );
+  }
+  100% {
+    clip-path: polygon(
+      50% 50%,
+      0 0,
+      50% 0,
+      100% 0,
+      100% 50%,
+      100% 100%,
+      50% 100%,
+      0 100%,
+      0 50%,
+      0 0
+    );
+  }
+}
+@keyframes l20-2 {
+  0% {
+    transform: scaleY(1) rotate(0deg);
+  }
+  49.99% {
+    transform: scaleY(1) rotate(135deg);
+  }
+  50% {
+    transform: scaleY(-1) rotate(-135deg);
+  }
+  100% {
+    transform: scaleY(1) rotate(-360deg);
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "supportChatbot": {
+    "src": "https://picsum.photos/seed/supportChatbot/600/400",
+    "width": 600,
+    "height": 400,
+    "alt": "AI-powered customer support chatbot interface",
+    "dataAiHint": "support chatbot"
+  },
+  "financialData": {
+    "src": "https://picsum.photos/seed/financialData/600/400",
+    "width": 600,
+    "height": 400,
+    "alt": "Financial data analysis dashboard",
+    "dataAiHint": "financial data"
+  },
+  "cloudInfrastructure": {
+    "src": "https://picsum.photos/seed/cloudInfrastructure/600/400",
+    "width": 600,
+    "height": 400,
+    "alt": "Diagram of a scalable cloud infrastructure",
+    "dataAiHint": "cloud infrastructure"
+  },
+  "analyticsDashboard": {
+    "src": "https://picsum.photos/seed/analyticsDashboard/600/400",
+    "width": 600,
+    "height": 400,
+    "alt": "Business intelligence and analytics dashboard",
+    "dataAiHint": "analytics dashboard"
+  },
+  "newsWebsite": {
+    "src": "https://picsum.photos/seed/newsWebsite/600/400",
+    "width": 600,
+    "height": 400,
+    "alt": "Homepage of a modern online news publisher",
+    "dataAiHint": "news website"
+  },
+  "llmsTxtFile": {
+    "src": "https://picsum.photos/seed/llmsTxtFile/600/400",
+    "width": 600,
+    "height": 400,
+    "alt": "An illustration of a text file for LLMs",
+    "dataAiHint": "text file document"
+  },
+  "aiContentFormats": {
+    "src": "https://picsum.photos/seed/aiContentFormats/600/400",
+    "width": 600,
+    "height": 400,
+    "alt": "Diagram showing different AI content formats",
+    "dataAiHint": "ai content formats"
+  },
+  "seoVsGeo": {
+    "src": "https://picsum.photos/seed/seoVsGeo/600/400",
+    "width": 600,
+    "height": 400,
+    "alt": "Diagram comparing SEO and GEO strategies",
+    "dataAiHint": "seo versus geo diagram"
+  },
+  "stockMarketChart": {
+    "src": "https://picsum.photos/seed/stockMarketChart/600/400",
+    "width": 600,
+    "height": 400,
+    "alt": "A chart showing stock market performance for AI companies",
+    "dataAiHint": "stock market chart"
+  },
+  "customerSupportAi": {
+    "src": "https://picsum.photos/seed/customerSupportAi/600/400",
+    "width": 600,
+    "height": 400,
+    "alt": "An AI chatbot helping a customer",
+    "dataAiHint": "customer support chatbot"
+  },
+  "codeOnScreen": {
+    "src": "https://picsum.photos/seed/codeOnScreen/600/400",
+    "width": 600,
+    "height": 400,
+    "alt": "Code on a computer screen related to prompt engineering",
+    "dataAiHint": "code on screen"
+  },
+  "abstractDataNetwork": {
+    "src": "https://picsum.photos/seed/abstractDataNetwork/600/400",
+    "width": 600,
+    "height": 400,
+    "alt": "Abstract visualization of a data network for a recommendation system",
+    "dataAiHint": "abstract data network"
+  },
+  "glowingAiBrain": {
+    "src": "https://picsum.photos/seed/glowingAiBrain/600/400",
+    "width": 600,
+    "height": 400,
+    "alt": "A glowing illustration of an AI brain",
+    "dataAiHint": "glowing ai brain"
+  },
+  "professionalsMeeting": {
+    "src": "https://picsum.photos/seed/professionalsMeeting/600/400",
+    "width": 600,
+    "height": 400,
+    "alt": "Business professionals in a meeting discussing prompt engineering",
+    "dataAiHint": "professionals meeting"
+  },
+  "futuristicAiTech": {
+    "src": "https://picsum.photos/seed/futuristicAiTech/600/400",
+    "width": 600,
+    "height": 400,
+    "alt": "Futuristic AI technology interface",
+    "dataAiHint": "futuristic AI technology"
+  },
+  "workflowAutomation": {
+    "src": "https://picsum.photos/seed/workflowAutomation/600/400",
+    "width": 600,
+    "height": 400,
+    "alt": "A diagram of a business process automation workflow",
+    "dataAiHint": "workflow automation diagram"
+  },
+  "cloudSecurity": {
+    "src": "https://picsum.photos/seed/cloudSecurity/600/400",
+    "width": 600,
+    "height": 400,
+    "alt": "Illustration of secure cloud computing servers",
+    "dataAiHint": "cloud computing servers"
+  },
+  "visualProgramming": {
+    "src": "https://picsum.photos/seed/visualProgramming/600/400",
+    "width": 600,
+    "height": 400,
+    "alt": "A visual programming interface for no-code development",
+    "dataAiHint": "visual programming interface"
+  },
+  "cyberSecurityLock": {
+    "src": "https://picsum.photos/seed/cyberSecurityLock/600/400",
+    "width": 600,
+    "height": 400,
+    "alt": "A digital lock symbolizing cybersecurity",
+    "dataAiHint": "cyber security lock"
+  },
+  "authorOluwamayowa": {
+    "src": "https://picsum.photos/seed/authorOluwamayowa/128/128",
+    "width": 128,
+    "height": 128,
+    "alt": "Oluwamayowa Logo, Lead Developer & Automation Solution Architect",
+    "dataAiHint": "male developer"
+  },
+  "authorFavour": {
+    "src": "https://picsum.photos/seed/authorFavour/128/128",
+    "width": 128,
+    "height": 128,
+    "alt": "Favour Alfred, Team Lead Sales & Business Process Automation",
+    "dataAiHint": "female professional"
+  },
+  "llmsDiagram": {
+    "src": "https://picsum.photos/seed/llmsDiagram/800/450",
+    "width": 800,
+    "height": 450,
+    "alt": "A diagram showing the benefits of llms.txt for SEO",
+    "dataAiHint": "seo diagram"
+  },
+  "howLlmsWork": {
+    "src": "https://picsum.photos/seed/howLlmsWork/600/336",
+    "width": 600,
+    "height": 336,
+    "alt": "Diagram explaining how Large Language Models work",
+    "dataAiHint": "llm diagram"
+  },
+  "toolsGeneratingDocs": {
+    "src": "https://picsum.photos/seed/toolsGeneratingDocs/600/400",
+    "width": 600,
+    "height": 400,
+    "alt": "Abstract image of tools generating documentation",
+    "dataAiHint": "abstract documentation"
+  },
+  "seoChecklist": {
+    "src": "https://picsum.photos/seed/seoChecklist/600/400",
+    "width": 600,
+    "height": 400,
+    "alt": "Checklist of best practices for SEO",
+    "dataAiHint": "seo checklist"
+  },
+  "dataAnalyticsDashboard": {
+    "src": "https://picsum.photos/seed/dataAnalyticsDashboard/800/450",
+    "width": 800,
+    "height": 450,
+    "alt": "Data analytics dashboard with charts and graphs",
+    "dataAiHint": "data dashboard"
+  },
+  "workflowDiagram": {
+    "src": "https://picsum.photos/seed/workflowDiagram/800/450",
+    "width": 800,
+    "height": 450,
+    "alt": "Diagram showing a structured workflow",
+    "dataAiHint": "workflow diagram"
+  },
+  "gigpilotAvatar": {
+    "src": "https://picsum.photos/seed/gigpilotAvatar/40/40",
+    "width": 40,
+    "height": 40,
+    "alt": "GIGPILOT Avatar",
+    "dataAiHint": "robot avatar"
+  }
+}

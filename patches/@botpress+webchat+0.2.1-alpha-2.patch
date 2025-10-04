@@ -1,0 +1,17 @@
+diff --git a/node_modules/@botpress/webchat/dist/fonts/roboto.js b/node_modules/@botpress/webchat/dist/fonts/roboto.js
+index 45542b5..69b55f1 100644
+--- a/node_modules/@botpress/webchat/dist/fonts/roboto.js
++++ b/node_modules/@botpress/webchat/dist/fonts/roboto.js
+@@ -1,6 +1,6 @@
+ "use strict";
+ var __importDefault = (this && this.__importDefault) || function (mod) {
+     return (mod && mod.__esModule) ? mod : { "default": mod };
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
+ const react_1 = __importDefault(require("react"));
+-require("../../assets/fonts/roboto.css");
++// require("../../assets/fonts/roboto.css");
+ const Font = () => react_1.default.createElement(react_1.default.Fragment, null);
+ exports.default = Font;
+ //# sourceMappingURL=roboto.js.map
+\ No newline at end of file

@@ -1,0 +1,31 @@
+# LOG_ON connecting Advantages
+
+> LOG_ON provides expert AI and automation consulting to help businesses increase efficiency, reduce costs, and scale effectively.
+
+## Core Services
+- [/ai-solutions]: Custom AI and machine learning models to solve complex business challenges.
+- [/automation]: Intelligent automation and RPA to streamline workflows and increase efficiency.
+- [/web-development]: Scalable websites, e-commerce platforms, and custom applications using Next.js.
+- [/business-analytics]: Custom dashboards and BI reporting to turn data into actionable insights.
+- [/chatbots]: AI-powered chatbots for 24/7 customer support and lead generation.
+- [/database-solutions]: Secure SQL & NoSQL database architecture, migration, and management.
+
+## Key Use Cases
+- [/use-cases#finance]: AI-driven fraud detection and process automation for financial institutions.
+- [/use-cases#e-commerce]: AI-powered recommendation engines and inventory automation for retail.
+- [/use-cases#healthcare]: Secure EHR management and automated appointment scheduling for healthcare providers.
+
+## Training Programs
+- [/training]: Expert-led training in AI, process automation, and digital strategy.
+- [/insights/transforming-customer-support-with-ai]: Workshop on building private AI assistants using company documents.
+- [/insights/prompt-engineering-for-developers]: Course on using advanced prompt engineering to improve development workflows.
+
+## Top Insights & Thought Leadership
+- [/insights/seo-vs-geo-invisible-in-ai-search]: Explains the difference between traditional SEO and Generative Engine Optimization (GEO).
+- [/insights/10-content-formats-that-get-picked-up-by-llms]: A guide on creating content structured for AI visibility and citation.
+- [/insights/ai-investment-playbook]: An analysis of key AI infrastructure stocks and investment strategies.
+- [/insights/why-llms-txt-matters-for-seo]: A guide to using llms.txt to improve how AI models understand a website.
+
+## Company Information
+- [/about]: Meet the team and understand our generalist, results-driven philosophy.
+- [/contact]: Contact information for project inquiries and service questions.
