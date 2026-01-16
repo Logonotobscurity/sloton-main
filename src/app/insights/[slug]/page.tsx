@@ -13,17 +13,18 @@ import { ArticleCodeVisual } from '@/components/ui/article-code-visual';
 import { formatFullDate } from '@/lib/date-utils';
 import { OptimizedImage } from '@/lib/image-utils';
 
-type Props = {
-  params: Promise<{ slug: string }>
-}
+// Type for page props - Next.js 15 uses Promise for params
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
 
 // This function now correctly runs on the server.
 export async function generateMetadata(
-  { params }: Props,
+  { params }: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const { slug } = await params;
-  const insight = insights.find((insight) => insight.slug === slug);
+  const resolvedParams = await params;
+  const insight = insights.find((insight) => insight.slug === resolvedParams.slug);
 
   if (!insight) {
     return {
@@ -52,8 +53,9 @@ export async function generateMetadata(
   }
 }
 
-export default async function InsightPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function InsightPage({ params }: PageProps) {
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
   const insight = insights.find((insight) => insight.slug === slug);
 
   if (!insight) {
