@@ -4,6 +4,7 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { fadeInUp, AnimationDuration } from "@/lib/animation-variants";
 
 export const IntegrationsComponent = () => {
   const integrations = [
@@ -47,16 +48,15 @@ export const IntegrationsComponent = () => {
   ];
   const [hovered, setHovered] = React.useState<number | null>(null);
 
+  // Container with stagger animation
   const containerVariants = {
-    initial: {
-      opacity: 0,
-      y: 20,
-    },
+    initial: { opacity: 0, y: 20 },
     animate: {
       opacity: 1,
       y: 0,
       transition: {
         staggerChildren: 0.1,
+        duration: AnimationDuration.SLOW,
       },
     },
   };

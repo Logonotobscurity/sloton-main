@@ -1,56 +1,36 @@
-'use client';
 
-import { Component, ErrorInfo, ReactNode } from 'react';
-import { Button } from '@/components/ui/button';
+"use client";
+
+import React, { Component, ErrorInfo, ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
-  fallback?: ReactNode;
-  onError?: (error: Error, errorInfo: ErrorInfo) => void;
 }
 
 interface State {
   hasError: boolean;
-  error?: Error;
 }
 
-export class ErrorBoundary extends Component<Props, State> {
-  public state: State = {
-    hasError: false
-  };
-
-  public static getDerivedStateFromError(error: Error): State {
-    return {
-      hasError: true,
-      error
-    };
+class ErrorBoundary extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = { hasError: false };
   }
 
-  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('Uncaught error:', error, errorInfo);
-    // Call onError prop if provided
-    if (this.props.onError) {
-      this.props.onError(error, errorInfo);
-    }
+  static getDerivedStateFromError(_: Error): State {
+    return { hasError: true };
   }
 
-  private handleReset = () => {
-    this.setState({ hasError: false, error: undefined });
-  };
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.error("Uncaught error:", error, errorInfo);
+  }
 
-  public render() {
+  render() {
     if (this.state.hasError) {
-      return this.props.fallback || (
-        <div className="min-h-[400px] flex flex-col items-center justify-center p-6">
-          <h2 className="text-2xl font-bold mb-4">Something went wrong</h2>
-          {this.state.error && (
-            <p className="text-muted-foreground mb-6">
-              {this.state.error.message}
-            </p>
-          )}
-          <Button onClick={this.handleReset}>
-            Try again
-          </Button>
+      return (
+        <div className="flex flex-col items-center justify-center h-screen bg-background">
+          <h1 className="text-4xl font-bold text-destructive">Something went wrong.</h1>
+          <p className="mt-4 text-lg text-muted-foreground">We're sorry for the inconvenience. Please try again later.</p>
         </div>
       );
     }
@@ -58,3 +38,6 @@ export class ErrorBoundary extends Component<Props, State> {
     return this.props.children;
   }
 }
+
+export { ErrorBoundary };
+export default ErrorBoundary;

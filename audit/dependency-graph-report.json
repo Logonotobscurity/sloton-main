@@ -1,0 +1,3413 @@
+{
+  "timestamp": "2026-01-15T20:47:50.360Z",
+  "metrics": {
+    "totalFiles": 237,
+    "totalDependencies": 567,
+    "avgDependenciesPerFile": "2.39",
+    "maxDependencies": 13,
+    "maxDependenciesFile": "C:\\Users\\Baldeagle\\Downloads\\sloton-main\\src\\app\\automation\\[slug]\\page.tsx",
+    "filesWithNoDependencies": 56,
+    "relativeImports": 98,
+    "aliasImports": 469
+  },
+  "circularDependencies": [],
+  "graph": [
+    {
+      "file": "src/ai/ai-config.ts",
+      "dependencies": [
+        {
+          "file": "src/ai/services",
+          "type": "relative"
+        },
+        {
+          "file": "src/config",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/ai/ai-service-manager.ts",
+      "dependencies": [
+        {
+          "file": "src/ai/services",
+          "type": "relative"
+        },
+        {
+          "file": "src/lib/logger.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/config",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/ai/dev.ts",
+      "dependencies": [
+        {
+          "file": "src/ai/flows/automated-task-design.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/ai/flows/solution-recommendation.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/ai/examples/ai-service-usage.tsx",
+      "dependencies": [
+        {
+          "file": "src/app/actions.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/ai",
+          "type": "alias"
+        },
+        {
+          "file": "src/app/actions.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/ai/flows/automated-task-design.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/ai/flows/rag-assistant.ts",
+      "dependencies": [
+        {
+          "file": "src/ai/genkit.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/insights.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/case-studies.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/solutions-data.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/training-data.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/ai/flows/solution-recommendation.ts",
+      "dependencies": [
+        {
+          "file": "src/ai/genkit.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/ai/flows/support-chat.ts",
+      "dependencies": [
+        {
+          "file": "src/ai/genkit.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/insights.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/ai/genkit.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/ai/index.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/ai/services/ai-service-factory.ts",
+      "dependencies": [
+        {
+          "file": "src/ai/services/ai-service.interface.ts",
+          "type": "relative"
+        },
+        {
+          "file": "src/ai/services/google-ai.service.ts",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/ai/services/ai-service.interface.ts",
+      "dependencies": [
+        {
+          "file": "src/ai/flows/solution-recommendation.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/ai/flows/automated-task-design.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/ai/services/google-ai.service.ts",
+      "dependencies": [
+        {
+          "file": "src/ai/services/ai-service.interface.ts",
+          "type": "relative"
+        },
+        {
+          "file": "src/ai/flows/solution-recommendation.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/ai/flows/automated-task-design.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/ai/genkit.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/ai/services/index.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/app/ab-testing/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/page-hero.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/ab-testing-data.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/about/analyst-reports/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-hero.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/about/careers/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/page-hero.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/careers-data.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/about/global-impact/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-hero.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/about/investors/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/page-hero.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/investors-data.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/about/layout.tsx",
+      "dependencies": []
+    },
+    {
+      "file": "src/app/about/leadership/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/avatar.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/glowing-card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-hero.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/about/locations/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/page-hero.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/locations-data.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/about/newsroom/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/badge.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/insights.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/glowing-card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-hero.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/article-code-visual.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/about/our-leadership/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/data/team-members.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/page-hero.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/bottom-cta.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/about/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/glowing-card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/page-hero.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/bottom-cta.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/insights.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/about-page-data.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/article-code-visual.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/about/research/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-hero.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/about/trust/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-hero.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/about/_components/sidebar-nav.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/stores/ui-store.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/actions.ts",
+      "dependencies": [
+        {
+          "file": "src/emails/contact-form-email.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/emails/enrollment-email.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/ai/flows/automated-task-design.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/ai/flows/solution-recommendation.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/ai/flows/rag-assistant.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/ai-solutions/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/case-study-feature.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/page-hero.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/services-data.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/api/ai/health/route.ts",
+      "dependencies": [
+        {
+          "file": "src/ai/ai-service-manager.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/logger.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/config",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/api/logs/route.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/app/api/service-worker/route.ts",
+      "dependencies": [
+        {
+          "file": "src/lib/service-worker-config.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/automation/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/task-automation-form.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/app/automation/_components/workflow-template-library.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/page-hero.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/automation/[slug]/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/workflow-templates.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/share-modal.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/dialog.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/dialog-form-wrapper.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/community-lead-form.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/page-hero.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/workflow-templates.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/category-styles.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/gated-feature-modal.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/slugify.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/automation/_components/workflow-template-library.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/input.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/dialog.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/workflow-templates.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/task-automation-form.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/pagination.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/gated-feature-modal.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/category-styles.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/slugify.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/business-analytics/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/case-study-feature.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/page-hero.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/services-data.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/chatbots/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/case-study-feature.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/page-hero.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/services-data.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/contact/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/contact-form.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/faq.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/page-hero.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/services-data.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/database-solutions/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/case-study-feature.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/page-hero.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/services-data.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/global-error.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/page-hero.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/header.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/ideas-lab/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/page-sections/page-hero.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/insights/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/input.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/badge.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/insights.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/insights-page-data.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/glowing-card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/chronicle/NotesColumn.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/chronicle/NewsColumn.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/chronicle/VideosColumn.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/article-code-visual.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/insights/[slug]/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/badge.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/author-bio.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/insights.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/share-modal.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/insight-page-content.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/article-code-visual.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/layout.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/header",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/footer.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/toaster.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/website-loader.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/theme-provider.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/bot-widget.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/botpress-widget.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/book-demo-widget.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/back-to-top.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/context/chatbot-provider.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/error-boundary.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/app/globals.css",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/app/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/page-sections/hero.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/services-offered.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/smarter-automation.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/partnership-approach.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/training-cta.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/statement.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/industries-bento.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/tech-stack-carousel.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/featured-insights.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/bottom-cta.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/ideas-lab.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/strategic-partner",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/faq.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/partners/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/glowing-card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/page-hero.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/bottom-cta.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/partners-data.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/sitemap.ts",
+      "dependencies": [
+        {
+          "file": "src/lib/workflow-templates.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/solutions/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/page-sections/page-hero.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/bottom-cta.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/dialog.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/solutions-data.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/solution-recommendation-form.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/support/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/input.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/faq.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/glowing-card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/page-hero.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/support-data.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/training/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/badge.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/dialog-form-wrapper.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/community-lead-form.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/dialog.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/glowing-card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/enrollment-form.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/page-hero.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/adinkra-background.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/training-data.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/use-cases/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/page-sections/page-hero.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/bottom-cta.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/sidebar-nav.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/industries-data.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/app/web-development/page.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/page-hero.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/services-data.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/skeleton.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/app-wrapper.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/error-boundary.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/service-worker.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/error.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/cache.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/articles/ai-investment-playbook-article.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/investment-portfolio-chart.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/enrollment-form.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/dialog.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/articles/default-article.tsx",
+      "dependencies": []
+    },
+    {
+      "file": "src/components/articles/llms-txt-article.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/placeholder-images.json",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/articles/seo-vs-geo-article.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/placeholder-images.json",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/articles/ten-formats-article.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/placeholder-images.json",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/author-bio.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/avatar.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/team-members.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/back-to-top.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/hooks/use-intersection-observer.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/book-demo-widget.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/community-lead-form.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/dialog.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/context/chatbot-provider.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/bot-widget.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/input.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/tooltip.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/context/chatbot-provider.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/chat-bubble.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/app/actions.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/avatar.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/lib/placeholder-images.json",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/botpress-widget.tsx",
+      "dependencies": []
+    },
+    {
+      "file": "src/components/bottom-cta.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/arrow-icon.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/adinkra-background.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/case-studies-carousel.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/carousel.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/badge.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/lib/case-studies.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/case-studies.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/case-study-feature.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/case-studies.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/case-studies-carousel.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/chatbot/assessment-result.tsx",
+      "dependencies": [
+        {
+          "file": "src/ai/flows/solution-recommendation.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/chronicle/NewsColumn.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/insights.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/badge.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/article-code-visual.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/chronicle/NotesColumn.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/insights.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/badge.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/chronicle/VideosColumn.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/badge.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/community-lead-form.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/form.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/input.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/hooks/use-toast.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/app/actions.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/date-picker.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/contact-form.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/form.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/input.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/textarea.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/hooks/use-toast.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/app/actions.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/dialog-form-wrapper.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/dialog.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/enrollment-form.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/form.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/input.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/select.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/hooks/use-toast.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/app/actions.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/error-boundary.tsx",
+      "dependencies": []
+    },
+    {
+      "file": "src/components/faq.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/accordion.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/featured-insights.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/badge.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/insights.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/glowing-card.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/article-code-visual.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/footer.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/icons.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/menu-data.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/adinkra-background.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/gated-feature-modal.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/dialog.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/dialog-form-wrapper.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/community-lead-form.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/generalist-approach.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/adinkra-background.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/header/desktop-nav.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/menu-data.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/navigation-menu.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/header/mega-menu.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/header/logo.tsx",
+      "dependencies": []
+    },
+    {
+      "file": "src/components/header/main-nav.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/header/desktop-nav.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/header/mega-menu.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/lib/menu-data.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/navigation-menu.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/header/mobile-nav.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/sheet.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/header/logo.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/lib/menu-data.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/accordion.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/scroll-area.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/header/theme-toggle.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/hooks/use-ui-store.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/header/skip-to-content.tsx",
+      "dependencies": []
+    },
+    {
+      "file": "src/components/header/theme-toggle.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/dropdown-menu.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/header.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/header/skip-to-content.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/header/logo.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/header/desktop-nav.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/header/mobile-nav.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/header/theme-toggle.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/hooks/use-ui-store.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/hero.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/dialog.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/solution-recommendation-form.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/adinkra-background.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ideas-lab.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/glowing-card.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/hooks/use-chatbot-store.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/placeholder-images.json",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/industries-bento.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/glowing-card.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/insight-page-content.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/skeleton.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/integrations-component.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/investment-portfolio-chart.tsx",
+      "dependencies": []
+    },
+    {
+      "file": "src/components/page-hero.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/adinkra-background.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/page-sections/bottom-cta.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/adinkra-background.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/page-sections/case-study-feature.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/case-studies.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/case-studies-carousel.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/page-sections/featured-insights.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/badge.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/insights.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/glowing-card.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/hooks/use-media-query.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/carousel.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/article-code-visual.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/page-sections/hero.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/dialog.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/adinkra-background.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/hero-code-preview.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/solution-recommendation-form.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/page-sections/ideas-lab.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/page-sections/industries-bento.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/glowing-card.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/grid-background.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/page-sections/page-hero.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/adinkra-background.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/page-sections/partnership-approach.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/case-studies-carousel.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/page-sections/services-offered.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/bento-grid.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/adinkra-background.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/page-sections/smarter-automation.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/strategic-partner/interactive-card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/task-automation-form.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/page-sections/statement.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/adinkra-background.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/page-sections/strategic-partner/interactive-card.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/dialog.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/page-sections/strategic-partner.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/task-automation-form.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/page-sections/strategic-partner/interactive-card.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/solution-recommendation-form.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/page-sections/tech-stack-carousel.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/glowing-card.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/grid-background.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/page-sections/training-cta.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/bento-grid.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/training-data.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/partnership-approach.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/case-studies-carousel.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/services-offered.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/bento-grid.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/adinkra-background.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/share-modal.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/dialog.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/input.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/hooks/use-toast.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/shared/assessment-card.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/dialog.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/solution-recommendation-form.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/shared/designer-card.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/dialog.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/task-automation-form.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/glowing-card.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/sidebar-nav.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/smarter-automation.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/dialog.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/task-automation-form.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/glowing-card.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/solution-recommendation-form.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/form.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/input.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/textarea.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/hooks/use-toast.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/app/actions.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/ai/flows/solution-recommendation.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/chatbot/assessment-result.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/statement.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/arrow-icon.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/adinkra-background.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/strategic-partner.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/dialog.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/solution-recommendation-form.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/task-automation-form.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/task-automation-form.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/form.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/textarea.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/data/example-workflows.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/visual-workflow.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/badge.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/app/actions.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/hooks/use-toast.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/ai/flows/automated-task-design.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/tech-stack-carousel.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/glowing-card.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/tech-stack.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/stores/ui-store.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/tech-stack.module.css",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/template-library.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/input.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/dialog.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/icons.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/workflow-templates.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/task-automation-form.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/pagination.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/gated-feature-modal.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/hooks/use-template-library.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/theme-provider.tsx",
+      "dependencies": []
+    },
+    {
+      "file": "src/components/theme-toggle.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/dropdown-menu.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/training-cta.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/bento-grid.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/accordion.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/adinkra-background.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/alert-dialog.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/alert.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/arrow-icon.tsx",
+      "dependencies": [
+        {
+          "file": "src/ai/flows/automated-task-design.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/article-code-visual.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/avatar.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/badge.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/bento-grid.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/button.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/calendar.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/card.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/carousel.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/category-icons.tsx",
+      "dependencies": []
+    },
+    {
+      "file": "src/components/ui/chart.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/chat-bubble.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/checkbox.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/code-preview.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/collapsible.tsx",
+      "dependencies": []
+    },
+    {
+      "file": "src/components/ui/date-picker.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/calendar.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/popover.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/dialog.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/dropdown-menu.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/form.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/label.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/glowing-card.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/grid-background.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/glowing-effect.tsx",
+      "dependencies": []
+    },
+    {
+      "file": "src/components/ui/grid-background.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/hero-code-preview.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/input.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/label.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/menubar.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/mini-navbar.tsx",
+      "dependencies": []
+    },
+    {
+      "file": "src/components/ui/navigation-menu.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/pagination.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/popover.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/progress.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/radio-group.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/scroll-area.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/select.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/separator.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/sheet.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/skeleton.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/slider.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/switch.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/table.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/tabs.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/textarea.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/toast.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/toaster.tsx",
+      "dependencies": [
+        {
+          "file": "src/hooks/use-toast.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/toast.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/toggle-group.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/toggle.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/toggle.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/tooltip.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/ui/use-toast.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/toast.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/visual-workflow.tsx",
+      "dependencies": [
+        {
+          "file": "src/ai/flows/automated-task-design.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/badge.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/components/website-loader.tsx",
+      "dependencies": [
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/components/workflow-template-library.tsx",
+      "dependencies": [
+        {
+          "file": "src/components/ui/input.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/ui/dialog.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/icons.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/workflow-templates.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/task-automation-form.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/components/ui/pagination.tsx",
+          "type": "alias"
+        },
+        {
+          "file": "src/lib/utils.ts",
+          "type": "alias"
+        },
+        {
+          "file": "src/components/gated-feature-modal.tsx",
+          "type": "relative"
+        },
+        {
+          "file": "src/hooks/use-template-library.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/config/app.config.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/config/config-manager.ts",
+      "dependencies": [
+        {
+          "file": "src/config/app.config.ts",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/config/index.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/context/chatbot-provider.tsx",
+      "dependencies": [
+        {
+          "file": "src/hooks/use-ui-store.ts",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/data-pipeline/connectors.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/data-pipeline/consumer.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/data-pipeline/server.ts",
+      "dependencies": [
+        {
+          "file": "src/data-pipeline/lead-event.schema.json",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/emails/contact-form-email.tsx",
+      "dependencies": []
+    },
+    {
+      "file": "src/emails/enrollment-email.tsx",
+      "dependencies": []
+    },
+    {
+      "file": "src/hooks/use-chatbot-store.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/hooks/use-filtered-data.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/hooks/use-intersection-observer.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/hooks/use-media-query.tsx",
+      "dependencies": []
+    },
+    {
+      "file": "src/hooks/use-mobile.tsx",
+      "dependencies": []
+    },
+    {
+      "file": "src/hooks/use-template-library.ts",
+      "dependencies": [
+        {
+          "file": "src/hooks/use-filtered-data.ts",
+          "type": "relative"
+        }
+      ]
+    },
+    {
+      "file": "src/hooks/use-toast.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/hooks/use-ui-store.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/cache.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/case-studies.ts",
+      "dependencies": [
+        {
+          "file": "src/lib/placeholder-images.json",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/lib/category-styles.ts",
+      "dependencies": [
+        {
+          "file": "src/components/ui/category-icons.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/lib/data/ab-testing-data.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/data/about-page-data.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/data/careers-data.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/data/example-workflows.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/data/industries-data.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/data/insights-page-data.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/data/investors-data.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/data/locations-data.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/data/partners-data.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/data/services-data.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/data/solutions-data.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/data/support-data.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/data/team-members.ts",
+      "dependencies": [
+        {
+          "file": "src/lib/placeholder-images.json",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/lib/data/training-data.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/error.ts",
+      "dependencies": [
+        {
+          "file": "src/components/ui/use-toast.tsx",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/lib/fetch-cache.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/icons.tsx",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/insights.ts",
+      "dependencies": [
+        {
+          "file": "src/lib/placeholder-images.json",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/lib/logger.ts",
+      "dependencies": [
+        {
+          "file": "src/config",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/lib/menu-data.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/performance.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/register-sw.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/security.ts",
+      "dependencies": [
+        {
+          "file": "src/config",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/lib/service-worker-config.ts",
+      "dependencies": [
+        {
+          "file": "src/config",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/lib/service-worker.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/slugify.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/team-members.ts",
+      "dependencies": [
+        {
+          "file": "src/lib/placeholder-images.json",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/lib/utils.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/lib/workflow-templates.ts",
+      "dependencies": [
+        {
+          "file": "src/lib/slugify.ts",
+          "type": "relative"
+        },
+        {
+          "file": "src/lib/data/workflow-templates.json",
+          "type": "alias"
+        }
+      ]
+    },
+    {
+      "file": "src/stores/app-store.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/stores/form-store.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/stores/index.ts",
+      "dependencies": []
+    },
+    {
+      "file": "src/stores/ui-store.ts",
+      "dependencies": []
+    }
+  ]
+}

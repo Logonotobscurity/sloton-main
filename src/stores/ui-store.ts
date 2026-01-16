@@ -8,6 +8,7 @@ interface UIState {
   // Navigation State
   mobileMenuOpen: boolean;
   headerScrolled: boolean;
+  activeHash: string;
   
   // Component-specific State
   techStackAutoScroll: boolean;
@@ -19,6 +20,7 @@ interface UIState {
   toggleModal: (modalId: string) => void;
   setMobileMenuOpen: (open: boolean) => void;
   setHeaderScrolled: (scrolled: boolean) => void;
+  setActiveHash: (hash: string) => void;
   setTechStackAutoScroll: (autoScroll: boolean) => void;
   setTechStackScrollPosition: (position: number) => void;
   reset: () => void;
@@ -28,6 +30,7 @@ const initialState = {
   modals: {},
   mobileMenuOpen: false,
   headerScrolled: false,
+  activeHash: '',
   techStackAutoScroll: true,
   techStackScrollPosition: 0,
 };
@@ -55,6 +58,8 @@ export const useUIStore = create<UIState>()(
       setMobileMenuOpen: (open) => set({ mobileMenuOpen: open }),
       
       setHeaderScrolled: (scrolled) => set({ headerScrolled: scrolled }),
+      
+      setActiveHash: (hash) => set({ activeHash: hash }),
       
       setTechStackAutoScroll: (autoScroll) => set({ techStackAutoScroll: autoScroll }),
       

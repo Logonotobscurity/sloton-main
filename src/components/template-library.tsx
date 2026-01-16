@@ -23,7 +23,7 @@ import {
   IconSupport,
   IconGeneral
 } from '@/lib/icons';
-import { templates as allTemplates, Template } from '@/lib/workflow-templates';
+import { templates as allTemplates, Template } from '@/lib/data/workflow-templates';
 import { TaskAutomationForm } from './task-automation-form';
 import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationNext, PaginationLink, PaginationEllipsis } from '@/components/ui/pagination';
 import { cn } from '@/lib/utils';

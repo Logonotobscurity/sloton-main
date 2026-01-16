@@ -1,44 +1,25 @@
 
-
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getTemplateBySlug } from '@/lib/workflow-templates';
+import { getTemplateBySlug } from '@/lib/data/workflow-templates';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
-import { Share2, ArrowLeft, CheckCircle, Lightbulb, Workflow, Send, Eye, Cog, Calendar, MessageCircle, Edit } from 'lucide-react';
+import { Share2, ArrowLeft, Lightbulb, Workflow, Eye, Edit } from 'lucide-react';
 import { ShareModal } from '@/components/share-modal';
 import type { Metadata } from 'next';
-import { IconAdminOps, IconSupport, IconDevelopment, IconBriefcase, IconHealthcare, IconHumanResources, IconItOperations, IconMarketing, IconProcurement, IconRealEstate, IconSales, IconGeneral } from '@/lib/icons';
 import { DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
-import { GatedFeatureModal } from '@/components/gated-feature-modal';
 import { DialogFormWrapper } from '@/components/dialog-form-wrapper';
 import { CommunityLeadForm } from '@/components/community-lead-form';
-import { PageHero } from '@/components/page-hero';
-import { getTemplates } from '@/lib/workflow-templates';
+import { PageHero } from '@/components/page-sections/page-hero';
+import { getTemplates } from '@/lib/data/workflow-templates';
+import { categoryStyles } from '@/lib/category-styles';
+import { GatedFeatureModal } from '@/components/gated-feature-modal';
+import { slugify } from '@/lib/slugify';
 
-const categoryStyles: { [key: string]: { icon: React.ElementType, iconBg: string, color: string } } = {
-  'Finance': { icon: IconBriefcase, iconBg: "bg-green-100 dark:bg-green-900/50", color: "text-green-600 dark:text-green-400" },
-  'Human Resources': { icon: IconHumanResources, iconBg: "bg-blue-100 dark:bg-blue-900/50", color: "text-blue-600 dark:text-blue-400" },
-  'Sales': { icon: IconSales, iconBg: "bg-orange-100 dark:bg-orange-900/50", color: "text-orange-600 dark:text-orange-400" },
-  'Marketing': { icon: IconMarketing, iconBg: "bg-purple-100 dark:bg-purple-900/50", color: "text-purple-600 dark:text-purple-400" },
-  'Real Estate': { icon: IconRealEstate, iconBg: "bg-violet-100 dark:bg-violet-900/50", color: "text-violet-600 dark:text-violet-400" },
-  'IT Operations': { icon: IconItOperations, iconBg: "bg-pink-100 dark:bg-pink-900/50", color: "text-pink-600 dark:text-pink-400" },
-  'Procurement': { icon: IconProcurement, iconBg: "bg-indigo-100 dark:bg-indigo-900/50", color: "text-indigo-600 dark:text-indigo-400" },
-  'Development': { icon: IconDevelopment, iconBg: "bg-red-100 dark:bg-red-900/50", color: "text-red-600 dark:text-red-400" },
-  'Healthcare': { icon: IconHealthcare, iconBg: "bg-emerald-100 dark:bg-emerald-900/50", color: "text-emerald-600 dark:text-emerald-400" },
-  'Admin and Ops': { icon: IconAdminOps, iconBg: "bg-yellow-100 dark:bg-yellow-900/50", color: "text-yellow-600 dark:text-yellow-400" },
-  'CS and Support': { icon: IconSupport, iconBg: "bg-cyan-100 dark:bg-cyan-900/50", color: "text-cyan-600 dark:text-cyan-400" },
-  'General': { icon: IconGeneral, iconBg: "bg-gray-100 dark:bg-gray-900/50", color: "text-gray-600 dark:text-gray-400" },
-};
-
-
-type Props = {
-  params: { slug: string }
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const template = getTemplateBySlug(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const template = getTemplateBySlug(slug);
   if (!template) {
     return { title: 'Template Not Found' };
   }
@@ -48,15 +29,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function TemplatePreviewPage({ params }: { params: { slug: string } }) {
-  const template = getTemplateBySlug(params.slug);
+export default async function TemplatePreviewPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const template = getTemplateBySlug(slug);
 
   if (!template) {
     notFound();
   }
   
-  const fullDescription = template.steps ? template.steps.map(step => `${step.name}: ${step.description}`).join('; ') : template.description;
+  const fullDescription = template.description || '';
 
+  // Get related templates (computed at build time for static generation)
   const allTemplates = getTemplates();
   const relatedTemplates = allTemplates
     .filter(t => t.category === template.category && t.slug !== template.slug)
@@ -69,7 +52,7 @@ export default function TemplatePreviewPage({ params }: { params: { slug: string
         description={template.description}
         icon={<ShareModal title={template.name} />}
       />
-      <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
+      <div className="container mx-auto px-fluid-sm py-fluid-lg">
         <div className="max-w-4xl mx-auto">
           <Link href="/automation" className="text-primary hover:underline flex items-center gap-2 mb-8">
             <ArrowLeft className="h-4 w-4" />
@@ -101,12 +84,17 @@ export default function TemplatePreviewPage({ params }: { params: { slug: string
                 <h2 className="text-2xl font-bold">Ready to use this template?</h2>
                 <p className="text-muted-foreground mt-2 max-w-xl mx-auto">Take the next step by deploying this workflow, or customize it to your exact needs using our AI-powered designer.</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-                    <Button asChild size="lg">
-                        <Link href={`/automation?workflow=${encodeURIComponent(fullDescription)}`}>
-                            <Edit className="mr-2 h-4 w-4" />
-                            Customize with AI
-                        </Link>
-                    </Button>
+                    <GatedFeatureModal
+                        trigger={
+                            <Button asChild size="lg">
+                                <Link href={`/automation?workflow=${encodeURIComponent(fullDescription)}`}>
+                                    <Edit className="mr-2 h-4 w-4" />
+                                    Customize with AI
+                                </Link>
+                            </Button>
+                        }
+                        featureName="Workflow Customization"
+                    />
                     <DialogFormWrapper
                         trigger={<Button size="lg" variant="secondary">Book a Demo</Button>}
                         className="bg-background"
@@ -114,7 +102,7 @@ export default function TemplatePreviewPage({ params }: { params: { slug: string
                         <DialogHeader>
                             <DialogTitle>Book a Free Demo</DialogTitle>
                             <DialogDescription>
-                                {`Interested in the "${template.name}" template? Fill out your details below to connect with our team on WhatsApp.`}
+                                {`Interested in the \"${template.name}\" template? Fill out your details below to connect with our team on WhatsApp.`}
                             </DialogDescription>
                         </DialogHeader>
                         <CommunityLeadForm interest={`Template: ${template.name}`} />
@@ -127,11 +115,14 @@ export default function TemplatePreviewPage({ params }: { params: { slug: string
                  <div className="mt-8 grid md:grid-cols-3 gap-6">
                     {relatedTemplates.map(related => {
                        const style = categoryStyles[related.category] || categoryStyles['General'];
+                       const relatedFullDescription = related.description || '';
+                       const CategoryIcon = style.icon;
+
                        return (
                           <Card key={related.slug} className="bg-background/50 flex flex-col p-6 rounded-xl border-border/50 group transition-colors duration-300 hover:border-primary">
                             <CardHeader className="p-0">
                               <div className={cn("w-12 h-12 rounded-lg flex items-center justify-center", style.iconBg)}>
-                                <style.icon className={cn("h-6 w-6", style.color)} />
+                                <CategoryIcon className={cn("h-6 w-6", style.color)} />
                               </div>
                               <CardTitle className="pt-4 text-xl font-semibold">{related.name}</CardTitle>
                             </CardHeader>
@@ -147,8 +138,10 @@ export default function TemplatePreviewPage({ params }: { params: { slug: string
                                     </Button>
                                     <GatedFeatureModal
                                         trigger={
-                                            <Button variant="outline" size="sm" className="rounded-full bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
-                                                Use template
+                                            <Button asChild variant="outline" size="sm" className="rounded-full bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
+                                                <Link href={`/automation?workflow=${encodeURIComponent(relatedFullDescription)}`}>
+                                                    Use template
+                                                </Link>
                                             </Button>
                                         }
                                         featureName="Workflow Customization"
@@ -175,7 +168,6 @@ export default function TemplatePreviewPage({ params }: { params: { slug: string
                 <div className="mt-6">
                      <Button asChild>
                         <Link href="/automation">
-                            <Send className="mr-2 h-4 w-4"/>
                             Go to Workflow Generator
                         </Link>
                     </Button>

@@ -25,7 +25,7 @@ const ChatBubble = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof chatBubbleVariants>
 >(({ className, variant, ...props }, ref) => (
-  <ChatBubbleContext.Provider value={{ variant }}>
+  <ChatBubbleContext.Provider value={{ variant: variant ?? undefined }}>
     <div
       ref={ref}
       className={cn(chatBubbleVariants({ variant }), className)}
@@ -41,7 +41,8 @@ const ChatBubbleMessage = React.forwardRef<
     isLoading?: boolean
   }
 >(({ className, isLoading, children, ...props }, ref) => {
-  const { variant } = React.useContext(ChatBubbleContext)
+  const context = React.useContext(ChatBubbleContext)
+  const variant: "sent" | "received" = (context.variant ?? "received") as "sent" | "received"
   return (
     <div
       ref={ref}

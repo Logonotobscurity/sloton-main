@@ -1,53 +1,58 @@
+
 import type {Config} from 'tailwindcss';
 
-export default {
+const config = {
   darkMode: ['class'],
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
   ],
+  prefix: '',
   theme: {
     container: {
       center: true,
-      padding: '2rem',
-      screens: {
-        '2xl': '1440px',
-      },
+      padding: 'var(--container-padding-x)',
     },
     extend: {
+       gridTemplateColumns: {
+        'auto-fit': 'repeat(auto-fit, minmax(min(250px, 100%), 1fr))',
+       },
+       flex: {
+         'fluid-item': '1 1 min(350px, 100%)',
+       },
+       spacing: {
+        'fluid-xs': 'var(--space-fluid-xs)',
+        'fluid-sm': 'var(--space-fluid-sm)',
+        'fluid-md': 'var(--space-fluid-md)',
+        'fluid-lg': 'var(--space-fluid-lg)',
+        'fluid-xl': 'var(--space-fluid-xl)',
+        'fluid-2xl': 'var(--space-fluid-2xl)',
+       },
+       fontSize: {
+        'fluid-xs': 'clamp(0.75rem, 0.5vw + 0.6rem, 0.875rem)',
+        'fluid-sm': 'clamp(0.875rem, 1vw + 0.7rem, 1.125rem)',
+        'fluid-base': 'clamp(1rem, 1.5vw + 0.75rem, 1.25rem)',
+        'fluid-lg': 'clamp(1.5rem, 2.5vw + 1rem, 2.5rem)',
+        'fluid-xl': 'clamp(2.25rem, 4.5vw + 1rem, 4rem)',
+        'fluid-2xl': 'clamp(3rem, 6vw + 1rem, 5rem)',
+        'fluid-hero': 'clamp(2.5rem, 8vw, 5rem)',
+       },
        backgroundImage: {
-        'grid-light': 'linear-gradient(to right, var(--border) 1px, transparent 1px), linear-gradient(to bottom, var(--border) 1px, transparent 1px)',
-        'grid-dark': 'linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)',
-         "shine-gradient": "linear-gradient(110deg, transparent, var(--gradient-color, #A07CFE), transparent)",
-      },
-      spacing: {
-        '1': '8px',
-        '2': '16px',
-        '3': '24px',
-        '4': '40px',
-      },
-      fontSize: {
-        'h1-clamp': 'clamp(48px, 6.6vw, 96px)',
-      },
-      gridTemplateColumns: {
-        'mega': 'repeat(auto-fit, minmax(280px, 1fr))',
+        "grid-light": "linear-gradient(-90deg, rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px)",
+        "grid-dark": "linear-gradient(-90deg, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)",
       },
       fontFamily: {
-        body: ['var(--font-nunito)', 'sans-serif'],
-        headline: ['var(--font-abhaya-libre)', 'sans-serif'],
+        headline: ['var(--font-serif)', 'Playfair Display', 'serif'],
+        body: ['var(--font-sans)', 'Inter', 'sans-serif'],
       },
       colors: {
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
-        },
-        popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
-        },
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
@@ -55,6 +60,10 @@ export default {
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
@@ -64,109 +73,42 @@ export default {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
         },
-        'bg-deep': 'var(--bg-deep)',
-        'accent-green': 'var(--accent-green)',
-        'accent-green-2': 'var(--accent-green-2)',
-        'card-glass': 'var(--card-glass)',
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
         },
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        chart: {
-          '1': 'hsl(var(--chart-1))',
-          '2': 'hsl(var(--chart-2))',
-          '3': 'hsl(var(--chart-3))',
-          '4': 'hsl(var(--chart-4))',
-          '5': 'hsl(var(--chart-5))',
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
         },
-        sidebar: {
-          DEFAULT: 'hsl(var(--sidebar-background))',
-          foreground: 'hsl(var(--sidebar-foreground))',
-          primary: 'hsl(var(--sidebar-primary))',
-          'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-          accent: 'hsl(var(--sidebar-accent))',
-          'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-          border: 'hsl(var(--sidebar-border))',
-          ring: 'hsl(var(--sidebar-ring))',
-        },
-        'logon-800': '#073541',
-        'logon-700': '#07373c',
-        'logon-gold': '#D4AF37',
-        'logon-gold-600': '#C99A2B',
-        'muted-white': 'rgba(255,255,255,0.75)'
       },
       borderRadius: {
-        xl: '20px',
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
-        sm: '8px',
-        card: '8px'
+        sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
         'accordion-down': {
-          from: {
-            height: '0',
-          },
-          to: {
-            height: 'var(--radix-accordion-content-height)',
-          },
+          from: {height: '0'},
+          to: {height: 'var(--radix-accordion-content-height)'},
         },
         'accordion-up': {
-          from: {
-            height: 'var(--radix-accordion-content-height)',
-          },
-          to: {
-            height: '0',
-          },
+          from: {height: 'var(--radix-accordion-content-height)'},
+          to: {height: '0'},
         },
         'infinite-scroll': {
-          from: { transform: 'translateX(0)' },
-          to: { transform: 'translateX(-100%)' },
-        },
-        shimmer: {
-          '0%': { backgroundPosition: '200% 0' },
-          '100%': { backgroundPosition: '-200% 0' },
-        },
-        'fade-in': {
-          'from': { opacity: '0', transform: 'translateY(1rem)' },
-          'to': { opacity: '1', transform: 'translateY(0)' },
-        },
-        'blob': {
-          "0%": {
-            transform: "translate(0px, 0px) scale(1)",
-          },
-          "33%": {
-            transform: "translate(30px, -50px) scale(1.1)",
-          },
-          "66%": {
-            transform: "translate(-20px, 20px) scale(0.9)",
-          },
-          "100%": {
-            transform: "translate(0px, 0px) scale(1)",
-          },
-        },
-         shine: {
-          "0%": {
-            backgroundPosition: "200% 0",
-          },
-          "100%": {
-            backgroundPosition: "-200% 0",
-          },
+          from: {transform: 'translateX(0)'},
+          to: {transform: 'translateX(-100%)'},
         },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'infinite-scroll': 'infinite-scroll 50s linear infinite',
-        shimmer: 'shimmer 2.5s infinite linear',
-        'fade-in': 'fade-in 0.5s ease-out forwards',
-        'blob': 'blob 7s infinite',
-        shine: "shine var(--duration, 8s) linear infinite",
       },
     },
   },
   plugins: [require('tailwindcss-animate')],
 } satisfies Config;
+
+export default config;

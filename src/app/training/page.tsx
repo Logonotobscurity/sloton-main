@@ -10,102 +10,24 @@ import { CommunityLeadForm } from '@/components/community-lead-form';
 import { DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { GlowingCard } from '@/components/ui/glowing-card';
 import { EnrollmentForm } from '@/components/enrollment-form';
-import { PageHero } from '@/components/page-hero';
+import { PageHero } from '@/components/page-sections/page-hero';
 import { AdinkraBackground } from '@/components/ui/adinkra-background';
+import { trainingPrograms, communityProjects, trainingBenefits } from '@/lib/data/training-data';
 
 
 export const metadata: Metadata = {
-  title: 'AI & Automation Training Courses | LOG_ON',
+  title: 'AI & Automation Training Courses',
   description: 'Master in-demand tech skills. Explore expert-led training courses in AI, process automation, and prompt engineering to accelerate your career and drive business growth.',
   alternates: {
     canonical: '/training',
   },
   openGraph: {
-      title: 'AI & Automation Training Courses | LOG_ON',
+      title: 'AI & Automation Training Courses',
       description: 'Master in-demand tech skills. Explore expert-led training courses in AI, process automation, and prompt engineering.',
       url: '/training',
       type: 'website',
   }
 };
-
-const trainingPrograms = [
-    {
-        icon: <ShieldQuestion className="h-8 w-8 text-primary"/>,
-        title: "Reducing Support Costs with AI",
-        description: "Learn to build, train, and deploy private AI assistants using your own company documents to revolutionize support systems.",
-        tags: ["AI", "Customer Support", "Intermediate"],
-        href: "/training"
-    },
-    {
-        icon: <Lightbulb className="h-8 w-8 text-primary"/>,
-        title: "AI for Business Growth: Practical Implementation",
-        description: "A comprehensive overview of AI types and their practical applications. Gain foundational knowledge for strategic AI adoption.",
-        tags: ["AI", "Strategy", "Beginner"],
-        href: "/training"
-    },
-    {
-        icon: <BrainCircuit className="h-8 w-8 text-primary"/>,
-        title: "Applied AI: Building Recommendation Systems",
-        description: "A deep dive into building and deploying scalable recommendation models using Python, Pandas, and Pinecone.",
-        tags: ["Data Science", "Python", "Advanced"],
-        href: "/training"
-    },
-    {
-        icon: <Zap className="h-8 w-8 text-primary"/>,
-        title: "Process Automation Mastery",
-        description: "Master RPA and BPA techniques to identify and automate repetitive business processes, driving efficiency across your organization.",
-        tags: ["Automation", "RPA", "Intermediate"],
-        href: "/training"
-    },
-    {
-        icon: <Bot className="h-8 w-8 text-primary"/>,
-        title: "Chatbot Development: From Concept to Production",
-        description: "An end-to-end guide on designing, building, and deploying conversational AI agents for websites and social platforms.",
-        tags: ["Chatbots", "AI", "Advanced"],
-        href: "/training"
-    },
-    {
-        icon: <Briefcase className="h-8 w-8 text-primary"/>,
-        title: "Digital Transformation Strategy for Leaders",
-        description: "A high-level course for business leaders on how to develop and implement a successful digital transformation roadmap.",
-        tags: ["Strategy", "Leadership", "Business"],
-        href: "/training"
-    }
-];
-
-const communityProjects = [
-    {
-        icon: <HeartHandshake className="h-8 w-8 text-primary"/>,
-        title: "Making Mental Health Support More Accessible",
-        description: "An AI mental health chatbot designed to provide compassionate, accessible, and confidential support.",
-        href: "/training#impact",
-    },
-    {
-        icon: <Globe className="h-8 w-8 text-primary"/>,
-        title: "Building AI That Understands Diverse Cultures",
-        description: "A research project and toolkit for identifying and mitigating cultural bias in large language models (LLMs).",
-        href: "/training#impact",
-    },
-    {
-        icon: <Zap className="h-8 w-8 text-primary"/>,
-        title: "Gigpilot: AI Gig Economy Assistant",
-        description: "An AI-powered tool to convert job seekers into engaged users through intelligent job matching and automated nurturing.",
-        href: "/training#impact",
-    },
-    {
-        icon: <Users className="h-8 w-8 text-primary"/>,
-        title: "Community Skill Synchronization Initiative | 2021",
-        description: "Architected behavior-based learning products training 50+ individuals in digital skills (Cybersecurity, Data Science, RPA), securing career placements and reducing instruction time by 30%.",
-        href: "/training#impact",
-    }
-]
-
-const trainingBenefits = [
-    { icon: <Award className="h-5 w-5 text-primary" />, text: 'Industry Expert Instructors' },
-    { icon: <BookOpen className="h-5 w-5 text-primary" />, text: 'Hands-on, Project-Based Learning' },
-    { icon: <TrendingUp className="h-5 w-5 text-primary" />, text: 'Career Advancement Support' },
-    { icon: <Users className="h-5 w-5 text-primary" />, text: 'Access to a Professional Community' },
-];
 
 export default function TrainingPage() {
   return (
@@ -126,7 +48,7 @@ export default function TrainingPage() {
                     <GlowingCard key={program.title}>
                         <div className="p-6 h-full flex flex-col">
                             <CardHeader className="p-0">
-                                {program.icon}
+                                <program.icon />
                                 <CardTitle className="pt-4 text-xl">{program.title}</CardTitle>
                             </CardHeader>
                             <CardContent className="p-0 pt-4 flex-grow">
@@ -167,7 +89,7 @@ export default function TrainingPage() {
                      {communityProjects.map(project => (
                         <Card key={project.title} className="bg-background/50">
                             <CardHeader>
-                                {project.icon}
+                                <project.icon />
                                 <CardTitle className="pt-4">{project.title}</CardTitle>
                             </CardHeader>
                             <CardContent>
@@ -187,7 +109,7 @@ export default function TrainingPage() {
                      <ul className="space-y-4 pt-4">
                         {trainingBenefits.map(item => (
                             <li key={item.text} className="flex items-center gap-4">
-                                {item.icon}
+                                <item.icon className="h-5 w-5 text-primary" />
                                 <span className="text-lg text-muted-foreground">{item.text}</span>
                             </li>
                         ))}
@@ -221,7 +143,6 @@ export default function TrainingPage() {
 
         <section className="text-center mt-16 md:mt-24 py-16 md:py-24 bg-background rounded-lg px-4 relative overflow-hidden">
             <AdinkraBackground />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent z-10" />
             <div className="relative z-20">
                 <h2 className="text-2xl md:text-4xl font-bold font-headline text-primary">Ready to Start a Conversation?</h2>
                 <p className="mt-4 text-md md:text-lg text-muted-foreground max-w-2xl mx-auto">

@@ -1,47 +1,17 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { CheckCircle, ArrowRight, BarChart3, LineChart, Target, Table } from 'lucide-react';
+import { CheckCircle, ArrowRight, BarChart3 } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { CaseStudyFeature } from '@/components/case-study-feature';
-import { PageHero } from '@/components/page-hero';
+import { CaseStudyFeature } from '@/components/page-sections/case-study-feature';
+import { PageHero } from '@/components/page-sections/page-hero';
+import { analyticsServices, businessAnalyticsBenefits } from '@/lib/data/services-data';
 
 export const metadata: Metadata = {
   title: 'Business Analytics & BI Solutions | Dashboards & Reporting',
   description: 'Transform raw data into actionable insights with our business analytics and BI solutions. We build custom dashboards, data reports, and KPI trackers to fuel data-driven growth.',
 };
-
-const analyticsServices = [
-  {
-    icon: <BarChart3 className="h-8 w-8 text-primary" />,
-    title: 'Custom Interactive Dashboards',
-    description: 'We move beyond static reports to build dynamic, interactive dashboards (e.g., using Power BI or Tableau) that allow you to explore your data in real-time. Filter, drill down, and uncover the trends that matter most to your business in a user-friendly visual interface.',
-  },
-  {
-    icon: <Table className="h-8 w-8 text-primary" />,
-    title: 'Business Intelligence (BI) Reporting',
-    description: 'From sales performance to operational efficiency, we create automated, comprehensive BI reports that deliver the right information to the right people at the right time. We help you establish a "single source of truth" for your data, ensuring consistency and accuracy across your organization.',
-  },
-  {
-    icon: <Target className="h-8 w-8 text-primary" />,
-    title: 'Key Performance Indicator (KPI) Tracking',
-    description: 'We work with you to identify the metrics that are most critical to your success. We then build systems to track these KPIs automatically, providing you with a clear, at-a-glance view of your business health and progress towards your strategic goals.',
-  },
-  {
-    icon: <LineChart className="h-8 w-8 text-primary" />,
-    title: 'Data-driven Strategic Insights',
-    description: 'Our service goes beyond just presenting data; we help you interpret it. We provide analysis and insights that help you understand customer behavior, identify market opportunities, and make confident, evidence-based decisions that drive growth.',
-  },
-];
-
-const benefits = [
-    "Make smarter, faster business decisions",
-    "Gain a complete and accurate view of your operations",
-    "Identify new market opportunities and customer trends",
-    "Improve operational efficiency and reduce costs",
-    "Foster a data-driven culture within your organization"
-]
 
 export default function BusinessAnalyticsPage() {
   return (
@@ -50,11 +20,11 @@ export default function BusinessAnalyticsPage() {
         title="Business Analytics & Intelligence"
         description="Turn your data into your most valuable asset. We help you move from simply collecting data to actively using it to drive strategy, optimize operations, and uncover new opportunities. Our custom business analytics solutions provide the clarity you need to make confident, data-driven decisions."
       />
-      <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
+      <div className="container mx-auto px-fluid-sm py-fluid-lg">
         <section className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
              <div className="space-y-4 pt-4">
-                {benefits.map(benefit => (
+                {businessAnalyticsBenefits.map(benefit => (
                     <div key={benefit} className="flex items-center gap-3">
                         <CheckCircle className="h-5 w-5 text-primary" />
                         <span className="text-muted-foreground">{benefit}</span>
@@ -72,22 +42,22 @@ export default function BusinessAnalyticsPage() {
                     <div className="flex justify-center mb-4">
                         <BarChart3 className="h-12 w-12 md:h-16 md:w-16 text-primary" />
                     </div>
-                    <CardTitle className="text-center text-2xl md:text-3xl">Actionable Insights</CardTitle>
+                    <CardTitle className="text-center text-fluid-lg">Actionable Insights</CardTitle>
                     <CardDescription className="text-center">
                         Transforming numbers into narrative.
                     </CardDescription>
                 </CardHeader>
-                <CardContent className="text-center text-muted-foreground text-sm md:text-base">
+                <CardContent className="text-center text-muted-foreground text-fluid-base">
                     <p className="leading-relaxed">We connect to your data sources to build a clear picture of your business performance and potential.</p>
                 </CardContent>
             </Card>
           </div>
         </section>
 
-        <section className="py-16 md:py-24">
-            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-                <h2 className="text-2xl md:text-4xl font-bold font-headline">Our Business Analytics Services</h2>
-                <p className="mt-4 text-md md:text-lg text-muted-foreground leading-relaxed">
+        <section className="py-fluid-lg">
+            <div className="text-center max-w-3xl mx-auto mb-fluid-md">
+                <h2 className="text-fluid-xl font-bold font-headline">Our Business Analytics Services</h2>
+                <p className="mt-4 text-fluid-base text-muted-foreground leading-relaxed">
                     We offer end-to-end analytics services, from data integration to strategic reporting.
                 </p>
             </div>
@@ -95,7 +65,7 @@ export default function BusinessAnalyticsPage() {
                 {analyticsServices.map((service) => (
                 <Card key={service.title} className="bg-secondary/50 flex flex-col transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl">
                     <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                        {service.icon}
+                        <service.icon className="h-8 w-8 text-primary" />
                         <CardTitle className="text-lg md:text-xl">{service.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -112,9 +82,9 @@ export default function BusinessAnalyticsPage() {
             description="See how our business analytics and BI solutions have empowered companies to make smarter decisions and drive strategic growth."
         />
 
-         <section className="text-center mt-16 md:mt-24 py-12 md:py-16 bg-background rounded-lg px-4">
-            <h2 className="text-2xl md:text-4xl font-bold font-headline">Ready to Unlock Your Data's Potential?</h2>
-            <p className="mt-4 text-md md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+         <section className="text-center mt-fluid-md py-fluid-md bg-background rounded-lg px-fluid-sm">
+            <h2 className="text-fluid-lg font-bold font-headline">Ready to Unlock Your Data's Potential?</h2>
+            <p className="mt-4 text-fluid-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Let's discuss how our custom analytics solutions can provide the insights you need to get ahead. Schedule a free consultation today.
             </p>
             <div className="mt-8 flex justify-center">

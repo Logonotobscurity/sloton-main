@@ -1,5 +1,3 @@
-"use client";
-
 import { cn } from "@/lib/utils";
 import React from "react";
 
@@ -35,6 +33,7 @@ export function AdinkraBackground({ className }: { className?: string }) {
         </defs>
         <rect width="100%" height="100%" fill="url(#enhancedAdinkra)"/>
     </svg>
+    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background" />
     </div>
   );
 }

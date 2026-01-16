@@ -7,6 +7,14 @@ import { NextRequest, NextResponse } from 'next/server';
 import { AIServiceManager } from '@/ai/ai-service-manager';
 import { logger } from '@/lib/logger';
 import { getConfig } from '@/config';
+import { 
+  handleError, 
+  createSuccessResponse, 
+  createErrorResponse, 
+  ErrorCode,
+  type ApiResponse 
+} from '@/lib/error-handler';
+import { formatISODate } from '@/lib/date-utils';
 
 // Initialize AI service manager
 const aiServiceManager = AIServiceManager.createFromEnvironment();
@@ -53,14 +61,14 @@ export async function GET(request: NextRequest) {
       status: isHealthy ? 200 : 503
     });
 
-  } catch (error) {
-    logger.error('AI health check failed:', error);
+  } catch (error: unknown) {
+    const errorResponse = handleError(error, 'AI.healthCheck.GET', { logLevel: 'error' });
     
     return NextResponse.json({
       status: 'error',
       timestamp: new Date().toISOString(),
-      error: 'Health check failed',
-      message: error instanceof Error ? error.message : 'Unknown error'
+      error: errorResponse.error.message,
+      code: errorResponse.error.code
     }, {
       status: 500
     });
@@ -92,12 +100,13 @@ export async function POST(request: NextRequest) {
         });
     }
 
-  } catch (error) {
-    logger.error('AI service management failed:', error);
+  } catch (error: unknown) {
+    const errorResponse = handleError(error, 'AI.healthCheck.POST', { logLevel: 'error' });
     
     return NextResponse.json({
       error: 'Operation failed',
-      message: error instanceof Error ? error.message : 'Unknown error'
+      message: errorResponse.error.message,
+      code: errorResponse.error.code
     }, {
       status: 500
     });
@@ -119,8 +128,8 @@ async function resetAIServices() {
       message: 'AI services reset completed',
       timestamp: new Date().toISOString()
     };
-  } catch (error) {
-    logger.error('AI services reset failed:', error);
+  } catch (error: unknown) {
+    logger.error('AI services reset failed:', { error: error instanceof Error ? error.message : String(error) });
     throw error;
   }
 }
@@ -163,8 +172,8 @@ async function testAIServices() {
         automatedTaskDesign: 'Service configured'
       }
     };
-  } catch (error) {
-    logger.error('AI services test failed:', error);
+  } catch (error: unknown) {
+    logger.error('AI services test failed:', { error: error instanceof Error ? error.message : String(error) });
     throw error;
   }
 }

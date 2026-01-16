@@ -1,8 +1,8 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import Image from 'next/image';
-import { teamMembers } from '@/lib/team-members';
+import { teamMembers } from '@/lib/data/team-members';
+import { OptimizedImage } from '@/lib/image-utils';
 
 export function AuthorBio({ authorName }: { authorName: string }) {
   const author = teamMembers.find(member => member.name === authorName);
@@ -18,7 +18,7 @@ export function AuthorBio({ authorName }: { authorName: string }) {
           <Avatar className="h-16 w-16">
             <AvatarImage asChild src={author.image} alt={author.name}>
                 <div data-ai-hint={author.dataAiHint}>
-                    <Image src={author.image} alt={author.name} width={author.width} height={author.height} />
+                    <OptimizedImage src={author.image} alt={author.name} width={128} height={128} />
                 </div>
             </AvatarImage>
             <AvatarFallback>{author.name.charAt(0)}</AvatarFallback>

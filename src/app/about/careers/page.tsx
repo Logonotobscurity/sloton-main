@@ -1,89 +1,15 @@
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { CheckCircle, ArrowRight, Heart, Brain, Users } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { PageHero } from '@/components/page-hero';
+import { PageHero } from '@/components/page-sections/page-hero';
+import { benefits, openPositions } from '@/lib/data/careers-data';
 
 export const metadata: Metadata = {
-  title: 'Careers at LOG_ON',
+  title: 'Careers',
   description: 'Join our team of innovators and help us build the future of business efficiency. Explore open positions and learn about our culture at LOG_ON.',
 };
-
-const benefits = [
-    "Competitive salary and performance bonuses",
-    "Comprehensive health insurance",
-    "Flexible remote work options",
-    "Generous professional development budget",
-    "A collaborative and innovative work culture"
-];
-
-const openPositions = [
-    {
-        title: "Senior AI Engineer",
-        department: "Engineering",
-        location: "Remote",
-        description: "As a Senior AI Engineer, you will architect and build the core AI models that power our solutions, directly impacting our product's intelligence and effectiveness.",
-        href: "#"
-    },
-    {
-        title: "Business Development Manager",
-        department: "Sales & Partnerships",
-        location: "Remote",
-        description: "You will drive growth by identifying new market opportunities, forging strategic partnerships, and building relationships that expand our customer base.",
-        href: "#"
-    },
-    {
-        title: "Product Manager, AI Platforms",
-        department: "Product",
-        location: "Remote",
-        description: "You will own the product lifecycle from concept to launch, translating customer needs into features that deliver tangible value and drive user adoption.",
-        href: "#"
-    },
-    {
-        title: "Content Creator & Strategist",
-        department: "Marketing",
-        location: "Remote",
-        description: "You will shape our brand narrative, creating insightful content that establishes LOG_ON as a thought leader and attracts our target audience.",
-        href: "#"
-    },
-    {
-        title: "AI Agent Developer",
-        department: "Engineering",
-        location: "Remote",
-        description: "You will specialize in building and deploying the next generation of conversational AI and autonomous agents that redefine our clients' workflows.",
-        href: "#"
-    },
-    {
-        title: "AI Researcher",
-        department: "Research & Development",
-        location: "Remote",
-        description: "You will explore the frontiers of AI, publishing research and developing novel techniques that will become the foundation of our future products.",
-        href: "#"
-    },
-    {
-        title: "Community Manager",
-        department: "Marketing & Community",
-        location: "Remote",
-        description: "You will be the voice of LOG_ON, engaging with our user community, fostering a culture of learning, and gathering feedback to guide our growth.",
-        href: "#"
-    },
-     {
-        title: "AI Trainer",
-        department: "Professional Services",
-        location: "Remote",
-        description: "You will empower our clients by designing and delivering expert-led training programs that enable them to master AI and automation technologies.",
-        href: "#"
-    },
-     {
-        title: "Social Media Manager",
-        department: "Marketing",
-        location: "Remote",
-        description: "You will grow our digital footprint and drive engagement by creating and executing compelling social media strategies across all major platforms.",
-        href: "#"
-    }
-]
 
 export default function CareersPage() {
   return (
@@ -92,9 +18,9 @@ export default function CareersPage() {
             title="Join Our Team"
             description="We're looking for passionate, innovative thinkers to join us on our mission to redefine business efficiency. At LOG_ON, you'll work on challenging projects that have a real impact, collaborate with a team of experts, and have opportunities for continuous growth."
         />
-        <div className="container mx-auto px-4 md:px-6 py-16 md:py-24 space-y-12 md:space-y-24">
+        <div className="container mx-auto px-fluid-sm py-fluid-lg space-y-fluid-md">
             <section>
-                <h2 className="text-2xl md:text-3xl font-bold font-headline mb-8 text-center">Why Work With Us?</h2>
+                <h2 className="text-fluid-lg font-bold font-headline mb-8 text-center">Why Work With Us?</h2>
                 <div className="grid md:grid-cols-3 gap-8">
                     <Card className="text-center p-4">
                         <CardHeader>
@@ -127,7 +53,7 @@ export default function CareersPage() {
             </section>
 
             <section>
-                <h2 className="text-2xl md:text-3xl font-bold font-headline mb-4 text-center">Our Benefits</h2>
+                <h2 className="text-fluid-lg font-bold font-headline mb-4 text-center">Our Benefits</h2>
                 <div className="p-6 md:p-8 bg-secondary/50 rounded-lg">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
                     {benefits.map(benefit => (
@@ -141,7 +67,7 @@ export default function CareersPage() {
             </section>
 
             <section>
-                <h2 className="text-2xl md:text-3xl font-bold font-headline mb-8 text-center">Open Positions</h2>
+                <h2 className="text-fluid-lg font-bold font-headline mb-8 text-center">Open Positions</h2>
                 <p className="text-muted-foreground mb-8 text-center max-w-3xl mx-auto">We are actively hiring for key roles across Engineering, Product, Sales, and Marketing. Each position is critical to our mission of driving growth and innovation. Find your place in our journey below.</p>
                 <div className="space-y-4">
                     {openPositions.map(pos => (

@@ -160,7 +160,14 @@ export const defaultAppConfig: AppConfig = {
  * Load configuration from environment variables
  */
 export function getAppConfigFromEnvironment(): Partial<AppConfig> {
-  const config: Partial<AppConfig> = {};
+  const config: Partial<AppConfig> = {
+    security: defaultAppConfig.security,
+    logging: defaultAppConfig.logging,
+    services: defaultAppConfig.services,
+    ui: defaultAppConfig.ui,
+    ai: defaultAppConfig.ai,
+    cache: defaultAppConfig.cache,
+  };
   
   // Environment
   if (process.env.NODE_ENV) {
@@ -175,221 +182,113 @@ export function getAppConfigFromEnvironment(): Partial<AppConfig> {
   
   // Security
   if (process.env.RATE_LIMIT_WINDOW) {
-    config.security = {
-      ...config.security,
-      rateLimitWindow: parseInt(process.env.RATE_LIMIT_WINDOW),
-    };
+    config.security!.rateLimitWindow = parseInt(process.env.RATE_LIMIT_WINDOW);
   }
   if (process.env.RATE_LIMIT_MAX_REQUESTS) {
-    config.security = {
-      ...config.security,
-      rateLimitMaxRequests: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS),
-    };
+    config.security!.rateLimitMaxRequests = parseInt(process.env.RATE_LIMIT_MAX_REQUESTS);
   }
   if (process.env.JWT_EXPIRY) {
-    config.security = {
-      ...config.security,
-      jwtExpiry: process.env.JWT_EXPIRY,
-    };
+    config.security!.jwtExpiry = process.env.JWT_EXPIRY;
   }
   if (process.env.JWT_REFRESH_EXPIRY) {
-    config.security = {
-      ...config.security,
-      jwtRefreshExpiry: process.env.JWT_REFRESH_EXPIRY,
-    };
+    config.security!.jwtRefreshExpiry = process.env.JWT_REFRESH_EXPIRY;
   }
   
   // Logging
   if (process.env.LOG_MAX_QUEUE_SIZE) {
-    config.logging = {
-      ...config.logging,
-      maxQueueSize: parseInt(process.env.LOG_MAX_QUEUE_SIZE),
-    };
+    config.logging!.maxQueueSize = parseInt(process.env.LOG_MAX_QUEUE_SIZE);
   }
   if (process.env.LOG_FLUSH_INTERVAL) {
-    config.logging = {
-      ...config.logging,
-      flushInterval: parseInt(process.env.LOG_FLUSH_INTERVAL),
-    };
+    config.logging!.flushInterval = parseInt(process.env.LOG_FLUSH_INTERVAL);
   }
   if (process.env.LOG_ENDPOINT) {
-    config.logging = {
-      ...config.logging,
-      endpoint: process.env.LOG_ENDPOINT,
-    };
+    config.logging!.endpoint = process.env.LOG_ENDPOINT;
   }
   if (process.env.LOGGING_ENABLED) {
-    config.logging = {
-      ...config.logging,
-      enabled: process.env.LOGGING_ENABLED === 'true',
-    };
+    config.logging!.enabled = process.env.LOGGING_ENABLED === 'true';
   }
   if (process.env.LOG_LEVEL) {
     const validLogLevels: Array<AppConfig['logging']['level']> = ['debug', 'info', 'warn', 'error'];
     const logLevel = process.env.LOG_LEVEL as AppConfig['logging']['level'];
     if (validLogLevels.includes(logLevel)) {
-      config.logging = {
-        ...config.logging,
-        level: logLevel,
-      };
+      config.logging!.level = logLevel;
     }
   }
   
   // Services
   if (process.env.RESEND_FROM_EMAIL) {
-    config.services = {
-      ...config.services,
-      resend: {
-        ...config.services?.resend,
-        fromEmail: process.env.RESEND_FROM_EMAIL,
-      },
-    };
+    config.services!.resend.fromEmail = process.env.RESEND_FROM_EMAIL;
   }
   if (process.env.TO_EMAIL) {
-    config.services = {
-      ...config.services,
-      resend: {
-        ...config.services?.resend,
-        toEmail: process.env.TO_EMAIL,
-      },
-    };
+    config.services!.resend.toEmail = process.env.TO_EMAIL;
   }
   if (process.env.WHATSAPP_LINK) {
-    config.services = {
-      ...config.services,
-      whatsapp: {
-        ...config.services?.whatsapp,
-        link: process.env.WHATSAPP_LINK,
-      },
-    };
+    config.services!.whatsapp.link = process.env.WHATSAPP_LINK;
   }
   if (process.env.MATOMO_URL) {
-    config.services = {
-      ...config.services,
-      analytics: {
-        ...config.services?.analytics,
-        matomoUrl: process.env.MATOMO_URL,
-      },
-    };
+    config.services!.analytics.matomoUrl = process.env.MATOMO_URL;
   }
   if (process.env.MATOMO_SITE_ID) {
-    config.services = {
-      ...config.services,
-      analytics: {
-        ...config.services?.analytics,
-        siteId: parseInt(process.env.MATOMO_SITE_ID),
-      },
-    };
+    config.services!.analytics.siteId = parseInt(process.env.MATOMO_SITE_ID);
   }
   if (process.env.GOOGLE_TAG_MANAGER_ID) {
-    config.services = {
-      ...config.services,
-      analytics: {
-        ...config.services?.analytics,
-        googleTagManagerId: process.env.GOOGLE_TAG_MANAGER_ID,
-      },
-    };
+    config.services!.analytics.googleTagManagerId = process.env.GOOGLE_TAG_MANAGER_ID;
   }
   
   // UI
   if (process.env.TOAST_LIMIT) {
-    config.ui = {
-      ...config.ui,
-      toastLimit: parseInt(process.env.TOAST_LIMIT),
-    };
+    config.ui!.toastLimit = parseInt(process.env.TOAST_LIMIT);
   }
   if (process.env.TOAST_REMOVE_DELAY) {
-    config.ui = {
-      ...config.ui,
-      toastRemoveDelay: parseInt(process.env.TOAST_REMOVE_DELAY),
-    };
+    config.ui!.toastRemoveDelay = parseInt(process.env.TOAST_REMOVE_DELAY);
   }
   if (process.env.CAROUSEL_DELAY) {
-    config.ui = {
-      ...config.ui,
-      carouselDelay: parseInt(process.env.CAROUSEL_DELAY),
-    };
+    config.ui!.carouselDelay = parseInt(process.env.CAROUSEL_DELAY);
   }
   
   // AI Configuration
   if (process.env.AI_PROVIDER) {
-    config.ai = {
-      ...config.ai,
-      provider: process.env.AI_PROVIDER,
-    };
+    config.ai!.provider = process.env.AI_PROVIDER;
   }
   if (process.env.AI_FALLBACK_PROVIDER) {
-    config.ai = {
-      ...config.ai,
-      fallbackProvider: process.env.AI_FALLBACK_PROVIDER,
-    };
+    config.ai!.fallbackProvider = process.env.AI_FALLBACK_PROVIDER;
   }
   if (process.env.AI_TIMEOUT) {
-    config.ai = {
-      ...config.ai,
-      timeout: parseInt(process.env.AI_TIMEOUT),
-    };
+    config.ai!.timeout = parseInt(process.env.AI_TIMEOUT);
   }
   if (process.env.AI_RETRY_ATTEMPTS) {
-    config.ai = {
-      ...config.ai,
-      retryAttempts: parseInt(process.env.AI_RETRY_ATTEMPTS),
-    };
+    config.ai!.retryAttempts = parseInt(process.env.AI_RETRY_ATTEMPTS);
   }
   if (process.env.AI_CIRCUIT_BREAKER_ENABLED) {
-    config.ai = {
-      ...config.ai,
-      enableCircuitBreaker: process.env.AI_CIRCUIT_BREAKER_ENABLED === 'true',
-    };
+    config.ai!.enableCircuitBreaker = process.env.AI_CIRCUIT_BREAKER_ENABLED === 'true';
   }
   if (process.env.AI_CIRCUIT_BREAKER_THRESHOLD) {
-    config.ai = {
-      ...config.ai,
-      circuitBreakerThreshold: parseInt(process.env.AI_CIRCUIT_BREAKER_THRESHOLD),
-    };
+    config.ai!.circuitBreakerThreshold = parseInt(process.env.AI_CIRCUIT_BREAKER_THRESHOLD);
   }
   if (process.env.AI_CIRCUIT_BREAKER_TIMEOUT) {
-    config.ai = {
-      ...config.ai,
-      circuitBreakerTimeout: parseInt(process.env.AI_CIRCUIT_BREAKER_TIMEOUT),
-    };
+    config.ai!.circuitBreakerTimeout = parseInt(process.env.AI_CIRCUIT_BREAKER_TIMEOUT);
   }
   if (process.env.AI_LOGGING_ENABLED) {
-    config.ai = {
-      ...config.ai,
-      enableLogging: process.env.AI_LOGGING_ENABLED === 'true',
-    };
+    config.ai!.enableLogging = process.env.AI_LOGGING_ENABLED === 'true';
   }
   if (process.env.AI_LOG_LEVEL) {
     const validAILogLevels: Array<AppConfig['ai']['logLevel']> = ['debug', 'info', 'warn', 'error'];
     const aiLogLevel = process.env.AI_LOG_LEVEL as AppConfig['ai']['logLevel'];
     if (validAILogLevels.includes(aiLogLevel)) {
-      config.ai = {
-        ...config.ai,
-        logLevel: aiLogLevel,
-      };
+      config.ai!.logLevel = aiLogLevel;
     }
   }
   
   // Cache
   if (process.env.STATIC_CACHE_NAME) {
-    config.cache = {
-      ...config.cache,
-      staticCacheName: process.env.STATIC_CACHE_NAME,
-    };
+    config.cache!.staticCacheName = process.env.STATIC_CACHE_NAME;
   }
   if (process.env.RUNTIME_CACHE_NAME) {
-    config.cache = {
-      ...config.cache,
-      runtimeCacheName: process.env.RUNTIME_CACHE_NAME,
-    };
+    config.cache!.runtimeCacheName = process.env.RUNTIME_CACHE_NAME;
   }
   if (process.env.PRECACHE_URLS) {
     try {
-      config.cache = {
-        ...config.cache,
-        precacheUrls: JSON.parse(process.env.PRECACHE_URLS),
-      };
+      config.cache!.precacheUrls = JSON.parse(process.env.PRECACHE_URLS);
     } catch (error) {
       console.warn('Failed to parse PRECACHE_URLS, using defaults');
     }

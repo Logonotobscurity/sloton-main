@@ -5,6 +5,7 @@
 
 @layer base {
   :root {
+    /* Color Palette (Unchanged) */
     --background: 60 43% 98%;
     --foreground: 75 8% 9.4%;
     --card: 60 43% 98%;
@@ -26,14 +27,28 @@
     --ring: 163 100% 21%;
     --radius: 0.5rem;
 
+    /* Chart Colors (Unchanged) */
     --chart-1: 163 100% 21%;
     --chart-2: 331 100% 37%;
     --chart-3: 195 12% 48%;
     --chart-4: 158 14% 34%;
     --chart-5: 60 43% 88%;
+
+    /* NEW: Fluid Spacing System */
+    --space-fluid-xs: clamp(0.5rem, 1vw + 0.25rem, 0.75rem);
+    --space-fluid-sm: clamp(0.75rem, 1.5vw + 0.25rem, 1.25rem);
+    --space-fluid-md: clamp(1rem, 2vw + 0.5rem, 2rem);
+    --space-fluid-lg: clamp(2rem, 4vw + 1rem, 4rem);
+    --space-fluid-xl: clamp(4rem, 8vw + 2rem, 8rem);
+    --space-fluid-2xl: clamp(6rem, 12vw + 3rem, 12rem);
+
+    /* NEW: Fluid Section & Container Padding */
+    --section-padding-y: clamp(4rem, 8vw + 2rem, 8rem);
+    --container-padding-x: clamp(1rem, 4vw, 2.5rem);
   }
 
   .dark {
+    /* Dark Mode Colors (Unchanged) */
     --background: 75 8% 9.4%;
     --foreground: 60 8% 90%;
     --card: 75 8% 9.4%;
@@ -73,6 +88,11 @@
 
   p {
     @apply leading-relaxed;
+  }
+
+  /* Add focus-visible styles for accessibility */
+  *:focus-visible {
+      @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
 }
 

@@ -1,0 +1,95 @@
+{
+  "findings": {
+    "critical": [],
+    "high": [
+      {
+        "category": "Modularity",
+        "type": "TIGHT_COUPLING",
+        "title": "Tightly Coupled Modules",
+        "description": "18 modules with coupling > 0.7",
+        "impact": "Difficult to test and maintain",
+        "count": 18
+      },
+      {
+        "category": "Modularity",
+        "type": "POOR_COHESION",
+        "title": "Poor Module Cohesion",
+        "description": "10 modules with cohesion < 0.3",
+        "impact": "Files grouped without logical relationship",
+        "count": 10
+      },
+      {
+        "category": "Code Quality",
+        "type": "DUPLICATION",
+        "title": "Code Duplication",
+        "description": "2 high-severity duplication issues",
+        "impact": "Increased maintenance burden",
+        "count": 2
+      },
+      {
+        "category": "Separation of Concerns",
+        "type": "API_IN_COMPONENT",
+        "title": "API Calls in UI Components",
+        "description": "5 components with direct API calls",
+        "impact": "Tight coupling to data sources",
+        "count": 5
+      }
+    ],
+    "medium": [
+      {
+        "category": "Modularity",
+        "type": "COUPLING",
+        "title": "Architectural Violations",
+        "description": "8 architectural violations detected",
+        "impact": "Tight coupling between modules",
+        "count": 8
+      },
+      {
+        "category": "Separation of Concerns",
+        "type": "COMPLEX_CALC",
+        "title": "Complex Calculations in Render",
+        "description": "42 components with complex calculations",
+        "impact": "Performance issues and reduced readability",
+        "count": 42
+      },
+      {
+        "category": "Code Style",
+        "type": "MIXED_IMPORTS",
+        "title": "Mixed Import Patterns",
+        "description": "43 files mix relative and alias imports",
+        "impact": "Inconsistent codebase style",
+        "count": 43
+      }
+    ],
+    "low": [
+      {
+        "category": "Modularity",
+        "type": "STRENGTH",
+        "title": "No Circular Dependencies",
+        "description": "Zero circular dependencies detected across 237 files",
+        "impact": "Clean dependency graph enables better code splitting"
+      },
+      {
+        "category": "Code Style",
+        "type": "STRENGTH",
+        "title": "Strong Alias Import Adoption",
+        "description": "82.7% of imports use @/ alias",
+        "impact": "Improved code readability and maintainability"
+      },
+      {
+        "category": "Component Architecture",
+        "type": "STRENGTH",
+        "title": "Excellent Component Size",
+        "description": "Average component size: 92 lines",
+        "impact": "Easy to understand and maintain"
+      }
+    ]
+  },
+  "counts": {
+    "critical": 0,
+    "high": 4,
+    "medium": 3,
+    "low": 3,
+    "total": 10
+  }
+}

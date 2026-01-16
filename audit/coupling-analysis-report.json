@@ -1,0 +1,1373 @@
+{
+  "timestamp": "2026-01-15T20:56:09.155Z",
+  "summary": {
+    "totalModules": 35,
+    "avgCoupling": "0.82",
+    "avgCohesion": "0.12",
+    "tightlyCoupledCount": 18,
+    "poorCohesionCount": 10,
+    "violationsCount": 8
+  },
+  "metrics": [
+    {
+      "module": "app/ab-testing",
+      "files": 1,
+      "internalDeps": 0,
+      "externalDeps": 4,
+      "totalDeps": 4,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "components/ui",
+          2
+        ],
+        [
+          "components/page-sections",
+          1
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/about",
+      "files": 13,
+      "internalDeps": 0,
+      "externalDeps": 47,
+      "totalDeps": 47,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "components/ui",
+          25
+        ],
+        [
+          "components/page-sections",
+          7
+        ],
+        [
+          "components/root",
+          6
+        ],
+        [
+          "lib/data",
+          5
+        ],
+        [
+          "lib/root",
+          3
+        ]
+      ]
+    },
+    {
+      "module": "app/ai-solutions",
+      "files": 1,
+      "internalDeps": 0,
+      "externalDeps": 5,
+      "totalDeps": 5,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "components/ui",
+          2
+        ],
+        [
+          "components/page-sections",
+          2
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/api",
+      "files": 3,
+      "internalDeps": 0,
+      "externalDeps": 4,
+      "totalDeps": 4,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "lib/root",
+          2
+        ],
+        [
+          "src/ai",
+          1
+        ],
+        [
+          "src/config",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/business-analytics",
+      "files": 1,
+      "internalDeps": 0,
+      "externalDeps": 5,
+      "totalDeps": 5,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "components/ui",
+          2
+        ],
+        [
+          "components/page-sections",
+          2
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/chatbots",
+      "files": 1,
+      "internalDeps": 0,
+      "externalDeps": 5,
+      "totalDeps": 5,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "components/ui",
+          2
+        ],
+        [
+          "components/page-sections",
+          2
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/contact",
+      "files": 1,
+      "internalDeps": 0,
+      "externalDeps": 6,
+      "totalDeps": 6,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "components/ui",
+          2
+        ],
+        [
+          "components/root",
+          2
+        ],
+        [
+          "components/page-sections",
+          1
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/database-solutions",
+      "files": 1,
+      "internalDeps": 0,
+      "externalDeps": 5,
+      "totalDeps": 5,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "components/ui",
+          2
+        ],
+        [
+          "components/page-sections",
+          2
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/ideas-lab",
+      "files": 1,
+      "internalDeps": 0,
+      "externalDeps": 3,
+      "totalDeps": 3,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "components/ui",
+          2
+        ],
+        [
+          "components/page-sections",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/insights",
+      "files": 2,
+      "internalDeps": 0,
+      "externalDeps": 16,
+      "totalDeps": 16,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "components/ui",
+          7
+        ],
+        [
+          "components/chronicle",
+          3
+        ],
+        [
+          "components/root",
+          3
+        ],
+        [
+          "lib/root",
+          2
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/partners",
+      "files": 1,
+      "internalDeps": 0,
+      "externalDeps": 6,
+      "totalDeps": 6,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "components/ui",
+          3
+        ],
+        [
+          "components/page-sections",
+          2
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/solutions",
+      "files": 1,
+      "internalDeps": 0,
+      "externalDeps": 7,
+      "totalDeps": 7,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "components/ui",
+          3
+        ],
+        [
+          "components/page-sections",
+          2
+        ],
+        [
+          "lib/data",
+          1
+        ],
+        [
+          "components/root",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/support",
+      "files": 1,
+      "internalDeps": 0,
+      "externalDeps": 7,
+      "totalDeps": 7,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "components/ui",
+          4
+        ],
+        [
+          "components/root",
+          1
+        ],
+        [
+          "components/page-sections",
+          1
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/training",
+      "files": 1,
+      "internalDeps": 0,
+      "externalDeps": 11,
+      "totalDeps": 11,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "components/ui",
+          6
+        ],
+        [
+          "components/root",
+          3
+        ],
+        [
+          "components/page-sections",
+          1
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/use-cases",
+      "files": 1,
+      "internalDeps": 0,
+      "externalDeps": 6,
+      "totalDeps": 6,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "components/page-sections",
+          2
+        ],
+        [
+          "components/ui",
+          2
+        ],
+        [
+          "components/root",
+          1
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/web-development",
+      "files": 1,
+      "internalDeps": 0,
+      "externalDeps": 5,
+      "totalDeps": 5,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "components/ui",
+          3
+        ],
+        [
+          "components/page-sections",
+          1
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "components/articles",
+      "files": 5,
+      "internalDeps": 0,
+      "externalDeps": 7,
+      "totalDeps": 7,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "lib/root",
+          3
+        ],
+        [
+          "components/root",
+          2
+        ],
+        [
+          "components/ui",
+          2
+        ]
+      ]
+    },
+    {
+      "module": "components/chatbot",
+      "files": 1,
+      "internalDeps": 0,
+      "externalDeps": 2,
+      "totalDeps": 2,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "src/ai",
+          1
+        ],
+        [
+          "components/ui",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "components/chronicle",
+      "files": 3,
+      "internalDeps": 0,
+      "externalDeps": 6,
+      "totalDeps": 6,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "components/ui",
+          4
+        ],
+        [
+          "lib/root",
+          2
+        ]
+      ]
+    },
+    {
+      "module": "components/shared",
+      "files": 2,
+      "internalDeps": 0,
+      "externalDeps": 9,
+      "totalDeps": 9,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "components/ui",
+          7
+        ],
+        [
+          "components/root",
+          2
+        ]
+      ]
+    },
+    {
+      "module": "src/context",
+      "files": 1,
+      "internalDeps": 0,
+      "externalDeps": 1,
+      "totalDeps": 1,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "hooks",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "lib/data",
+      "files": 14,
+      "internalDeps": 0,
+      "externalDeps": 1,
+      "totalDeps": 1,
+      "couplingScore": "1.00",
+      "cohesionScore": "0.00",
+      "externalModules": [
+        [
+          "lib/root",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "components/page-sections",
+      "files": 15,
+      "internalDeps": 1,
+      "externalDeps": 46,
+      "totalDeps": 47,
+      "couplingScore": "0.98",
+      "cohesionScore": "0.02",
+      "externalModules": [
+        [
+          "components/ui",
+          32
+        ],
+        [
+          "lib/root",
+          6
+        ],
+        [
+          "components/root",
+          6
+        ],
+        [
+          "hooks",
+          1
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/root",
+      "files": 6,
+      "internalDeps": 1,
+      "externalDeps": 34,
+      "totalDeps": 35,
+      "couplingScore": "0.97",
+      "cohesionScore": "0.03",
+      "externalModules": [
+        [
+          "components/page-sections",
+          13
+        ],
+        [
+          "components/root",
+          9
+        ],
+        [
+          "src/ai",
+          3
+        ],
+        [
+          "lib/root",
+          3
+        ],
+        [
+          "src/emails",
+          2
+        ]
+      ]
+    },
+    {
+      "module": "app/automation",
+      "files": 3,
+      "internalDeps": 1,
+      "externalDeps": 26,
+      "totalDeps": 27,
+      "couplingScore": "0.96",
+      "cohesionScore": "0.04",
+      "externalModules": [
+        [
+          "lib/root",
+          9
+        ],
+        [
+          "components/ui",
+          8
+        ],
+        [
+          "components/root",
+          7
+        ],
+        [
+          "components/page-sections",
+          2
+        ]
+      ]
+    },
+    {
+      "module": "components/root",
+      "files": 45,
+      "internalDeps": 9,
+      "externalDeps": 155,
+      "totalDeps": 164,
+      "couplingScore": "0.95",
+      "cohesionScore": "0.05",
+      "externalModules": [
+        [
+          "components/ui",
+          96
+        ],
+        [
+          "lib/root",
+          28
+        ],
+        [
+          "hooks",
+          11
+        ],
+        [
+          "app/root",
+          6
+        ],
+        [
+          "components/header",
+          5
+        ]
+      ]
+    },
+    {
+      "module": "components/ui",
+      "files": 52,
+      "internalDeps": 7,
+      "externalDeps": 47,
+      "totalDeps": 54,
+      "couplingScore": "0.87",
+      "cohesionScore": "0.13",
+      "externalModules": [
+        [
+          "lib/root",
+          45
+        ],
+        [
+          "src/ai",
+          1
+        ],
+        [
+          "hooks",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "components/header",
+      "files": 7,
+      "internalDeps": 4,
+      "externalDeps": 15,
+      "totalDeps": 19,
+      "couplingScore": "0.79",
+      "cohesionScore": "0.21",
+      "externalModules": [
+        [
+          "components/ui",
+          9
+        ],
+        [
+          "lib/root",
+          5
+        ],
+        [
+          "hooks",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "lib/root",
+      "files": 18,
+      "internalDeps": 2,
+      "externalDeps": 6,
+      "totalDeps": 8,
+      "couplingScore": "0.75",
+      "cohesionScore": "0.25",
+      "externalModules": [
+        [
+          "src/config",
+          3
+        ],
+        [
+          "components/ui",
+          2
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "src/ai",
+      "files": 14,
+      "internalDeps": 7,
+      "externalDeps": 10,
+      "totalDeps": 17,
+      "couplingScore": "0.59",
+      "cohesionScore": "0.41",
+      "externalModules": [
+        [
+          "lib/root",
+          4
+        ],
+        [
+          "src/config",
+          2
+        ],
+        [
+          "app/root",
+          2
+        ],
+        [
+          "lib/data",
+          2
+        ]
+      ]
+    },
+    {
+      "module": "src/config",
+      "files": 3,
+      "internalDeps": 1,
+      "externalDeps": 0,
+      "totalDeps": 1,
+      "couplingScore": "0.00",
+      "cohesionScore": "1.00",
+      "externalModules": []
+    },
+    {
+      "module": "src/data-pipeline",
+      "files": 3,
+      "internalDeps": 1,
+      "externalDeps": 0,
+      "totalDeps": 1,
+      "couplingScore": "0.00",
+      "cohesionScore": "1.00",
+      "externalModules": []
+    },
+    {
+      "module": "src/emails",
+      "files": 2,
+      "internalDeps": 0,
+      "externalDeps": 0,
+      "totalDeps": 0,
+      "couplingScore": "0.00",
+      "cohesionScore": "0.00",
+      "externalModules": []
+    },
+    {
+      "module": "hooks",
+      "files": 8,
+      "internalDeps": 1,
+      "externalDeps": 0,
+      "totalDeps": 1,
+      "couplingScore": "0.00",
+      "cohesionScore": "1.00",
+      "externalModules": []
+    },
+    {
+      "module": "src/stores",
+      "files": 4,
+      "internalDeps": 0,
+      "externalDeps": 0,
+      "totalDeps": 0,
+      "couplingScore": "0.00",
+      "cohesionScore": "0.00",
+      "externalModules": []
+    }
+  ],
+  "tightlyCoupled": [
+    {
+      "module": "app/about",
+      "couplingScore": "1.00",
+      "externalDeps": 47,
+      "topDependencies": [
+        [
+          "components/ui",
+          25
+        ],
+        [
+          "components/page-sections",
+          7
+        ],
+        [
+          "components/root",
+          6
+        ],
+        [
+          "lib/data",
+          5
+        ],
+        [
+          "lib/root",
+          3
+        ]
+      ]
+    },
+    {
+      "module": "app/contact",
+      "couplingScore": "1.00",
+      "externalDeps": 6,
+      "topDependencies": [
+        [
+          "components/ui",
+          2
+        ],
+        [
+          "components/root",
+          2
+        ],
+        [
+          "components/page-sections",
+          1
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/insights",
+      "couplingScore": "1.00",
+      "externalDeps": 16,
+      "topDependencies": [
+        [
+          "components/ui",
+          7
+        ],
+        [
+          "components/chronicle",
+          3
+        ],
+        [
+          "components/root",
+          3
+        ],
+        [
+          "lib/root",
+          2
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/partners",
+      "couplingScore": "1.00",
+      "externalDeps": 6,
+      "topDependencies": [
+        [
+          "components/ui",
+          3
+        ],
+        [
+          "components/page-sections",
+          2
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/solutions",
+      "couplingScore": "1.00",
+      "externalDeps": 7,
+      "topDependencies": [
+        [
+          "components/ui",
+          3
+        ],
+        [
+          "components/page-sections",
+          2
+        ],
+        [
+          "lib/data",
+          1
+        ],
+        [
+          "components/root",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/support",
+      "couplingScore": "1.00",
+      "externalDeps": 7,
+      "topDependencies": [
+        [
+          "components/ui",
+          4
+        ],
+        [
+          "components/root",
+          1
+        ],
+        [
+          "components/page-sections",
+          1
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/training",
+      "couplingScore": "1.00",
+      "externalDeps": 11,
+      "topDependencies": [
+        [
+          "components/ui",
+          6
+        ],
+        [
+          "components/root",
+          3
+        ],
+        [
+          "components/page-sections",
+          1
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/use-cases",
+      "couplingScore": "1.00",
+      "externalDeps": 6,
+      "topDependencies": [
+        [
+          "components/page-sections",
+          2
+        ],
+        [
+          "components/ui",
+          2
+        ],
+        [
+          "components/root",
+          1
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "components/articles",
+      "couplingScore": "1.00",
+      "externalDeps": 7,
+      "topDependencies": [
+        [
+          "lib/root",
+          3
+        ],
+        [
+          "components/root",
+          2
+        ],
+        [
+          "components/ui",
+          2
+        ]
+      ]
+    },
+    {
+      "module": "components/chronicle",
+      "couplingScore": "1.00",
+      "externalDeps": 6,
+      "topDependencies": [
+        [
+          "components/ui",
+          4
+        ],
+        [
+          "lib/root",
+          2
+        ]
+      ]
+    },
+    {
+      "module": "components/shared",
+      "couplingScore": "1.00",
+      "externalDeps": 9,
+      "topDependencies": [
+        [
+          "components/ui",
+          7
+        ],
+        [
+          "components/root",
+          2
+        ]
+      ]
+    },
+    {
+      "module": "components/page-sections",
+      "couplingScore": "0.98",
+      "externalDeps": 46,
+      "topDependencies": [
+        [
+          "components/ui",
+          32
+        ],
+        [
+          "lib/root",
+          6
+        ],
+        [
+          "components/root",
+          6
+        ],
+        [
+          "hooks",
+          1
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "app/root",
+      "couplingScore": "0.97",
+      "externalDeps": 34,
+      "topDependencies": [
+        [
+          "components/page-sections",
+          13
+        ],
+        [
+          "components/root",
+          9
+        ],
+        [
+          "src/ai",
+          3
+        ],
+        [
+          "lib/root",
+          3
+        ],
+        [
+          "src/emails",
+          2
+        ]
+      ]
+    },
+    {
+      "module": "app/automation",
+      "couplingScore": "0.96",
+      "externalDeps": 26,
+      "topDependencies": [
+        [
+          "lib/root",
+          9
+        ],
+        [
+          "components/ui",
+          8
+        ],
+        [
+          "components/root",
+          7
+        ],
+        [
+          "components/page-sections",
+          2
+        ]
+      ]
+    },
+    {
+      "module": "components/root",
+      "couplingScore": "0.95",
+      "externalDeps": 155,
+      "topDependencies": [
+        [
+          "components/ui",
+          96
+        ],
+        [
+          "lib/root",
+          28
+        ],
+        [
+          "hooks",
+          11
+        ],
+        [
+          "app/root",
+          6
+        ],
+        [
+          "components/header",
+          5
+        ]
+      ]
+    },
+    {
+      "module": "components/ui",
+      "couplingScore": "0.87",
+      "externalDeps": 47,
+      "topDependencies": [
+        [
+          "lib/root",
+          45
+        ],
+        [
+          "src/ai",
+          1
+        ],
+        [
+          "hooks",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "components/header",
+      "couplingScore": "0.79",
+      "externalDeps": 15,
+      "topDependencies": [
+        [
+          "components/ui",
+          9
+        ],
+        [
+          "lib/root",
+          5
+        ],
+        [
+          "hooks",
+          1
+        ]
+      ]
+    },
+    {
+      "module": "lib/root",
+      "couplingScore": "0.75",
+      "externalDeps": 6,
+      "topDependencies": [
+        [
+          "src/config",
+          3
+        ],
+        [
+          "components/ui",
+          2
+        ],
+        [
+          "lib/data",
+          1
+        ]
+      ]
+    }
+  ],
+  "poorCohesion": [
+    {
+      "module": "app/about",
+      "cohesionScore": "0.00",
+      "files": 13,
+      "internalDeps": 0,
+      "externalDeps": 47
+    },
+    {
+      "module": "components/articles",
+      "cohesionScore": "0.00",
+      "files": 5,
+      "internalDeps": 0,
+      "externalDeps": 7
+    },
+    {
+      "module": "lib/data",
+      "cohesionScore": "0.00",
+      "files": 14,
+      "internalDeps": 0,
+      "externalDeps": 1
+    },
+    {
+      "module": "components/page-sections",
+      "cohesionScore": "0.02",
+      "files": 15,
+      "internalDeps": 1,
+      "externalDeps": 46
+    },
+    {
+      "module": "app/root",
+      "cohesionScore": "0.03",
+      "files": 6,
+      "internalDeps": 1,
+      "externalDeps": 34
+    },
+    {
+      "module": "components/root",
+      "cohesionScore": "0.05",
+      "files": 45,
+      "internalDeps": 9,
+      "externalDeps": 155
+    },
+    {
+      "module": "components/ui",
+      "cohesionScore": "0.13",
+      "files": 52,
+      "internalDeps": 7,
+      "externalDeps": 47
+    },
+    {
+      "module": "components/header",
+      "cohesionScore": "0.21",
+      "files": 7,
+      "internalDeps": 4,
+      "externalDeps": 15
+    },
+    {
+      "module": "lib/root",
+      "cohesionScore": "0.25",
+      "files": 18,
+      "internalDeps": 2,
+      "externalDeps": 6
+    },
+    {
+      "module": "src/stores",
+      "cohesionScore": "0.00",
+      "files": 4,
+      "internalDeps": 0,
+      "externalDeps": 0
+    }
+  ],
+  "crossModuleDeps": [
+    {
+      "dependency": "components/root → components/ui",
+      "count": 96
+    },
+    {
+      "dependency": "components/ui → lib/root",
+      "count": 45
+    },
+    {
+      "dependency": "components/page-sections → components/ui",
+      "count": 32
+    },
+    {
+      "dependency": "components/root → lib/root",
+      "count": 28
+    },
+    {
+      "dependency": "app/about → components/ui",
+      "count": 25
+    },
+    {
+      "dependency": "app/root → components/page-sections",
+      "count": 13
+    },
+    {
+      "dependency": "components/root → hooks",
+      "count": 11
+    },
+    {
+      "dependency": "app/root → components/root",
+      "count": 9
+    },
+    {
+      "dependency": "app/automation → lib/root",
+      "count": 9
+    },
+    {
+      "dependency": "components/header → components/ui",
+      "count": 9
+    },
+    {
+      "dependency": "app/automation → components/ui",
+      "count": 8
+    },
+    {
+      "dependency": "app/about → components/page-sections",
+      "count": 7
+    },
+    {
+      "dependency": "app/automation → components/root",
+      "count": 7
+    },
+    {
+      "dependency": "app/insights → components/ui",
+      "count": 7
+    },
+    {
+      "dependency": "components/shared → components/ui",
+      "count": 7
+    }
+  ],
+  "violations": [
+    {
+      "type": "TIGHT_COUPLING",
+      "module": "app/about",
+      "issue": "Excessive coupling to components/ui (25 dependencies)",
+      "severity": "MEDIUM"
+    },
+    {
+      "type": "TIGHT_COUPLING",
+      "module": "app/root",
+      "issue": "Excessive coupling to components/page-sections (13 dependencies)",
+      "severity": "MEDIUM"
+    },
+    {
+      "type": "TIGHT_COUPLING",
+      "module": "components/root",
+      "issue": "Excessive coupling to lib/root (28 dependencies)",
+      "severity": "MEDIUM"
+    },
+    {
+      "type": "TIGHT_COUPLING",
+      "module": "components/root",
+      "issue": "Excessive coupling to components/ui (96 dependencies)",
+      "severity": "MEDIUM"
+    },
+    {
+      "type": "TIGHT_COUPLING",
+      "module": "components/root",
+      "issue": "Excessive coupling to hooks (11 dependencies)",
+      "severity": "MEDIUM"
+    },
+    {
+      "type": "TIGHT_COUPLING",
+      "module": "components/page-sections",
+      "issue": "Excessive coupling to components/ui (32 dependencies)",
+      "severity": "MEDIUM"
+    },
+    {
+      "type": "TIGHT_COUPLING",
+      "module": "components/ui",
+      "issue": "Excessive coupling to lib/root (45 dependencies)",
+      "severity": "MEDIUM"
+    },
+    {
+      "type": "LAYERING_VIOLATION",
+      "module": "lib/root",
+      "issue": "Library code depends on UI components",
+      "severity": "HIGH"
+    }
+  ]
+}

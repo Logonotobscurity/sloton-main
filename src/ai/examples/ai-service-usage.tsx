@@ -6,7 +6,7 @@
 'use client';
 
 import { useState } from 'react';
-import { getSolutionRecommendation, getAutomatedTaskDesign } from '@/app/actions';
+import { getSolutionRecommendationAction, getAutomatedTaskDesign } from '@/app/actions';
 import { SolutionRecommendationOutput } from '@/ai';
 
 /**
@@ -37,22 +37,15 @@ export function AIServiceExample() {
 
     try {
       const input = {
-        businessNeeds: 'We need to automate our customer support to reduce response time and improve customer satisfaction.',
-        companySize: 'medium',
         industry: 'e-commerce',
-        budget: '25000-50000',
-        name: 'John Doe',
-        email: 'john@example.com'
+        challenge: 'We need to automate our customer support to reduce response time and improve customer satisfaction.',
+        goals: 'Reduce response time by 50% and improve customer satisfaction scores by 30%'
       };
 
       // The new actions automatically use the AI service manager with dependency injection
-      const response = await getSolutionRecommendation(input);
+      const response = await getSolutionRecommendationAction(input);
 
-      if (response.error) {
-        setError(response.error);
-      } else if (response.data) {
-        setResult(response.data);
-      }
+      setResult(response.data);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An unknown error occurred');
     } finally {

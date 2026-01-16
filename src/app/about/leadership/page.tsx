@@ -5,9 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Briefcase, Users, CheckCircle, Lightbulb, Zap, Handshake } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import { GlowingCard } from '@/components/ui/glowing-card';
-import { PageHero } from '@/components/page-hero';
+import { PageHero } from '@/components/page-sections/page-hero';
 
 export const metadata: Metadata = {
   title: 'Our Leadership',

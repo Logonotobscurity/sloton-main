@@ -2,12 +2,12 @@
 
 "use client";
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Search, ArrowRight, Eye, Cog, Calendar } from 'lucide-react';
+import { Search, ArrowRight, Eye, Cog } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import {
   IconHumanResources,
@@ -23,7 +23,7 @@ import {
   IconSupport,
   IconGeneral
 } from '@/lib/icons';
-import { getTemplates, Template } from '@/lib/workflow-templates';
+import { getTemplates, Template } from '@/lib/data/workflow-templates';
 import { TaskAutomationForm } from './task-automation-form';
 import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationNext, PaginationLink, PaginationEllipsis } from '@/components/ui/pagination';
 import { cn } from '@/lib/utils';

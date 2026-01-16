@@ -1,27 +1,19 @@
 
 'use server';
 
-import { 
-  SolutionRecommendationInput, 
-  SolutionRecommendationOutput,
-  AutomateTaskDesignInput, 
-  AutomateTaskDesignOutput,
-  AIServiceManager 
-} from '@/ai';
 import { z } from 'zod';
 import { Resend } from 'resend';
 import { ContactFormEmail } from '@/emails/contact-form-email';
 import { EnrollmentEmail } from '@/emails/enrollment-email';
+import { automateTaskDesign } from '@/ai/flows/automated-task-design';
+import { getSolutionRecommendation } from '@/ai/flows/solution-recommendation';
+import { askRagAssistant } from '@/ai/flows/rag-assistant';
+import { handleError, AppError, ErrorCode } from '@/lib/error-handler';
 import { logger } from '@/lib/logger';
 
-import { getConfig } from '@/config';
-
-const config = getConfig();
-const resend = config.services.resend.enabled ? new Resend(config.services.resend.apiKey!) : null;
-const toEmail = config.services.resend.toEmail;
-
-// Initialize AI service manager with dependency injection
-const aiServiceManager = AIServiceManager.createFromEnvironment();
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+const toEmail = process.env.TO_EMAIL || 'logonthepage@gmail.com';
+const webhookUrl = process.env.THIRD_PARTY_WEBHOOK_URL;
 
 type FormResult<T> = {
   data?: T;
@@ -29,34 +21,72 @@ type FormResult<T> = {
   success?: boolean;
 };
 
-// Solution Recommendation Action
-export async function getSolutionRecommendation(
-  input: SolutionRecommendationInput
-): Promise<FormResult<SolutionRecommendationOutput>> {
+// --- Webhook Function ---
+async function sendToWebhook(payload: Record<string, unknown>, submissionType: string) {
+  if (!webhookUrl) {
+    logger.info('[Actions] No webhook URL configured. Skipping webhook send.');
+    return;
+  }
+
   try {
-    logger.info('Processing solution recommendation request', { input });
-    const result = await aiServiceManager.getSolutionRecommendation(input);
-    logger.info('Solution recommendation generated successfully');
-    return { data: result };
-  } catch (e: any) {
-    logger.error('Error in getSolutionRecommendation:', e);
-    return { error: e.message || 'An unknown error occurred while generating solution recommendation.' };
+    const response = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...payload,
+        submissionType,
+        receivedAt: new Date().toISOString(),
+      }),
+    });
+
+    if (!response.ok) {
+      logger.error(`[Actions] Webhook failed with status: ${response.status}`, { submissionType });
+    } else {
+      logger.info('[Actions] Successfully sent data to webhook.', { submissionType });
+    }
+  } catch (error) {
+    handleError(error, 'Actions.sendToWebhook', { logLevel: 'error' });
   }
 }
 
-// Automated Task Design Action
-export async function getAutomatedTaskDesign(
-  input: AutomateTaskDesignInput
-): Promise<FormResult<AutomateTaskDesignOutput>> {
+export async function askSupportBot(history: { role: 'user' | 'assistant' | 'tool'; content: string }[], question: string) {
   try {
-    logger.info('Processing automated task design request', { input });
-    const result = await aiServiceManager.getAutomatedTaskDesign(input);
-    logger.info('Automated task design generated successfully');
-    return { data: result };
-  } catch (e: any) {
-    logger.error('Error in getAutomatedTaskDesign:', e);
-    return { error: e.message || 'An unknown error occurred while generating automated task design.' };
+      const result = await askRagAssistant({ history, question });
+      return { data: result };
+  } catch (error) {
+      const errorResponse = handleError(error, 'Actions.askSupportBot', { logLevel: 'error' });
+      return { error: errorResponse.error.message };
   }
+}
+
+const automatedTaskSchema = z.object({
+    workflowDescription: z.string(),
+    optimizationSuggestions: z.string().optional(),
+});
+
+export async function getAutomatedTaskDesign(values: z.infer<typeof automatedTaskSchema>) {
+    try {
+        const result = await automateTaskDesign(values);
+        return { data: result };
+    } catch (error) {
+        const errorResponse = handleError(error, 'Actions.getAutomatedTaskDesign', { logLevel: 'error' });
+        return { error: errorResponse.error.message };
+    }
+}
+
+const solutionRecommendationSchema = z.object({
+    industry: z.string(),
+    challenge: z.string(),
+    goals: z.string(),
+});
+
+export async function getSolutionRecommendationAction(values: z.infer<typeof solutionRecommendationSchema>) {
+    const result = await getSolutionRecommendation(values);
+    return {
+        data: result,
+    };
 }
 
 // Contact Form Action
@@ -69,28 +99,33 @@ const contactFormSchema = z.object({
 });
 export async function contactFormAction(data: z.infer<typeof contactFormSchema>): Promise<FormResult<null>> {
   if (!resend) {
-      console.warn("RESEND_API_KEY is not set. Skipping email sending.");
-      return { success: true }; // Pretend it worked to not show user an error
+      logger.warn('[Actions] RESEND_API_KEY is not set. Skipping email sending.');
+  } else {
+      try {
+        await resend.emails.send({
+          from: 'LOG_ON Website <noreply@logon.com.ng>',
+          to: toEmail,
+          subject: `New Contact Form Submission: ${data.subject}`,
+          reply_to: data.email,
+          react: ContactFormEmail({
+            name: data.name,
+            email: data.email,
+            phone: data.phone || 'Not provided',
+            subject: data.subject,
+            message: data.message,
+          }),
+        });
+        logger.info('[Actions] Contact form email sent successfully', { subject: data.subject });
+      } catch (error) {
+        const errorResponse = handleError(error, 'Actions.contactFormAction', { logLevel: 'error' });
+        return { error: errorResponse.error.message };
+      }
   }
-  try {
-    await resend.emails.send({
-      from: 'LOG_ON Website <noreply@logon.com.ng>',
-      to: toEmail,
-      subject: `New Contact Form Submission: ${data.subject}`,
-      reply_to: data.email,
-      react: ContactFormEmail({
-        name: data.name,
-        email: data.email,
-        phone: data.phone || 'Not provided',
-        subject: data.subject,
-        message: data.message,
-      }),
-    });
-    return { success: true };
-  } catch (e: any) {
-    console.error('Error in contactFormAction:', e);
-    return { error: e.message || 'An unknown error occurred.' };
-  }
+
+  // Send data to webhook
+  await sendToWebhook(data as Record<string, unknown>, 'Contact Form');
+  
+  return { success: true };
 }
 
 // Enrollment / Community Lead Form Action
@@ -102,25 +137,30 @@ const communityLeadSchema = z.object({
 });
 export async function communityLeadAction(data: z.infer<typeof communityLeadSchema>): Promise<FormResult<null>> {
    if (!resend) {
-      console.warn("RESEND_API_KEY is not set. Skipping enrollment email.");
-      return { success: true };
+      logger.warn('[Actions] RESEND_API_KEY is not set. Skipping enrollment email.');
+   } else {
+       try {
+        await resend.emails.send({
+          from: 'LOG_ON Community Lead <noreply@logon.com.ng>',
+          to: toEmail,
+          subject: `New Community/Training Lead: ${data.interest || 'General Inquiry'}`,
+          reply_to: data.email,
+          react: EnrollmentEmail({
+            name: data.name,
+            email: data.email,
+            phone: 'Not provided in this form',
+            programName: data.interest || 'General Inquiry',
+          }),
+        });
+        logger.info('[Actions] Community lead email sent successfully', { interest: data.interest });
+      } catch (error) {
+        const errorResponse = handleError(error, 'Actions.communityLeadAction', { logLevel: 'error' });
+        return { error: errorResponse.error.message };
+      }
    }
-   try {
-    await resend.emails.send({
-      from: 'LOG_ON Community Lead <noreply@logon.com.ng>',
-      to: toEmail,
-      subject: `New Community/Training Lead: ${data.interest || 'General Inquiry'}`,
-      reply_to: data.email,
-      react: EnrollmentEmail({
-        name: data.name,
-        email: data.email,
-        phone: 'Not provided in this form',
-        programName: data.interest || 'General Inquiry',
-      }),
-    });
-    return { success: true };
-  } catch (e: any) {
-    console.error('Error in communityLeadAction:', e);
-    return { error: e.message || 'An unknown error occurred.' };
-  }
+
+  // Send data to webhook
+  await sendToWebhook(data as unknown as Record<string, unknown>, `Lead Form: ${data.interest || 'General Inquiry'}`);
+
+  return { success: true };
 }
