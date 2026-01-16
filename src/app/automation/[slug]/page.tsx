@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { getTemplateBySlug } from '@/lib/data/workflow-templates';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
-import { Share2, ArrowLeft, Lightbulb, Workflow, Eye, Edit } from 'lucide-react';
+import { ArrowLeft, Lightbulb, Workflow, Eye, Edit } from 'lucide-react';
 import { ShareModal } from '@/components/share-modal';
 import type { Metadata } from 'next';
 import { DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
@@ -15,11 +15,15 @@ import { PageHero } from '@/components/page-sections/page-hero';
 import { getTemplates } from '@/lib/data/workflow-templates';
 import { categoryStyles } from '@/lib/category-styles';
 import { GatedFeatureModal } from '@/components/gated-feature-modal';
-import { slugify } from '@/lib/slugify';
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params;
-  const template = getTemplateBySlug(slug);
+// Type for page props - Next.js 15 uses Promise for params
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const resolvedParams = await params;
+  const template = getTemplateBySlug(resolvedParams.slug);
   if (!template) {
     return { title: 'Template Not Found' };
   }
@@ -29,8 +33,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default async function TemplatePreviewPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function TemplatePreviewPage({ params }: PageProps) {
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
   const template = getTemplateBySlug(slug);
 
   if (!template) {
