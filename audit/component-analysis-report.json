@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-01-15T21:19:13.449Z",
+  "summary": {
+    "totalComponents": 172,
+    "avgLines": "92",
+    "avgComplexity": "0.5"
+  },
+  "issues": {
+    "largeComponents": [
+      {
+        "file": "src/components/ui/chart.tsx",
+        "lines": 366,
+        "severity": "HIGH"
+      }
+    ],
+    "complexComponents": [],
+    "manyProps": [],
+    "manyHooks": [],
+    "deepNesting": [],
+    "missingMemo": [
+      {
+        "file": "src/components/tech-stack-carousel.tsx",
+        "lines": 235,
+        "severity": "LOW"
+      }
+    ]
+  }
+}

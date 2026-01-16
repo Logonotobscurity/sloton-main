@@ -2,7 +2,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { GlowingCard } from "./ui/glowing-card";
 import { Button } from './ui/button';
 import { Check, ArrowRight } from "lucide-react";
@@ -11,6 +10,8 @@ import { Card } from "./ui/card";
 import imageData from '@/lib/placeholder-images.json';
 import { useChatbotStore } from "@/hooks/use-chatbot-store";
 import Link from "next/link";
+import { FillImage } from "@/lib/image-utils";
+import { hoverScale } from "@/lib/animation-variants";
 
 export function IdeasLab() {
   const { setChatbotOpen } = useChatbotStore();
@@ -39,11 +40,10 @@ export function IdeasLab() {
                 transition={{ type: "spring", stiffness: 300 }}
                 className="relative h-64 w-64 md:h-80 md:w-80"
               >
-                <Image
+                <FillImage
                   src="https://www.servicenow.com/content/dam/servicenow-assets/public/scripts/homepage-redesign/images/Home_AI-Agent-Logo.svg"
                   alt="AI Agent Logo"
-                  fill
-                  className="object-contain"
+                  objectFit="contain"
                 />
               </motion.div>
               
@@ -55,12 +55,11 @@ export function IdeasLab() {
                   >
                     <div className="flex items-center gap-4">
                         <div className="relative h-10 w-10 flex-shrink-0" data-ai-hint={imageData.gigpilotAvatar.dataAiHint}>
-                            <Image
+                            <FillImage
                                 src={imageData.gigpilotAvatar.src}
                                 alt="GIGPILOT Avatar"
                                 sizes="40px"
-                                fill
-                                className="rounded-full object-cover"
+                                className="rounded-full"
                             />
                             <div className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-green-500 ring-2 ring-background" />
                         </div>

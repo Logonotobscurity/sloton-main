@@ -1,8 +1,5 @@
-
 import type { Metadata, Viewport } from 'next';
-import { Nunito, Abhaya_Libre } from 'next/font/google';
 import './globals.css';
-import { cn } from '@/lib/utils';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Toaster } from '@/components/ui/toaster';
@@ -10,32 +7,35 @@ import { WebsiteLoader } from '@/components/website-loader';
 import Script from 'next/script';
 import { ThemeProvider } from '@/components/theme-provider';
 import { BotWidget } from '@/components/bot-widget';
+import { BotpressWidget } from '@/components/botpress-widget';
 import { BookDemoWidget } from '@/components/book-demo-widget';
-import { initializeConfig } from '@/config';
-
-const nunito = Nunito({
-  subsets: ['latin'],
-  variable: '--font-nunito',
-  display: 'swap',
-  weight: ['400', '700'],
-});
+import { BackToTop } from '@/components/back-to-top';
+import { Abhaya_Libre, Nunito } from 'next/font/google';
+import ErrorBoundary from '@/components/error-boundary';
+import { ChatbotProvider } from '@/context/chatbot-provider';
 
 const abhayaLibre = Abhaya_Libre({
   subsets: ['latin'],
-  variable: '--font-abhaya-libre',
-  weight: '800',
   display: 'swap',
+  variable: '--font-serif',
+  weight: ['400', '700', '800'],
+});
+
+const nunito = Nunito({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-sans',
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://logonsolutions.netlify.app'),
   title: {
-    default: 'LOG_ON | AI & Automation for Business Efficiency',
+    default: 'AI & Automation for Business Efficiency',
     template: '%s | LOG_ON',
   },
   description: 'We design your digital ecosystem. Get a free AI assessment to discover automation and IT solutions tailored to your business needs.',
   openGraph: {
-    title: 'LOG_ON | AI & Automation for Business Efficiency',
+    title: 'AI & Automation for Business Efficiency | LOG_ON',
     description: 'We design your digital ecosystem.',
     url: 'https://logonsolutions.netlify.app',
     siteName: 'LOG_ON',
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'LOG_ON | AI & Automation for Business Efficiency',
+    title: 'AI & Automation for Business Efficiency | LOG_ON',
     description: 'We design your digital ecosystem.',
     images: ['/og-image.png'], 
   },
@@ -107,7 +107,7 @@ const localBusinessSchema = {
     "latitude": 6.5093,
     "longitude": 3.3717
   },
-  "description": "Logon Solutions provides AI-driven technology consulting and automation solutions to help businesses cut costs, automate processes, and scale faster.",
+  "description": "LOG_ON provides expert AI agent development and workplace automation in Nigeria. We help businesses cut costs, automate processes, and scale faster with intelligent technology solutions.",
   "priceRange": "$$$",
   "openingHoursSpecification": [
     {
@@ -140,18 +140,18 @@ const localBusinessSchema = {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "AI Solutions",
-          "url": "https://logonsolutions.netlify.app/solutions#ai-solutions",
-          "description": "Custom AI and machine learning models to solve complex business challenges."
+          "name": "AI Solutions & Agent Development",
+          "url": "https://logonsolutions.netlify.app/ai-solutions",
+          "description": "Custom AI models and AI agent development to solve complex business challenges."
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Process Automation",
-          "url": "https://logonsolutions.netlify.app/solutions#process-automation",
-          "description": "Intelligent automation and RPA to streamline workflows and increase efficiency."
+          "name": "Workplace Process Automation",
+          "url": "https://logonsolutions.netlify.app/automation",
+          "description": "Intelligent automation and RPA to streamline workflows and increase efficiency in your workplace."
         }
       },
       {
@@ -190,11 +190,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Initialize configuration
-  initializeConfig();
-  
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${nunito.variable} ${abhayaLibre.variable}`}>
        <head>
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
@@ -202,7 +199,7 @@ export default function RootLayout({
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','${getConfig().services.analytics.googleTagManagerId}');
+            })(window,document,'script','dataLayer','GTM-XXXXXXX');
           `}
         </Script>
         <script
@@ -221,25 +218,19 @@ export default function RootLayout({
             _paq.push(['trackPageView']);
             _paq.push(['enableLinkTracking']);
             (function() {
-              var u="${getConfig().services.analytics.matomoUrl}";
+              var u="https://logonsolutionsnetlifyapp.matomo.cloud/";
               _paq.push(['setTrackerUrl', u+'matomo.php']);
-              _paq.push(['setSiteId', '${getConfig().services.analytics.siteId}']);
+              _paq.push(['setSiteId', '1']);
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.async=true; g.src='https://cdn.matomo.cloud/logonsolutionsnetlifyapp.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
             })();
           `}
         </Script>
       </head>
-      <body
-        className={cn(
-          'min-h-screen bg-background font-body antialiased',
-          nunito.variable,
-          abhayaLibre.variable,
-        )}
-      >
+      <body suppressHydrationWarning={true}>
           <noscript>
             <iframe 
-              src={`https://www.googletagmanager.com/ns.html?id=${getConfig().services.analytics.googleTagManagerId}`}
+              src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
               height="0" 
               width="0" 
               style={{display: 'none', visibility: 'hidden'}}
@@ -251,13 +242,21 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <WebsiteLoader />
-            <Header />
-            <main className="flex-grow relative z-20">{children}</main>
-            <BotWidget initialMessage="Hello! How can I help you discover the right LOG_ON solution today?" />
-            <BookDemoWidget />
-            <Footer />
-            <Toaster />
+            <ErrorBoundary>
+              <WebsiteLoader />
+              <ChatbotProvider>
+                <Header />
+                <main id="main-content">
+                  {children}
+                </main>
+                <Footer />
+                <BotWidget initialMessage="Hello! How can I help you discover the right LOG_ON solution today?" />
+                <BookDemoWidget />
+              </ChatbotProvider>
+              <BotpressWidget />
+              <BackToTop />
+              <Toaster />
+            </ErrorBoundary>
           </ThemeProvider>
       </body>
     </html>

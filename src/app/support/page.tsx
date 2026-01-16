@@ -2,44 +2,18 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { LifeBuoy, Book, Users, MessageSquare, Search, ArrowRight, Lightbulb, Mail, Phone } from 'lucide-react';
+import { LifeBuoy, Search, ArrowRight, Mail, Phone } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Faq } from '@/components/faq';
 import { GlowingCard } from '@/components/ui/glowing-card';
-import { PageHero } from '@/components/page-hero';
+import { PageHero } from '@/components/page-sections/page-hero';
+import { supportCategories } from '@/lib/data/support-data';
 
 export const metadata: Metadata = {
-  title: 'Support Center | LOG_ON',
-  description: 'Welcome to the LOG_ON Support Center. Find help articles, product documentation, get in touch with our support team, and explore community resources.',
+  title: 'Support Center',
+  description: 'Welcome to the LOG_ON Support Center. Find help for our AI agent and workplace automation solutions, or get in touch with our expert support team in Nigeria.',
 };
-
-const supportCategories = [
-  {
-    icon: <Book className="h-8 w-8 text-primary" />,
-    title: 'Knowledge Base',
-    description: 'Find detailed articles, how-to guides, and product documentation to get the most out of our platform.',
-    href: '/insights',
-  },
-  {
-    icon: <Users className="h-8 w-8 text-primary" />,
-    title: 'Community Forums',
-    description: 'Connect with other LOG_ON users, ask questions, and share best practices and solutions.',
-    href: '#',
-  },
-  {
-    icon: <MessageSquare className="h-8 w-8 text-primary" />,
-    title: 'Submit a Ticket',
-    description: 'Can\'t find what you\'re looking for? Our support team is here to help. Submit a ticket for personalized assistance.',
-    href: '/contact',
-  },
-   {
-    icon: <Lightbulb className="h-8 w-8 text-primary" />,
-    title: 'Training & Certification',
-    description: 'Advance your skills with our expert-led training programs and become a certified LOG_ON professional.',
-    href: '/training',
-  },
-];
 
 export default function SupportPage() {
   return (
@@ -58,22 +32,22 @@ export default function SupportPage() {
             />
         </div>
       </PageHero>
-      <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
-        <section className="py-16 md:py-24">
+      <div className="container mx-auto px-fluid-sm py-fluid-lg">
+        <section className="py-fluid-lg">
              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {supportCategories.map((category) => (
                 <GlowingCard key={category.title}>
                     <Link href={category.href} className="block h-full">
                         <div className="p-6 h-full flex flex-col">
                             <CardHeader className="p-0">
-                                {category.icon}
+                                <category.icon className="h-8 w-8 text-primary" />
                                 <CardTitle className="pt-4 text-lg md:text-xl">{category.title}</CardTitle>
                             </CardHeader>
                             <CardContent className="p-0 pt-4 flex-grow">
                                 <p className="text-muted-foreground text-sm md:text-base">{category.description}</p>
                             </CardContent>
                              <CardContent className="p-0 pt-4 mt-auto">
-                                <div className="text-primary font-semibold flex items-center group-hover:text-accent-gold transition-colors">
+                                <div className="text-primary font-semibold flex items-center group-hover:text-primary transition-colors">
                                     Go to {category.title} <ArrowRight className="ml-2 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
                                 </div>
                             </CardContent>
@@ -125,10 +99,6 @@ export default function SupportPage() {
                 </CardContent>
               </Card>
         </section>
-
-        <div className="mt-16">
-            <Faq />
-        </div>
 
       </div>
     </div>

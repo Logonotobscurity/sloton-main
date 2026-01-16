@@ -1,0 +1,1118 @@
+{
+  "timestamp": "2026-01-15T21:06:09.166Z",
+  "summary": {
+    "totalComponents": 172,
+    "withViolations": 53,
+    "apiInComponent": 5,
+    "mixedConcerns": 18,
+    "complexCalc": 42,
+    "directStateAccess": 0,
+    "dataFetchingInComponent": 0
+  },
+  "results": [
+    {
+      "file": "src/components/tech-stack-carousel.tsx",
+      "violations": [
+        {
+          "type": "API_IN_COMPONENT",
+          "severity": "HIGH",
+          "description": "Component contains direct API calls",
+          "recommendation": "Move API calls to service layer or use server components"
+        },
+        {
+          "type": "MIXED_CONCERNS",
+          "severity": "HIGH",
+          "description": "Component mixes presentation (JSX) and data access (API calls)",
+          "recommendation": "Separate into presentation and container components"
+        },
+        {
+          "type": "MIXED_CONCERNS",
+          "severity": "MEDIUM",
+          "description": "Large component with both UI and business logic",
+          "recommendation": "Extract business logic to custom hooks or utilities"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": true,
+        "hasBusinessLogic": true,
+        "hasComplexCalculation": false,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 235
+      }
+    },
+    {
+      "file": "src/components/ui/hero-code-preview.tsx",
+      "violations": [
+        {
+          "type": "API_IN_COMPONENT",
+          "severity": "HIGH",
+          "description": "Component contains direct API calls",
+          "recommendation": "Move API calls to service layer or use server components"
+        },
+        {
+          "type": "MIXED_CONCERNS",
+          "severity": "HIGH",
+          "description": "Component mixes presentation (JSX) and data access (API calls)",
+          "recommendation": "Separate into presentation and container components"
+        },
+        {
+          "type": "MIXED_CONCERNS",
+          "severity": "MEDIUM",
+          "description": "Large component with both UI and business logic",
+          "recommendation": "Extract business logic to custom hooks or utilities"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": true,
+        "hasBusinessLogic": true,
+        "hasComplexCalculation": false,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 142
+      }
+    },
+    {
+      "file": "src/components/ui/use-toast.tsx",
+      "violations": [
+        {
+          "type": "API_IN_COMPONENT",
+          "severity": "HIGH",
+          "description": "Component contains direct API calls",
+          "recommendation": "Move API calls to service layer or use server components"
+        },
+        {
+          "type": "MIXED_CONCERNS",
+          "severity": "HIGH",
+          "description": "Component mixes presentation (JSX) and data access (API calls)",
+          "recommendation": "Separate into presentation and container components"
+        },
+        {
+          "type": "MIXED_CONCERNS",
+          "severity": "MEDIUM",
+          "description": "Large component with both UI and business logic",
+          "recommendation": "Extract business logic to custom hooks or utilities"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": true,
+        "hasBusinessLogic": true,
+        "hasComplexCalculation": false,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 197
+      }
+    },
+    {
+      "file": "src/app/about/newsroom/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        },
+        {
+          "type": "MIXED_CONCERNS",
+          "severity": "MEDIUM",
+          "description": "Large component with both UI and business logic",
+          "recommendation": "Extract business logic to custom hooks or utilities"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": true,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 102
+      }
+    },
+    {
+      "file": "src/app/about/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        },
+        {
+          "type": "MIXED_CONCERNS",
+          "severity": "MEDIUM",
+          "description": "Large component with both UI and business logic",
+          "recommendation": "Extract business logic to custom hooks or utilities"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": true,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 213
+      }
+    },
+    {
+      "file": "src/app/automation/[slug]/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        },
+        {
+          "type": "MIXED_CONCERNS",
+          "severity": "MEDIUM",
+          "description": "Large component with both UI and business logic",
+          "recommendation": "Extract business logic to custom hooks or utilities"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": true,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 185
+      }
+    },
+    {
+      "file": "src/components/industries-bento.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        },
+        {
+          "type": "MIXED_CONCERNS",
+          "severity": "MEDIUM",
+          "description": "Large component with both UI and business logic",
+          "recommendation": "Extract business logic to custom hooks or utilities"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": true,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 129
+      }
+    },
+    {
+      "file": "src/components/ui/article-code-visual.tsx",
+      "violations": [
+        {
+          "type": "API_IN_COMPONENT",
+          "severity": "HIGH",
+          "description": "Component contains direct API calls",
+          "recommendation": "Move API calls to service layer or use server components"
+        },
+        {
+          "type": "MIXED_CONCERNS",
+          "severity": "HIGH",
+          "description": "Component mixes presentation (JSX) and data access (API calls)",
+          "recommendation": "Separate into presentation and container components"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": true,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": false,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 245
+      }
+    },
+    {
+      "file": "src/components/ui/glowing-effect.tsx",
+      "violations": [
+        {
+          "type": "API_IN_COMPONENT",
+          "severity": "HIGH",
+          "description": "Component contains direct API calls",
+          "recommendation": "Move API calls to service layer or use server components"
+        },
+        {
+          "type": "MIXED_CONCERNS",
+          "severity": "HIGH",
+          "description": "Component mixes presentation (JSX) and data access (API calls)",
+          "recommendation": "Separate into presentation and container components"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": true,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": false,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 94
+      }
+    },
+    {
+      "file": "src/app/ab-testing/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 117
+      }
+    },
+    {
+      "file": "src/app/about/analyst-reports/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 75
+      }
+    },
+    {
+      "file": "src/app/about/careers/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": true,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 94
+      }
+    },
+    {
+      "file": "src/app/about/global-impact/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 70
+      }
+    },
+    {
+      "file": "src/app/about/leadership/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": true,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 71
+      }
+    },
+    {
+      "file": "src/app/about/locations/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 49
+      }
+    },
+    {
+      "file": "src/app/about/our-leadership/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": true,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 62
+      }
+    },
+    {
+      "file": "src/app/about/research/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 76
+      }
+    },
+    {
+      "file": "src/app/about/trust/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 65
+      }
+    },
+    {
+      "file": "src/app/ai-solutions/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 103
+      }
+    },
+    {
+      "file": "src/app/automation/_components/workflow-template-library.tsx",
+      "violations": [
+        {
+          "type": "MIXED_CONCERNS",
+          "severity": "MEDIUM",
+          "description": "Large component with both UI and business logic",
+          "recommendation": "Extract business logic to custom hooks or utilities"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": true,
+        "hasComplexCalculation": false,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 256
+      }
+    },
+    {
+      "file": "src/app/business-analytics/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 103
+      }
+    },
+    {
+      "file": "src/app/chatbots/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 104
+      }
+    },
+    {
+      "file": "src/app/contact/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 100
+      }
+    },
+    {
+      "file": "src/app/database-solutions/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 104
+      }
+    },
+    {
+      "file": "src/app/insights/page.tsx",
+      "violations": [
+        {
+          "type": "MIXED_CONCERNS",
+          "severity": "MEDIUM",
+          "description": "Large component with both UI and business logic",
+          "recommendation": "Extract business logic to custom hooks or utilities"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": true,
+        "hasComplexCalculation": false,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 203
+      }
+    },
+    {
+      "file": "src/app/partners/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 115
+      }
+    },
+    {
+      "file": "src/app/solutions/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 170
+      }
+    },
+    {
+      "file": "src/app/support/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 107
+      }
+    },
+    {
+      "file": "src/app/training/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 172
+      }
+    },
+    {
+      "file": "src/app/use-cases/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 89
+      }
+    },
+    {
+      "file": "src/app/web-development/page.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 81
+      }
+    },
+    {
+      "file": "src/components/articles/llms-txt-article.tsx",
+      "violations": [
+        {
+          "type": "MIXED_CONCERNS",
+          "severity": "MEDIUM",
+          "description": "Large component with both UI and business logic",
+          "recommendation": "Extract business logic to custom hooks or utilities"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": true,
+        "hasComplexCalculation": false,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 265
+      }
+    },
+    {
+      "file": "src/components/bot-widget.tsx",
+      "violations": [
+        {
+          "type": "MIXED_CONCERNS",
+          "severity": "MEDIUM",
+          "description": "Large component with both UI and business logic",
+          "recommendation": "Extract business logic to custom hooks or utilities"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": true,
+        "hasComplexCalculation": false,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 226
+      }
+    },
+    {
+      "file": "src/components/chatbot/assessment-result.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 75
+      }
+    },
+    {
+      "file": "src/components/chronicle/NotesColumn.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": true,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 57
+      }
+    },
+    {
+      "file": "src/components/chronicle/VideosColumn.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 105
+      }
+    },
+    {
+      "file": "src/components/featured-insights.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 110
+      }
+    },
+    {
+      "file": "src/components/footer.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 112
+      }
+    },
+    {
+      "file": "src/components/header/desktop-nav.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 93
+      }
+    },
+    {
+      "file": "src/components/header/mobile-nav.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 129
+      }
+    },
+    {
+      "file": "src/components/integrations-component.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 115
+      }
+    },
+    {
+      "file": "src/components/investment-portfolio-chart.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 63
+      }
+    },
+    {
+      "file": "src/components/page-sections/industries-bento.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 129
+      }
+    },
+    {
+      "file": "src/components/page-sections/partnership-approach.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 83
+      }
+    },
+    {
+      "file": "src/components/page-sections/services-offered.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 83
+      }
+    },
+    {
+      "file": "src/components/page-sections/strategic-partner.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 78
+      }
+    },
+    {
+      "file": "src/components/partnership-approach.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 83
+      }
+    },
+    {
+      "file": "src/components/share-modal.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 116
+      }
+    },
+    {
+      "file": "src/components/training-cta.tsx",
+      "violations": [
+        {
+          "type": "MIXED_CONCERNS",
+          "severity": "MEDIUM",
+          "description": "Large component with both UI and business logic",
+          "recommendation": "Extract business logic to custom hooks or utilities"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": true,
+        "hasComplexCalculation": false,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 112
+      }
+    },
+    {
+      "file": "src/components/ui/arrow-icon.tsx",
+      "violations": [
+        {
+          "type": "COMPLEX_CALC_IN_RENDER",
+          "severity": "MEDIUM",
+          "description": "Complex calculations in render method",
+          "recommendation": "Move calculations to useMemo or separate utility functions"
+        }
+      ],
+      "metrics": {
+        "hasJSX": true,
+        "hasAPICall": false,
+        "hasBusinessLogic": false,
+        "hasComplexCalculation": true,
+        "hasDirectStateManagement": false,
+        "hasDataFetching": false,
+        "lineCount": 99
+      }
+    }
+  ],
+  "srpViolations": [
+    {
+      "file": "src/components/tech-stack-carousel.tsx",
+      "responsibilities": 3,
+      "concerns": [
+        "Presentation",
+        "API Access",
+        "Business Logic"
+      ],
+      "lineCount": 235
+    },
+    {
+      "file": "src/components/ui/hero-code-preview.tsx",
+      "responsibilities": 3,
+      "concerns": [
+        "Presentation",
+        "API Access",
+        "Business Logic"
+      ],
+      "lineCount": 142
+    },
+    {
+      "file": "src/components/ui/use-toast.tsx",
+      "responsibilities": 3,
+      "concerns": [
+        "Presentation",
+        "API Access",
+        "Business Logic"
+      ],
+      "lineCount": 197
+    }
+  ]
+}

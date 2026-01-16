@@ -2,12 +2,14 @@
 import Link from 'next/link';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import Image from 'next/image';
 import { ArrowRight, Rss } from 'lucide-react';
 import type { Metadata } from 'next';
-import { insights } from '@/lib/insights';
+import { insights } from '@/lib/data/insights';
 import { GlowingCard } from '@/components/ui/glowing-card';
-import { PageHero } from '@/components/page-hero';
+import { PageHero } from '@/components/page-sections/page-hero';
+import { ArticleCodeVisual } from '@/components/ui/article-code-visual';
+import { formatFullDate } from '@/lib/date-utils';
+import { OptimizedImage } from '@/lib/image-utils';
 
 export const metadata: Metadata = {
   title: 'Newsroom | LOG_ON',
@@ -57,18 +59,28 @@ export default function NewsroomPage() {
                 <div className="flex flex-col h-full">
                     <CardHeader className="p-0">
                     <Link href={`/insights/${insight.slug}`}>
-                        <Image
-                        src={insight.image}
-                        alt={insight.title}
-                        width={insight.width}
-                        height={insight.height}
-                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300 rounded-t-xl"
-                        data-ai-hint={insight.dataAiHint}
-                        />
+                        <div data-ai-hint={insight.dataAiHint} className="relative h-48 overflow-hidden rounded-t-xl">
+                            {insight.codeVisualType ? (
+                                <ArticleCodeVisual 
+                                    type={insight.codeVisualType} 
+                                    className="h-full w-full rounded-none border-0"
+                                    animated={false}
+                                />
+                            ) : (
+                                <OptimizedImage
+                                    src={insight.image}
+                                    alt={insight.title}
+                                    width={insight.width}
+                                    height={insight.height}
+                                    hoverScale
+                                    className="w-full h-full"
+                                />
+                            )}
+                        </div>
                     </Link>
                     </CardHeader>
                     <CardContent className="p-6 flex-grow">
-                    <CardDescription>{new Date(insight.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</CardDescription>
+                    <CardDescription>{formatFullDate(insight.date)}</CardDescription>
                     <CardTitle className="text-lg md:text-xl mt-2">
                         <Link href={`/insights/${insight.slug}`} className="hover:text-primary transition-colors">
                             {insight.title}

@@ -1,4 +1,12 @@
-import { toast } from '@/components/ui/use-toast';
+/**
+ * Error Handling Utilities
+ * 
+ * Note: This module provides core error handling without UI dependencies.
+ * For toast notifications, use the error-handler.ts utility which provides
+ * a more comprehensive error handling solution.
+ * 
+ * @deprecated Consider using @/lib/error-handler.ts instead for new code
+ */
 
 // Error types
 export interface AppError extends Error {
@@ -15,6 +23,20 @@ export const ErrorCodes = {
   NOT_FOUND: 'NOT_FOUND',
   SERVER_ERROR: 'SERVER_ERROR',
 } as const;
+
+// Toast function type for dependency injection
+type ToastFunction = (options: { title: string; description: string; variant: string }) => void;
+
+// Optional toast function - set by UI layer
+let toastFn: ToastFunction | null = null;
+
+/**
+ * Set the toast function from the UI layer
+ * This should be called once during app initialization
+ */
+export function setToastFunction(fn: ToastFunction) {
+  toastFn = fn;
+}
 
 // Error handlers
 export function handleError(error: unknown, options?: { silent?: boolean }): AppError {
@@ -53,11 +75,16 @@ function normalizeError(error: unknown): AppError {
 
 // Show error toast
 function showErrorToast(error: AppError) {
-  toast({
-    title: getErrorTitle(error),
-    description: error.message,
-    variant: 'destructive',
-  });
+  if (toastFn) {
+    toastFn({
+      title: getErrorTitle(error),
+      description: error.message,
+      variant: 'destructive',
+    });
+  } else {
+    // Fallback to console if toast not configured
+    console.warn('[Error Toast]:', getErrorTitle(error), error.message);
+  }
 }
 
 // Get user-friendly error title

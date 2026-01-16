@@ -1,5 +1,5 @@
 
-import { PageHero } from '@/components/page-hero';
+import { PageHero } from '@/components/page-sections/page-hero';
 import { Lightbulb, Copy } from 'lucide-react';
 import type { Metadata } from 'next';
 import { Button } from '@/components/ui/button';
@@ -12,8 +12,8 @@ import {
   } from "@/components/ui/card"
   
 export const metadata: Metadata = {
-  title: 'Ideas Lab | AI Experiments & Prompt Engineering',
-  description: 'A space for experimental concepts, AI generation prompts, and new approaches we are testing at LOG_ON. See the prompts used to build our features.',
+  title: 'Ideas Lab | AI Experiments & Prompt Engineering for Automation',
+  description: 'A space for experimental concepts in workplace AI. See the prompts used to build AI agent development features and automation solutions.',
 };
 
 const companyReportPrompt = `
@@ -64,7 +64,7 @@ Create a complete, production-ready, full-stack Next.js application that allows 
     - \`swotAnalysis\`:
         - \`strengths: z.array(z.string()).describe("A list of 3-4 key strengths.")\`
         - \`weaknesses: z.array(z.string()).describe("A list of 3-4 key weaknesses.")\`
-        - \`opportunities: z.array(z.string()).describe("A list of 3-4 key opportunities.")\`
+        - \`opportunities: z.array(zstring()).describe("A list of 3-4 key opportunities.")\`
         - \`threats: z.array(z.string()).describe("A list of 3-4 key threats.")\`
     - \`marketPresence\`:
         - \`keyCompetitors: z.array(z.string()).describe("A list of 3-5 main competitors.")\`
@@ -105,10 +105,10 @@ export default function IdeasLabPage() {
     <div>
       <PageHero
         title="Ideas Lab"
-        description="A space for experimental concepts, AI generation prompts, and new approaches we are testing at LOG_ON. Here, we document the prompts used to build features, providing transparency and a blueprint for future innovation."
+        description="A space for experimental concepts, AI generation prompts, and new approaches we are testing at LOG_ON. Here, we document the prompts and architectural decisions used to build our features, providing transparency and a blueprint for future innovation."
         icon={<Lightbulb className="h-12 w-12 md:h-16 md:w-16 text-primary" />}
       />
-      <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
+      <div className="container mx-auto px-fluid-sm py-fluid-lg space-y-12">
         <Card>
             <CardHeader>
                 <CardTitle className="text-2xl">App Idea: Company Report Generator</CardTitle>

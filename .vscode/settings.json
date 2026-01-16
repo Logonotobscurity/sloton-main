@@ -1,6 +1,26 @@
 {
     "terminal.integrated.sendKeybindingsToShell": true,
     "IDX.agenticWorkspace": true,
+    "git.autofetch": "all",
+    "IDX.aI.showChatInEditorTab": true,
     "IDX.corgiMode": true,
-    "git.autofetch": "all"
+    "agentManagement.securityReview.optOut": true,
+    "amazonQ.suppressPrompts": {
+        "createCredentialsProfile": true,
+        "codeWhispererNewWelcomeMessage": true,
+        "codeWhispererConnectionExpired": true,
+        "amazonQWelcomePage": true,
+        "amazonQSessionConfigurationMessage": true,
+        "minIdeVersion": true,
+        "ssoCacheError": false,
+        "amazonQLspManifestMessage": false,
+        "amazonQWorkspaceLspManifestMessage": false,
+        "amazonQChatDisclaimer": false,
+        "amazonQChatPairProgramming": false,
+        "amazonQSelectDeveloperProfile": false
+    },
+    "github.gitProtocol": "https",
+    "git.useCommitInputAsStashMessage": true,
+    "git.terminalGitEditor": true,
+    "typescript.autoClosingTags": false
 }

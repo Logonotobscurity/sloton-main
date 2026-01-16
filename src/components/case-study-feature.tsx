@@ -1,7 +1,8 @@
 
 "use client"
 
-import { caseStudies as allCaseStudies } from "@/lib/case-studies";
+import React from "react";
+import { caseStudies as allCaseStudies } from "@/lib/data/case-studies";
 import { CaseStudiesCarousel } from "./case-studies-carousel";
 import { Button } from "./ui/button";
 import Link from "next/link";
@@ -14,9 +15,11 @@ interface CaseStudyFeatureProps {
 }
 
 export function CaseStudyFeature({ tags, title, description }: CaseStudyFeatureProps) {
-  const featuredStudies = allCaseStudies.filter(study => 
-    tags.some(tag => study.tags.includes(tag))
-  );
+  const featuredStudies = React.useMemo(() => {
+    return allCaseStudies.filter(study => 
+      tags.some(tag => study.tags.includes(tag))
+    );
+  }, [tags]);
 
   if (featuredStudies.length === 0) {
     return null; // Don't render anything if no relevant case studies are found

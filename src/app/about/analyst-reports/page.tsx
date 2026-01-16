@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Download } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { PageHero } from '@/components/page-hero';
+import { PageHero } from '@/components/page-sections/page-hero';
 
 export const metadata: Metadata = {
   title: 'Analyst Reports',

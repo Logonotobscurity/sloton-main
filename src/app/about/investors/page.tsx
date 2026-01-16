@@ -4,22 +4,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, TrendingUp, FileText, Calendar } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { PageHero } from '@/components/page-hero';
+import { PageHero } from '@/components/page-sections/page-hero';
+import { reports, events } from '@/lib/data/investors-data';
 
 export const metadata: Metadata = {
   title: 'Investor Relations',
   description: 'Information for LOG_ON investors, including financial reports, event schedules, and corporate governance documents.',
 };
-
-const reports = [
-    { title: "Q3 2024 Financial Report", date: "October 28, 2024", href: "#" },
-    { title: "2024 Annual Report", date: "February 15, 2025", href: "#" },
-];
-
-const events = [
-    { title: "Q4 2024 Earnings Call", date: "January 27, 2025", time: "5:00 PM EST" },
-    { title: "Annual Shareholder Meeting", date: "May 15, 2025", time: "10:00 AM EST" },
-]
 
 export default function InvestorsPage() {
   return (
@@ -28,7 +19,7 @@ export default function InvestorsPage() {
             title="Investor Relations"
             description="We are committed to driving long-term shareholder value through innovation, disciplined execution, and transparent communication. Here you will find key resources for our investor community."
         />
-      <div className="container mx-auto px-4 md:px-6 py-16 md:py-24 space-y-12">
+      <div className="container mx-auto px-fluid-sm py-fluid-lg space-y-12">
         <section>
             <Card className="bg-secondary/50">
                 <CardHeader>
@@ -42,7 +33,7 @@ export default function InvestorsPage() {
         </section>
 
         <section>
-            <h2 className="text-2xl md:text-3xl font-bold font-headline mb-4">Financial Reports</h2>
+            <h2 className="text-fluid-lg font-bold font-headline mb-4">Financial Reports</h2>
             <div className="grid md:grid-cols-2 gap-6">
                 {reports.map(report => (
                     <Card key={report.title} className="hover:border-primary transition-colors">
@@ -57,7 +48,7 @@ export default function InvestorsPage() {
         </section>
         
         <section>
-            <h2 className="text-2xl md:text-3xl font-bold font-headline mb-4">Upcoming Events</h2>
+            <h2 className="text-fluid-lg font-bold font-headline mb-4">Upcoming Events</h2>
             <div className="grid md:grid-cols-2 gap-6">
                 {events.map(event => (
                     <Card key={event.title}>
@@ -77,7 +68,9 @@ export default function InvestorsPage() {
             <h2 className="text-2xl font-bold">Contact Investor Relations</h2>
             <p className="text-muted-foreground mt-2 max-w-md mx-auto">For investment inquiries, please reach out to our team.</p>
             <Button asChild className="mt-4">
-                <Link href="/contact?subject=Investor+Inquiry">Contact IR</Link>
+                <Link href="/contact?subject=Investor%20Inquiry">
+                    Contact IR <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
             </Button>
         </section>
       </div>

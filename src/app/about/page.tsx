@@ -1,82 +1,29 @@
-
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import type { Metadata } from 'next';
-import Image from 'next/image';
-import { ArrowRight, Building, Users, Scale, Globe, ShieldCheck, Lock, DatabaseZap, FlaskConical, Lightbulb, BrainCircuit, Rss, Download, Heart, BookOpen } from 'lucide-react';
+import { ArrowRight, Building, Users, Scale, Globe, Download, Rss } from 'lucide-react';
 import { GlowingCard } from '@/components/ui/glowing-card';
-import { PageHero } from '@/components/page-hero';
-import { BottomCta } from '@/components/bottom-cta';
+import { PageHero } from '@/components/page-sections/page-hero';
+import { BottomCta } from '@/components/page-sections/bottom-cta';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { insights } from '@/lib/insights';
+import { insights } from '@/lib/data/insights';
+import { stats, trustPillars, researchAreas, analystReports } from '@/lib/data/about-page-data';
+import { ArticleCodeVisual } from '@/components/ui/article-code-visual';
+import { formatFullDate } from '@/lib/date-utils';
+import React from 'react';
+import { OptimizedImage } from '@/lib/image-utils';
 
 export const metadata: Metadata = {
-  title: 'About LOG_ON',
-  description: 'Learn about LOG_ON, your digital architects. We build integrated digital ecosystems where businesses thrive. Explore our mission, values, research, and commitment to trust.',
+  title: 'About Us | AI & Automation Experts in Nigeria',
+  description: 'Learn about LOG_ON, your digital architects for workplace automation in Nigeria. We build integrated digital ecosystems where businesses thrive through AI agent development.',
 };
 
-const stats = [
-    { value: '100+', label: 'Projects Completed' },
-    { value: '50+', label: 'Satisfied Clients' },
-    { value: '10+', label: 'Technology Partners' },
-    { value: '5+', label: 'Countries Served' }
-]
-
-const trustPillars = [
-    {
-        icon: <ShieldCheck className="h-8 w-8 text-primary"/>,
-        title: "Security by Design",
-        description: "We embed security into every stage of our development lifecycle. From architecture to deployment, we follow industry best practices to protect against threats and vulnerabilities."
-    },
-    {
-        icon: <Lock className="h-8 w-8 text-primary"/>,
-        title: "Data Privacy & Governance",
-        description: "Your data is yours. We adhere to strict data privacy principles and comply with global regulations like GDPR. We provide you with the tools and transparency to control your data."
-    },
-    {
-        icon: <DatabaseZap className="h-8 w-8 text-primary"/>,
-        title: "Platform Reliability & Resilience",
-        description: "We build our systems on world-class cloud infrastructure like AWS and Google Cloud, designing for high availability and disaster recovery to ensure your services remain online."
-    }
-];
-
-const researchAreas = [
-    {
-        icon: <BrainCircuit className="h-8 w-8 text-primary"/>,
-        title: "Generative AI & LLMs",
-        description: "Developing novel architectures for more efficient and context-aware Large Language Models and exploring new applications for generative content.",
-    },
-    {
-        icon: <FlaskConical className="h-8 w-8 text-primary"/>,
-        title: "Ethical & Responsible AI",
-        description: "Creating frameworks and tools to identify and mitigate bias in AI models, ensuring fairness and transparency in automated decision-making.",
-    },
-    {
-        icon: <Lightbulb className="h-8 w-8 text-primary"/>,
-        title: "Human-Computer Interaction",
-        description: "Researching how AI can best augment human capabilities, designing intuitive 'copilot' experiences that boost productivity and creativity.",
-    }
-]
-
-const reports = [
-    {
-        firm: "Gartner®",
-        title: "Magic Quadrant™ for Enterprise Conversational AI Platforms",
-        date: "July 2024",
-        excerpt: "LOG_ON recognized for its ability to execute and completeness of vision in the rapidly evolving AI landscape.",
-        href: "#"
-    },
-    {
-        firm: "Forrester™",
-        title: "The Forrester Wave™: Robotic Process Automation, Q3 2024",
-        date: "September 2024",
-        excerpt: "LOG_ON named a Strong Performer in our evaluation of the top RPA vendors, cited for its ease of use and strong partner ecosystem.",
-        href: "#"
-    }
-]
-
 export default function AboutPage() {
-    const pressReleases = insights.filter(i => i.tags.includes("Announcement") || i.tags.includes("Press Release"));
+    // Extract filtering logic to useMemo for performance
+    const pressReleases = React.useMemo(
+        () => insights.filter(i => i.tags.includes("Announcement") || i.tags.includes("Press Release")),
+        []
+    );
 
   return (
     <div>
@@ -85,8 +32,8 @@ export default function AboutPage() {
             description="LOG_ON is more than a technology provider; we are your strategic partner in growth. Our mission is to empower businesses by building intelligent systems that drive efficiency, spark innovation, and create lasting competitive advantages. We believe in connecting the dots between technology and business goals to deliver integrated solutions that produce real-world results."
         />
 
-        <section className="py-16 md:py-24">
-            <div className="container mx-auto px-4 md:px-6">
+        <section className="py-fluid-lg">
+            <div className="container mx-auto px-fluid-sm">
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
                     {stats.map(stat => (
                         <div key={stat.label}>
@@ -98,17 +45,17 @@ export default function AboutPage() {
             </div>
         </section>
 
-        <section className="container mx-auto px-4 md:px-6">
+        <section className="container mx-auto px-fluid-sm">
             <div className="grid md:grid-cols-2 gap-8 items-center">
                 <GlowingCard>
                     <div className="p-6 md:p-8">
-                        <h3 className="text-xl md:text-2xl font-bold font-headline flex items-center gap-3"><Globe className="h-8 w-8 text-primary"/> Our Mission</h3>
+                        <h3 className="text-fluid-md font-bold font-headline flex items-center gap-3"><Globe className="h-8 w-8 text-primary"/> Our Mission</h3>
                         <p className="text-muted-foreground mt-4">To architect and build integrated digital ecosystems where businesses of all sizes can thrive, automate, and innovate with confidence.</p>
                     </div>
                 </GlowingCard>
                 <GlowingCard>
                     <div className="p-6 md:p-8">
-                        <h3 className="text-xl md:text-2xl font-bold font-headline flex items-center gap-3"><Scale className="h-8 w-8 text-primary"/> Our Values</h3>
+                        <h3 className="text-fluid-md font-bold font-headline flex items-center gap-3"><Scale className="h-8 w-8 text-primary"/> Our Values</h3>
                         <ul className="text-muted-foreground mt-4 space-y-2">
                             <li><strong>Innovation-Driven:</strong> We are constantly exploring new technologies to deliver cutting-edge solutions.</li>
                             <li><strong>Client-Centric:</strong> Your success is our ultimate metric. We build partnerships based on trust and transparency.</li>
@@ -119,10 +66,10 @@ export default function AboutPage() {
             </div>
         </section>
 
-        <section className="container mx-auto px-4 md:px-6 py-16 md:py-24">
-            <div className="text-center py-12 md:py-16 bg-secondary/30 rounded-lg px-6">
-                <h2 className="text-2xl md:text-4xl font-bold font-headline">Meet the People Behind the Innovation</h2>
-                <p className="mt-4 text-md md:text-lg text-muted-foreground max-w-2xl mx-auto">
+        <section className="container mx-auto px-fluid-sm py-fluid-lg">
+            <div className="text-center py-fluid-md bg-secondary/30 rounded-lg px-6">
+                <h2 className="text-fluid-lg font-bold font-headline">Meet the People Behind the Innovation</h2>
+                <p className="mt-4 text-fluid-base text-muted-foreground max-w-2xl mx-auto">
                     Our team is a dynamic duo of technology experts dedicated to delivering exceptional service.
                 </p>
                 <div className="mt-8 flex justify-center">
@@ -135,44 +82,51 @@ export default function AboutPage() {
             </div>
         </section>
         
-        <section id="news" className="py-16 md:py-24">
-            <div className="container mx-auto px-4 md:px-6 space-y-12">
+        <section id="news" className="py-fluid-lg">
+            <div className="container mx-auto px-fluid-sm space-y-12">
                 <div className="text-center max-w-3xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-bold font-headline flex items-center justify-center gap-3"><Rss className="h-8 w-8 text-primary"/> News & Announcements</h2>
-                    <p className="mt-4 text-md md:text-lg text-muted-foreground">The latest company announcements, press releases, media assets, and our recent features in the news.</p>
+                    <h2 className="text-fluid-lg font-bold font-headline flex items-center justify-center gap-3"><Rss className="h-8 w-8 text-primary"/> News & Announcements</h2>
+                    <p className="mt-4 text-fluid-base text-muted-foreground">The latest company announcements, press releases, media assets, and our recent features in the news.</p>
                 </div>
                 {pressReleases.length > 0 && (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {pressReleases.map((insight) => (
                          <GlowingCard key={insight.title}>
-                            <div className="flex flex-col h-full">
-                                <CardHeader className="p-0">
-                                <Link href={`/insights/${insight.slug}`}>
-                                    <div data-ai-hint={insight.dataAiHint}>
-                                        <Image
-                                        src={insight.image}
-                                        alt={insight.title}
-                                        width={insight.width}
-                                        height={insight.height}
-                                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300 rounded-t-xl"
+                            <CardHeader className="p-0">
+                            <Link href={`/insights/${insight.slug}`}>
+                                <div data-ai-hint={insight.dataAiHint} className="relative h-48 overflow-hidden rounded-t-xl">
+                                    {insight.codeVisualType ? (
+                                        <ArticleCodeVisual 
+                                            type={insight.codeVisualType} 
+                                            className="h-full w-full rounded-none border-0"
+                                            animated={false}
                                         />
-                                    </div>
+                                    ) : (
+                                        <OptimizedImage
+                                            src={insight.image}
+                                            alt={insight.title}
+                                            width={insight.width}
+                                            height={insight.height}
+                                            hoverScale
+                                            className="w-full h-full"
+                                        />
+                                    )}
+                                </div>
+                            </Link>
+                            </CardHeader>
+                            <CardContent className="p-4 md:p-6 flex-grow">
+                            <CardDescription>{formatFullDate(insight.date)}</CardDescription>
+                            <CardTitle className="text-lg md:text-xl mt-2">
+                                <Link href={`/insights/${insight.slug}`} className="hover:text-primary transition-colors">
+                                    {insight.title}
                                 </Link>
-                                </CardHeader>
-                                <CardContent className="p-4 md:p-6 flex-grow">
-                                <CardDescription>{new Date(insight.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</CardDescription>
-                                <CardTitle className="text-lg md:text-xl mt-2">
-                                    <Link href={`/insights/${insight.slug}`} className="hover:text-primary transition-colors">
-                                        {insight.title}
-                                    </Link>
-                                </CardTitle>
-                                </CardContent>
-                                <CardFooter className="p-4 md:p-6 pt-0 mt-auto">
-                                <Link href={`/insights/${insight.slug}`} className="text-primary font-semibold flex items-center group">
-                                    Read More <ArrowRight className="ml-2 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
-                                </Link>
-                                </CardFooter>
-                            </div>
+                            </CardTitle>
+                            </CardContent>
+                            <CardFooter className="p-4 md:p-6 pt-0">
+                            <Link href={`/insights/${insight.slug}`} className="text-primary font-semibold flex items-center group">
+                                Read More <ArrowRight className="ml-2 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
+                            </Link>
+                            </CardFooter>
                         </GlowingCard>
                     ))}
                     </div>
@@ -180,14 +134,14 @@ export default function AboutPage() {
             </div>
         </section>
 
-        <section id="analyst-reports" className="py-16 md:py-24 bg-secondary/20">
-            <div className="container mx-auto px-4 md:px-6 space-y-12">
+        <section id="analyst-reports" className="py-fluid-lg bg-secondary/20">
+            <div className="container mx-auto px-fluid-sm space-y-12">
                 <div className="text-center max-w-3xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-bold font-headline">Industry Analyst Reports</h2>
-                    <p className="mt-4 text-md md:text-lg text-muted-foreground">Don't just take our word for it. See why leading industry analysts recognize LOG_ON for our innovation, market presence, and ability to deliver results for our customers.</p>
+                    <h2 className="text-fluid-lg font-bold font-headline">Industry Analyst Reports</h2>
+                    <p className="mt-4 text-fluid-base text-muted-foreground">Don't just take our word for it. See why leading industry analysts recognize LOG_ON for our innovation, market presence, and ability to deliver results for our customers.</p>
                 </div>
                 <div className="max-w-4xl mx-auto space-y-6">
-                    {reports.map((report) => (
+                    {analystReports.map((report) => (
                         <Card key={report.title} className="bg-background">
                             <CardHeader>
                                 <p className="font-semibold text-primary">{report.firm}</p>
@@ -211,11 +165,11 @@ export default function AboutPage() {
             </div>
         </section>
 
-        <section id="research" className="py-16 md:py-24">
-             <div className="container mx-auto px-4 md:px-6 space-y-12">
+        <section id="research" className="py-fluid-lg">
+             <div className="container mx-auto px-fluid-sm space-y-12">
                 <div className="text-center max-w-3xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-bold font-headline">LOG_ON Research</h2>
-                    <p className="mt-4 text-md md:text-lg text-muted-foreground">Innovation is at the core of our DNA. LOG_ON Research is dedicated to exploring the frontiers of artificial intelligence and automation through our internal labs, partnerships, and open-source contributions.</p>
+                    <h2 className="text-fluid-lg font-bold font-headline">LOG_ON Research</h2>
+                    <p className="mt-4 text-fluid-base text-muted-foreground">Innovation is at the core of our DNA. LOG_ON Research is dedicated to exploring the frontiers of artificial intelligence and automation through our internal labs, partnerships, and open-source contributions.</p>
                 </div>
                 <div>
                     <h3 className="text-2xl font-bold font-headline mb-4 text-center">Our Core Research Areas</h3>
@@ -223,7 +177,7 @@ export default function AboutPage() {
                         {researchAreas.map(area => (
                             <Card key={area.title}>
                                 <CardHeader>
-                                    {area.icon}
+                                    <area.icon className="h-8 w-8 text-primary"/>
                                     <CardTitle className="pt-4">{area.title}</CardTitle>
                                 </CardHeader>
                                 <CardContent>
@@ -236,18 +190,18 @@ export default function AboutPage() {
              </div>
         </section>
 
-        <section id="trust" className="py-16 md:py-24 bg-secondary/20">
-            <div className="container mx-auto px-4 md:px-6 space-y-12">
+        <section id="trust" className="py-fluid-lg bg-secondary/20">
+            <div className="container mx-auto px-fluid-sm space-y-12">
                  <div className="text-center max-w-3xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-bold font-headline">Trust & Compliance</h2>
-                    <p className="mt-4 text-md md:text-lg text-muted-foreground">Trust is the foundation of every partnership. We are deeply committed to protecting your data, respecting privacy, and maintaining the highest standards of security and compliance.</p>
+                    <h2 className="text-fluid-lg font-bold font-headline">Trust & Compliance</h2>
+                    <p className="mt-4 text-fluid-base text-muted-foreground">Trust is the foundation of every partnership. We are deeply committed to protecting your data, respecting privacy, and maintaining the highest standards of security and compliance.</p>
                 </div>
                 <div className="max-w-5xl mx-auto">
                     <div className="grid md:grid-cols-3 gap-8">
                         {trustPillars.map(pillar => (
                             <Card key={pillar.title} className="bg-background">
                                 <CardHeader>
-                                    {pillar.icon}
+                                    <pillar.icon className="h-8 w-8 text-primary"/>
                                     <CardTitle className="pt-4">{pillar.title}</CardTitle>
                                 </CardHeader>
                                 <CardContent>

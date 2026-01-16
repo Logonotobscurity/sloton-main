@@ -37,7 +37,51 @@ export const defaultAIConfig: AIConfig = {
  */
 export function getAIConfigFromEnvironment(): AIConfig {
   const config = getConfig();
-  return config.ai;
+  const aiConfig = config.ai;
+  
+  // Convert string provider to AIProvider enum
+  let provider: AIProvider;
+  switch (aiConfig.provider.toLowerCase()) {
+    case 'google-ai':
+    case 'googleai':
+    case 'gemini':
+      provider = AIProvider.GOOGLE_AI;
+      break;
+    case 'mock':
+      provider = AIProvider.MOCK;
+      break;
+    default:
+      provider = AIProvider.GOOGLE_AI; // Default fallback
+  }
+  
+  // Convert fallback provider if exists
+  let fallbackProvider: AIProvider | undefined;
+  if (aiConfig.fallbackProvider) {
+    switch (aiConfig.fallbackProvider.toLowerCase()) {
+      case 'google-ai':
+      case 'googleai':
+      case 'gemini':
+        fallbackProvider = AIProvider.GOOGLE_AI;
+        break;
+      case 'mock':
+        fallbackProvider = AIProvider.MOCK;
+        break;
+      default:
+        fallbackProvider = undefined;
+    }
+  }
+  
+  return {
+    provider,
+    fallbackProvider,
+    timeout: aiConfig.timeout,
+    retryAttempts: aiConfig.retryAttempts,
+    enableCircuitBreaker: aiConfig.enableCircuitBreaker,
+    circuitBreakerThreshold: aiConfig.circuitBreakerThreshold,
+    circuitBreakerTimeout: aiConfig.circuitBreakerTimeout,
+    enableLogging: aiConfig.enableLogging,
+    logLevel: aiConfig.logLevel
+  };
 }
 
 /**

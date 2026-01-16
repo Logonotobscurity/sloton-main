@@ -6,51 +6,33 @@ import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 
 export function WebsiteLoader() {
-  const [loading, setLoading] = useState(true);
-  const [hiding, setHiding] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [hiding, setHiding] = useState(true);
   const pathname = usePathname();
 
   useEffect(() => {
-    // This effect handles the initial page load
-    const handleLoad = () => {
-      setLoading(false);
-    };
-
-    if (document.readyState === 'complete') {
-      handleLoad();
-    } else {
-      window.addEventListener('load', handleLoad);
-      return () => window.removeEventListener('load', handleLoad);
-    }
-  }, []);
-
-  useEffect(() => {
-    // This effect handles route changes
+    // Show loader on route change
+    setHiding(false);
     setLoading(true);
-    const handleRouteChangeComplete = () => {
+
+    // Hide loader after a delay to simulate loading
+    const timer = setTimeout(() => {
       setLoading(false);
+    }, 800); // Animation duration + buffer
+
+    // Start hiding animation after fade out
+    const hideTimer = setTimeout(() => {
+      setHiding(true);
+    }, 1300); // Must be longer than the fade-out duration
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(hideTimer);
     };
-    
-    // Using a timeout to simulate loading on route change, can be adjusted or removed
-    const timer = setTimeout(handleRouteChangeComplete, 500);
-
-    return () => clearTimeout(timer);
-
   }, [pathname]);
 
-  useEffect(() => {
-    if (!loading) {
-      // Start hiding animation
-      const hideTimer = setTimeout(() => {
-        setHiding(true);
-      }, 500); // This duration should match the transition duration
-      return () => clearTimeout(hideTimer);
-    } else {
-      setHiding(false);
-    }
-  }, [loading]);
 
-  if (hiding) {
+  if (hiding && !loading) {
     return null;
   }
 

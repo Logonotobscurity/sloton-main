@@ -2,7 +2,7 @@
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { ShieldCheck, Lock, DatabaseZap } from 'lucide-react';
 import type { Metadata } from 'next';
-import { PageHero } from '@/components/page-hero';
+import { PageHero } from '@/components/page-sections/page-hero';
 
 export const metadata: {
   title: string;

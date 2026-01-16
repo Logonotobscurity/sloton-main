@@ -1,76 +1,211 @@
-'use server';
 
-/**
- * @fileOverview This file defines a Genkit flow for visually designing and configuring automated IT tasks based on provided workflows.
- *
- * - automateTaskDesign - A function that handles the task automation design process.
- * - AutomateTaskDesignInput - The input type for the automateTaskDesign function.
- * - AutomateTaskDesignOutput - The return type for the automateTaskDesign function.
- */
+export interface AutomateTaskDesignInput {
+  workflowDescription: string;
+  optimizationSuggestions?: string;
+}
 
-import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
+export interface AutomateTaskDesignOutput {
+  name: string;
+  description: string;
+  steps: {
+    step: number;
+    description: string;
+    details: string;
+    tools: string[];
+  }[];
+  tools: {
+    name: string;
+    icon: string;
+  }[];
+  optimizationSuggestions: string[];
+}
 
-const AutomateTaskDesignInputSchema = z.object({
-  workflowDescription: z
-    .string()
-    .describe('A description of the IT task workflow to be automated.'),
-  optimizationSuggestions: z.string().optional().describe('Optional user-provided optimization suggestions.'),
-});
-export type AutomateTaskDesignInput = z.infer<typeof AutomateTaskDesignInputSchema>;
+// A library of "AI-generated" workflow templates
+const workflowTemplates: { [key: string]: AutomateTaskDesignOutput } = {
+  onboarding: {
+    name: "Automated User Onboarding",
+    description: "A complete workflow for onboarding new users to your platform, from account creation to initial engagement.",
+    steps: [
+      {
+        step: 1,
+        description: "User Signup",
+        details: "A new user creates an account using a sign-up form. Required information: Name, Email, Password.",
+        tools: ["Next.js", "React Hook Form"]
+      },
+      {
+        step: 2,
+        description: "Database Record Creation",
+        details: "A new user record is securely created in the database with the provided information. The password should be hashed.",
+        tools: ["PostgreSQL", "Prisma"]
+      },
+      {
+        step: 3,
+        description: "Email Verification",
+        details: "An automated email is sent to the user with a unique verification link to confirm their email address.",
+        tools: ["Resend", "Next.js API Route"]
+      },
+      {
+        step: 4,
+        description: "Welcome & Initial Setup",
+        details: "Upon successful verification, the user is redirected to a welcome page or a setup wizard to configure their profile.",
+        tools: ["Next.js"]
+      }
+    ],
+    tools: [
+        { name: "Next.js", icon: "nextjs" },
+        { name: "React Hook Form", icon: "react-hook-form" },
+        { name: "PostgreSQL", icon: "postgresql" },
+        { name: "Prisma", icon: "prisma" },
+        { name: "Resend", icon: "resend" }
+    ],
+    optimizationSuggestions: [
+      "Implement social logins (Google, GitHub) to speed up the signup process.",
+      "Add a 'Welcome' series of emails to guide the user through the first few days.",
+      "Use a webhook to notify a CRM system when a new user signs up."
+    ]
+  },
+  marketing: {
+    name: "Automated Marketing Campaign",
+    description: "A workflow to automate the execution and tracking of a marketing campaign.",
+    steps: [
+        {
+            step: 1,
+            description: "Lead Capture",
+            details: "Capture leads from a form on a landing page.",
+            tools: ["Webflow", "HubSpot Forms"]
+        },
+        {
+            step: 2,
+            description: "CRM Integration",
+            details: "Automatically add new leads to your CRM and segment them based on their interests.",
+            tools: ["HubSpot", "Zapier"]
+        },
+        {
+            step: 3,
+            description: "Email Nurturing Sequence",
+            details: "Send a series of automated emails to nurture the leads.",
+            tools: ["Mailchimp", "HubSpot Workflows"]
+        },
+        {
+            step: 4,
+            description: "Performance Tracking",
+            details: "Track open rates, click-through rates, and conversions for the campaign.",
+            tools: ["Google Analytics", "HubSpot Reporting"]
+        }
+    ],
+    tools: [
+        { name: "Webflow", icon: "webflow" },
+        { name: "HubSpot", icon: "hubspot" },
+        { name: "Zapier", icon: "zapier" },
+        { name: "Mailchimp", icon: "mailchimp" },
+        { name: "Google Analytics", icon: "google-analytics" }
+    ],
+    optimizationSuggestions: [
+        "A/B test different email subject lines to improve open rates.",
+        "Use lead scoring to prioritize follow-up with the most engaged leads.",
+        "Personalize email content based on lead properties."
+    ]
+  },
+  support: {
+      name: "Automated Customer Support",
+      description: "A workflow to automate the handling of customer support tickets.",
+      steps: [
+          {
+              step: 1,
+              description: "Ticket Creation",
+              details: "Create a new support ticket from an incoming email or a web form.",
+              tools: ["Zendesk", "Help Scout"]
+          },
+          {
+              step: 2,
+              description: "Ticket Triage",
+              details: "Automatically categorize and prioritize tickets based on keywords and sender.",
+              tools: ["Zendesk Triggers", "Intercom"]
+          },
+          {
+              step: 3,
+              description: "Automated Responses",
+              details: "Send automated responses for common questions using a knowledge base.",
+              tools: ["Zendesk Answer Bot", "Ada"]
+          },
+          {
+              step: 4,
+              description: "Agent Assignment",
+              details: "Assign complex tickets to the appropriate support agent.",
+              tools: ["Zendesk Routing", "Jira Service Desk"]
+          }
+      ],
+      tools: [
+        { name: "Zendesk", icon: "zendesk" },
+        { name: "Help Scout", icon: "helpscout" },
+        { name: "Intercom", icon: "intercom" },
+        { name: "Ada", icon: "ada" },
+        { name: "Jira Service Desk", icon: "jira" }
+      ],
+      optimizationSuggestions: [
+          "Use sentiment analysis to gauge customer satisfaction.",
+          "Create a feedback loop to improve the knowledge base based on ticket resolutions.",
+          "Implement a chatbot for 24/7 support."
+      ]
+  }
+};
 
-const AutomateTaskDesignOutputSchema = z.object({
-  taskName: z.string().describe("A concise, descriptive name for the automated task."),
-  objective: z.string().describe("A one-sentence summary of the automation's primary goal."),
-  trigger: z.string().describe("The specific event that initiates the workflow (e.g., 'New user signs up', 'Invoice received in mailbox')."),
-  steps: z.array(z.object({
-    stepNumber: z.number().describe("The sequence number of the step."),
-    action: z.string().describe("The high-level action being performed in this step (e.g., 'Send Welcome Email', 'Extract Invoice Data')."),
-    details: z.string().describe("A brief explanation of what happens in this step, including any logic or conditions."),
-  })).describe("A step-by-step breakdown of the automation workflow."),
-  integrations: z.array(z.string()).describe("A list of systems, applications, or APIs that need to be connected for this automation (e.g., 'Gmail API', 'Salesforce CRM', 'Slack')."),
-  optimizations: z.array(z.string()).describe("A list of 2-3 AI-suggested optimizations to improve the workflow's efficiency, reduce costs, or add value."),
-  estimatedImpact: z.string().describe("A summary of the expected business benefits, such as 'Saves approx. 5-8 hours per week' or 'Reduces data entry errors by over 95%'."),
-});
-export type AutomateTaskDesignOutput = z.infer<typeof AutomateTaskDesignOutputSchema>;
+const defaultWorkflow: AutomateTaskDesignOutput = {
+    name: "Generic Automated Workflow",
+    description: "A generated workflow based on the provided description.",
+    steps: [
+      {
+        step: 1,
+        description: "Initial Trigger",
+        details: "The workflow is triggered by a specified event or a manual start.",
+        tools: ["Webhook"]
+      },
+      {
+        step: 2,
+        description: "Data Processing",
+        details: "Data is collected and processed according to the defined logic.",
+        tools: ["Serverless Function"]
+      },
+      {
+        step: 3,
+        description: "Action Execution",
+        details: "An action is performed, such as sending an email, updating a database, or calling another API.",
+        tools: ["API"]
+      }
+    ],
+    tools: [
+      { name: "Webhook", icon: "webhook" },
+      { name: "Serverless Function", icon: "serverless" },
+      { name: "API", icon: "api" }
+    ],
+    optimizationSuggestions: [
+        "Consider adding error handling and retry logic for external API calls.",
+        "Log key events and metrics for monitoring workflow performance."
+    ]
+};
 
 
 export async function automateTaskDesign(input: AutomateTaskDesignInput): Promise<AutomateTaskDesignOutput> {
-  return automateTaskDesignFlow(input);
-}
+  // This is a mock implementation.
+  // In a real application, this would use an AI model to generate the workflow.
+  await new Promise(resolve => setTimeout(resolve, 1000));
 
-const prompt = ai.definePrompt({
-  name: 'automateTaskDesignPrompt',
-  input: {schema: AutomateTaskDesignInputSchema},
-  output: {schema: AutomateTaskDesignOutputSchema},
-  prompt: `You are an expert Automation Architect. Your task is to transform a user's workflow description into a professional, structured automation plan. The plan must be clear, logical, and actionable.
+  const description = input.workflowDescription.toLowerCase();
 
-Follow these instructions precisely:
-1.  **Analyze the User's Request:** Read the workflow description and any optimization suggestions carefully.
-2.  **Structure the Output:** Generate a JSON object that strictly adheres to the provided output schema.
-3.  **Task Name and Objective:** Create a clear, professional name for the task and a concise objective.
-4.  **Define the Trigger:** Clearly state the single event that starts the workflow.
-5.  **Detail the Steps:** Break down the workflow into a logical sequence of steps. Each step must have a clear action and detailed description.
-6.  **Identify Integrations:** List all the necessary software, apps, or APIs that need to be connected.
-7.  **Suggest Optimizations:** Provide 2-3 concrete, value-adding suggestions to improve the user's initial idea. Think about error handling, notifications, or deeper integration.
-8.  **Estimate Impact:** Quantify the potential benefits in terms of time saved, error reduction, or other relevant metrics. Be realistic.
-
-User's Workflow Description:
-{{{workflowDescription}}}
-
-User's Optimization Suggestions (if any):
-{{{optimizationSuggestions}}}
-`,
-});
-
-const automateTaskDesignFlow = ai.defineFlow(
-  {
-    name: 'automateTaskDesignFlow',
-    inputSchema: AutomateTaskDesignInputSchema,
-    outputSchema: AutomateTaskDesignOutputSchema,
-  },
-  async input => {
-    const {output} = await prompt(input);
-    return output!;
+  if (description.includes("onboarding")) {
+    return workflowTemplates.onboarding;
   }
-);
+
+  if (description.includes("marketing") || description.includes("campaign")) {
+    return workflowTemplates.marketing;
+  }
+
+  if (description.includes("support") || description.includes("ticket")) {
+    return workflowTemplates.support;
+  }
+
+  // Fallback to a generic workflow
+  const genericWorkflow = { ...defaultWorkflow };
+  genericWorkflow.description = `A generated workflow based on the description: \"${input.workflowDescription}\"`;
+  return genericWorkflow;
+}

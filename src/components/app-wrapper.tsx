@@ -27,13 +27,7 @@ export function AppWrapper({ children }: AppWrapperProps) {
   }, []);
 
   return (
-    <ErrorBoundary
-      onError={(error, errorInfo) => {
-        handleError(error);
-        // You could send this to an error reporting service
-        console.error('Error caught by error boundary:', error, errorInfo);
-      }}
-    >
+    <ErrorBoundary>
       {children}
     </ErrorBoundary>
   );

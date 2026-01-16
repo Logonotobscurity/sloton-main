@@ -1,0 +1,94 @@
+{
+  "timestamp": "2026-01-15T21:01:58.319Z",
+  "summary": {
+    "totalOpportunities": 5,
+    "highSeverity": 2,
+    "mediumSeverity": 1,
+    "lowSeverity": 2,
+    "extractableHooks": 0
+  },
+  "patternCounts": {
+    "useState": 27,
+    "useEffect": 24,
+    "fetch": 14,
+    "formValidation": 5,
+    "imageHandling": 25,
+    "animations": 90,
+    "errorHandling": 30,
+    "localStorage": 1,
+    "dateFormatting": 15
+  },
+  "opportunities": [
+    {
+      "type": "Image Handling",
+      "severity": "MEDIUM",
+      "filesAffected": 25,
+      "description": "Image handling logic duplicated across multiple components",
+      "recommendation": "Create a reusable Image component or hook",
+      "files": [
+        "src/app/about/leadership/page.tsx",
+        "src/app/about/newsroom/page.tsx",
+        "src/app/about/our-leadership/page.tsx",
+        "src/app/about/page.tsx",
+        "src/app/insights/page.tsx"
+      ]
+    },
+    {
+      "type": "Animation Configurations",
+      "severity": "LOW",
+      "filesAffected": 40,
+      "description": "Animation configurations duplicated across components",
+      "recommendation": "Extract animation variants to shared constants",
+      "files": [
+        "src/app/about/newsroom/page.tsx",
+        "src/app/about/page.tsx",
+        "src/app/insights/page.tsx",
+        "src/components/chronicle/NewsColumn.tsx",
+        "src/components/chronicle/VideosColumn.tsx"
+      ]
+    },
+    {
+      "type": "Error Handling",
+      "severity": "HIGH",
+      "filesAffected": 14,
+      "description": "Error handling patterns duplicated across files",
+      "recommendation": "Create centralized error handling utilities",
+      "files": [
+        "src/ai/ai-config.ts",
+        "src/ai/ai-service-manager.ts",
+        "src/ai/examples/ai-service-usage.tsx",
+        "src/ai/flows/rag-assistant.ts",
+        "src/ai/services/google-ai.service.ts"
+      ]
+    },
+    {
+      "type": "Date Formatting",
+      "severity": "LOW",
+      "filesAffected": 15,
+      "description": "Date formatting logic duplicated across files",
+      "recommendation": "Create date formatting utility functions",
+      "files": [
+        "src/app/about/newsroom/page.tsx",
+        "src/app/about/page.tsx",
+        "src/app/actions.ts",
+        "src/app/api/ai/health/route.ts",
+        "src/app/insights/[slug]/page.tsx"
+      ]
+    },
+    {
+      "type": "API Calls",
+      "severity": "HIGH",
+      "filesAffected": 14,
+      "description": "API calls scattered across components",
+      "recommendation": "Create API service layer with consistent error handling",
+      "files": [
+        "src/ai/ai-service-manager.ts",
+        "src/ai/services/google-ai.service.ts",
+        "src/app/actions.ts",
+        "src/app/api/ai/health/route.ts",
+        "src/app/api/logs/route.ts"
+      ]
+    }
+  ],
+  "hookOpportunities": []
+}

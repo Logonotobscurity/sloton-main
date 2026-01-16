@@ -5,6 +5,7 @@
 
 import { IAIService, AIServiceFactory, AIProvider, AIServiceConfig } from './services';
 import { logger } from '@/lib/logger';
+import { AppError, ErrorCode, handleError } from '@/lib/error-handler';
 
 export interface AIManagerConfig {
   primaryProvider: AIProvider;
@@ -56,7 +57,11 @@ export class AIServiceManager {
         if (this.fallbackService) {
           return await this.executeWithRetry(operation, this.fallbackService, operationName, true);
         }
-        throw new Error('Circuit breaker open and no fallback service available');
+        throw new AppError(
+          'Circuit breaker open and no fallback service available',
+          ErrorCode.SERVICE_UNAVAILABLE,
+          503
+        );
       } else {
         // Reset circuit breaker
         this.circuitBreakerOpen = false;
@@ -70,7 +75,7 @@ export class AIServiceManager {
       this.resetFailures();
       return result;
     } catch (error) {
-      logger.error(`Primary service failed for ${operationName}:`, error);
+      handleError(error, `AIServiceManager.${operationName}.primary`, { logLevel: 'error' });
       this.recordFailure();
 
       // Try fallback service
@@ -80,8 +85,13 @@ export class AIServiceManager {
           logger.info(`Fallback service succeeded for ${operationName}`);
           return result;
         } catch (fallbackError) {
-          logger.error(`Fallback service also failed for ${operationName}:`, fallbackError);
-          throw new Error(`Both primary and fallback services failed for ${operationName}`);
+          handleError(fallbackError, `AIServiceManager.${operationName}.fallback`, { logLevel: 'error' });
+          throw new AppError(
+            `Both primary and fallback services failed for ${operationName}`,
+            ErrorCode.AI_SERVICE_ERROR,
+            503,
+            { operationName }
+          );
         }
       }
 
@@ -107,7 +117,7 @@ export class AIServiceManager {
         return await operation(service);
       } catch (error) {
         lastError = error as Error;
-        logger.warn(`Attempt ${attempt} failed for ${operationName}:`, error);
+        logger.warn(`Attempt ${attempt} failed for ${operationName}:`, { error: error instanceof Error ? error.message : String(error) });
         
         if (attempt < maxRetries) {
           // Exponential backoff

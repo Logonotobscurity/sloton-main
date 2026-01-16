@@ -1,0 +1,303 @@
+{
+  "timestamp": "2026-01-15T21:14:04.695Z",
+  "metrics": {
+    "totalImports": 567,
+    "aliasImports": 469,
+    "relativeImports": 98,
+    "aliasPercentage": "82.7",
+    "relativePercentage": "17.3",
+    "filesWithMixedPatterns": 43,
+    "filesWithDeepRelative": 0,
+    "deepRelativeImports": 0
+  },
+  "organization": {
+    "filesAnalyzed": 24,
+    "filesWithUnorganizedImports": 21,
+    "organizationScore": "12.5"
+  },
+  "issues": [
+    {
+      "type": "MIXED_PATTERNS",
+      "severity": "MEDIUM",
+      "count": 43,
+      "description": "Files mixing relative and alias imports",
+      "recommendation": "Standardize to use @/ alias for all imports",
+      "examples": [
+        {
+          "file": "src/ai/ai-config.ts",
+          "relativeCount": 1,
+          "aliasCount": 1
+        },
+        {
+          "file": "src/ai/ai-service-manager.ts",
+          "relativeCount": 1,
+          "aliasCount": 2
+        },
+        {
+          "file": "src/ai/services/google-ai.service.ts",
+          "relativeCount": 1,
+          "aliasCount": 3
+        },
+        {
+          "file": "src/app/layout.tsx",
+          "relativeCount": 1,
+          "aliasCount": 12
+        },
+        {
+          "file": "src/components/book-demo-widget.tsx",
+          "relativeCount": 1,
+          "aliasCount": 4
+        }
+      ]
+    },
+    {
+      "type": "RELATIVE_IMPORTS",
+      "severity": "LOW",
+      "count": 98,
+      "description": "17.3% of imports still use relative paths",
+      "recommendation": "Migrate to @/ alias for consistency",
+      "examples": [
+        {
+          "file": "src/ai/ai-config.ts",
+          "imports": "src/ai/services"
+        },
+        {
+          "file": "src/ai/ai-service-manager.ts",
+          "imports": "src/ai/services"
+        },
+        {
+          "file": "src/ai/services/ai-service-factory.ts",
+          "imports": "src/ai/services/ai-service.interface.ts"
+        },
+        {
+          "file": "src/ai/services/ai-service-factory.ts",
+          "imports": "src/ai/services/google-ai.service.ts"
+        },
+        {
+          "file": "src/ai/services/google-ai.service.ts",
+          "imports": "src/ai/services/ai-service.interface.ts"
+        }
+      ]
+    }
+  ],
+  "patterns": {
+    "mixedPatterns": [
+      {
+        "file": "src/ai/ai-config.ts",
+        "relativeCount": 1,
+        "aliasCount": 1
+      },
+      {
+        "file": "src/ai/ai-service-manager.ts",
+        "relativeCount": 1,
+        "aliasCount": 2
+      },
+      {
+        "file": "src/ai/services/google-ai.service.ts",
+        "relativeCount": 1,
+        "aliasCount": 3
+      },
+      {
+        "file": "src/app/layout.tsx",
+        "relativeCount": 1,
+        "aliasCount": 12
+      },
+      {
+        "file": "src/components/book-demo-widget.tsx",
+        "relativeCount": 1,
+        "aliasCount": 4
+      },
+      {
+        "file": "src/components/bot-widget.tsx",
+        "relativeCount": 3,
+        "aliasCount": 6
+      },
+      {
+        "file": "src/components/case-studies-carousel.tsx",
+        "relativeCount": 1,
+        "aliasCount": 4
+      },
+      {
+        "file": "src/components/case-study-feature.tsx",
+        "relativeCount": 2,
+        "aliasCount": 1
+      },
+      {
+        "file": "src/components/chatbot/assessment-result.tsx",
+        "relativeCount": 1,
+        "aliasCount": 1
+      },
+      {
+        "file": "src/components/community-lead-form.tsx",
+        "relativeCount": 1,
+        "aliasCount": 5
+      },
+      {
+        "file": "src/components/featured-insights.tsx",
+        "relativeCount": 3,
+        "aliasCount": 3
+      },
+      {
+        "file": "src/components/footer.tsx",
+        "relativeCount": 2,
+        "aliasCount": 2
+      },
+      {
+        "file": "src/components/gated-feature-modal.tsx",
+        "relativeCount": 3,
+        "aliasCount": 1
+      },
+      {
+        "file": "src/components/generalist-approach.tsx",
+        "relativeCount": 1,
+        "aliasCount": 1
+      },
+      {
+        "file": "src/components/header/desktop-nav.tsx",
+        "relativeCount": 1,
+        "aliasCount": 3
+      },
+      {
+        "file": "src/components/header/mega-menu.tsx",
+        "relativeCount": 1,
+        "aliasCount": 3
+      },
+      {
+        "file": "src/components/header/mobile-nav.tsx",
+        "relativeCount": 3,
+        "aliasCount": 5
+      },
+      {
+        "file": "src/components/header.tsx",
+        "relativeCount": 6,
+        "aliasCount": 2
+      },
+      {
+        "file": "src/components/hero.tsx",
+        "relativeCount": 2,
+        "aliasCount": 2
+      },
+      {
+        "file": "src/components/ideas-lab.tsx",
+        "relativeCount": 3,
+        "aliasCount": 2
+      },
+      {
+        "file": "src/components/industries-bento.tsx",
+        "relativeCount": 2,
+        "aliasCount": 1
+      },
+      {
+        "file": "src/components/page-hero.tsx",
+        "relativeCount": 1,
+        "aliasCount": 1
+      },
+      {
+        "file": "src/components/page-sections/case-study-feature.tsx",
+        "relativeCount": 2,
+        "aliasCount": 1
+      },
+      {
+        "file": "src/components/page-sections/featured-insights.tsx",
+        "relativeCount": 3,
+        "aliasCount": 5
+      },
+      {
+        "file": "src/components/page-sections/hero.tsx",
+        "relativeCount": 2,
+        "aliasCount": 3
+      },
+      {
+        "file": "src/components/page-sections/ideas-lab.tsx",
+        "relativeCount": 1,
+        "aliasCount": 1
+      },
+      {
+        "file": "src/components/page-sections/industries-bento.tsx",
+        "relativeCount": 3,
+        "aliasCount": 1
+      },
+      {
+        "file": "src/components/page-sections/page-hero.tsx",
+        "relativeCount": 1,
+        "aliasCount": 1
+      },
+      {
+        "file": "src/components/page-sections/services-offered.tsx",
+        "relativeCount": 1,
+        "aliasCount": 1
+      },
+      {
+        "file": "src/components/page-sections/strategic-partner.tsx",
+        "relativeCount": 1,
+        "aliasCount": 2
+      },
+      {
+        "file": "src/components/page-sections/tech-stack-carousel.tsx",
+        "relativeCount": 2,
+        "aliasCount": 2
+      },
+      {
+        "file": "src/components/services-offered.tsx",
+        "relativeCount": 1,
+        "aliasCount": 1
+      },
+      {
+        "file": "src/components/smarter-automation.tsx",
+        "relativeCount": 2,
+        "aliasCount": 3
+      },
+      {
+        "file": "src/components/solution-recommendation-form.tsx",
+        "relativeCount": 1,
+        "aliasCount": 7
+      },
+      {
+        "file": "src/components/strategic-partner.tsx",
+        "relativeCount": 4,
+        "aliasCount": 1
+      },
+      {
+        "file": "src/components/task-automation-form.tsx",
+        "relativeCount": 2,
+        "aliasCount": 7
+      },
+      {
+        "file": "src/components/tech-stack-carousel.tsx",
+        "relativeCount": 1,
+        "aliasCount": 2
+      },
+      {
+        "file": "src/components/tech-stack.tsx",
+        "relativeCount": 1,
+        "aliasCount": 2
+      },
+      {
+        "file": "src/components/template-library.tsx",
+        "relativeCount": 2,
+        "aliasCount": 9
+      },
+      {
+        "file": "src/components/ui/glowing-card.tsx",
+        "relativeCount": 1,
+        "aliasCount": 1
+      },
+      {
+        "file": "src/components/visual-workflow.tsx",
+        "relativeCount": 3,
+        "aliasCount": 1
+      },
+      {
+        "file": "src/components/workflow-template-library.tsx",
+        "relativeCount": 2,
+        "aliasCount": 9
+      },
+      {
+        "file": "src/lib/workflow-templates.ts",
+        "relativeCount": 1,
+        "aliasCount": 1
+      }
+    ],
+    "deepRelativeImports": []
+  }
+}

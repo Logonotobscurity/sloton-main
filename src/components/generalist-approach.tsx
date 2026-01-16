@@ -5,6 +5,7 @@ import { Card, CardTitle } from '@/components/ui/card';
 import { CheckCircle } from 'lucide-react';
 import { AdinkraBackground } from './ui/adinkra-background';
 import { motion } from 'framer-motion';
+import { fadeInUp, AnimationDuration } from '@/lib/animation-variants';
 
 const cardContent = [
     {
@@ -23,19 +24,20 @@ const cardContent = [
         title: "Custom Development",
         features: ["Web Applications", "Mobile Apps", "API Integration", "Legacy System Modernization"]
     }
-]
+];
 
-const cardVariants = {
+// Create staggered card variant
+const createCardVariants = (index: number) => ({
   hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
+  visible: {
     opacity: 1,
     y: 0,
     transition: {
-      delay: i * 0.1,
-      duration: 0.5
+      delay: index * 0.1,
+      duration: AnimationDuration.SLOW
     }
-  })
-};
+  }
+});
 
 export function GeneralistApproach() {
   return (
@@ -57,11 +59,10 @@ export function GeneralistApproach() {
                 {cardContent.map((card, i) => (
                     <motion.div
                         key={card.title}
-                        custom={i}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, amount: 0.5 }}
-                        variants={cardVariants}
+                        variants={createCardVariants(i)}
                     >
                       <Card className="p-6 bg-background/80 backdrop-blur-sm transition-transform duration-300 hover:scale-105 h-full">
                           <CardTitle className="mb-4">{card.title}</CardTitle>

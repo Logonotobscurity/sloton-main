@@ -8,10 +8,9 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, MessageCircle } from 'lucide-react';
+import { Loader2, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import { communityLeadAction } from '@/app/actions';
-import { ArrowIcon } from './ui/arrow-icon';
 import { DatePicker } from './ui/date-picker';
 
 const formSchema = z.object({
@@ -21,8 +20,7 @@ const formSchema = z.object({
   date: z.date().optional(),
 });
 
-import { getConfig } from '@/config';
-const whatsappLink = getConfig().services.whatsapp.link;
+const whatsappLink = "https://wa.me/qr/QFSBRGKZGHP3F1";
 
 export function CommunityLeadForm({ interest }: { interest?: string }) {
   const { toast } = useToast();
@@ -111,7 +109,7 @@ export function CommunityLeadForm({ interest }: { interest?: string }) {
           ) : (
             <>
               Chat on WhatsApp
-              <ArrowIcon className="ml-2" />
+              <ArrowRight className="ml-2 h-4 w-4" />
             </>
           )}
         </Button>

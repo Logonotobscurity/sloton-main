@@ -1,7 +1,6 @@
 
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { ArrowIcon } from './ui/arrow-icon';
 import { AdinkraBackground } from './ui/adinkra-background';
 
 export function Statement() {

@@ -2,23 +2,19 @@
  * Google AI service implementation using Genkit
  */
 
-'use server';
-
 import { IAIService } from './ai-service.interface';
 import { SolutionRecommendationInput, SolutionRecommendationOutput } from '@/ai/flows/solution-recommendation';
 import { AutomateTaskDesignInput, AutomateTaskDesignOutput } from '@/ai/flows/automated-task-design';
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
+import { AppError, ErrorCode, handleError } from '@/lib/error-handler';
+import { logger } from '@/lib/logger';
 
 // Import existing flow schemas
 const SolutionRecommendationInputSchema = z.object({
-  businessNeeds: z.string().describe('A more detailed, free-text description of the business needs and challenges.'),
-  companySize: z.string().describe('The size of the company (e.g., small, medium, large).'),
   industry: z.string().describe('The industry of the company.'),
-  budget: z.string().describe('The budget allocated for IT solutions and automation.'),
-  name: z.string().optional().describe("The user's name."),
-  email: z.string().optional().describe("The user's email address."),
-  phone: z.string().optional().describe("The user's phone number."),
+  challenge: z.string().describe('The primary business challenge or problem to solve.'),
+  goals: z.string().describe('The primary business goals and objectives.'),
 });
 
 const SolutionRecommendationOutputSchema = z.object({
@@ -54,17 +50,19 @@ const AutomateTaskDesignInputSchema = z.object({
 });
 
 const AutomateTaskDesignOutputSchema = z.object({
-  taskName: z.string().describe("A concise, descriptive name for the automated task."),
-  objective: z.string().describe("A one-sentence summary of the automation's primary goal."),
-  trigger: z.string().describe("The specific event that initiates the workflow (e.g., 'New user signs up', 'Invoice received in mailbox')."),
+  name: z.string().describe("A concise, descriptive name for the automated task."),
+  description: z.string().describe("A one-sentence summary of the automation's primary goal."),
   steps: z.array(z.object({
-    stepNumber: z.number().describe("The sequence number of the step."),
-    action: z.string().describe("The high-level action being performed in this step (e.g., 'Send Welcome Email', 'Extract Invoice Data')."),
+    step: z.number().describe("The sequence number of the step."),
+    description: z.string().describe("The high-level action being performed in this step (e.g., 'Send Welcome Email', 'Extract Invoice Data')."),
     details: z.string().describe("A brief explanation of what happens in this step, including any logic or conditions."),
+    tools: z.array(z.string()).describe("List of tools/technologies used in this step.")
   })).describe("A step-by-step breakdown of the automation workflow."),
-  integrations: z.array(z.string()).describe("A list of systems, applications, or APIs that need to be connected for this automation (e.g., 'Gmail API', 'Salesforce CRM', 'Slack')."),
-  optimizations: z.array(z.string()).describe("A list of 2-3 AI-suggested optimizations to improve the workflow's efficiency, reduce costs, or add value."),
-  estimatedImpact: z.string().describe("A summary of the expected business benefits, such as 'Saves approx. 5-8 hours per week' or 'Reduces data entry errors by over 95%'."),
+  tools: z.array(z.object({
+    name: z.string().describe("Name of the tool/technology."),
+    icon: z.string().describe("Icon identifier for the tool.")
+  })).describe("A list of all tools and technologies that need to be integrated for this automation."),
+  optimizationSuggestions: z.array(z.string()).describe("A list of 2-3 AI-suggested optimizations to improve the workflow's efficiency, reduce costs, or add value.")
 });
 
 export class GoogleAIService implements IAIService {
@@ -88,11 +86,9 @@ export class GoogleAIService implements IAIService {
         prompt: `You are an expert Solutions Architect for LOG_ON, a technology consulting firm. Your goal is to provide a high-value, actionable technology roadmap based on a prospective client's inputs. This report must be professional, data-driven, and clearly tied to their stated goals and challenges.
 
 The user has provided the following information:
-- Name: {{{name}}}
-- Company Size: {{{companySize}}}
 - Industry: {{{industry}}}
-- Detailed Needs: {{{businessNeeds}}}
-- Budget: {{{budget}}}
+- Primary Challenge: {{{challenge}}}
+- Business Goals: {{{goals}}}
 
 Your task is to generate a personalized Technology Assessment Report. You MUST follow this structure EXACTLY and adhere to these instructions:
 
@@ -131,8 +127,13 @@ Generate the report now based on the user's information.
       const { output } = await prompt(input);
       return output!;
     } catch (error) {
-      console.error('Error in GoogleAIService.getSolutionRecommendation:', error);
-      throw new Error('Failed to generate solution recommendation');
+      handleError(error, 'GoogleAIService.getSolutionRecommendation', { logLevel: 'error' });
+      throw new AppError(
+        'Failed to generate solution recommendation',
+        ErrorCode.AI_SERVICE_ERROR,
+        500,
+        { originalError: error instanceof Error ? error.message : String(error) }
+      );
     }
   }
 
@@ -147,12 +148,16 @@ Generate the report now based on the user's information.
 Follow these instructions precisely:
 1.  **Analyze the User's Request:** Read the workflow description and any optimization suggestions carefully.
 2.  **Structure the Output:** Generate a JSON object that strictly adheres to the provided output schema.
-3.  **Task Name and Objective:** Create a clear, professional name for the task and a concise objective.
-4.  **Define the Trigger:** Clearly state the single event that starts the workflow.
-5.  **Detail the Steps:** Break down the workflow into a logical sequence of steps. Each step must have a clear action and detailed description.
-6.  **Identify Integrations:** List all the necessary software, apps, or APIs that need to be connected.
-7.  **Suggest Optimizations:** Provide 2-3 concrete, value-adding suggestions to improve the user's initial idea. Think about error handling, notifications, or deeper integration.
-8.  **Estimate Impact:** Quantify the potential benefits in terms of time saved, error reduction, or other relevant metrics. Be realistic.
+3.  **Name and Description:** Create a clear, professional name for the task and a concise description.
+4.  **Detail the Steps:** Break down the workflow into a logical sequence of steps. Each step must have:
+    - step: sequence number
+    - description: high-level action name
+    - details: detailed explanation of what happens
+    - tools: array of tools/technologies used in this step
+5.  **Identify Tools:** Create a comprehensive list of all tools/technologies needed with:
+    - name: tool name
+    - icon: icon identifier (lowercase, hyphenated)
+6.  **Suggest Optimizations:** Provide 2-3 concrete, value-adding suggestions to improve the user's initial idea. Think about error handling, notifications, or deeper integration.
 
 User's Workflow Description:
 {{{workflowDescription}}}
@@ -165,8 +170,13 @@ User's Optimization Suggestions (if any):
       const { output } = await prompt(input);
       return output!;
     } catch (error) {
-      console.error('Error in GoogleAIService.getAutomatedTaskDesign:', error);
-      throw new Error('Failed to generate automated task design');
+      handleError(error, 'GoogleAIService.getAutomatedTaskDesign', { logLevel: 'error' });
+      throw new AppError(
+        'Failed to generate automated task design',
+        ErrorCode.AI_SERVICE_ERROR,
+        500,
+        { originalError: error instanceof Error ? error.message : String(error) }
+      );
     }
   }
 
@@ -174,14 +184,15 @@ User's Optimization Suggestions (if any):
     try {
       // Simple health check by trying to access the AI service
       const testInput = {
-        workflowDescription: 'Test workflow',
-        optimizationSuggestions: 'Test suggestions'
+        industry: 'technology',
+        challenge: 'Test challenge for health check',
+        goals: 'Test goals for health check'
       };
       
-      await this.getAutomatedTaskDesign(testInput);
+      await this.getSolutionRecommendation(testInput);
       return true;
     } catch (error) {
-      console.error('Google AI service health check failed:', error);
+      handleError(error, 'GoogleAIService.healthCheck', { logLevel: 'warn' });
       return false;
     }
   }

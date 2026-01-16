@@ -5,8 +5,8 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { Briefcase, HeartPulse, Server, ShoppingCart, Building, Cog } from "lucide-react";
 import { GlowingCard } from "./ui/glowing-card";
+import { industryFeatures } from "@/lib/data/industries";
 
 const FeatureCard = ({
   children,
@@ -42,45 +42,6 @@ const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
   );
 };
 
-const features = [
-    {
-      title: "Finance & Banking",
-      description: "Stop fraud faster and automate compliance tasks that consume valuable resources.",
-      icon: <Briefcase className="w-8 h-8 text-primary" />,
-      className: "lg:col-span-2",
-    },
-    {
-      title: "Healthcare",
-      description: "Secure systems that protect patient data while reducing administrative overhead.",
-      icon: <HeartPulse className="w-8 h-8 text-primary" />,
-      className: "lg:col-span-1",
-    },
-     {
-      title: "IT Consulting",
-      description: "Automation strategy, custom AI model development, and cloud optimization.",
-      icon: <Cog className="w-8 h-8 text-primary" />,
-      className: "lg:col-span-1",
-    },
-    {
-      title: "E-Commerce",
-      description: "AI that recommends products customers want to buy, plus automated support that never sleeps.",
-      icon: <ShoppingCart className="w-8 h-8 text-primary" />,
-      className: "lg:col-span-1",
-    },
-    {
-      title: "IT & Logistics",
-      description: "Intelligent automation for route planning, warehouse management, and shipment tracking.",
-      icon: <Server className="w-8 h-8 text-primary" />,
-      className: "lg:col-span-2",
-    },
-     {
-      title: "Real Estate",
-      description: "AI assistants that qualify leads and handle inquiries 24/7, maximizing conversion opportunities.",
-      icon: <Building className="w-8 h-8 text-primary" />,
-      className: "lg:col-span-1",
-    },
-];
-
 export function IndustriesBento() {
   return (
     <section className="py-16 md:py-24 bg-background relative overflow-hidden">
@@ -99,7 +60,7 @@ export function IndustriesBento() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-12">
-          {features.map((feature, i) => (
+          {industryFeatures.map((feature, i) => (
             <FeatureCard key={feature.title} className={cn(feature.className, "border-t border-border/50",
                 i === 0 ? "md:border-l-0" : "md:border-l",
                 i === 1 ? "md:border-l-0" : "",

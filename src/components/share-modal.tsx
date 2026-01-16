@@ -24,12 +24,21 @@ export function ShareModal({ title }: { title: string }) {
     setCurrentUrl(window.location.href);
   }, []);
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(currentUrl);
-    toast({
-      title: 'Link Copied!',
-      description: 'The link has been copied to your clipboard.',
-    });
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(currentUrl);
+      toast({
+        title: 'Link Copied!',
+        description: 'The link has been copied to your clipboard.',
+      });
+    } catch (err) {
+      console.error('Failed to copy: ', err);
+      toast({
+        variant: 'destructive',
+        title: 'Copy Failed',
+        description: 'Could not copy link to clipboard. Please try again.',
+      });
+    }
   };
 
   const socialShares = [

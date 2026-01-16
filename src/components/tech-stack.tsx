@@ -1,10 +1,10 @@
 'use client';
 
-import Image from 'next/image';
 import { useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import styles from './tech-stack.module.css';
 import { useUIStore } from '@/stores/ui-store';
+import { FillImage, ResponsiveSizes } from '@/lib/image-utils';
 
 interface TechStackItem {
   name: string;
@@ -64,7 +64,8 @@ export function TechStack() {
         const deltaTime = currentTime - lastTime;
 
         if (deltaTime >= interval) {
-          setTechStackScrollPosition((prev) => (prev + 0.5) % (100 * techStackData.length));
+          const newPosition = (techStackScrollPosition + 0.5) % (100 * techStackData.length);
+          setTechStackScrollPosition(newPosition);
           lastTime = currentTime;
         }
       }
@@ -99,12 +100,11 @@ export function TechStack() {
             {/* First set of images */}
             {techStackData.map((tech, index) => (
               <div key={`${tech.name}-1`} className={styles.item}>
-                <Image
+                <FillImage
                   src={tech.src}
                   alt={`${tech.name} logo`}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 96px, 128px"
+                  objectFit="contain"
+                  sizes={ResponsiveSizes.THUMBNAIL}
                   priority={index < 3}
                 />
               </div>
@@ -112,12 +112,11 @@ export function TechStack() {
             {/* Duplicate set for infinite scroll */}
             {techStackData.map((tech) => (
               <div key={`${tech.name}-2`} className={styles.item}>
-                <Image
+                <FillImage
                   src={tech.src}
                   alt={`${tech.name} logo`}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 96px, 128px"
+                  objectFit="contain"
+                  sizes={ResponsiveSizes.THUMBNAIL}
                 />
               </div>
             ))}

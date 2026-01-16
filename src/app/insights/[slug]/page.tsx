@@ -1,20 +1,20 @@
 
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { AuthorBio } from '@/components/author-bio';
-import { insights as allInsights } from '@/lib/insights';
+import { insights } from '@/lib/data/insights';
 import Script from 'next/script';
 import { ShareModal } from '@/components/share-modal';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { InsightPageContent } from '@/components/insight-page-content';
-
-export const insights = allInsights;
+import { ArticleCodeVisual } from '@/components/ui/article-code-visual';
+import { formatFullDate } from '@/lib/date-utils';
+import { OptimizedImage } from '@/lib/image-utils';
 
 type Props = {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 // This function now correctly runs on the server.
@@ -22,7 +22,8 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const insight = insights.find((insight) => insight.slug === params.slug);
+  const { slug } = await params;
+  const insight = insights.find((insight) => insight.slug === slug);
 
   if (!insight) {
     return {
@@ -51,8 +52,9 @@ export async function generateMetadata(
   }
 }
 
-export default function InsightPage({ params }: { params: { slug: string } }) {
-  const insight = insights.find((insight) => insight.slug === params.slug);
+export default async function InsightPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const insight = insights.find((insight) => insight.slug === slug);
 
   if (!insight) {
     notFound();
@@ -63,6 +65,7 @@ export default function InsightPage({ params }: { params: { slug: string } }) {
     "@type": "Article",
     "headline": insight.title,
     "description": insight.description,
+    "isAccessibleForFree": true,
     "image": new URL(insight.image, "https://logonsolutions.netlify.app").toString(),
     "author": {
       "@type": "Person",
@@ -86,7 +89,7 @@ export default function InsightPage({ params }: { params: { slug: string } }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
-      <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
+      <div className="container mx-auto px-fluid-sm py-fluid-lg">
         <div className="max-w-4xl mx-auto">
           <Link href="/insights" className="text-primary hover:underline flex items-center gap-2 mb-8">
             <ArrowLeft className="h-4 w-4" />
@@ -100,29 +103,37 @@ export default function InsightPage({ params }: { params: { slug: string } }) {
                   <Badge key={tag} variant="outline" className="border-primary text-primary">{tag}</Badge>
                 ))}
               </div>
-              <h1 className="text-3xl md:text-5xl font-bold mb-4">{insight.title}</h1>
+              <h1 className="text-fluid-lg font-bold mb-4">{insight.title}</h1>
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm text-muted-foreground">
                  <div className="flex items-center gap-4">
                     <span>By {insight.author}</span>
                     <span>•</span>
-                    <span>{new Date(insight.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                    <span>{formatFullDate(insight.date)}</span>
                 </div>
                 <ShareModal title={insight.title} />
               </div>
             </header>
 
-            <div data-ai-hint={insight.dataAiHint}>
-                <Image
-                src={insight.image}
-                alt={insight.title}
-                width={insight.width}
-                height={insight.height}
-                className="w-full h-auto object-cover rounded-lg mb-8"
-                priority
-                />
+            <div data-ai-hint={insight.dataAiHint} className="mb-8">
+                {insight.codeVisualType ? (
+                  <ArticleCodeVisual 
+                    type={insight.codeVisualType} 
+                    className="w-full h-[400px] rounded-lg"
+                    animated={true}
+                  />
+                ) : (
+                  <OptimizedImage
+                    src={insight.image}
+                    alt={insight.title}
+                    width={insight.width}
+                    height={insight.height}
+                    className="w-full h-auto rounded-lg"
+                    priority
+                  />
+                )}
             </div>
             
-            <InsightPageContent slug={params.slug} />
+            <InsightPageContent slug={slug} />
             
              <section className="mt-16 border-t pt-8">
                 <h3 className="text-2xl font-bold mb-4">About the Author</h3>
