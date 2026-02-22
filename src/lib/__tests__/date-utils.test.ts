@@ -19,7 +19,7 @@ import {
   isPast,
   isFuture,
   getDaysDifference,
-  DateFormat,
+  DateFormats,
 } from '../date-utils';
 
 describe('date-utils', () => {
@@ -40,37 +40,37 @@ describe('date-utils', () => {
 
   describe('formatDate', () => {
     it('should format date with FULL format', () => {
-      const result = formatDate(fixedDate, DateFormat.FULL);
+      const result = formatDate(fixedDate, 'FULL');
       expect(result).toBe('January 15, 2026');
     });
 
     it('should format date with SHORT format', () => {
-      const result = formatDate(fixedDate, DateFormat.SHORT);
+      const result = formatDate(fixedDate, 'SHORT');
       expect(result).toBe('Jan 15, 2026');
     });
 
     it('should format date with NUMERIC format', () => {
-      const result = formatDate(fixedDate, DateFormat.NUMERIC);
+      const result = formatDate(fixedDate, 'NUMERIC');
       expect(result).toMatch(/1\/15\/2026|01\/15\/2026/);
     });
 
     it('should format date with MONTH_YEAR format', () => {
-      const result = formatDate(fixedDate, DateFormat.MONTH_YEAR);
+      const result = formatDate(fixedDate, 'MONTH_YEAR');
       expect(result).toBe('January 2026');
     });
 
     it('should format date with ISO format', () => {
-      const result = formatDate(fixedDate, DateFormat.ISO);
+      const result = formatDate(fixedDate, 'ISO');
       expect(result).toBe('2026-01-15');
     });
 
     it('should handle string date input', () => {
-      const result = formatDate('2026-01-15', DateFormat.FULL);
+      const result = formatDate('2026-01-15', 'FULL');
       expect(result).toBe('January 15, 2026');
     });
 
     it('should handle invalid date', () => {
-      const result = formatDate('invalid-date', DateFormat.FULL);
+      const result = formatDate('invalid-date', 'FULL');
       expect(result).toBe('Invalid Date');
     });
   });

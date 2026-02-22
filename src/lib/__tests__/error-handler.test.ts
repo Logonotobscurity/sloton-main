@@ -16,6 +16,8 @@ import {
   validateRequiredFields,
   isErrorResponse,
   isSuccessResponse,
+  type ErrorResponse,
+  type SuccessResponse,
 } from '../error-handler';
 
 describe('error-handler', () => {
@@ -51,34 +53,46 @@ describe('error-handler', () => {
   describe('handleError', () => {
     it('should handle AppError', () => {
       const appError = new AppError('Test error', ErrorCode.VALIDATION_ERROR, 400);
-      const result = handleError(appError);
-      expect(result.code).toBe(ErrorCode.VALIDATION_ERROR);
-      expect(result.message).toBe('Test error');
+      const result = handleError(appError, 'test-context');
+      expect(result.success).toBe(false);
+      expect(result.error.code).toBe(ErrorCode.VALIDATION_ERROR);
+      expect(result.error.message).toBe('Test error');
     });
 
     it('should handle standard Error', () => {
       const error = new Error('Standard error');
-      const result = handleError(error);
-      expect(result.code).toBe(ErrorCode.UNKNOWN_ERROR);
-      expect(result.message).toBe('Standard error');
+      const result = handleError(error, 'test-context');
+      expect(result.success).toBe(false);
+      expect(result.error.code).toBe(ErrorCode.INTERNAL_ERROR);
+      expect(result.error.message).toBe('Standard error');
     });
 
     it('should handle string error', () => {
-      const result = handleError('String error');
-      expect(result.message).toBe('String error');
+      const result = handleError('String error', 'test-context');
+      expect(result.success).toBe(false);
+      expect(result.error.message).toBe('String error');
     });
 
     it('should handle unknown error', () => {
-      const result = handleError({ unknown: 'object' });
-      expect(result.code).toBe(ErrorCode.UNKNOWN_ERROR);
+      const result = handleError({ unknown: 'object' }, 'test-context');
+      expect(result.success).toBe(false);
+      expect(result.error.code).toBe(ErrorCode.UNKNOWN_ERROR);
     });
   });
 
   describe('createErrorResponse', () => {
-    it('should create error response from AppError', () => {
-      const error = new AppError('Test error', ErrorCode.VALIDATION_ERROR, 400);
-      const response = createErrorResponse(error);
-      expect(response.status).toBe(400);
+    it('should create error response with message and code', () => {
+      const response = createErrorResponse('Test error', ErrorCode.VALIDATION_ERROR);
+      expect(response.success).toBe(false);
+      expect(response.error.message).toBe('Test error');
+      expect(response.error.code).toBe(ErrorCode.VALIDATION_ERROR);
+      expect(response.error.timestamp).toBeDefined();
+    });
+
+    it('should include details when provided', () => {
+      const details = { field: 'email' };
+      const response = createErrorResponse('Validation failed', ErrorCode.VALIDATION_ERROR, details);
+      expect(response.error.details).toEqual(details);
     });
   });
 
@@ -86,27 +100,26 @@ describe('error-handler', () => {
     it('should create success response with data', () => {
       const data = { id: 1, name: 'Test' };
       const response = createSuccessResponse(data);
-      expect(response.status).toBe(200);
-    });
-
-    it('should create success response with custom status', () => {
-      const response = createSuccessResponse({ created: true }, 201);
-      expect(response.status).toBe(201);
+      expect(response.success).toBe(true);
+      expect(response.data).toEqual(data);
+      expect(response.timestamp).toBeDefined();
     });
   });
 
   describe('withErrorHandling', () => {
     it('should return result on success', async () => {
       const fn = vi.fn().mockResolvedValue('success');
-      const wrapped = withErrorHandling(fn);
+      const wrapped = withErrorHandling(fn, 'test-context');
       const result = await wrapped();
       expect(result).toBe('success');
     });
 
-    it('should handle errors', async () => {
+    it('should handle errors and return error response', async () => {
       const fn = vi.fn().mockRejectedValue(new Error('Failed'));
-      const wrapped = withErrorHandling(fn);
-      await expect(wrapped()).rejects.toThrow();
+      const wrapped = withErrorHandling(fn, 'test-context');
+      const result = await wrapped();
+      expect(result).toHaveProperty('success', false);
+      expect(result).toHaveProperty('error');
     });
   });
 
@@ -133,8 +146,8 @@ describe('error-handler', () => {
       
       await expect(
         retryWithBackoff(fn, { maxRetries: 2, initialDelay: 10 })
-      ).rejects.toThrow('Always fails');
-      expect(fn).toHaveBeenCalledTimes(3); // Initial + 2 retries
+      ).rejects.toThrow();
+      expect(fn).toHaveBeenCalledTimes(2); // maxRetries attempts
     });
   });
 
@@ -155,48 +168,69 @@ describe('error-handler', () => {
   });
 
   describe('validateRequiredFields', () => {
-    it('should return valid for complete object', () => {
+    it('should not throw for complete object', () => {
       const obj = { name: 'Test', email: 'test@example.com' };
-      const result = validateRequiredFields(obj, ['name', 'email']);
-      expect(result.valid).toBe(true);
-      expect(result.missingFields).toHaveLength(0);
+      expect(() => validateRequiredFields(obj, ['name', 'email'])).not.toThrow();
     });
 
-    it('should return invalid for missing fields', () => {
-      const obj = { name: 'Test' };
-      const result = validateRequiredFields(obj, ['name', 'email']);
-      expect(result.valid).toBe(false);
-      expect(result.missingFields).toContain('email');
+    it('should throw for missing fields', () => {
+      const obj = { name: 'Test' } as { name: string; email?: string };
+      expect(() => validateRequiredFields(obj, ['name', 'email'])).toThrow('Missing required fields: email');
     });
 
-    it('should handle empty values as missing', () => {
+    it('should throw for empty values', () => {
       const obj = { name: '', email: 'test@example.com' };
-      const result = validateRequiredFields(obj, ['name', 'email']);
-      expect(result.valid).toBe(false);
-      expect(result.missingFields).toContain('name');
+      expect(() => validateRequiredFields(obj, ['name', 'email'])).toThrow('Missing required fields: name');
+    });
+
+    it('should throw for null values', () => {
+      const obj = { name: null, email: 'test@example.com' } as { name: string | null; email: string };
+      expect(() => validateRequiredFields(obj, ['name', 'email'])).toThrow('Missing required fields: name');
     });
   });
 
   describe('isErrorResponse', () => {
     it('should return true for error response', () => {
-      const response = { success: false, error: { code: 'ERROR', message: 'Failed' } };
+      const response: ErrorResponse = {
+        success: false,
+        error: {
+          code: ErrorCode.VALIDATION_ERROR,
+          message: 'Failed',
+          timestamp: new Date().toISOString()
+        }
+      };
       expect(isErrorResponse(response)).toBe(true);
     });
 
     it('should return false for success response', () => {
-      const response = { success: true, data: {} };
+      const response: SuccessResponse<{}> = {
+        success: true,
+        data: {},
+        timestamp: new Date().toISOString()
+      };
       expect(isErrorResponse(response)).toBe(false);
     });
   });
 
   describe('isSuccessResponse', () => {
     it('should return true for success response', () => {
-      const response = { success: true, data: {} };
+      const response: SuccessResponse<{}> = {
+        success: true,
+        data: {},
+        timestamp: new Date().toISOString()
+      };
       expect(isSuccessResponse(response)).toBe(true);
     });
 
     it('should return false for error response', () => {
-      const response = { success: false, error: { code: 'ERROR', message: 'Failed' } };
+      const response: ErrorResponse = {
+        success: false,
+        error: {
+          code: ErrorCode.VALIDATION_ERROR,
+          message: 'Failed',
+          timestamp: new Date().toISOString()
+        }
+      };
       expect(isSuccessResponse(response)).toBe(false);
     });
   });

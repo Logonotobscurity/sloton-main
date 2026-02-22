@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { DialogFormWrapper } from '@/components/dialog-form-wrapper';
-import type { Metadata } from 'next';
+import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema } from '@/lib/seo';
 import { CommunityLeadForm } from '@/components/community-lead-form';
 import { DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { GlowingCard } from '@/components/ui/glowing-card';
@@ -14,24 +14,35 @@ import { PageHero } from '@/components/page-sections/page-hero';
 import { AdinkraBackground } from '@/components/ui/adinkra-background';
 import { trainingPrograms, communityProjects, trainingBenefits } from '@/lib/data/training-data';
 
+export const metadata = generateMetadata({
+  title: 'AI & Automation Training Courses in Nigeria | Professional Development',
+  description: 'Master in-demand tech skills with expert-led training courses in AI, process automation, and prompt engineering in Nigeria. Accelerate your career and drive business growth with LOG_ON professional development programs.',
+  keywords: [
+    ...KEYWORD_SETS.training,
+    'AI training Nigeria',
+    'automation training Lagos',
+    'prompt engineering course',
+    'AI certification Nigeria',
+    'technology training Lagos',
+    'professional development Nigeria',
+    'AI skills training',
+    'automation certification',
+  ],
+  canonical: 'https://logonsolutions.netlify.app/training',
+});
 
-export const metadata: Metadata = {
-  title: 'AI & Automation Training Courses',
-  description: 'Master in-demand tech skills. Explore expert-led training courses in AI, process automation, and prompt engineering to accelerate your career and drive business growth.',
-  alternates: {
-    canonical: '/training',
-  },
-  openGraph: {
-      title: 'AI & Automation Training Courses',
-      description: 'Master in-demand tech skills. Explore expert-led training courses in AI, process automation, and prompt engineering.',
-      url: '/training',
-      type: 'website',
-  }
-};
+const trainingServiceSchema = generateServiceSchema({
+  name: 'AI & Automation Training Programs',
+  description: 'Master in-demand tech skills. Expert-led training courses in AI, process automation, and prompt engineering to accelerate your career and drive business growth.',
+  url: 'https://logonsolutions.netlify.app/training',
+  provider: 'LOG_ON',
+  areaServed: 'Nigeria',
+});
 
 export default function TrainingPage() {
   return (
     <div className="bg-background">
+      <JsonLd data={trainingServiceSchema} />
       <PageHero 
         title="Build Skills That Deliver Immediate ROI"
         description="We believe in building more than just technology; we're dedicated to building skills, fostering leadership, and making a positive community impact. Explore our training programs and our commitment to ethical innovation."

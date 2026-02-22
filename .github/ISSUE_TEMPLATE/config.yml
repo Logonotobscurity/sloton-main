@@ -1,0 +1,14 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 📚 Documentation
+    url: https://github.com/YOUR_USERNAME/YOUR_REPO/blob/main/README.md
+    about: Check our documentation for answers
+  - name: 💬 Discussions
+    url: https://github.com/YOUR_USERNAME/YOUR_REPO/discussions
+    about: Ask questions and discuss ideas with the community
+  - name: 🔒 Security Issue
+    url: https://github.com/YOUR_USERNAME/YOUR_REPO/security/advisories/new
+    about: Report a security vulnerability privately
+  - name: 📧 Contact Support
+    url: mailto:logonthepage@gmail.com
+    about: Contact LOG_ON support team directly

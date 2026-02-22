@@ -2,21 +2,32 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { ContactForm } from '@/components/contact-form';
 import { Mail, Phone, Handshake } from 'lucide-react';
-import type { Metadata } from 'next';
 import { Faq } from '@/components/faq';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { generateMetadata, KEYWORD_SETS, LocalBusinessSchema } from '@/lib/seo';
 import { PageHero } from '@/components/page-sections/page-hero';
 import { contactReasons } from '@/lib/data/services-data';
 
-export const metadata: Metadata = {
-  title: 'Contact Us | AI Agent Development & Automation in Nigeria',
-  description: "Contact LOG_ON to start your project in AI agent development or workplace automation. Our experts in Nigeria are ready to help you put AI to work. Let's talk.",
-};
+export const metadata = generateMetadata({
+  title: 'Contact LOG_ON | AI Agent Development & Automation Experts in Nigeria',
+  description: 'Contact LOG_ON to start your AI agent development or workplace automation project in Nigeria. Our experts in Lagos are ready to help you transform your business with intelligent technology. Schedule a free consultation today.',
+  keywords: [
+    ...KEYWORD_SETS.ai,
+    ...KEYWORD_SETS.automation,
+    'contact AI company Nigeria',
+    'AI consultation Lagos',
+    'automation experts Nigeria',
+    'technology consulting Lagos',
+    'AI project inquiry',
+  ],
+  canonical: 'https://logonsolutions.netlify.app/contact',
+});
 
 export default function ContactPage() {
   return (
     <div className="bg-background">
+        <LocalBusinessSchema />
         <PageHero 
             title="Get In Touch"
             description="We're here to help you navigate your digital transformation journey. Whether you have a specific project in mind, a question about our services, or just want to explore possibilities, our team is ready to connect. Let's start a conversation and build something great together."

@@ -3,6 +3,8 @@
  * Centralized configuration management for the application
  */
 
+import { RETRY, TIMING, TOAST, ANALYTICS } from '@/lib/constants';
+
 export interface AppConfig {
   // Environment
   environment: string;
@@ -89,7 +91,7 @@ export const defaultAppConfig: AppConfig = {
   apiUrl: 'https://api.logonsolutions.netlify.app',
   
   security: {
-    rateLimitWindow: 60 * 1000, // 1 minute
+    rateLimitWindow: TIMING.MINUTE, // 1 minute
     rateLimitMaxRequests: 60,
     jwtExpiry: '1h',
     jwtRefreshExpiry: '7d',
@@ -117,14 +119,14 @@ export const defaultAppConfig: AppConfig = {
     },
     analytics: {
       matomoUrl: 'https://logonsolutionsnetlifyapp.matomo.cloud/',
-      siteId: 1,
-      googleTagManagerId: 'GTM-XXXXXXX', // Replace with actual GTM ID
+      siteId: ANALYTICS.MATOMO_SITE_ID,
+      googleTagManagerId: ANALYTICS.GTM_ID,
     },
   },
   
   ui: {
-    toastLimit: 1,
-    toastRemoveDelay: 1000000,
+    toastLimit: TOAST.LIMIT,
+    toastRemoveDelay: TOAST.REMOVE_DELAY,
     carouselDelay: 5000,
     animationDelayStep: 0.1,
   },
@@ -147,10 +149,10 @@ export const defaultAppConfig: AppConfig = {
     provider: 'google-ai',
     fallbackProvider: 'mock',
     timeout: 30000, // 30 seconds
-    retryAttempts: 3,
+    retryAttempts: RETRY.MAX_ATTEMPTS,
     enableCircuitBreaker: true,
     circuitBreakerThreshold: 5,
-    circuitBreakerTimeout: 60000, // 1 minute
+    circuitBreakerTimeout: TIMING.MINUTE, // 1 minute
     enableLogging: true,
     logLevel: 'info',
   },

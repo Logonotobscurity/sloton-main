@@ -3,8 +3,6 @@
  * Centralized configuration for service worker caching strategies
  */
 
-import { getConfig } from '@/config';
-
 export interface ServiceWorkerConfig {
   staticCacheName: string;
   runtimeCacheName: string;
@@ -22,28 +20,37 @@ export interface ServiceWorkerConfig {
   };
 }
 
+// Static configuration to avoid circular dependencies during build
+const staticConfig: ServiceWorkerConfig = {
+  staticCacheName: 'logon-cache-v1',
+  runtimeCacheName: 'runtime-cache',
+  precacheUrls: [
+    '/',
+    '/offline',
+    '/manifest.json',
+    '/favicon.ico',
+    '/herosection.webp',
+    '/chat-icon.webp',
+    '/transperent-background.webp'
+  ],
+  apiPatterns: [
+    /\/api\//,
+    /\/auth\//,
+  ],
+  cacheStrategies: {
+    static: 'cache-first',
+    api: 'network-first',
+    images: 'cache-first',
+  },
+  maxAge: {
+    static: 24 * 60 * 60 * 1000, // 24 hours
+    api: 5 * 60 * 1000, // 5 minutes
+    images: 7 * 24 * 60 * 60 * 1000, // 7 days
+  },
+};
+
 export function getServiceWorkerConfig(): ServiceWorkerConfig {
-  const config = getConfig();
-  
-  return {
-    staticCacheName: config.cache.staticCacheName,
-    runtimeCacheName: config.cache.runtimeCacheName,
-    precacheUrls: config.cache.precacheUrls,
-    apiPatterns: [
-      /\/api\//,
-      /\/auth\//,
-    ],
-    cacheStrategies: {
-      static: 'cache-first',
-      api: 'network-first',
-      images: 'cache-first',
-    },
-    maxAge: {
-      static: 24 * 60 * 60 * 1000, // 24 hours
-      api: 5 * 60 * 1000, // 5 minutes
-      images: 7 * 24 * 60 * 60 * 1000, // 7 days
-    },
-  };
+  return staticConfig;
 }
 
 /**

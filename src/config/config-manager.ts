@@ -3,6 +3,7 @@
  * Manages application configuration with environment-specific settings and validation
  */
 
+import { logger } from '@/lib/logger';
 import { AppConfig, defaultAppConfig, getAppConfigFromEnvironment, validateAppConfig, getConfigForEnvironment } from './app.config';
 
 export class ConfigManager {
@@ -29,7 +30,7 @@ export class ConfigManager {
    */
   public initialize(overrides?: Partial<AppConfig>): void {
     if (this.initialized) {
-      console.warn('ConfigManager already initialized');
+      logger.warn('ConfigManager already initialized');
       return;
     }
 
@@ -57,9 +58,17 @@ export class ConfigManager {
       this.config = config;
       this.initialized = true;
 
-      console.log(`Configuration initialized for environment: ${config.environment}`);
+      // Configure logger with actual config values (optional - logger has defaults)
+      logger.configure({
+        maxQueueSize: config.logging.maxQueueSize,
+        endpoint: config.logging.endpoint,
+        flushInterval: config.logging.flushInterval,
+        isDevelopment: config.isDevelopment
+      });
+
+      logger.info('Configuration initialized', { environment: config.environment });
     } catch (error) {
-      console.error('Failed to initialize configuration:', error);
+      logger.error('Failed to initialize configuration', { error });
       throw error;
     }
   }
@@ -69,7 +78,7 @@ export class ConfigManager {
    */
   public getConfig(): AppConfig {
     if (!this.initialized) {
-      console.warn('ConfigManager not initialized, returning default config');
+      logger.warn('ConfigManager not initialized, returning default config');
       return { ...defaultAppConfig };
     }
     return { ...this.config };

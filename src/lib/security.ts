@@ -69,6 +69,13 @@ export class RateLimiter {
   constructor() {
     this.store = new Map();
     this.cleanupInterval = setInterval(() => this.cleanup(), SECURITY_CONSTANTS.RATE_LIMIT.WINDOW);
+    
+    // Register cleanup on shutdown
+    if (typeof process !== 'undefined') {
+      import('@/lib/shutdown').then(({ onShutdown }) => {
+        onShutdown(() => this.destroy());
+      });
+    }
   }
 
   get(key: string): { count: number; timestamp: number } | undefined {
