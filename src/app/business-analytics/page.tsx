@@ -2,20 +2,41 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { CheckCircle, ArrowRight, BarChart3 } from 'lucide-react';
-import type { Metadata } from 'next';
 import Link from 'next/link';
+import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema } from '@/lib/seo';
 import { CaseStudyFeature } from '@/components/page-sections/case-study-feature';
 import { PageHero } from '@/components/page-sections/page-hero';
 import { analyticsServices, businessAnalyticsBenefits } from '@/lib/data/services-data';
 
-export const metadata: Metadata = {
-  title: 'Business Analytics & BI Solutions | Dashboards & Reporting',
+export const metadata = generateMetadata({
+  title: 'Business Analytics & BI Solutions in Nigeria | Dashboards & Reporting',
+  description: 'Transform raw data into actionable insights with our business analytics and BI solutions in Nigeria. We build custom dashboards, data reports, and KPI trackers to fuel data-driven growth and strategic decision-making.',
+  keywords: [
+    ...KEYWORD_SETS.analytics,
+    'business analytics Nigeria',
+    'BI solutions Lagos',
+    'data analytics Nigeria',
+    'custom dashboards',
+    'business intelligence Nigeria',
+    'data visualization Lagos',
+    'KPI tracking',
+    'data-driven insights',
+  ],
+  canonical: 'https://logonsolutions.netlify.app/business-analytics',
+});
+
+const analyticsServiceSchema = generateServiceSchema({
+  name: 'Business Analytics & BI Solutions',
   description: 'Transform raw data into actionable insights with our business analytics and BI solutions. We build custom dashboards, data reports, and KPI trackers to fuel data-driven growth.',
-};
+  url: 'https://logonsolutions.netlify.app/business-analytics',
+  provider: 'LOG_ON',
+  areaServed: 'Nigeria',
+});
 
 export default function BusinessAnalyticsPage() {
   return (
     <div className="bg-background">
+      <JsonLd data={analyticsServiceSchema} />
       <PageHero
         title="Business Analytics & Intelligence"
         description="Turn your data into your most valuable asset. We help you move from simply collecting data to actively using it to drive strategy, optimize operations, and uncover new opportunities. Our custom business analytics solutions provide the clarity you need to make confident, data-driven decisions."

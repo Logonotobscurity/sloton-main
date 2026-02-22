@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This document outlines the requirements for conducting a comprehensive architecture audit of the LOG_ON website codebase. The audit aims to identify structural issues, improve code organization, enhance modularity, and establish best practices for long-term maintainability. The system under review is a Next.js 15 application with TypeScript, featuring AI services, automation workflows, and a complex component architecture.
+This document outlines the requirements for conducting a comprehensive architecture audit of the LOG_ON website codebase. The audit aims to identify structural issues, improve code organization, enhance modularity, and establish best practices for long-term maintainability. The system under review is a Next.js  application with TypeScript, , and a complex component architecture.
 
 ## Glossary
 

@@ -11,9 +11,10 @@ interface CaseStudyFeatureProps {
   tags: string[];
   title: string;
   description: string;
+  showDesignProcess?: boolean;
 }
 
-export function CaseStudyFeature({ tags, title, description }: CaseStudyFeatureProps) {
+export function CaseStudyFeature({ tags, title, description, showDesignProcess = false }: CaseStudyFeatureProps) {
   const featuredStudies = React.useMemo(() => {
     return allCaseStudies.filter(study => 
       tags.some(tag => study.tags.includes(tag))
@@ -34,7 +35,7 @@ export function CaseStudyFeature({ tags, title, description }: CaseStudyFeatureP
                 </p>
             </div>
             <div className="max-w-4xl mx-auto">
-                <CaseStudiesCarousel studies={featuredStudies} />
+                <CaseStudiesCarousel studies={featuredStudies} showDesignProcess={showDesignProcess} />
             </div>
              <div className="mt-16 text-center">
                 <Button asChild>

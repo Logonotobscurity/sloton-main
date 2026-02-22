@@ -9,9 +9,17 @@ import crypto from 'crypto';
 import Ajv, { type ValidateFunction } from 'ajv';
 import addFormats from 'ajv-formats';
 
-// Assuming a message bus producer class exists (e.g., for Kafka or SQS)
-// import { producer } from './producer'; 
-const producer = { connect: async () => {}, send: async (message: any) => console.log('Producing to Event Bus:', message) };
+// NOTE: This is a mock implementation for demonstration purposes
+// In production, replace with actual message bus implementation
+const producer = {
+  connect: async () => {},
+  send: async (message: any) => {
+    // TODO: Replace with actual message bus producer (Kafka, SQS, etc.)
+    if (process.env.NODE_ENV === 'development') {
+      console.log('[DEV] Producing to Event Bus:', JSON.stringify(message, null, 2));
+    }
+  }
+};
 
 import leadEventSchema from './lead-event.schema.json';
 
@@ -49,7 +57,10 @@ app.post('/ingest', apiKeyAuth, async (req, res) => {
         // 2. Validate against JSON Schema
         const isValid = validate(event);
         if (!isValid) {
-            console.error('Invalid event payload:', validate.errors);
+            // Log validation errors in development
+            if (process.env.NODE_ENV === 'development') {
+                console.error('[DEV] Invalid event payload:', validate.errors);
+            }
             return res.status(400).json({ error: 'Invalid payload', details: validate.errors });
         }
 
@@ -77,8 +88,11 @@ app.post('/ingest', apiKeyAuth, async (req, res) => {
         });
 
     } catch (error: unknown) {
-        console.error('Ingestion error:', error);
-        // Basic error logging. A real implementation would use a structured logger.
+        // Log error in development
+        if (process.env.NODE_ENV === 'development') {
+            console.error('[DEV] Ingestion error:', error);
+        }
+        // In production, use structured logger
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
@@ -86,7 +100,9 @@ app.post('/ingest', apiKeyAuth, async (req, res) => {
 const startServer = async () => {
     await producer.connect();
     app.listen(PORT, () => {
-        console.log(`Ingestion API listening on port ${PORT}`);
+        if (process.env.NODE_ENV === 'development') {
+            console.log(`[DEV] Ingestion API listening on port ${PORT}`);
+        }
     });
 };
 

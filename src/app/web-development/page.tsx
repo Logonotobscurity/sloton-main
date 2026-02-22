@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { ArrowRight, Code } from 'lucide-react';
-import type { Metadata } from 'next';
+import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema } from '@/lib/seo';
 import { PageHero } from '@/components/page-sections/page-hero';
 import { webDevelopmentServices } from '@/lib/data/services-data';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -12,10 +12,29 @@ import { Skeleton } from '@/components/ui/skeleton';
 const CaseStudyFeature = lazy(() => import('@/components/page-sections/case-study-feature').then(module => ({ default: module.CaseStudyFeature })));
 const Faq = lazy(() => import('@/components/faq').then(module => ({ default: module.Faq })));
 
-export const metadata: Metadata = {
-  title: 'Custom Web & Application Development',
-  description: 'Custom web development for publishers, e-commerce, and corporate clients. We build scalable, secure, and optimized digital platforms using Next.js and React to help your business grow.',
-};
+export const metadata = generateMetadata({
+  title: 'Custom Web & Application Development in Nigeria | Next.js & React',
+  description: 'Custom web development for publishers, e-commerce, and corporate clients in Nigeria. We build scalable, secure, and optimized digital platforms using Next.js and React to help your business grow.',
+  keywords: [
+    ...KEYWORD_SETS.development,
+    'web development Nigeria',
+    'Next.js development Lagos',
+    'React development Nigeria',
+    'custom web applications',
+    'e-commerce development Nigeria',
+    'corporate website development',
+    'scalable web platforms',
+  ],
+  canonical: 'https://logonsolutions.netlify.app/web-development',
+});
+
+const webDevServiceSchema = generateServiceSchema({
+  name: 'Custom Web & Application Development',
+  description: 'Custom web development for publishers, e-commerce, and corporate clients. We build scalable, secure, and optimized digital platforms using Next.js and React.',
+  url: 'https://logonsolutions.netlify.app/web-development',
+  provider: 'LOG_ON',
+  areaServed: 'Nigeria',
+});
 
 const SectionSkeleton = () => (
   <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
@@ -30,6 +49,7 @@ const SectionSkeleton = () => (
 export default function WebDevelopmentPage() {
   return (
     <div className="bg-background">
+        <JsonLd data={webDevServiceSchema} />
         <PageHero
             title="Web & Custom Development"
             description="We specialize in crafting custom web projects tailored to your specific business needs. Drawing on our deep experience in IT solutions and AI automation, we build scalable, secure, and optimized digital platforms designed to help you grow."

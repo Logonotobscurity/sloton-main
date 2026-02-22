@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { SECURITY_HEADERS, SECURITY_CONSTANTS, RateLimiter, validateRequest } from '@/lib/security';
+import { SECURITY_CONSTANTS, RateLimiter } from '@/lib/security';
+import { getCSPPolicy, generateNonce } from '@/lib/csp';
+import { SECURITY } from '@/lib/constants';
 
 // Initialize rate limiter
 const rateLimiter = new RateLimiter();
@@ -31,24 +33,31 @@ export async function middleware(request: NextRequest) {
     });
   }
 
-  // Add security headers to all responses
+  // Generate nonce for CSP
+  const nonce = generateNonce();
+  
+  // Create response with security headers
   const response = NextResponse.next();
   
   // Security headers
   const securityHeaders = {
     'X-DNS-Prefetch-Control': 'on',
+    'Strict-Transport-Security': `max-age=${SECURITY.HSTS_MAX_AGE}; includeSubDomains; preload`,
     'X-XSS-Protection': '1; mode=block',
     'X-Frame-Options': 'SAMEORIGIN',
     'X-Content-Type-Options': 'nosniff',
-    'Referrer-Policy': 'origin-when-cross-origin',
+    'Referrer-Policy': 'strict-origin-when-cross-origin',
     'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
-    'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:;"
+    'Content-Security-Policy': getCSPPolicy(nonce),
   };
 
   // Apply security headers
   Object.entries(securityHeaders).forEach(([key, value]) => {
     response.headers.set(key, value);
   });
+
+  // Store nonce for use in pages (if needed)
+  response.headers.set('x-nonce', nonce);
 
   return response;
 }

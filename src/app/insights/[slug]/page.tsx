@@ -33,22 +33,40 @@ export async function generateMetadata(
     }
   }
 
-  const previousImages = (await parent).openGraph?.images || []
   const absoluteImageUrl = new URL(insight.image, (await parent).metadataBase || undefined).toString();
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://logonsolutions.netlify.app';
+  const articleUrl = `${siteUrl}/insights/${resolvedParams.slug}`;
 
   return {
     title: insight.title,
     description: insight.description,
+    authors: [{ name: insight.author }],
     openGraph: {
       title: insight.title,
       description: insight.description,
-      images: [absoluteImageUrl, ...previousImages],
+      url: articleUrl,
+      siteName: 'LOG_ON - Connecting Advantages',
+      images: [
+        {
+          url: absoluteImageUrl,
+          width: insight.width,
+          height: insight.height,
+          alt: insight.title,
+        }
+      ],
+      locale: 'en_US',
+      type: 'article',
+      publishedTime: insight.date,
+      authors: [insight.author],
+      tags: insight.tags,
     },
-     twitter: {
+    twitter: {
       card: 'summary_large_image',
       title: insight.title,
       description: insight.description,
-      images: [absoluteImageUrl], 
+      images: [absoluteImageUrl],
+      creator: '@logon_ng',
+      site: '@logon_ng',
     },
   }
 }
@@ -106,13 +124,18 @@ export default async function InsightPage({ params }: PageProps) {
                 ))}
               </div>
               <h1 className="text-fluid-lg font-bold mb-4">{insight.title}</h1>
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm text-muted-foreground">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-muted-foreground mb-2">
                  <div className="flex items-center gap-4">
                     <span>By {insight.author}</span>
                     <span>•</span>
                     <span>{formatFullDate(insight.date)}</span>
+                    <span>•</span>
+                    <ShareModal 
+                      title={insight.title} 
+                      description={insight.description}
+                      hashtags={insight.tags}
+                    />
                 </div>
-                <ShareModal title={insight.title} />
               </div>
             </header>
 

@@ -10,6 +10,7 @@ import { BotWidget } from '@/components/bot-widget';
 import { BotpressWidget } from '@/components/botpress-widget';
 import { BookDemoWidget } from '@/components/book-demo-widget';
 import { BackToTop } from '@/components/back-to-top';
+import { NewsletterPopup } from '@/components/newsletter-popup';
 import { Abhaya_Libre, Nunito } from 'next/font/google';
 import ErrorBoundary from '@/components/error-boundary';
 import { ChatbotProvider } from '@/context/chatbot-provider';
@@ -255,6 +256,7 @@ export default function RootLayout({
               </ChatbotProvider>
               <BotpressWidget />
               <BackToTop />
+              <NewsletterPopup />
               <Toaster />
             </ErrorBoundary>
           </ThemeProvider>

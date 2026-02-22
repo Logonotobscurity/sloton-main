@@ -2,20 +2,42 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BrainCircuit, CheckCircle, ArrowRight } from 'lucide-react';
-import type { Metadata } from 'next';
 import Link from 'next/link';
+import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema } from '@/lib/seo';
 import { CaseStudyFeature } from '@/components/page-sections/case-study-feature';
 import { PageHero } from '@/components/page-sections/page-hero';
 import { aiServices, aiSolutionsBenefits } from '@/lib/data/services-data';
 
-export const metadata: Metadata = {
-  title: 'AI Agent Development & Custom Solutions | LOG_ON',
+export const metadata = generateMetadata({
+  title: 'AI Agent Development & Custom AI Solutions in Nigeria',
+  description: 'Expert AI agent development and custom machine learning solutions in Nigeria. We design and deploy intelligent AI agents for workplace automation, predictive analytics, and business innovation. Transform your operations with cutting-edge AI technology.',
+  keywords: [
+    ...KEYWORD_SETS.ai,
+    'AI agent development Nigeria',
+    'custom AI solutions Lagos',
+    'machine learning Nigeria',
+    'AI consulting Nigeria',
+    'intelligent agents',
+    'AI automation Nigeria',
+    'predictive analytics',
+    'NLP solutions',
+    'computer vision Nigeria',
+  ],
+  canonical: 'https://logonsolutions.netlify.app/ai-solutions',
+});
+
+const aiServiceSchema = generateServiceSchema({
+  name: 'AI Agent Development & Custom AI Solutions',
   description: 'Expert AI agent development and custom machine learning solutions. We design and deploy AI agents for workplace automation to solve complex business challenges and drive growth in Nigeria.',
-};
+  url: 'https://logonsolutions.netlify.app/ai-solutions',
+  provider: 'LOG_ON',
+  areaServed: 'Nigeria',
+});
 
 export default function AiSolutionsPage() {
   return (
     <div className="bg-background">
+      <JsonLd data={aiServiceSchema} />
       <PageHero
         title="Custom AI Solutions & Agent Development"
         description="At LOG_ON, we don't just use AI—we build it. We specialize in creating bespoke artificial intelligence, AI agents, and machine learning solutions that integrate seamlessly with your operations to solve your most complex challenges. Our expert team partners with you to transform your data into a strategic asset, driving efficiency, innovation, and measurable growth."
@@ -77,9 +99,10 @@ export default function AiSolutionsPage() {
         </section>
 
         <CaseStudyFeature 
-            tags={["AI", "Chatbot", "Analytics"]}
+            tags={["AI", "Chatbot", "Analytics", "Design Thinking"]}
             title="Real-World AI Success Stories"
-            description="See how our custom AI solutions have transformed businesses, from automating support to providing critical data insights."
+            description="See how our custom AI solutions have transformed businesses, from automating support to providing critical data insights. Explore our design thinking process that transforms abstract ideas into concrete visual prototypes."
+            showDesignProcess={true}
         />
 
          <section className="text-center mt-fluid-md py-fluid-md bg-background rounded-lg px-fluid-sm">

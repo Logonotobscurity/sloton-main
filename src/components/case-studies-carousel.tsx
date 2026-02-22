@@ -15,13 +15,23 @@ import { Badge } from "./ui/badge";
 import { caseStudies as allCaseStudies } from "@/lib/data/case-studies";
 import { CaseStudy } from "@/lib/data/case-studies";
 import { CardImage } from "@/lib/image-utils";
+import { DesignThinkingShowcase } from "./design-thinking-showcase";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { ChevronDown } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface CaseStudiesCarouselProps {
   studies?: CaseStudy[];
+  showDesignProcess?: boolean;
 }
 
-export function CaseStudiesCarousel({ studies }: CaseStudiesCarouselProps) {
+export function CaseStudiesCarousel({ studies, showDesignProcess = false }: CaseStudiesCarouselProps) {
   const caseStudies = studies || allCaseStudies;
+  const [openStates, setOpenStates] = React.useState<Record<number, boolean>>({});
+
+  const toggleOpen = (index: number) => {
+    setOpenStates(prev => ({ ...prev, [index]: !prev[index] }));
+  };
 
   return (
     <Carousel
@@ -55,10 +65,24 @@ export function CaseStudiesCarousel({ studies }: CaseStudiesCarouselProps) {
                   <CardTitle className="text-lg md:text-xl">{study.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-grow">
-                  <p className="text-muted-foreground mb-4 text-sm line-clamp-3">{study.description}</p>
-                   <div className="flex flex-wrap gap-2">
+                  <p className="text-muted-foreground mb-4 text-sm">{study.description}</p>
+                   <div className="flex flex-wrap gap-2 mb-4">
                     {study.tags.map(tag => <Badge key={tag} variant="outline" className="border-primary text-primary">{tag}</Badge>)}
                    </div>
+
+                   {showDesignProcess && study.designProcess && (
+                    <Collapsible open={openStates[index]} onOpenChange={() => toggleOpen(index)}>
+                      <CollapsibleTrigger asChild>
+                        <Button variant="outline" className="w-full mt-4">
+                          <span>View Design Thinking Process</span>
+                          <ChevronDown className={`ml-2 h-4 w-4 transition-transform ${openStates[index] ? 'rotate-180' : ''}`} />
+                        </Button>
+                      </CollapsibleTrigger>
+                      <CollapsibleContent>
+                        <DesignThinkingShowcase process={study.designProcess} client={study.client} />
+                      </CollapsibleContent>
+                    </Collapsible>
+                   )}
                 </CardContent>
               </Card>
             </div>

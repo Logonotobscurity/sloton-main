@@ -1,0 +1,65 @@
+# Auto-labeling configuration for pull requests
+
+# Documentation
+documentation:
+  - '**/*.md'
+  - 'docs/**/*'
+
+# Components
+components:
+  - 'src/components/**/*'
+
+# Pages
+pages:
+  - 'src/app/**/*'
+
+# Styles
+styles:
+  - '**/*.css'
+  - 'tailwind.config.*'
+  - 'postcss.config.*'
+
+# Configuration
+config:
+  - '*.config.*'
+  - '.env*'
+  - 'tsconfig.json'
+  - 'package.json'
+  - 'package-lock.json'
+
+# Tests
+tests:
+  - '**/*.test.*'
+  - '**/*.spec.*'
+  - 'e2e/**/*'
+  - 'vitest.config.*'
+  - 'playwright.config.*'
+
+# CI/CD
+ci-cd:
+  - '.github/**/*'
+  - 'netlify.toml'
+  - 'firebase.json'
+
+# Dependencies
+dependencies:
+  - 'package.json'
+  - 'package-lock.json'
+
+# Articles/Content
+content:
+  - 'src/components/articles/**/*'
+  - 'src/lib/data/insights.*'
+
+# API
+api:
+  - 'src/app/api/**/*'
+  - 'src/app/actions.*'
+
+# Utilities
+utilities:
+  - 'src/lib/**/*'
+
+# Assets
+assets:
+  - 'public/**/*'
