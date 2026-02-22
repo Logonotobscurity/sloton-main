@@ -9,6 +9,16 @@ const nextConfig = {
   // Set the output file tracing root to the project directory to avoid lockfile warnings
   outputFileTracingRoot: __dirname,
   
+  // Ignore ESLint errors during build (run separately in CI)
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  
+  // Ignore TypeScript errors during build for faster deployments
+  typescript: {
+    ignoreBuildErrors: false, // Keep this false to catch type errors
+  },
+  
   // Optimize images for better performance and SEO
   images: {
     formats: ['image/avif', 'image/webp'],

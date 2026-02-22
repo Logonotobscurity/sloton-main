@@ -16,13 +16,14 @@ import { getTemplates } from '@/lib/data/workflow-templates';
 import { categoryStyles } from '@/lib/category-styles';
 import { GatedFeatureModal } from '@/components/gated-feature-modal';
 
-// Type for page props
-type Props = {
-  params: { slug: string };
+// Type for page props - Next.js 15 uses Promise for params
+type PageProps = {
+  params: Promise<{ slug: string }>;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const template = getTemplateBySlug(params.slug);
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const resolvedParams = await params;
+  const template = getTemplateBySlug(resolvedParams.slug);
   if (!template) {
     return { title: 'Template Not Found' };
   }
@@ -32,8 +33,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function TemplatePreviewPage({ params }: Props) {
-  const slug = params.slug;
+export default async function TemplatePreviewPage({ params }: PageProps) {
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
   const template = getTemplateBySlug(slug);
 
   if (!template) {
