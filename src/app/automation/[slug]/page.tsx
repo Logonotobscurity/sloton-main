@@ -184,7 +184,7 @@ export default async function TemplatePreviewPage({ params }: PageProps) {
   );
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   const templates = getTemplates();
   return templates.map((template) => ({
     slug: template.slug,
