@@ -3,76 +3,113 @@
 import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, Check } from 'lucide-react';
-import { InteractiveCard } from '@/components/page-sections/strategic-partner/interactive-card';
-import { Cog } from 'lucide-react';
-import { TaskAutomationForm } from '@/components/task-automation-form';
+import { cn } from '@/lib/utils';
+import { GlowingCard } from '@/components/ui/glowing-card';
+import { GridBackground } from '@/components/ui/grid-background';
+import { Cog, Zap, Clock, TrendingUp, Shield } from 'lucide-react';
 
+const platformFeatures = [
+    {
+        icon: <Cog className="h-8 w-8 text-primary" />,
+        title: "AI-Powered Workflow Designer",
+        description: "Describe any business process in plain English. Get a complete, optimized automation plan in seconds with cost and time savings analysis.",
+    },
+    {
+        icon: <Zap className="h-8 w-8 text-primary" />,
+        title: "Instant Deployment",
+        description: "From concept to production in days, not months. Our platform handles the complexity so you can focus on results.",
+    },
+    {
+        icon: <Clock className="h-8 w-8 text-primary" />,
+        title: "Real-Time Monitoring",
+        description: "Track performance, identify bottlenecks, and optimize workflows with live dashboards and intelligent alerts.",
+    },
+    {
+        icon: <TrendingUp className="h-8 w-8 text-primary" />,
+        title: "Continuous Optimization",
+        description: "Our AI learns from your workflows and suggests improvements to maximize efficiency and reduce costs over time.",
+    },
+    {
+        icon: <Shield className="h-8 w-8 text-primary" />,
+        title: "Enterprise Security",
+        description: "Bank-level encryption, compliance-ready architecture, and complete data sovereignty for your peace of mind.",
+    },
+];
 
-const popularWorkflows = [
-    "Automate Lead Conversion & Follow-up",
-    "Streamline Financial Reporting & Compliance",
-    "Accelerate Employee Onboarding",
-    "Automate Marketing Campaign Execution",
-    "Resolve Customer Support Tickets Faster"
-]
+const FeatureCard = ({
+  children,
+  className,
+}: {
+  children?: React.ReactNode;
+  className?: string;
+}) => {
+  return (
+    <GlowingCard className={cn(`relative overflow-hidden`, className)}>
+      <GridBackground />
+      <div className="relative z-10 h-full">
+        {children}
+      </div>
+    </GlowingCard>
+  );
+};
+
+const FeatureTitle = ({ children }: { children?: React.ReactNode }) => {
+  return (
+    <h3 className="text-lg md:text-xl font-semibold text-foreground">
+      {children}
+    </h3>
+  );
+};
+
+const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
+  return (
+    <p className={cn("text-sm text-muted-foreground mt-2")}>
+      {children}
+    </p>
+  );
+};
 
 export function SmarterAutomation() {
-
-  const designerCardProps = {
-    icon: <Cog className="h-8 w-8 md:h-10 md:w-10 text-primary" />,
-    title: "Intelligent Automation Designer",
-    description: "Describe any workflow in plain English and our AI will design an optimized automation plan, showing you exactly where you'll save time and money.",
-    'aria-label': "Open Intelligent Automation Designer dialog",
-    dialogTitle: "Intelligent Automation Designer",
-    dialogDescription: "Describe a workflow to generate a configured, optimized task design, complete with AI suggestions.",
-    dialogContent: <TaskAutomationForm />,
-    ctaText: "Try It Free",
-    customIndex: 0
-  };
-
-
   return (
-    <section className="w-full py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="py-fluid-lg bg-background relative overflow-hidden">
+      <div className="container mx-auto px-fluid-sm">
         <div className="max-w-3xl mx-auto text-center">
             <p className="text-sm font-normal uppercase tracking-widest text-primary">03/ Our Platform</p>
-            <h2 className="font-headline text-[clamp(2rem,5vw,3rem)] font-bold !leading-snug mt-4">
+            <h2 className="text-fluid-xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium font-headline mt-2">
               The Fastest Path to Automation
             </h2>
-            <p className="text-muted-foreground text-md md:text-lg mt-4">
+            <p className="text-fluid-base max-w-2xl my-4 mx-auto text-muted-foreground text-center font-normal">
               Describe any business process in plain English. Get a complete, optimized automation plan in seconds—showing exactly how to reduce costs and save time.
             </p>
         </div>
-        <div className="grid lg:grid-cols-2 gap-8 items-stretch mt-12">
-            
-            <InteractiveCard {...designerCardProps} />
 
-            <Card className="bg-secondary/20 p-8 flex flex-col">
-                <CardHeader className="p-0">
-                    <CardTitle>Popular Business Solutions</CardTitle>
-                    <CardDescription>Explore solutions for every part of your business.</CardDescription>
-                </CardHeader>
-                <CardContent className="p-0 pt-6 flex-grow">
-                    <ul className="space-y-3">
-                        {popularWorkflows.map(item => (
-                            <li key={item} className="flex items-center gap-3">
-                                <Check className="h-5 w-5 text-primary flex-shrink-0" />
-                                <span className="text-muted-foreground">{item}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </CardContent>
-                 <CardFooter className="p-0 pt-6">
-                    <Button asChild variant="outline">
-                        <Link href="/automation">
-                            Explore All Templates <ArrowRight className="ml-2 h-4 w-4" />
-                        </Link>
-                    </Button>
-                </CardFooter>
-            </Card>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-12">
+            {platformFeatures.map((feature, i) => (
+                <FeatureCard 
+                    key={feature.title} 
+                    className={cn(
+                        "border-t border-border/50",
+                        i === 0 ? "md:border-l-0" : "md:border-l",
+                        i === 1 ? "md:border-l-0" : "",
+                        i % 2 !== 0 ? "md:border-l-0" : "md:border-l",
+                        "lg:border-l"
+                    )}
+                >
+                    <div className="flex flex-col h-full p-6">
+                        {feature.icon}
+                        <div className="mt-4">
+                            <FeatureTitle>{feature.title}</FeatureTitle>
+                            <FeatureDescription>{feature.description}</FeatureDescription>
+                        </div>
+                    </div>
+                </FeatureCard>
+            ))}
+        </div>
 
+        <div className="mt-16 text-center">
+            <Button asChild size="lg">
+                <Link href="/automation">Explore All Templates</Link>
+            </Button>
         </div>
       </div>
     </section>

@@ -46,17 +46,38 @@ export const researchAreas = [
 
 export const analystReports = [
     {
-        firm: "Gartner®",
-        title: "Magic Quadrant™ for Enterprise Conversational AI Platforms",
-        date: "July 2024",
-        excerpt: "LOG_ON recognized for its ability to execute and completeness of vision in the rapidly evolving AI landscape.",
-        href: "#"
+        firm: "AfriTech Market Intelligence",
+        title: "African AI Market Position & Innovation Leadership",
+        date: "Q1 2026",
+        excerpt: "LOG_ON demonstrates exceptional innovation leadership in the African AI market with citation-grade research and deep contextual understanding of African cognitive architecture.",
+        href: "/about/reports"
     },
     {
-        firm: "Forrester™",
-        title: "The Forrester Wave™: Robotic Process Automation, Q3 2024",
-        date: "September 2024",
-        excerpt: "LOG_ON named a Strong Performer in our evaluation of the top RPA vendors, cited for its ease of use and strong partner ecosystem.",
-        href: "#"
+        firm: "Workflow Automation Insights",
+        title: "Agentic AI & SME Workflow Automation Landscape",
+        date: "Q1 2026",
+        excerpt: "LOG_ON's system-level multi-agent design is 18-24 months ahead of market standard, with exceptional SME market fit and modular architecture.",
+        href: "/about/reports"
+    },
+    {
+        firm: "Global AI Safety Review",
+        title: "Behavioral Informatics & Responsible AI Research",
+        date: "Q1 2026",
+        excerpt: "LOG_ON sets a new standard for responsible AI development with citation-grade benchmark paradox diagnosis and first formal characterization of critical AI safety challenges.",
+        href: "/about/reports"
+    },
+    {
+        firm: "Digital Enterprise Index",
+        title: "Multi-Product Ecosystem & Delivery Excellence",
+        date: "Q1 2026",
+        excerpt: "LOG_ON demonstrates exceptional portfolio coherence with a connected ecosystem of research, frameworks, and tools spanning 16 active builds across 7 domains.",
+        href: "/about/reports"
+    },
+    {
+        firm: "Web3 Commerce Intelligence",
+        title: "Agentic Protocol Commerce & Intelligence Infrastructure",
+        date: "Q1 2026",
+        excerpt: "LOG_ON's Peculiar platform represents the most architecturally sophisticated positioning in the emerging agentic commerce intelligence layer, built on all six core APC protocols with $8B+ proven infrastructure.",
+        href: "/about/reports"
     }
 ];

@@ -5,8 +5,8 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import * as React from 'react';
 import { motion } from 'framer-motion';
-import { GlowingCard } from '../ui/glowing-card';
-import { GridBackground } from '../ui/grid-background';
+import { GlowingCard } from '@/components/ui/glowing-card';
+import { GridBackground } from '@/components/ui/grid-background';
 import { LogoImage } from '@/lib/image-utils';
 
 

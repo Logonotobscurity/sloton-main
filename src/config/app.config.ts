@@ -115,7 +115,7 @@ export const defaultAppConfig: AppConfig = {
       enabled: !!process.env.RESEND_API_KEY,
     },
     whatsapp: {
-      link: 'https://wa.me/qr/QFSBRGKZGHP3F1',
+      link: 'https://wa.me/2348143066320',
     },
     analytics: {
       matomoUrl: 'https://logonsolutionsnetlifyapp.matomo.cloud/',

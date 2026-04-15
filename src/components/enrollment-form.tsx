@@ -12,6 +12,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import { communityLeadAction } from '@/app/actions';
+import { getWhatsAppUrl } from '@/lib/whatsapp';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -32,8 +33,6 @@ const trainingPrograms = [
     'Chatbot Development',
     'Digital Transformation Strategy'
 ];
-
-const whatsappLink = "https://wa.me/qr/QFSBRGKZGHP3F1";
 
 export function EnrollmentForm({ programName }: { programName?: string }) {
   const { toast } = useToast();
@@ -57,7 +56,14 @@ export function EnrollmentForm({ programName }: { programName?: string }) {
             title: "Let's Talk!",
             description: "Redirecting you to WhatsApp to start the conversation.",
         });
-        window.open(whatsappLink, '_blank');
+        const whatsappUrl = getWhatsAppUrl({
+            name: values.name,
+            email: values.email,
+            phone: values.phone,
+            programName: programName || values.programName,
+            source: 'Enrollment Form'
+        });
+        window.open(whatsappUrl, '_blank');
         form.reset();
     } else {
         toast({

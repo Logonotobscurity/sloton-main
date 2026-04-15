@@ -6,20 +6,21 @@ import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Logo } from "./logo";
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { Mail } from "lucide-react";
 import { menuData, SitemapSection, SectionWithItems } from "@/lib/menu-data";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { ScrollArea } from "../ui/scroll-area";
-import { ThemeToggle } from "./theme-toggle";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { ThemeToggle } from "@/components/header/theme-toggle";
 import { motion } from "framer-motion";
 import { useUiStore } from "@/hooks/use-ui-store";
+import { IconFacebook, IconX, IconLinkedIn, IconInstagram, IconYouTube } from "@/lib/icons";
+import { cn } from "@/lib/utils";
 
 const hasItems = (section: SitemapSection): section is SectionWithItems => {
   return 'items' in section && Array.isArray(section.items);
@@ -68,10 +69,76 @@ const MobileNavigation = () => {
                         return null;
                     })}
                 </Accordion>
-                <div className="flex flex-col space-y-2 mt-4 border-t pt-4">
-                    <Link href="/contact" className="text-lg font-semibold p-2 rounded-md hover:bg-accent" onClick={() => setMenuOpen(false)}>
-                        Contact Us
-                    </Link>
+                
+                {/* Theme Toggle - Moved inside ScrollArea */}
+                <div className="flex items-center justify-between w-full py-4 px-2 border-t border-b mt-4">
+                    <span className="text-sm font-semibold text-muted-foreground">Theme</span>
+                    <ThemeToggle />
+                </div>
+                
+                {/* Social Media Icons - Moved inside ScrollArea */}
+                <div className="flex flex-col gap-3 w-full py-4 px-2">
+                    <h3 className="text-sm font-semibold text-muted-foreground">Connect With Us</h3>
+                    <div className="flex items-center flex-wrap gap-4">
+                        <Link 
+                            href="mailto:logonthepage@gmail.com" 
+                            className="text-primary hover:text-primary/80 transition-colors duration-200"
+                            aria-label="Contact us via email"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            <Mail className="h-5 w-5" />
+                        </Link>
+                        <Link 
+                            href="https://x.com/log_onthepage" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-primary hover:text-primary/80 transition-colors duration-200"
+                            aria-label="Follow us on X (Twitter)"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            <IconX className="h-5 w-5" />
+                        </Link>
+                        <Link 
+                            href="https://www.linkedin.com/company/logon-connecting-advantages" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-primary hover:text-primary/80 transition-colors duration-200"
+                            aria-label="Connect with us on LinkedIn"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            <IconLinkedIn className="h-5 w-5" />
+                        </Link>
+                        <Link 
+                            href="https://www.instagram.com/logon_thepage/" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-primary hover:text-primary/80 transition-colors duration-200"
+                            aria-label="Follow us on Instagram"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            <IconInstagram className="h-5 w-5" />
+                        </Link>
+                        <Link 
+                            href="https://www.facebook.com/logonthepage" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-primary hover:text-primary/80 transition-colors duration-200"
+                            aria-label="Like us on Facebook"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            <IconFacebook className="h-5 w-5" />
+                        </Link>
+                        <Link 
+                            href="https://www.youtube.com/@logonthepage" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-primary hover:text-primary/80 transition-colors duration-200"
+                            aria-label="Subscribe to our YouTube channel"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            <IconYouTube className="h-5 w-5" />
+                        </Link>
+                    </div>
                 </div>
             </div>
         </ScrollArea>
@@ -85,20 +152,41 @@ export const MobileNav = () => {
   React.useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
+      // Hide Botpress widget when menu is open
+      const botpressWidget = document.getElementById('botpress-webchat');
+      if (botpressWidget) {
+        botpressWidget.style.display = 'none';
+      }
     } else {
       document.body.style.overflow = '';
+      // Show Botpress widget when menu is closed
+      const botpressWidget = document.getElementById('botpress-webchat');
+      if (botpressWidget) {
+        botpressWidget.style.display = '';
+      }
     }
     return () => {
       document.body.style.overflow = '';
+      // Ensure widget is visible on cleanup
+      const botpressWidget = document.getElementById('botpress-webchat');
+      if (botpressWidget) {
+        botpressWidget.style.display = '';
+      }
     };
   }, [isMenuOpen]);
 
   return (
     <Sheet open={isMenuOpen} onOpenChange={setMenuOpen}>
       <SheetTrigger asChild>
-          <Button variant="ghost" size="icon" className="md:hidden" aria-label="Open navigation menu" aria-expanded={isMenuOpen}>
-            <Menu className="h-6 w-6" />
-          </Button>
+          <button 
+            className={cn("hamburger", isMenuOpen && "open")}
+            aria-label="Open navigation menu" 
+            aria-expanded={isMenuOpen}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
       </SheetTrigger>
       <SheetContent side="left" className="w-full max-w-sm p-0 flex flex-col" aria-label="Mobile navigation menu">
         <motion.div
@@ -117,10 +205,6 @@ export const MobileNav = () => {
             </SheetHeader>
             
             <MobileNavigation />
-
-            <SheetFooter className="p-4 border-t mt-auto bg-secondary/50 flex flex-row items-center justify-end">
-                <ThemeToggle />
-            </SheetFooter>
         </motion.div>
       </SheetContent>
     </Sheet>

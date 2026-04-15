@@ -24,7 +24,7 @@ type ChartContextProps = {
 
 const ChartContext = React.createContext<ChartContextProps | null>(null)
 
-function useChart() {
+function useChart(): ChartContextProps {
   const context = React.useContext(ChartContext)
 
   if (!context) {
@@ -322,7 +322,7 @@ function getPayloadConfigFromPayload(
   config: ChartConfig,
   payload: unknown,
   key: string
-) {
+): ChartConfig[string] | undefined {
   if (typeof payload !== "object" || payload === null) {
     return undefined
   }

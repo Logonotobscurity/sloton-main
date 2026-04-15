@@ -7,9 +7,9 @@ import Link from "next/link";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import SolutionRecommendationForm from "@/components/solution-recommendation-form";
 import { motion } from "framer-motion";
-import { AdinkraBackground } from "../ui/adinkra-background";
+import { AdinkraBackground } from "@/components/ui/adinkra-background";
 import { TypeAnimation } from "react-type-animation";
-import { HeroCodePreview } from "../ui/hero-code-preview";
+import { HeroCodePreview } from "@/components/ui/hero-code-preview";
 import { staggerContainerCustom, staggerItem, createFadeIn } from "@/lib/animation-variants";
  
 export function Hero() {
@@ -59,7 +59,7 @@ export function Hero() {
                   </span>
                 </div>
                 <br className="md:hidden" />
-                <span className="md:whitespace-nowrap">for Growing Businesses.</span>
+                <span className="text-[clamp(2rem,4vw,3.5rem)] md:whitespace-nowrap">for Growing Businesses.</span>
               </div>
             </motion.h1>
             
@@ -76,7 +76,7 @@ export function Hero() {
             >
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button size="fluid-lg">Get Your Free Efficiency Assessment</Button>
+                  <Button variant="primary" size="large">Get Your Free Efficiency Assessment</Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-xl md:max-w-2xl bg-background">
                   <DialogHeader>
@@ -88,8 +88,8 @@ export function Hero() {
                   <SolutionRecommendationForm />
                 </DialogContent>
               </Dialog>
-              <Button size="fluid-lg" variant="secondary" asChild>
-                <Link href="/solutions">See How We Drive Growth</Link>
+              <Button size="large" variant="outline" asChild>
+                <Link href="/solutions" aria-label="Explore our AI and Automation Solutions">Explore Our AI & Automation Solutions</Link>
               </Button>
             </motion.div>
           </motion.div>

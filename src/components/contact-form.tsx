@@ -3,7 +3,6 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -11,21 +10,13 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, ArrowRight } from 'lucide-react';
 import { contactFormAction } from '@/app/actions';
-
-const formSchema = z.object({
-  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
-  email: z.string().email({ message: 'Please enter a valid email address.' }),
-  phone: z.string().optional(),
-  subject: z.string().min(5, { message: 'Subject must be at least 5 characters.' }),
-  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
-});
-
+import { contactFormSchema, type ContactFormData } from '@/schemas/forms';
 
 export function ContactForm() {
   const { toast } = useToast();
   
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
     defaultValues: {
       name: '',
       email: '',
@@ -37,7 +28,7 @@ export function ContactForm() {
   
   const { isSubmitting } = form.formState;
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: ContactFormData) {
     const result = await contactFormAction(values);
     if(result?.success) {
         toast({

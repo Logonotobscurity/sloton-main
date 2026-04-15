@@ -4,15 +4,18 @@
  * These services subscribe to the `lead.captured` topic and forward data to external systems.
  */
 
-import fetch from 'node-fetch'; // Using node-fetch for example
+import fetch from 'node-fetch';
+import type { NormalizedLeadEvent, KafkaMessage, ConnectorResponse } from '@/types/data-pipeline';
+import { logger } from '@/lib/logger';
 
 // Mock consumer for `lead.captured` topic
 const consumer = {
-    run: async ({ eachMessage }: { eachMessage: (message: any) => Promise<void> }) => {
+    run: async ({ eachMessage }: { eachMessage: (message: KafkaMessage) => Promise<void> }) => {
         // This would be replaced by a real Kafka/SQS consumer loop
         setInterval(() => {
-            const message = {
+            const message: KafkaMessage = {
                 topic: 'lead.captured',
+                partition: 0,
                 message: {
                     value: JSON.stringify({
                         event_id: 'mock-event-id',
@@ -34,9 +37,9 @@ const consumer = {
 const AI_ASSISTANT_ENDPOINT = 'https://api.example.com/ai/ingest';
 const AI_ASSISTANT_API_KEY = process.env.AI_ASSISTANT_API_KEY;
 
-async function sendToAIAssistant(event: any) {
+async function sendToAIAssistant(event: NormalizedLeadEvent): Promise<ConnectorResponse> {
     try {
-        console.log(`Sending event ${event.event_id} to AI Assistant...`);
+        logger.info(`Sending event ${event.event_id} to AI Assistant...`);
         const response = await fetch(AI_ASSISTANT_ENDPOINT, {
             method: 'POST',
             headers: {
@@ -50,6 +53,7 @@ async function sendToAIAssistant(event: any) {
             throw new Error(`AI Assistant API returned status: ${response.status}`);
         }
         console.log(`Successfully sent event ${event.event_id} to AI Assistant.`);
+        return { success: true, message: `Sent to AI Assistant` };
     } catch (error) {
         console.error('Error sending to AI Assistant:', error);
         // This error should be handled with a retry mechanism before going to a DLQ.
@@ -58,7 +62,7 @@ async function sendToAIAssistant(event: any) {
 }
 
 // --- CRM Connector (e.g., Salesforce) ---
-async function sendToCRM(event: any) {
+async function sendToCRM(event: NormalizedLeadEvent): Promise<void> {
     // Placeholder for CRM integration logic
     console.log(`Syncing lead ${event.payload.email} to CRM...`);
     // Example: await salesforceClient.upsertLead(event.payload);
@@ -67,10 +71,10 @@ async function sendToCRM(event: any) {
 
 
 // Main consumer loop
-const main = async () => {
+const main = async (): Promise<void> => {
     await consumer.run({
-        eachMessage: async ({ message }: any) => {
-            const event = JSON.parse(message.value.toString());
+        eachMessage: async (kafkaMsg: KafkaMessage): Promise<void> => {
+            const event = JSON.parse(kafkaMsg.message.value.toString()) as NormalizedLeadEvent;
             
             // Run connectors in parallel
             try {

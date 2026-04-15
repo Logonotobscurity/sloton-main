@@ -6,14 +6,12 @@ import { Toaster } from '@/components/ui/toaster';
 import { WebsiteLoader } from '@/components/website-loader';
 import Script from 'next/script';
 import { ThemeProvider } from '@/components/theme-provider';
-import { BotWidget } from '@/components/bot-widget';
-import { BotpressWidget } from '@/components/botpress-widget';
-import { BookDemoWidget } from '@/components/book-demo-widget';
-import { BackToTop } from '@/components/back-to-top';
-import { NewsletterPopup } from '@/components/newsletter-popup';
+import { LayoutWidgets } from '@/components/layout-widgets';
+import { ChatbotWidgets } from '@/components/chatbot-widgets';
 import { Abhaya_Libre, Nunito } from 'next/font/google';
 import ErrorBoundary from '@/components/error-boundary';
 import { ChatbotProvider } from '@/context/chatbot-provider';
+import { DataBehaviorsInit } from '@/components/data-behaviors-init';
 
 const abhayaLibre = Abhaya_Libre({
   subsets: ['latin'],
@@ -42,7 +40,7 @@ export const metadata: Metadata = {
     siteName: 'LOG_ON',
     images: [
       {
-        url: '/og-image.png', 
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'LOG_ON',
@@ -55,11 +53,17 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AI & Automation for Business Efficiency | LOG_ON',
     description: 'We design your digital ecosystem.',
-    images: ['/og-image.png'], 
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,
     follow: true,
+  },
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-NG': '/',
+    },
   },
 };
 
@@ -167,10 +171,10 @@ const localBusinessSchema = {
       {
         "@type": "Offer",
         "itemOffered": {
-            "@type": "Service",
-            "name": "Business Analytics",
-            "url": "https://logonsolutions.netlify.app/solutions#business-analytics",
-            "description": "Custom dashboards and BI reporting to turn data into actionable insights."
+          "@type": "Service",
+          "name": "Business Analytics",
+          "url": "https://logonsolutions.netlify.app/solutions#business-analytics",
+          "description": "Custom dashboards and BI reporting to turn data into actionable insights."
         }
       },
       {
@@ -193,14 +197,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${nunito.variable} ${abhayaLibre.variable}`}>
-       <head>
+      <head>
+        <meta name="geo.region" content="NG-LA" />
+        <meta name="geo.placename" content="Lagos" />
+        <meta name="geo.position" content="6.5093;3.3717" />
+        <meta name="ICBM" content="6.5093, 3.3717" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/manifest.json" />
+
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-XXXXXXX');
+            })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID || "GTM-XXXXXXX"}');
           `}
         </Script>
         <script
@@ -229,37 +243,35 @@ export default function RootLayout({
         </Script>
       </head>
       <body suppressHydrationWarning={true}>
-          <noscript>
-            <iframe 
-              src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
-              height="0" 
-              width="0" 
-              style={{display: 'none', visibility: 'hidden'}}
-            ></iframe>
-          </noscript>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <ErrorBoundary>
-              <WebsiteLoader />
-              <ChatbotProvider>
-                <Header />
-                <main id="main-content">
-                  {children}
-                </main>
-                <Footer />
-                <BotWidget initialMessage="Hello! How can I help you discover the right LOG_ON solution today?" />
-                <BookDemoWidget />
-              </ChatbotProvider>
-              <BotpressWidget />
-              <BackToTop />
-              <NewsletterPopup />
-              <Toaster />
-            </ErrorBoundary>
-          </ThemeProvider>
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID || 'GTM-XXXXXXX'}`}
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          ></iframe>
+        </noscript>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ErrorBoundary>
+            <WebsiteLoader />
+            <DataBehaviorsInit />
+            <ChatbotProvider>
+              <Header />
+              <main id="main-content">
+                {children}
+              </main>
+              <Footer />
+              <ChatbotWidgets />
+            </ChatbotProvider>
+            <LayoutWidgets />
+            <Toaster />
+          </ErrorBoundary>
+        </ThemeProvider>
       </body>
     </html>
   );

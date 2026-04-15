@@ -1,9 +1,9 @@
 
 "use client";
 
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { CaseStudiesCarousel } from "../case-studies-carousel";
+import { CaseStudiesCarousel } from "@/components/case-studies-carousel";
 import { motion } from 'framer-motion';
 import { staggerContainerCustom, staggerItem } from '@/lib/animation-variants';
 import { LogoImage } from '@/lib/image-utils';

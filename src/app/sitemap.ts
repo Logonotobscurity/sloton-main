@@ -1,11 +1,12 @@
 import { MetadataRoute } from 'next';
 import { getTemplates } from '@/lib/data/workflow-templates';
+import { insights } from '@/lib/data/insights';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://logonsolutions.netlify.app';
   const currentDate = new Date();
 
-  // High priority pages (homepage, main services)
+  // High priority pages
   const highPriorityRoutes = [
     { path: '/', priority: 1.0, changeFrequency: 'daily' as const },
     { path: '/ai-solutions', priority: 0.9, changeFrequency: 'weekly' as const },
@@ -13,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/contact', priority: 0.9, changeFrequency: 'monthly' as const },
   ];
 
-  // Medium priority pages (services, solutions)
+  // Medium priority pages
   const mediumPriorityRoutes = [
     { path: '/business-analytics', priority: 0.8, changeFrequency: 'weekly' as const },
     { path: '/chatbots', priority: 0.8, changeFrequency: 'weekly' as const },
@@ -25,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/use-cases', priority: 0.8, changeFrequency: 'weekly' as const },
   ];
 
-  // Lower priority pages (about, support)
+  // Lower priority pages
   const lowPriorityRoutes = [
     { path: '/about', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/about/careers', priority: 0.6, changeFrequency: 'monthly' as const },
@@ -38,12 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/ab-testing', priority: 0.5, changeFrequency: 'monthly' as const },
   ];
 
-  // Combine all static routes
-  const allStaticRoutes = [
-    ...highPriorityRoutes,
-    ...mediumPriorityRoutes,
-    ...lowPriorityRoutes,
-  ];
+  const allStaticRoutes = [...highPriorityRoutes, ...mediumPriorityRoutes, ...lowPriorityRoutes];
 
   const staticUrls = allStaticRoutes.map((route) => ({
     url: `${baseUrl}${route.path}`,
@@ -60,13 +56,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  // TODO: Add dynamic insight/blog post URLs when available
-  // const insightUrls = await getInsights().map((insight) => ({
-  //   url: `${baseUrl}/insights/${insight.slug}`,
-  //   lastModified: insight.updatedAt || insight.createdAt,
-  //   changeFrequency: 'monthly' as const,
-  //   priority: 0.7,
-  // }));
+  // Dynamic insight/blog post URLs
+  const insightUrls = insights.map((insight) => ({
+    url: `${baseUrl}/insights/${insight.slug}`,
+    lastModified: new Date(insight.date),
+    changeFrequency: 'monthly' as const,
+    priority: 0.75,
+  }));
 
-  return [...staticUrls, ...workflowUrls];
+  return [...staticUrls, ...workflowUrls, ...insightUrls];
 }

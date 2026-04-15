@@ -70,9 +70,10 @@ export function HeroCodePreview({ className }: { className?: string }) {
               <span className="w-6 text-right pr-2 text-muted-foreground/30 select-none text-[10px]">
                 {index + 1}
               </span>
-              <span className={getLineClass(line.type)}>
-                {highlightLine(line.text, line.type)}
-              </span>
+              <span 
+                className={getLineClass(line.type)}
+                dangerouslySetInnerHTML={{ __html: highlightLine(line.text, line.type) as string }}
+              />
             </motion.div>
           ))}
         </div>
@@ -142,5 +143,5 @@ function highlightLine(text: string, type: string): React.ReactNode {
     '<span class="text-accent/80">$1</span>('
   );
 
-  return <span dangerouslySetInnerHTML={{ __html: result }} />;
+  return result;
 }

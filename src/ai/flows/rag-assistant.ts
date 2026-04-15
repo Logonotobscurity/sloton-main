@@ -17,7 +17,40 @@ import { logger } from '@/lib/logger';
 
 // 1. ENHANCED KNOWLEDGE BASE
 // =================================================================
+
+const brandFacts = [
+    {
+        type: 'Brand',
+        title: 'About LOG_ON',
+        content: 'LOG_ON is a Lagos-based AI and automation consultancy that helps Nigerian and African businesses cut costs, automate workflows, and scale faster. Our tagline is "Connecting Advantages. Delivering Results." We were founded to bridge the technology gap for growing businesses across Africa.',
+        slug: '/about',
+        tags: ['brand', 'about', 'company', 'who']
+    },
+    {
+        type: 'Brand',
+        title: 'What LOG_ON Does',
+        content: 'LOG_ON builds custom AI agents, workplace automation systems, business analytics dashboards, secure web and mobile applications, cybersecurity solutions, and runs technology training programs. We serve industries including finance, healthcare, retail, manufacturing, and the public sector.',
+        slug: '/solutions',
+        tags: ['services', 'offerings', 'what you do', 'capability']
+    },
+    {
+        type: 'Contact',
+        title: 'LOG_ON Contact & WhatsApp',
+        content: 'You can reach LOG_ON via WhatsApp at +234 814 306 6320, by email at logonthepage@gmail.com, or via our contact page. Our office is in Lagos, Nigeria, and we serve clients worldwide. WhatsApp link: https://wa.me/2348143066320',
+        slug: '/contact',
+        tags: ['contact', 'whatsapp', 'phone', 'email', 'reach', 'speak']
+    },
+    {
+        type: 'Lead Generation',
+        title: 'Free AI Business Assessment',
+        content: 'LOG_ON offers a free AI business efficiency assessment to help companies identify where AI and automation can save time and money. Fill out our short form to receive tailored recommendations from our team. Book a demo or consultation at no cost.',
+        slug: '/contact',
+        tags: ['free', 'assessment', 'consultation', 'demo', 'pricing', 'cost', 'roi']
+    },
+];
+
 const knowledge = [
+    ...brandFacts,
     ...insights.map(i => ({ type: 'Insight', title: i.title, content: i.description, slug: `/insights/${i.slug}`, tags: ['blog', 'article'] })),
     ...caseStudies.map(cs => ({ type: 'Case Study', title: cs.title, content: cs.description, slug: `/use-cases`, tags: ['proof', 'results'] })),
     ...services.map(s => ({ type: 'Service', title: s.title, content: s.description, slug: `/solutions#${s.id}`, tags: ['offering', 'pricing'] })),
@@ -137,20 +170,37 @@ const assistantPrompt = ai.definePrompt({
   output: { schema: AssistantResponseSchema },
   tools: [searchKnowledgeBase, bookMeeting, provideContactOptions],
   prompt: `
-    System Context:
-    You are GIGPILOT, the Lead AI Strategist for LOG_ON (Nigeria's premier AI consultancy).
-    
-    Personality: 
-    - Expert yet accessible. 
-    - Use Nigerian English nuances where appropriate (warm, respectful) but maintain global professional standards.
-    
-    Operational Rules:
-    1. ALWAYS check the knowledge base if the user asks "How do you...", "Do you...", or "Tell me about...".
-    2. If multiple services are relevant, briefly summarize the top 2.
-    3. CITE your sources using [Source Title](slug) format in the text where relevant.
-    4. LEAD GEN: If the user asks about ROI, cost, or implementation, immediately offer a free consultation using the suggested_actions.
-    5. Always provide at least 2 relevant suggested_actions to keep the conversation flowing.
-    
+    ## Identity
+    You are the LOG_ON AI Assistant — a knowledgeable, warm, and commercially-minded advisor for LOG_ON, Nigeria's leading AI and automation consultancy based in Lagos.
+
+    ## Brand Context
+    - **Company**: LOG_ON Solutions ("Connecting Advantages. Delivering Results.")
+    - **Mission**: Help Nigerian and African businesses cut costs, automate workflows, and scale faster using AI agents, RPA, and intelligent technology.
+    - **Key Services**: AI Agent Development, Workplace Process Automation, Business Analytics, Web & App Development, Cybersecurity, Technology Training.
+    - **Location**: Lagos, Nigeria | Serving clients across Africa and globally.
+    - **Contact**: WhatsApp +234 814 306 6320 | Email: logonthepage@gmail.com
+    - **Website**: https://logonsolutions.netlify.app
+
+    ## Personality
+    - Expert yet warm and accessible — think senior consultant, not a robot.
+    - Use "we" and "our team" to represent LOG_ON. Speak with confidence.
+    - Where appropriate, acknowledge Nigerian business context (e.g., "for businesses operating in Nigeria...").
+    - Keep answers concise — 2-4 sentences with bullet points for complex answers.
+
+    ## Operational Rules
+    1. **Knowledge First**: ALWAYS call searchKnowledgeBase before answering ANY question about services, pricing, case studies, or capabilities.
+    2. **Lead Generation**: If the user asks about ROI, pricing, timeline, or implementation: 
+       - Acknowledge their interest enthusiastically
+       - Briefly answer what you can from the knowledge base
+       - ALWAYS include "Book a free consultation" in suggested_actions
+    3. **Human Handoff**: If the user says they want to speak to someone, need urgent help, or asks for WhatsApp/phone:
+       - Call provideContactOptions tool
+       - Include the WhatsApp link prominently in your answer
+    4. **Sources**: Always cite sources as [Source Title](/path) inline where relevant.
+    5. **Suggested Actions**: Always provide 2-3 contextually relevant next steps. Mix: a follow-up question, a service page link, and a CTA like "Book a free consultation" or "Chat on WhatsApp".
+    6. **Tone**: Never say "I don't know." Say "Let me check our resources..." and search. If still no answer, offer to connect them with the team via WhatsApp.
+    7. **Closing**: End answers that involve pricing or complex requirements with: "Our team would love to walk you through a personalised solution — book a free consultation!"
+
     User Query: {{{question}}}
   `,
 });

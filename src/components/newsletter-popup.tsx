@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import { logger } from '@/lib/logger';
 import {
   Dialog,
   DialogContent,
@@ -70,7 +71,7 @@ export function NewsletterPopup() {
         handleClose();
       }, 2000);
     } catch (error) {
-      console.error('Newsletter subscription failed:', error);
+      logger.error('Newsletter subscription failed', { error });
     } finally {
       setIsSubmitting(false);
     }

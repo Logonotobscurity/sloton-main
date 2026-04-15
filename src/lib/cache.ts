@@ -1,4 +1,5 @@
 import { cache } from 'react';
+import { logger } from '@/lib/logger';
 
 type CacheOptions = {
   revalidate?: number | false;
@@ -28,7 +29,7 @@ export const fetchWithCache = cache(async function<T>(
 
     return response.json();
   } catch (error) {
-    console.error(`Error fetching ${url}:`, error);
+    logger.error(`Error fetching ${url}`, { error });
     throw error;
   }
 });
@@ -60,7 +61,7 @@ export class LocalStorageCache {
     return `${this.prefix}${key}`;
   }
 
-  set(key: string, value: any, expiryInSeconds: number = 3600): void {
+  set<T = unknown>(key: string, value: T, expiryInSeconds: number = 3600): void {
     const item = {
       value,
       expiry: Date.now() + (expiryInSeconds * 1000),

@@ -12,6 +12,7 @@ import { Loader2, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import { communityLeadAction } from '@/app/actions';
 import { DatePicker } from './ui/date-picker';
+import { getWhatsAppUrl } from '@/lib/whatsapp';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -19,8 +20,6 @@ const formSchema = z.object({
   interest: z.string().optional(),
   date: z.date().optional(),
 });
-
-const whatsappLink = "https://wa.me/qr/QFSBRGKZGHP3F1";
 
 export function CommunityLeadForm({ interest }: { interest?: string }) {
   const { toast } = useToast();
@@ -43,7 +42,13 @@ export function CommunityLeadForm({ interest }: { interest?: string }) {
             title: "Let's Talk!",
             description: "Redirecting you to WhatsApp to start the conversation.",
         });
-        window.open(whatsappLink, '_blank');
+        const whatsappUrl = getWhatsAppUrl({
+            name: values.name,
+            email: values.email,
+            interest: interest || values.interest,
+            source: 'Community Lead Form'
+        });
+        window.open(whatsappUrl, '_blank');
         form.reset();
     } else {
         toast({

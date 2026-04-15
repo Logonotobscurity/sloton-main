@@ -140,27 +140,39 @@ export default function AboutPage() {
                     <h2 className="text-fluid-lg font-bold font-headline">Industry Analyst Reports</h2>
                     <p className="mt-4 text-fluid-base text-muted-foreground">Don't just take our word for it. See why leading industry analysts recognize LOG_ON for our innovation, market presence, and ability to deliver results for our customers.</p>
                 </div>
-                <div className="max-w-4xl mx-auto space-y-6">
-                    {analystReports.map((report) => (
-                        <Card key={report.title} className="bg-background">
-                            <CardHeader>
-                                <p className="font-semibold text-primary">{report.firm}</p>
-                                <CardTitle>{report.title}</CardTitle>
-                                <CardDescription>{report.date}</CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                <blockquote className="border-l-4 pl-4 italic text-muted-foreground">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-0 max-w-6xl mx-auto">
+                    {analystReports.map((report, i) => (
+                        <GlowingCard 
+                            key={report.title}
+                            className={`border-t border-border/50 ${
+                                i === 0 ? "md:border-l-0" : "md:border-l"
+                            } ${
+                                i % 2 !== 0 ? "md:border-l-0" : "md:border-l"
+                            }`}
+                        >
+                            <div className="p-6 md:p-8 h-full flex flex-col">
+                                <p className="font-semibold text-primary text-sm uppercase tracking-wide">{report.firm}</p>
+                                <h3 className="text-xl font-semibold mt-3 mb-2">{report.title}</h3>
+                                <p className="text-sm text-muted-foreground mb-4">{report.date}</p>
+                                <blockquote className="border-l-4 border-primary/30 pl-4 italic text-muted-foreground flex-grow">
                                     "{report.excerpt}"
                                 </blockquote>
-                                <Button asChild variant="outline" className="mt-6">
-                                    <Link href={report.href}>
+                                <Button asChild variant="outline" className="mt-6 w-full">
+                                    <Link href={report.href} target="_blank" rel="noopener noreferrer">
                                         <Download className="mr-2 h-4 w-4"/>
-                                        Access Report
+                                        View Report
                                     </Link>
                                 </Button>
-                            </CardContent>
-                        </Card>
+                            </div>
+                        </GlowingCard>
                     ))}
+                </div>
+                <div className="text-center mt-8">
+                    <Button asChild size="lg">
+                        <Link href="/about/reports">
+                            View All Reports <ArrowRight className="ml-2 h-5 w-5" />
+                        </Link>
+                    </Button>
                 </div>
             </div>
         </section>
