@@ -2,7 +2,7 @@
 "use client";
 
 import { SolutionRecommendationOutput } from "@/ai/flows/solution-recommendation";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "../ui/card";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { CheckCircle, Lightbulb, TrendingUp } from "lucide-react";
 
 interface AssessmentResultProps {

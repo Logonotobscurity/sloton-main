@@ -1,81 +1,128 @@
 
 "use client";
 
-import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
+import React from "react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { GlowingCard } from "@/components/ui/glowing-card";
+import { GridBackground } from "@/components/ui/grid-background";
 import {
     BrainCircuit,
     Zap,
     Code,
     MessageSquare,
     BarChart3,
-    Database,
 } from "lucide-react";
-import React from 'react';
-import { AdinkraBackground } from '../ui/adinkra-background';
 
 const services = [
   {
-    Icon: BrainCircuit,
-    name: "Predictive Growth & Insights",
+    icon: <BrainCircuit className="h-8 w-8 text-primary" />,
+    title: "Predictive Growth & Insights",
     description: "Stop guessing, start growing. We use custom AI to analyze your market, forecast trends, and identify the most profitable next steps for your business.",
     href: "/ai-solutions",
-    cta: "Explore AI Potential",
-    className: "lg:col-span-1 lg:row-span-2",
   },
   {
-    Icon: Zap,
-    name: "Time & Cost Savings (Automation)",
+    icon: <Zap className="h-8 w-8 text-primary" />,
+    title: "Time & Cost Savings",
     description: "Do more with less time and fewer errors. We use intelligent automation to handle routine tasks like data entry, compliance, and invoicing.",
     href: "/automation",
-    cta: "Calculate Your ROI",
-    className: "lg:col-span-1",
   },
   {
-    Icon: Code,
-    name: "Scalable Digital Presence",
-    description: "Build the platform you need for tomorrow's success. From high-converting e-commerce sites to custom applications, we ensure your digital storefront can handle 5x user growth without breaking.",
+    icon: <Code className="h-8 w-8 text-primary" />,
+    title: "Scalable Digital Presence",
+    description: "Build the platform you need for tomorrow's success. From high-converting e-commerce sites to custom applications that handle 5x user growth.",
     href: "/web-development",
-    cta: "Start Your Relaunch",
-    className: "lg:col-span-1",
   },
   {
-    Icon: MessageSquare,
-    name: "24/7 Customer Engagement",
-    description: "Instant service, guaranteed. Deploy AI-powered conversational agents that answer customer questions instantly, reduce support tickets, and nurture leads around the clock.",
+    icon: <MessageSquare className="h-8 w-8 text-primary" />,
+    title: "24/7 Customer Engagement",
+    description: "Instant service, guaranteed. Deploy AI-powered conversational agents that answer customer questions instantly and reduce support tickets.",
     href: "/chatbots",
-    cta: "See a Chatbot Demo",
-    className: "lg:col-span-1",
   },
   {
-    Icon: BarChart3,
-    name: "Actionable Intelligence",
-    description: "Turn mountains of data into clear, simple decisions. We design custom business intelligence dashboards that consolidate your data into visual, actionable insights.",
+    icon: <BarChart3 className="h-8 w-8 text-primary" />,
+    title: "Actionable Intelligence",
+    description: "Turn mountains of data into clear, simple decisions. We design custom business intelligence dashboards that consolidate your data into visual insights.",
     href: "/business-analytics",
-    cta: "Design My Dashboard",
-    className: "lg:col-span-1",
   },
 ];
 
+const FeatureCard = ({
+  children,
+  className,
+}: {
+  children?: React.ReactNode;
+  className?: string;
+}) => {
+  return (
+    <GlowingCard className={cn(`relative overflow-hidden`, className)}>
+      <GridBackground />
+      <div className="relative z-10 h-full">
+        {children}
+      </div>
+    </GlowingCard>
+  );
+};
+
+const FeatureTitle = ({ children }: { children?: React.ReactNode }) => {
+  return (
+    <h3 className="text-lg md:text-xl font-semibold text-foreground">
+      {children}
+    </h3>
+  );
+};
+
+const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
+  return (
+    <p className={cn("text-sm text-muted-foreground mt-2")}>
+      {children}
+    </p>
+  );
+};
 
 export function ServicesOffered() {
     return (
-        <section className="py-fluid-lg bg-secondary/20 relative">
-            <AdinkraBackground />
-            <div className="container mx-auto px-fluid-sm relative z-10">
-                <div className="text-center max-w-3xl mx-auto">
-                     <p className="text-sm font-normal uppercase tracking-widest text-primary">Our Core Solutions</p>
-                    <h2 className="font-headline text-fluid-xl font-bold !leading-snug mt-2">
+        <section className="py-fluid-lg bg-background relative overflow-hidden">
+            <div className="container mx-auto px-fluid-sm">
+                <div className="max-w-3xl mx-auto text-center">
+                    <p className="text-sm font-normal uppercase tracking-widest text-primary">Our Core Solutions</p>
+                    <h2 className="text-fluid-xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium font-headline mt-2">
                         Empowering Your Growth: Tools for Every Business Goal
                     </h2>
-                    <p className="mt-4 text-fluid-base text-muted-foreground">
-                       We equip your business with the same powerful tools and comprehensive data used by large corporations—without the big budget. Our solutions are designed to deliver maximum impact, efficiency, and scale.
+                    <p className="text-fluid-base max-w-2xl my-4 mx-auto text-muted-foreground text-center font-normal">
+                        We equip your business with the same powerful tools and comprehensive data used by large corporations—without the big budget.
                     </p>
                 </div>
-                <BentoGrid className="mt-16">
-                    {services.map((service) => (
-                        <BentoCard key={service.name} {...service} />
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-12">
+                    {services.map((service, i) => (
+                        <FeatureCard 
+                            key={service.title} 
+                            className={cn(
+                                "border-t border-border/50",
+                                i === 0 ? "md:border-l-0" : "md:border-l",
+                                i === 1 ? "md:border-l-0" : "",
+                                i % 2 !== 0 ? "md:border-l-0" : "md:border-l",
+                                "lg:border-l"
+                            )}
+                        >
+                            <div className="flex flex-col h-full p-6">
+                                {service.icon}
+                                <div className="mt-4">
+                                    <FeatureTitle>{service.title}</FeatureTitle>
+                                    <FeatureDescription>{service.description}</FeatureDescription>
+                                </div>
+                            </div>
+                        </FeatureCard>
                     ))}
-                </BentoGrid>
+                </div>
+
+                <div className="mt-16 text-center">
+                    <Button asChild size="lg">
+                        <Link href="/use-cases">Explore All Solutions</Link>
+                    </Button>
+                </div>
             </div>
         </section>
     );

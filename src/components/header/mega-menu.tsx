@@ -4,7 +4,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { buttonVariants } from "../ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { menuData, type MenuKey, SitemapSection } from "@/lib/menu-data";
 import { ArrowRight } from "lucide-react";
 import {

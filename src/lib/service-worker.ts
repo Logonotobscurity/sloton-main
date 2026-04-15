@@ -4,7 +4,10 @@ import { logger } from '@/lib/logger';
 
 declare global {
   interface Window {
-    workbox: any; // Replace 'any' with proper Workbox type if you want strict typing
+    workbox: {
+      addEventListener: (event: string, callback: (event: WorkboxEvent) => void) => void;
+      register: () => Promise<ServiceWorkerRegistration>;
+    };
   }
 }
 
@@ -12,7 +15,7 @@ interface WorkboxEvent extends Event {
   type: string;
 }
 
-export function registerServiceWorker() {
+export function registerServiceWorker(): void {
   if (
     typeof window !== 'undefined' &&
     'serviceWorker' in navigator &&

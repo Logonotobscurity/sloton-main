@@ -93,7 +93,7 @@ export default async function InsightPage({ params }: PageProps) {
     },
     "publisher": {
         "@type": "Organization",
-        "name": "LOG_ON connecting Advantages",
+        "name": "LOG_ON Connecting Advantages",
         "logo": {
             "@type": "ImageObject",
             "url": "https://logonsolutions.netlify.app/og-image.png"
@@ -161,7 +161,7 @@ export default async function InsightPage({ params }: PageProps) {
             <InsightPageContent slug={slug} />
             
              <section className="mt-16 border-t pt-8">
-                <h3 className="text-2xl font-bold mb-4">About the Author</h3>
+                <h2 className="text-2xl font-bold mb-4">About the Author</h2>
                 <AuthorBio authorName={insight.author} />
              </section>
           </article>

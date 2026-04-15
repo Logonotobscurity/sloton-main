@@ -2,10 +2,31 @@
 
 import * as React from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
-import { ChevronDown } from "lucide-react"
+import { Plus } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * Accordion component for FAQ sections
+ * 
+ * Features:
+ * - Click to expand/collapse
+ * - Rotating + icon (becomes × when open)
+ * - Smooth animations
+ * 
+ * @example
+ * <Accordion type="single" collapsible>
+ *   <AccordionItem value="item-1">
+ *     <AccordionTrigger>Question?</AccordionTrigger>
+ *     <AccordionContent>Answer here</AccordionContent>
+ *   </AccordionItem>
+ * </Accordion>
+ * 
+ * Accessibility:
+ * - ARIA labels for screen readers
+ * - Keyboard navigation support
+ * - Focus indicators
+ */
 const Accordion = AccordionPrimitive.Root
 
 const AccordionItem = React.forwardRef<
@@ -28,13 +49,13 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180",
+        "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 [&[data-state=open]>svg]:rotate-45",
         className
       )}
       {...props}
     >
       <div className="flex-1 text-left">{children}</div>
-      <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200" />
+      <Plus className="h-5 w-5 shrink-0 transition-transform duration-200" />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ))

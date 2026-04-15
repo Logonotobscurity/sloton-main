@@ -1,15 +1,15 @@
-'use client';
+import { logger } from '@/lib/logger';
 
-export function registerServiceWorker() {
+export function registerServiceWorker(): void {
   if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker
         .register('/api/service-worker')
         .then((registration) => {
-          console.log('ServiceWorker registration successful');
+          logger.info('ServiceWorker registration successful');
         })
         .catch((err) => {
-          console.error('ServiceWorker registration failed:', err);
+          logger.error('ServiceWorker registration failed', { error: err });
         });
     });
   }

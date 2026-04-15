@@ -158,12 +158,12 @@ const visualConfigs: Record<VisualType, {
   },
 };
 
-export function ArticleCodeVisual({ type, className, animated = true }: ArticleCodeVisualProps) {
+export function ArticleCodeVisual({ type, className, animated = true }: ArticleCodeVisualProps): React.ReactElement {
   const config = visualConfigs[type] || visualConfigs.default;
   const Icon = config.icon;
 
   // Create line animation variant
-  const lineVariant = (index: number) => createFadeIn(0.2, index * 0.03, 0, -5);
+  const lineVariant = (index: number): ReturnType<typeof createFadeIn> => createFadeIn(0.2, index * 0.03, 0, -5);
 
   return (
     <div className={cn(
@@ -224,7 +224,7 @@ export function ArticleCodeVisual({ type, className, animated = true }: ArticleC
   );
 }
 
-function highlightSyntax(line: string, accent: 'primary' | 'accent') {
+function highlightSyntax(line: string, accent: 'primary' | 'accent'): React.ReactElement {
   const keywords = ['const', 'await', 'import', 'export', 'from', 'new', 'return', 'async', 'function'];
   const accentClass = accent === 'primary' ? 'text-primary' : 'text-accent';
   

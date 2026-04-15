@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { Button } from '../ui/button';
-import { AdinkraBackground } from '../ui/adinkra-background';
+import { Button } from '@/components/ui/button';
+import { AdinkraBackground } from '@/components/ui/adinkra-background';
 import { ArrowRight } from 'lucide-react';
 
 export function BottomCta() {
@@ -16,7 +16,7 @@ export function BottomCta() {
         <p className="max-w-2xl mx-auto mb-8 text-fluid-base text-muted-foreground">
           Let's talk about how we can help you achieve your goals.
         </p>
-        <Button asChild variant="default" size="lg" className="group">
+        <Button asChild variant="primary" size="large" className="group">
           <Link href="/contact">
             Contact Now <ArrowRight className="ml-2 h-4 w-4" />
           </Link>

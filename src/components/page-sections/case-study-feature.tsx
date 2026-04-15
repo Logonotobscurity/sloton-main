@@ -1,8 +1,8 @@
 "use client"
 
 import { caseStudies as allCaseStudies } from "@/lib/data/case-studies";
-import { CaseStudiesCarousel } from "../case-studies-carousel";
-import { Button } from "../ui/button";
+import { CaseStudiesCarousel } from "@/components/case-studies-carousel";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import React from "react";

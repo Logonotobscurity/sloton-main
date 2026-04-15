@@ -1,87 +1,123 @@
 
 "use client";
 
-import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
-import { trainingPrograms, communityProjects, trainingBenefits } from "@/lib/data/training-data";
-import { GraduationCap } from "lucide-react";
+import React from "react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { GlowingCard } from "@/components/ui/glowing-card";
+import { GridBackground } from "@/components/ui/grid-background";
+import { GraduationCap, Users, Heart, Lightbulb, Award, Globe } from "lucide-react";
+
+const communityFeatures = [
+  {
+    icon: <GraduationCap className="h-8 w-8 text-primary" />,
+    title: "Practical AI Training",
+    description: "Learn actionable skills you can implement immediately. From AI fundamentals to advanced automation strategies for real business impact.",
+  },
+  {
+    icon: <Users className="h-8 w-8 text-primary" />,
+    title: "Developer Community",
+    description: "Join a growing network of Nigerian developers, entrepreneurs, and innovators building the future of AI in Africa.",
+  },
+  {
+    icon: <Heart className="h-8 w-8 text-primary" />,
+    title: "Mental Health Support",
+    description: "Making mental health resources more accessible through AI-powered tools that understand local context and cultural nuances.",
+  },
+  {
+    icon: <Lightbulb className="h-8 w-8 text-primary" />,
+    title: "Innovation Projects",
+    description: "Collaborate on open-source projects that solve real problems in Nigerian communities, from healthcare to education.",
+  },
+  {
+    icon: <Award className="h-8 w-8 text-primary" />,
+    title: "Certification Programs",
+    description: "Earn industry-recognized certifications in AI, automation, and digital transformation to advance your career.",
+  },
+  {
+    icon: <Globe className="h-8 w-8 text-primary" />,
+    title: "Cultural AI Development",
+    description: "Building AI systems that understand and respect diverse Nigerian cultures, languages, and traditions.",
+  },
+];
+
+const FeatureCard = ({
+  children,
+  className,
+}: {
+  children?: React.ReactNode;
+  className?: string;
+}) => {
+  return (
+    <GlowingCard className={cn(`relative overflow-hidden`, className)}>
+      <GridBackground />
+      <div className="relative z-10 h-full">
+        {children}
+      </div>
+    </GlowingCard>
+  );
+};
+
+const FeatureTitle = ({ children }: { children?: React.ReactNode }) => {
+  return (
+    <h3 className="text-lg md:text-xl font-semibold text-foreground">
+      {children}
+    </h3>
+  );
+};
+
+const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
+  return (
+    <p className={cn("text-sm text-muted-foreground mt-2")}>
+      {children}
+    </p>
+  );
+};
 
 export function TrainingCTA() {
-
-  const features = [
-    {
-      ...trainingPrograms.find(p => p.title.includes("Reducing Support Costs with AI")),
-      name: "Reducing Support Costs with AI",
-      className: "md:col-span-1 lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-2",
-      cta: "Learn More",
-    },
-    {
-      ...trainingPrograms.find(p => p.title.includes("AI for Business Growth")),
-      name: "AI for Business Growth: Practical Implementation",
-      className: "md:col-span-1 lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3",
-      cta: "Learn More",
-    },
-    {
-      ...communityProjects.find(p => p.title.includes("Mental Health")),
-      name: "Making Mental Health Support More Accessible",
-      className: "md:col-span-1 lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-2",
-      cta: "Learn More",
-    },
-    {
-      ...communityProjects.find(p => p.title.includes("Diverse Cultures")),
-      name: "Building AI That Understands Diverse Cultures",
-      className: "md:col-span-1 lg:col-start-3 lg:col-end-4 lg:row-start-2 lg:row-end-3",
-      cta: "Learn More",
-    },
-    {
-      ...communityProjects.find(p => p.title.includes("Gigpilot")),
-      name: "Gigpilot: AI Gig Economy Assistant",
-      className: "md:col-span-2 lg:row-start-3 lg:row-end-4 lg:col-start-2 lg:col-end-4",
-      cta: "Learn More",
-    },
-  ].map((feature: any) => ({...feature, Icon: feature.icon}));
-
   return (
-      <section className="py-16 md:py-24 bg-background relative overflow-hidden">
-          <div 
-            role="presentation"
-            className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:32px_32px] opacity-20 dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)]"
-          />
-          <div className="container mx-auto px-4 md:px-6">
-              <div className="text-center max-w-3xl mx-auto space-y-4">
-                    <p className="text-sm font-normal uppercase tracking-widest text-primary">04/ Community & Learning</p>
-                    <h2 className="font-headline text-[clamp(2rem,5vw,3rem)] font-bold !leading-snug">
-                        Building <span className="text-primary">skills</span> and connecting Advantages through <span className="text-primary">community</span>.
-                    </h2>
-                    <p className="text-muted-foreground md:text-lg">
-                        We believe in building more than just technology; we're dedicated to building skills, fostering leadership, and making a positive community impact. Explore our training programs and our commitment to ethical innovation.
-                    </p>
+    <section className="py-fluid-lg bg-background relative overflow-hidden">
+      <div className="container mx-auto px-fluid-sm">
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-sm font-normal uppercase tracking-widest text-primary">04/ Community & Learning</p>
+          <h2 className="text-fluid-xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium font-headline mt-2">
+            Building <span className="text-primary">Skills</span> and Connecting Advantages
+          </h2>
+          <p className="text-fluid-base max-w-2xl my-4 mx-auto text-muted-foreground text-center font-normal">
+            We believe in building more than just technology. We're dedicated to building skills, fostering leadership, and making a positive community impact.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-12">
+          {communityFeatures.map((feature, i) => (
+            <FeatureCard 
+              key={feature.title} 
+              className={cn(
+                "border-t border-border/50",
+                i === 0 ? "md:border-l-0" : "md:border-l",
+                i === 1 ? "md:border-l-0" : "",
+                i % 2 !== 0 ? "md:border-l-0" : "md:border-l",
+                "lg:border-l"
+              )}
+            >
+              <div className="flex flex-col h-full p-6">
+                {feature.icon}
+                <div className="mt-4">
+                  <FeatureTitle>{feature.title}</FeatureTitle>
+                  <FeatureDescription>{feature.description}</FeatureDescription>
                 </div>
-              <BentoGrid className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-1 lg:grid-rows-3 mt-12 md:mt-16 auto-rows-auto lg:auto-rows-[22rem]">
-                  <BentoCard 
-                    key="main-training"
-                    name="Build Skills That Deliver Immediate ROI"
-                    description="Learn practical, actionable knowledge you can implement immediately to drive efficiency and growth in your organization."
-                    href="/training"
-                    cta="Explore Courses"
-                    className="lg:row-start-1 lg:row-end-4 lg:col-start-1 lg:col-end-2 flex flex-col"
-                    Icon={GraduationCap}
-                    content={(
-                        <ul className="space-y-3 mt-4 flex-grow">
-                            {trainingBenefits.map(item => (
-                                <li key={item.text} className="flex items-center gap-3">
-                                    <item.icon className="h-4 w-4 text-primary" />
-                                    <span className="text-sm text-muted-foreground">{item.text}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    )}
-                  />
-                  {features.map((feature) => (
-                      <BentoCard key={feature.name} {...feature} />
-                  ))}
-              </BentoGrid>
-          </div>
+              </div>
+            </FeatureCard>
+          ))}
+        </div>
+
+        <div className="mt-16 text-center">
+          <Button asChild size="lg">
+            <Link href="/training">Explore Training Programs</Link>
+          </Button>
+        </div>
+      </div>
     </section>
   );
 }

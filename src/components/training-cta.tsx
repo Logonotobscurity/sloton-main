@@ -46,7 +46,7 @@ const features = [
     name: "Reducing Support Costs with AI",
     description: "Learn to build private AI assistants using your company documents to revolutionize support.",
     href: "/training",
-    cta: "Learn More",
+    cta: "Learn to Reduce Support Costs",
     className: "md:col-span-1 lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-2",
   },
   {
@@ -54,7 +54,7 @@ const features = [
     name: "AI for Business Growth: Practical Implementation",
     description: "A comprehensive overview of AI types and their practical applications.",
     href: "/training",
-    cta: "Learn More",
+    cta: "Learn Practical AI Implementation",
     className: "md:col-span-1 lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3",
   },
   {
@@ -62,7 +62,7 @@ const features = [
     name: "Making Mental Health Support More Accessible",
     description: "An AI mental health chatbot designed to provide compassionate, accessible, and confidential support.",
     href: "/training#impact",
-    cta: "See Our Projects",
+    cta: "View Mental Health AI Project",
     className: "md:col-span-1 lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-2",
   },
   {
@@ -70,7 +70,7 @@ const features = [
     name: "Building AI That Understands Diverse Cultures",
     description: "A research project and toolkit for identifying and mitigating cultural bias in AI models.",
     href: "/training#impact",
-    cta: "See Our Projects",
+    cta: "View Diverse AI Toolkit",
     className: "md:col-span-1 lg:col-start-3 lg:col-end-4 lg:row-start-2 lg:row-end-3",
   },
    {
@@ -78,7 +78,7 @@ const features = [
     name: "Gigpilot: AI Gig Economy Assistant",
     description: "An AI-powered tool to convert job seekers into engaged users through intelligent job matching.",
     href: "/training#impact",
-    cta: "See Our Projects",
+    cta: "View Gigpilot Project",
     className: "md:col-span-2 lg:row-start-3 lg:row-end-4 lg:col-start-2 lg:col-end-4",
   },
 ];

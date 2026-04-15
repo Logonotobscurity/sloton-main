@@ -1,132 +1,162 @@
+"use client";
 
 import { PageHero } from '@/components/page-sections/page-hero';
-import { Lightbulb, Copy } from 'lucide-react';
+import { Lightbulb, Rocket, Filter } from 'lucide-react';
 import type { Metadata } from 'next';
 import { Button } from '@/components/ui/button';
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-  } from "@/components/ui/card"
-  
-export const metadata: Metadata = {
-  title: 'Ideas Lab | AI Experiments & Prompt Engineering for Automation',
-  description: 'A space for experimental concepts in workplace AI. See the prompts used to build AI agent development features and automation solutions.',
+import { GlowingCard } from '@/components/ui/glowing-card';
+import { GridBackground } from '@/components/ui/grid-background';
+import { products, productCategories, getProductsByCategory, getProductStats } from '@/lib/data/ideas-lab-products';
+import { useState } from 'react';
+import { cn } from '@/lib/utils';
+import { Badge } from '@/components/ui/badge';
+
+const statusColors = {
+  'DEPLOYED': 'bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20',
+  'MVP': 'bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20',
+  'PROTOTYPE': 'bg-purple-500/10 text-purple-700 dark:text-purple-400 border-purple-500/20',
+  'ACTIVE BUILD': 'bg-orange-500/10 text-orange-700 dark:text-orange-400 border-orange-500/20',
+  'Q2 2026': 'bg-yellow-500/10 text-yellow-700 dark:text-yellow-400 border-yellow-500/20',
+  'PRODUCTION': 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/20',
 };
 
-const companyReportPrompt = `
-# PROMPT: Generate a Full-Stack Company Report Application
-
-## 1. Core Objective
-Create a complete, production-ready, full-stack Next.js application that allows users to generate a detailed company report based on a company name. The application should have a professional, modern, and clean user interface using ShadCN UI components and Tailwind CSS.
-
-## 2. Technology Stack
-- **Framework:** Next.js 14 (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS
-- **UI Components:** ShadCN UI (pre-installed in the project)
-- **AI/Backend:** Genkit with Google AI (Gemini)
-- **Icons:** lucide-react
-
-## 3. Application Structure & Pages
-
-### 3.1. Main Page (\`/src/app/page.tsx\`)
-- **Layout:** A single-page interface, centered on the screen.
-- **Header:** A clean, bold title like "AI Company Report Generator".
-- **Input Form:**
-    - A form built with ShadCN's \`Form\`, \`Input\`, and \`Button\` components.
-    - Three input fields:
-        1.  'Full Name' (text input)
-        2.  'Phone Number' (tel input)
-        3.  'Company Name' (text input) - This is the primary input for the report.
-    - All fields must be required and include basic validation (e.g., name length, valid phone format, company name not empty).
-- **Submit Button:** A prominent button labeled "Generate Report". It should show a loading spinner/state while the report is being generated.
-- **Report Display Area:**
-    - Initially, this area should be empty or show a placeholder message like "Your company report will appear here."
-    - After generation, the report should be displayed here in a well-structured and styled format.
-
-### 3.2. Genkit AI Flow (\`/src/ai/flows/company-report-flow.ts\`)
-- This file will contain the core AI logic. It should be a Next.js Server Action file ('use server').
-- **Input Schema (Zod):**
-    - \`name: z.string()\`
-    - \`phone: z.string()\`
-    - \`companyName: z.string()\`
-- **Output Schema (Zod):**
-    - The schema must define the structure of the entire company report. Be comprehensive.
-    - \`companyProfile\`:
-        - \`name: z.string()\`
-        - \`summary: z.string().describe("A 1-2 paragraph executive summary of the company.")\`
-        - \`industry: z.string()\`
-        - \`foundedDate: z.string()\`
-        - \`keyExecutives: z.array(z.object({ name: z.string(), title: z.string() }))\`
-    - \`swotAnalysis\`:
-        - \`strengths: z.array(z.string()).describe("A list of 3-4 key strengths.")\`
-        - \`weaknesses: z.array(z.string()).describe("A list of 3-4 key weaknesses.")\`
-        - \`opportunities: z.array(zstring()).describe("A list of 3-4 key opportunities.")\`
-        - \`threats: z.array(z.string()).describe("A list of 3-4 key threats.")\`
-    - \`marketPresence\`:
-        - \`keyCompetitors: z.array(z.string()).describe("A list of 3-5 main competitors.")\`
-        - \`marketPosition: z.string().describe("A summary of their position in the market (e.g., Leader, Challenger, Niche).")\`
-    - \`recentNews\`:
-        - \`articles: z.array(z.object({ title: z.string(), summary: z.string(), source: z.string() })).describe("A list of 2-3 recent, relevant news articles.")\`
-- **Genkit Prompt:**
-    - Use \`ai.definePrompt\`.
-    - The prompt should clearly instruct the AI model (Gemini) to act as an expert business analyst.
-    - It must use the user-provided \`companyName\` as the subject.
-    - The prompt should instruct the model to search for public information and generate a comprehensive report that STRICTLY adheres to the defined output schema.
-
-### 3.3. Server Action (\`/src/app/actions.ts\`)
-- Create a new exported async function \`getCompanyReport(input: CompanyReportInput): Promise<CompanyReportOutput>\`.
-- This function will call the Genkit flow created in the previous step.
-- It should include robust error handling (try/catch block) and return a structured object indicating success or failure.
-
-## 4. User Experience & UI Details
-- **Loading State:** When the "Generate Report" button is clicked, it should become disabled, and a loading spinner (e.g., \`<Loader2 className="animate-spin" />\`) should appear.
-- **Report Display:**
-    - Use ShadCN \`Card\` components to structure the report.
-    - The main sections (Company Profile, SWOT Analysis, etc.) should be distinct cards or sections within a larger card.
-    - Use \`CardHeader\`, \`CardTitle\`, \`CardDescription\`, and \`CardContent\`.
-    - Use lists (\`<ul>\`, \`<li>\`) for arrays like Strengths, Weaknesses, Competitors, etc. Use a \`<Check />\` icon from lucide-react for each list item for better visual appeal.
-- **Responsiveness:** The layout must be fully responsive, stacking cleanly on mobile devices.
-
-## 5. Final Implementation Steps
-1.  Create the main page UI in \`/src/app/page.tsx\`.
-2.  Implement the Genkit flow with Zod schemas in \`/src/ai/flows/company-report-flow.ts\`.
-3.  Create the server action wrapper in \`/src/app/actions.ts\`.
-4.  Connect the front-end form to the server action, handle the loading state, and render the resulting report data.
-5.  Ensure all styling is clean, modern, and consistent with the ShadCN design system.
-`;
-
-
 export default function IdeasLabPage() {
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const filteredProducts = getProductsByCategory(selectedCategory);
+  const stats = getProductStats();
+
   return (
     <div>
       <PageHero
         title="Ideas Lab"
-        description="A space for experimental concepts, AI generation prompts, and new approaches we are testing at LOG_ON. Here, we document the prompts and architectural decisions used to build our features, providing transparency and a blueprint for future innovation."
+        description="Our innovation portfolio: 16 active builds across 7 domains. From deployed products to experimental prototypes, explore the connected ecosystem where research informs architecture, architecture enables products, and products validate research."
         icon={<Lightbulb className="h-12 w-12 md:h-16 md:w-16 text-primary" />}
       />
-      <div className="container mx-auto px-fluid-sm py-fluid-lg space-y-12">
-        <Card>
-            <CardHeader>
-                <CardTitle className="text-2xl">App Idea: Company Report Generator</CardTitle>
-                <CardDescription>A full-stack application that takes a company name and generates a detailed business report using AI.</CardDescription>
-            </CardHeader>
-            <CardContent>
-                <h3 className="font-semibold text-lg mb-2">Generation Prompt</h3>
-                <p className="text-muted-foreground mb-4">
-                    The following prompt was designed to be given to a large language model with coding capabilities to generate the application described.
-                </p>
-                <div className="relative p-4 bg-secondary/50 rounded-lg">
-                    <pre className="whitespace-pre-wrap text-sm font-mono overflow-x-auto">
-                        <code>{companyReportPrompt.trim()}</code>
-                    </pre>
-                </div>
-            </CardContent>
-        </Card>
-      </div>
+
+      {/* Stats Section */}
+      <section className="py-fluid-md bg-secondary/20">
+        <div className="container mx-auto px-fluid-sm">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+              <div className="text-4xl font-bold text-primary">{stats.total}</div>
+              <div className="text-sm text-muted-foreground mt-1">Active Builds</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-primary">{stats.deployed}</div>
+              <div className="text-sm text-muted-foreground mt-1">Deployed</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-primary">{stats.inProgress}</div>
+              <div className="text-sm text-muted-foreground mt-1">In Progress</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-primary">{stats.domains}</div>
+              <div className="text-sm text-muted-foreground mt-1">Domains</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Category Filter */}
+      <section className="py-fluid-md">
+        <div className="container mx-auto px-fluid-sm">
+          <div className="flex items-center gap-3 mb-6">
+            <Filter className="h-5 w-5 text-muted-foreground" />
+            <h3 className="text-lg font-semibold">Filter by Category</h3>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            {productCategories.map((category) => (
+              <Button
+                key={category.id}
+                variant={selectedCategory === category.id ? 'default' : 'outline'}
+                onClick={() => setSelectedCategory(category.id)}
+                className="rounded-full"
+              >
+                {category.name}
+                <Badge variant="secondary" className="ml-2">
+                  {category.count}
+                </Badge>
+              </Button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Products Grid */}
+      <section className="pb-fluid-lg">
+        <div className="container mx-auto px-fluid-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProducts.map((product, index) => {
+              const Icon = product.icon;
+              return (
+                <GlowingCard key={product.id} className="h-full">
+                  <div className="p-6 flex flex-col h-full">
+                    {/* Icon & Status */}
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="p-3 bg-primary/10 rounded-lg">
+                        <Icon className="h-6 w-6 text-primary" />
+                      </div>
+                      <Badge 
+                        variant="outline" 
+                        className={cn("text-xs", statusColors[product.status])}
+                      >
+                        {product.status}
+                      </Badge>
+                    </div>
+
+                    {/* Title & Description */}
+                    <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
+                    <p className="text-sm text-muted-foreground mb-4 flex-grow">
+                      {product.description}
+                    </p>
+
+                    {/* Impact */}
+                    <div className="mb-4 p-3 bg-secondary/50 rounded-lg">
+                      <div className="text-xs text-muted-foreground uppercase tracking-wide mb-1">
+                        Impact
+                      </div>
+                      <div className="text-sm font-semibold text-primary">
+                        {product.impact}
+                      </div>
+                    </div>
+
+                    {/* Features */}
+                    {product.features && product.features.length > 0 && (
+                      <div className="mt-auto">
+                        <div className="text-xs text-muted-foreground uppercase tracking-wide mb-2">
+                          Key Features
+                        </div>
+                        <ul className="space-y-1">
+                          {product.features.map((feature, idx) => (
+                            <li key={idx} className="text-xs text-muted-foreground flex items-start gap-2">
+                              <span className="text-primary mt-0.5">•</span>
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </GlowingCard>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-fluid-lg bg-secondary/20">
+        <div className="container mx-auto px-fluid-sm text-center">
+          <Rocket className="h-12 w-12 text-primary mx-auto mb-4" />
+          <h2 className="text-3xl font-bold mb-4">Ready to Build Together?</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
+            These products represent our connected ecosystem approach. Each build shares infrastructure, making deployment faster and more reliable. Let's discuss how we can adapt these solutions for your business.
+          </p>
+          <Button asChild size="lg">
+            <a href="/contact">Start a Conversation</a>
+          </Button>
+        </div>
+      </section>
     </div>
   );
 }

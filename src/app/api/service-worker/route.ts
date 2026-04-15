@@ -5,6 +5,7 @@
 
 import { NextResponse } from 'next/server';
 import { generateServiceWorkerScript } from '@/lib/service-worker-config';
+import { logger } from '@/lib/logger';
 
 export async function GET() {
   try {
@@ -20,7 +21,7 @@ export async function GET() {
       },
     });
   } catch (error) {
-    console.error('Failed to generate service worker:', error);
+    logger.error('Failed to generate service worker', { error });
     return NextResponse.json(
       { error: 'Failed to generate service worker' },
       { status: 500 }

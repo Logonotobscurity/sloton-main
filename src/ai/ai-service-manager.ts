@@ -6,6 +6,15 @@
 import { IAIService, AIServiceFactory, AIProvider, AIServiceConfig } from './services';
 import { logger } from '@/lib/logger';
 import { AppError, ErrorCode, handleError } from '@/lib/error-handler';
+import type { 
+  SolutionRecommendationInput, 
+  SolutionRecommendationOutput
+} from '@/ai/flows/solution-recommendation';
+import type {
+  AutomateTaskDesignInput,
+  AutomateTaskDesignOutput
+} from '@/ai/flows/automated-task-design';
+import type { AIServiceResponse } from '@/types/ai-service';
 
 export interface AIManagerConfig {
   primaryProvider: AIProvider;
@@ -154,7 +163,9 @@ export class AIServiceManager {
   /**
    * Get solution recommendation with error handling
    */
-  async getSolutionRecommendation(input: any): Promise<any> {
+  async getSolutionRecommendation(
+    input: SolutionRecommendationInput
+  ): Promise<SolutionRecommendationOutput> {
     return this.executeWithFallback(
       service => service.getSolutionRecommendation(input),
       'getSolutionRecommendation'
@@ -164,7 +175,9 @@ export class AIServiceManager {
   /**
    * Get automated task design with error handling
    */
-  async getAutomatedTaskDesign(input: any): Promise<any> {
+  async getAutomatedTaskDesign(
+    input: AutomateTaskDesignInput
+  ): Promise<AutomateTaskDesignOutput> {
     return this.executeWithFallback(
       service => service.getAutomatedTaskDesign(input),
       'getAutomatedTaskDesign'

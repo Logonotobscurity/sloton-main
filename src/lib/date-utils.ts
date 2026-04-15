@@ -3,6 +3,8 @@
  * Centralized date formatting functions for consistent date display across the application
  */
 
+import { logger } from '@/lib/logger';
+
 /**
  * Standard date format options
  */
@@ -70,7 +72,7 @@ export function formatDate(
 
   // Check if date is valid
   if (isNaN(dateObj.getTime())) {
-    console.warn('Invalid date provided to formatDate:', date);
+    logger.warn('Invalid date provided to formatDate', { date });
     return 'Invalid Date';
   }
 

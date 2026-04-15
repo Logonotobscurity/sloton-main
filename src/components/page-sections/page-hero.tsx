@@ -2,7 +2,7 @@
 
 import React from "react";
 import { cn } from "@/lib/utils";
-import { AdinkraBackground } from "../ui/adinkra-background";
+import { AdinkraBackground } from "@/components/ui/adinkra-background";
 
 interface PageHeroProps {
   title: string;

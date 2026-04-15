@@ -33,7 +33,7 @@ export class PerformanceMonitor {
     return PerformanceMonitor.instance;
   }
 
-  private initializeObservers() {
+  private initializeObservers(): void {
     if (typeof window === 'undefined') return;
 
     // Observe LCP
@@ -86,14 +86,14 @@ export class PerformanceMonitor {
     });
   }
 
-  private recordMetric(name: string, value: number) {
+  private recordMetric(name: string, value: number): void {
     const values = this.metrics.get(name) || [];
     values.push(value);
     this.metrics.set(name, values);
     this.notifyListeners();
   }
 
-  private notifyListeners() {
+  private notifyListeners(): void {
     const metrics = this.getAverageMetrics();
     this.listeners.forEach(listener => listener(metrics));
   }
@@ -116,21 +116,21 @@ export class PerformanceMonitor {
     return values.reduce((a, b) => a + b, 0) / values.length;
   }
 
-  public addListener(callback: (metrics: PerformanceMetrics) => void) {
+  public addListener(callback: (metrics: PerformanceMetrics) => void): void {
     this.listeners.add(callback);
   }
 
-  public removeListener(callback: (metrics: PerformanceMetrics) => void) {
+  public removeListener(callback: (metrics: PerformanceMetrics) => void): void {
     this.listeners.delete(callback);
   }
 
-  public clearMetrics() {
+  public clearMetrics(): void {
     this.metrics.clear();
   }
 }
 
 // Hook to use performance monitoring in components
-export function usePerformanceMonitoring(callback: (metrics: PerformanceMetrics) => void) {
+export function usePerformanceMonitoring(callback: (metrics: PerformanceMetrics) => void): PerformanceMetrics | undefined {
   if (typeof window === 'undefined') return;
 
   const monitor = PerformanceMonitor.getInstance();

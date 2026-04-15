@@ -111,6 +111,7 @@ export const menuData: SitemapSection[] = [
     "intro": "Learn more about our mission, values, and the team driving our innovation.",
     "items": [
       {"title": "About Us", "description": "Our mission, values, and company news.", "shortDescription": "Our mission, values, and company news.", "href": "/about"},
+      {"title": "Analyst Reports", "description": "Download comprehensive industry analyst reports.", "shortDescription": "Download comprehensive industry analyst reports.", "href": "/about/reports"},
       {"title": "Our Leadership", "description": "Meet the LOG_ON leadership team.", "shortDescription": "Meet the LOG_ON leadership team.", "href": "/about/our-leadership"},
       {"title": "Careers", "description": "Explore open positions and join our team.", "shortDescription": "Explore open positions and join our team.", "href": "/about/careers"},
       {"title": "Partners", "description": "Collaborate with us to deliver innovative solutions.", "shortDescription": "Collaborate with us to deliver innovative solutions.", "href": "/partners"},
