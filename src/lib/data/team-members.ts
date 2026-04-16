@@ -6,17 +6,17 @@ export const teamMembers = [
     name: 'Oluwamayowa Logo',
     role: 'Lead Developer & Automation Solution Architect',
     bio: 'Oluwamayowa is an expert in AI architecture and automation solutions with a focus on innovative technology implementation. He specializes in developing scalable solutions that drive business growth and is dedicated to pushing the boundaries of what AI can achieve in the enterprise space.',
-    image: imageData.authorOluwamayowa.src,
+    image: 'https://i.ibb.co/vbbSN7d/Gemini-Generated-Image-vmn9povmn9povmn9.png',
     width: imageData.authorOluwamayowa.width,
     height: imageData.authorOluwamayowa.height,
     dataAiHint: imageData.authorOluwamayowa.dataAiHint,
     description: 'Expert in AI architecture and automation solutions with a focus on innovative technology implementation. Specializes in developing scalable solutions for business growth.',
     expertise: ['AI Architecture', 'Strategy', 'Innovation', 'Web Development', 'IT Support', 'Solution Design'],
-    email: 'oluwamayowa@logon.ng',
+    email: 'logonthepage@gmail.com',
     socials: {
-      linkedin: 'https://linkedin.com/in/oluwamayowa-logo',
-      twitter: 'https://twitter.com/oluwamayowa_logo',
-      github: 'https://github.com/oluwamayowa-logo'
+      linkedin: 'https://www.linkedin.com/in/logo-oluwamayowa-cpo-/',
+      twitter: 'https://x.com/Logo_obscurity',
+      github: 'https://github.com/Logonotobscurity/'
     }
   },
   {

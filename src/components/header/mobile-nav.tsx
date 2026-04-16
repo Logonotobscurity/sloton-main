@@ -4,11 +4,11 @@
 import * as React from "react";
 import { Button } from "@/components/ui/button";
 import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
+    Sheet,
+    SheetContent,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
 } from "@/components/ui/sheet";
 import { Logo } from "./logo";
 import Link from "next/link";
@@ -23,7 +23,7 @@ import { IconFacebook, IconX, IconLinkedIn, IconInstagram, IconYouTube } from "@
 import { cn } from "@/lib/utils";
 
 const hasItems = (section: SitemapSection): section is SectionWithItems => {
-  return 'items' in section && Array.isArray(section.items);
+    return 'items' in section && Array.isArray(section.items);
 };
 
 const MobileNavigation = () => {
@@ -33,8 +33,8 @@ const MobileNavigation = () => {
             <div className="flex-grow p-4">
                 <Accordion type="multiple" className="w-full">
                     {menuData.map((menu) => {
-                         if (hasItems(menu)) {
-                             return (
+                        if (hasItems(menu)) {
+                            return (
                                 <AccordionItem value={menu.key} key={menu.key}>
                                     <AccordionTrigger className="text-lg font-semibold">{menu.heading}</AccordionTrigger>
                                     <AccordionContent>
@@ -59,38 +59,38 @@ const MobileNavigation = () => {
                                 </AccordionItem>
                             )
                         } else if ('href' in menu) {
-                           return (
+                            return (
                                 <Link key={menu.key} href={menu.href} className="flex border-b text-lg font-semibold p-4" onClick={() => setMenuOpen(false)}>
                                     {menu.heading}
                                 </Link>
                             );
                         }
-                       
+
                         return null;
                     })}
                 </Accordion>
-                
+
                 {/* Theme Toggle - Moved inside ScrollArea */}
                 <div className="flex items-center justify-between w-full py-4 px-2 border-t border-b mt-4">
                     <span className="text-sm font-semibold text-muted-foreground">Theme</span>
                     <ThemeToggle />
                 </div>
-                
+
                 {/* Social Media Icons - Moved inside ScrollArea */}
                 <div className="flex flex-col gap-3 w-full py-4 px-2">
                     <h3 className="text-sm font-semibold text-muted-foreground">Connect With Us</h3>
                     <div className="flex items-center flex-wrap gap-4">
-                        <Link 
-                            href="mailto:logonthepage@gmail.com" 
+                        <Link
+                            href="mailto:logonthepage@gmail.com"
                             className="text-primary hover:text-primary/80 transition-colors duration-200"
                             aria-label="Contact us via email"
                             onClick={() => setMenuOpen(false)}
                         >
                             <Mail className="h-5 w-5" />
                         </Link>
-                        <Link 
-                            href="https://x.com/log_onthepage" 
-                            target="_blank" 
+                        <Link
+                            href="https://x.com/log_onthepage"
+                            target="_blank"
                             rel="noopener noreferrer"
                             className="text-primary hover:text-primary/80 transition-colors duration-200"
                             aria-label="Follow us on X (Twitter)"
@@ -98,9 +98,9 @@ const MobileNavigation = () => {
                         >
                             <IconX className="h-5 w-5" />
                         </Link>
-                        <Link 
-                            href="https://www.linkedin.com/company/logon-connecting-advantages" 
-                            target="_blank" 
+                        <Link
+                            href="https://www.linkedin.com/company/logon-connecting-advantages"
+                            target="_blank"
                             rel="noopener noreferrer"
                             className="text-primary hover:text-primary/80 transition-colors duration-200"
                             aria-label="Connect with us on LinkedIn"
@@ -108,9 +108,9 @@ const MobileNavigation = () => {
                         >
                             <IconLinkedIn className="h-5 w-5" />
                         </Link>
-                        <Link 
-                            href="https://www.instagram.com/logon_thepage/" 
-                            target="_blank" 
+                        <Link
+                            href="https://www.instagram.com/logon_thepage/"
+                            target="_blank"
                             rel="noopener noreferrer"
                             className="text-primary hover:text-primary/80 transition-colors duration-200"
                             aria-label="Follow us on Instagram"
@@ -118,9 +118,9 @@ const MobileNavigation = () => {
                         >
                             <IconInstagram className="h-5 w-5" />
                         </Link>
-                        <Link 
-                            href="https://www.facebook.com/logonthepage" 
-                            target="_blank" 
+                        <Link
+                            href="https://www.facebook.com/logonthepage"
+                            target="_blank"
                             rel="noopener noreferrer"
                             className="text-primary hover:text-primary/80 transition-colors duration-200"
                             aria-label="Like us on Facebook"
@@ -128,9 +128,9 @@ const MobileNavigation = () => {
                         >
                             <IconFacebook className="h-5 w-5" />
                         </Link>
-                        <Link 
-                            href="https://www.youtube.com/@logonthepage" 
-                            target="_blank" 
+                        <Link
+                            href="https://www.youtube.com/@logonthepage"
+                            target="_blank"
                             rel="noopener noreferrer"
                             className="text-primary hover:text-primary/80 transition-colors duration-200"
                             aria-label="Subscribe to our YouTube channel"
@@ -147,66 +147,66 @@ const MobileNavigation = () => {
 
 
 export const MobileNav = () => {
-  const { isMenuOpen, setMenuOpen } = useUiStore();
-  
-  React.useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-      // Hide Botpress widget when menu is open
-      const botpressWidget = document.getElementById('botpress-webchat');
-      if (botpressWidget) {
-        botpressWidget.style.display = 'none';
-      }
-    } else {
-      document.body.style.overflow = '';
-      // Show Botpress widget when menu is closed
-      const botpressWidget = document.getElementById('botpress-webchat');
-      if (botpressWidget) {
-        botpressWidget.style.display = '';
-      }
-    }
-    return () => {
-      document.body.style.overflow = '';
-      // Ensure widget is visible on cleanup
-      const botpressWidget = document.getElementById('botpress-webchat');
-      if (botpressWidget) {
-        botpressWidget.style.display = '';
-      }
-    };
-  }, [isMenuOpen]);
+    const { isMenuOpen, setMenuOpen } = useUiStore();
 
-  return (
-    <Sheet open={isMenuOpen} onOpenChange={setMenuOpen}>
-      <SheetTrigger asChild>
-          <button 
-            className={cn("hamburger", isMenuOpen && "open")}
-            aria-label="Open navigation menu" 
-            aria-expanded={isMenuOpen}
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-      </SheetTrigger>
-      <SheetContent side="left" className="w-full max-w-sm p-0 flex flex-col" aria-label="Mobile navigation menu">
-        <motion.div
-            initial={{ x: "-100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "-100%" }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="h-full flex flex-col"
-        >
-            <SheetHeader className="p-4 border-b flex flex-row items-center justify-between">
-                <SheetTitle asChild>
-                    <Link href="/" className="mr-6 flex items-center space-x-2" onClick={() => setMenuOpen(false)} aria-label="LOG_ON Homepage">
-                    <Logo />
-                    </Link>
-                </SheetTitle>
-            </SheetHeader>
-            
-            <MobileNavigation />
-        </motion.div>
-      </SheetContent>
-    </Sheet>
-  );
+    React.useEffect(() => {
+        if (isMenuOpen) {
+            document.body.style.overflow = 'hidden';
+            // Hide Botpress widget when menu is open
+            const botpressWidget = document.getElementById('botpress-webchat');
+            if (botpressWidget) {
+                botpressWidget.style.display = 'none';
+            }
+        } else {
+            document.body.style.overflow = '';
+            // Show Botpress widget when menu is closed
+            const botpressWidget = document.getElementById('botpress-webchat');
+            if (botpressWidget) {
+                botpressWidget.style.display = '';
+            }
+        }
+        return () => {
+            document.body.style.overflow = '';
+            // Ensure widget is visible on cleanup
+            const botpressWidget = document.getElementById('botpress-webchat');
+            if (botpressWidget) {
+                botpressWidget.style.display = '';
+            }
+        };
+    }, [isMenuOpen]);
+
+    return (
+        <Sheet open={isMenuOpen} onOpenChange={setMenuOpen}>
+            <SheetTrigger asChild>
+                <button
+                    className={cn("hamburger", isMenuOpen && "open")}
+                    aria-label="Open navigation menu"
+                    aria-expanded={isMenuOpen}
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </SheetTrigger>
+            <SheetContent side="left" className="w-full max-w-sm p-0 flex flex-col" aria-label="Mobile navigation menu">
+                <motion.div
+                    initial={{ x: "-100%" }}
+                    animate={{ x: 0 }}
+                    exit={{ x: "-100%" }}
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    className="h-full flex flex-col"
+                >
+                    <SheetHeader className="p-4 border-b flex flex-row items-center justify-between">
+                        <SheetTitle asChild>
+                            <Link href="/" className="mr-6 flex items-center space-x-2" onClick={() => setMenuOpen(false)} aria-label="LOG_ON Homepage">
+                                <Logo />
+                            </Link>
+                        </SheetTitle>
+                    </SheetHeader>
+
+                    <MobileNavigation />
+                </motion.div>
+            </SheetContent>
+        </Sheet>
+    );
 };

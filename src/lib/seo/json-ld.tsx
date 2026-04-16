@@ -64,7 +64,7 @@ export function OrganizationSchema() {
     },
     sameAs: [
       'https://medium.com/@Logon_thepage',
-      'https://x.com/log_onthepage',
+      'https://x.com/Logo_obscurity',
       'https://www.instagram.com/logon_thepage/',
       'https://substack.com/@logonthepage',
     ],

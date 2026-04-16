@@ -4,7 +4,8 @@ import { PageHero } from "@/components/page-sections/page-hero";
 import { BottomCta } from "@/components/page-sections/bottom-cta";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Link from "next/link";
-import { Linkedin, Twitter, Github, Mail } from 'lucide-react';
+import { Linkedin, Github, Mail } from 'lucide-react';
+import { IconX } from '@/lib/icons';
 import type { Metadata } from 'next';
 import { FillImage } from '@/lib/image-utils';
 
@@ -39,7 +40,7 @@ export default function LeadershipPage() {
                                         <div className="flex items-center space-x-3 mt-4">
                                             <Link href={`mailto:${member.email}`} className="text-muted-foreground hover:text-primary"><Mail size={20}/></Link>
                                             <Link href={member.socials.linkedin} target="_blank" className="text-muted-foreground hover:text-primary"><Linkedin size={20}/></Link>
-                                            {member.socials.twitter && <Link href={member.socials.twitter} target="_blank" className="text-muted-foreground hover:text-primary"><Twitter size={20}/></Link>}
+                                            {member.socials.twitter && <Link href={member.socials.twitter} target="_blank" className="text-muted-foreground hover:text-primary"><IconX className="w-5 h-5"/></Link>}
                                             {member.socials.github && <Link href={member.socials.github} target="_blank" className="text-muted-foreground hover:text-primary"><Github size={20}/></Link>}
                                         </div>
                                     </div>
