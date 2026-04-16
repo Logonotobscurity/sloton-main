@@ -4,7 +4,6 @@ import {
   CheckCircle,
   Search,
 } from "lucide-react";
-import type { Metadata } from "next";
 import { PageHero } from "@/components/page-sections/page-hero";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -13,17 +12,33 @@ import { BottomCta } from "@/components/page-sections/bottom-cta";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import SolutionRecommendationForm from "@/components/solution-recommendation-form";
 import { services, industryApplications } from "@/lib/data/solutions-data";
+import { generateMetadata, KEYWORD_SETS, BreadcrumbSchema, ServiceCatalogSchema } from "@/lib/seo";
 
-
-export const metadata: Metadata = {
-  title: "Technology Solutions | Custom AI, Automation & Development",
+export const metadata = generateMetadata({
+  title: 'Technology Solutions | Custom AI, Automation & Development in Nigeria',
   description:
-    "Explore LOG_ON's comprehensive suite of technology solutions, including custom AI, process automation, web development, and business analytics, designed to drive efficiency and growth.",
-};
+    "Explore LOG_ON's full suite of AI and automation technology solutions in Nigeria: custom AI agents, RPA workplace automation, web development, business analytics, and AI chatbots. Designed to drive efficiency and measurable growth.",
+  keywords: [
+    ...KEYWORD_SETS.ai,
+    ...KEYWORD_SETS.automation,
+    'technology solutions Nigeria',
+    'AI solutions Lagos',
+    'RPA automation Nigeria',
+    'chatbot development Nigeria',
+    'business analytics Lagos',
+    'custom software Nigeria',
+  ],
+  canonical: 'https://logonsolutions.netlify.app/solutions',
+});
 
 export default function SolutionsPage() {
   return (
     <div className="bg-background">
+      <ServiceCatalogSchema />
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: 'https://logonsolutions.netlify.app' },
+        { name: 'Solutions', url: 'https://logonsolutions.netlify.app/solutions' },
+      ]} />
       <PageHero 
         title="Turn Your Biggest Challenges into Growth Opportunities"
         description="We don't just build solutions; we architect results. Discover how our integrated AI and automation services can transform your business, streamline operations, and unlock new value."

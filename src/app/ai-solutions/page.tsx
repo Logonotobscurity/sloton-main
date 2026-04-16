@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BrainCircuit, CheckCircle, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema } from '@/lib/seo';
+import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, BreadcrumbSchema } from '@/lib/seo';
 import { CaseStudyFeature } from '@/components/page-sections/case-study-feature';
 import { PageHero } from '@/components/page-sections/page-hero';
 import { aiServices, aiSolutionsBenefits } from '@/lib/data/services-data';
@@ -38,6 +38,10 @@ export default function AiSolutionsPage() {
   return (
     <div className="bg-background">
       <JsonLd data={aiServiceSchema} />
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: 'https://logonsolutions.netlify.app' },
+        { name: 'AI Solutions', url: 'https://logonsolutions.netlify.app/ai-solutions' },
+      ]} />
       <PageHero
         title="Custom AI Solutions & Agent Development"
         description="At LOG_ON, we don't just use AI—we build it. We specialize in creating bespoke artificial intelligence, AI agents, and machine learning solutions that integrate seamlessly with your operations to solve your most complex challenges. Our expert team partners with you to transform your data into a strategic asset, driving efficiency, innovation, and measurable growth."
@@ -105,18 +109,28 @@ export default function AiSolutionsPage() {
             showDesignProcess={true}
         />
 
-         <section className="text-center mt-fluid-md py-fluid-md bg-background rounded-lg px-fluid-sm">
+        <section className="text-center mt-fluid-md py-fluid-md bg-background rounded-lg px-fluid-sm">
             <h2 className="text-fluid-lg font-bold font-headline">Ready to Unlock Your AI Potential?</h2>
             <p className="mt-4 text-fluid-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Let's discuss how our custom AI solutions can revolutionize your business. Schedule a free, no-obligation consultation with our AI experts today.
+                Let's discuss how our custom AI solutions can transform your business. Schedule a free, no-obligation consultation with our AI experts today.
             </p>
-            <div className="mt-8 flex justify-center">
+            <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4 flex-wrap">
                 <Button asChild size="lg">
                     <Link href="/contact">
                         Schedule Consultation <ArrowRight className="ml-2 h-5 w-5" />
                     </Link>
                 </Button>
+                <Button asChild size="lg" variant="outline">
+                    <Link href="/automation">See Automation Solutions</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                    <Link href="/use-cases">View Industry Use Cases</Link>
+                </Button>
             </div>
+            <p className="mt-8 text-sm text-muted-foreground">
+                Learn more in our <Link href="/insights" className="text-primary underline hover:no-underline">AI insights library</Link> or explore our{' '}
+                <Link href="/training" className="text-primary underline hover:no-underline">AI training programmes</Link>.
+            </p>
         </section>
 
       </div>

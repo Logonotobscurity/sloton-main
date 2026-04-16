@@ -1,4 +1,3 @@
-
 import {
   BrainCircuit,
   Zap,
@@ -151,31 +150,31 @@ export const industryApplications = [
     {
         icon: Landmark,
         industry: "Finance & Banking",
-        challenge: "Financial institutions face immense pressure to detect fraud in real-time, comply with strict regulations, and reduce the high costs of manual back-office operations like loan processing and compliance reporting.",
-        solution: "We integrate **AI Solutions** and **Process Automation** to solve this. Our AI models analyze transaction patterns to detect and flag fraudulent activity with over 99% accuracy. Simultaneously, our RPA bots automate the extraction and validation of data for loan applications and compliance reports, reducing processing time by up to 70%.",
+        challenge: "Financial institutions face pressure to detect fraud in real-time, comply with regulations, and reduce high manual back-office costs.",
+        solution: "We integrate **AI Solutions** and **Process Automation** to solve this. Our AI models analyze transaction patterns to detect fraud with over 99% accuracy, while RPA bots automate loan processing and compliance reporting, reducing processing time by up to 70%.",
         cta: {
-            text: "View Case Study",
-            href: "/use-cases"
+            text: "See Finance Use Cases",
+            href: "/use-cases#finance"
         }
     },
     {
         icon: HeartPulse,
         industry: "Healthcare",
-        challenge: "Healthcare providers are burdened with administrative tasks, from patient scheduling and billing to managing vast amounts of unstructured patient data, leading to staff burnout and inefficient patient care.",
-        solution: "Our **Chatbots & Virtual Assistants** streamline patient communication by automating appointment scheduling and answering common queries. We couple this with **AI Solutions** (NLP) to extract critical information from clinical notes, helping to automate medical coding and provide clinicians with faster access to patient histories, ultimately improving the quality of care.",
+        challenge: "Healthcare providers are burdened with administrative tasks—scheduling, billing, unstructured patient data—leading to staff burnout and inefficient patient care.",
+        solution: "Our **Chatbots & Virtual Assistants** automate appointment scheduling and answer common queries. We pair this with **AI Solutions** (NLP) to extract information from clinical notes, automating medical coding and improving clinician access to patient histories.",
         cta: {
-            text: "View Case Study",
-            href: "/use-cases"
+            text: "See Healthcare Use Cases",
+            href: "/use-cases#healthcare"
         }
     },
     {
         icon: ShoppingCart,
         industry: "E-Commerce",
-        challenge: "Online retailers struggle to provide personalized shopping experiences at scale, leading to high cart abandonment rates and missed revenue opportunities. Managing customer queries about order status and returns further strains support teams.",
-        solution: "We combine **Business Analytics** with **Web & Custom Development** to build intelligent e-commerce platforms. Our analytics dashboards track user behavior to identify drop-off points, while our custom recommendation engines (powered by our AI models) personalize the shopping experience. An integrated AI chatbot handles over 60% of order-related inquiries, freeing up support staff.",
+        challenge: "Online retailers struggle with personalization at scale, high cart abandonment, and customer service strain from order status and return queries.",
+        solution: "We combine **Business Analytics** with **Web & Custom Development** to build intelligent e-commerce platforms. Our analytics track user behaviour, recommendation engines personalize the shopping experience, and integrated AI chatbots handle over 60% of order-related enquiries.",
         cta: {
-            text: "View Case Study",
-            href: "/use-cases"
+            text: "See E-Commerce Use Cases",
+            href: "/use-cases#e-commerce"
         }
     }
 ];
