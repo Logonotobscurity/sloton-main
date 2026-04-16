@@ -72,9 +72,11 @@ export function TechStackCarousel() {
                     We leverage proven, scalable technology that grows with your business. No legacy systems, no technical debt—just solutions that deliver measurable results today and adapt for tomorrow.
                 </p>
 
-                <Button variant="outline" size="sm" asChild>
-                    <Link href="/solutions">Explore Our Solutions</Link>
-                </Button>
+                <div className="relative z-30 pt-4">
+                  <Button variant="outline" size="lg" asChild aria-label="Explore LOG_ON solutions and services">
+                      <Link href="/solutions">Explore Our Solutions</Link>
+                  </Button>
+                </div>
             </div>
         </GlowingCard>
       </div>

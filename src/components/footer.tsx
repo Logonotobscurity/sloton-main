@@ -1,16 +1,14 @@
 
 import Link from 'next/link';
-import { IconFacebook, IconInstagram, IconLinkedIn, IconX, IconYouTube } from '@/lib/icons';
+import { IconFacebook, IconGithub, IconInstagram, IconLinkedIn, IconX, IconYouTube } from '@/lib/icons';
 import { menuData, SitemapSection } from '@/lib/menu-data';
 import { AdinkraBackground } from './ui/adinkra-background';
 import { Logo } from '@/components/header/logo';
 
 const socialLinks = [
-  { href: 'https://www.facebook.com/logonthepage', label: 'Follow LOG_ON on Facebook', icon: <IconFacebook className="w-5 h-5" /> },
-  { href: 'https://x.com/log_onthepage', label: 'Follow LOG_ON on X (Twitter)', icon: <IconX className="w-5 h-5" /> },
-  { href: 'https://www.instagram.com/logon_thepage/', label: 'Follow LOG_ON on Instagram', icon: <IconInstagram className="w-5 h-5" /> },
-  { href: 'https://www.linkedin.com/company/logon-connecting-advantages', label: 'Follow LOG_ON on LinkedIn', icon: <IconLinkedIn className="w-5 h-5" /> },
-  { href: 'https://www.youtube.com/@logonthepage', label: 'Subscribe to LOG_ON on YouTube', icon: <IconYouTube className="w-5 h-5" /> },
+  { href: 'https://x.com/Logo_obscurity', label: 'Follow LOG_ON on X (formerly Twitter)', icon: <IconX className="w-5 h-5" aria-hidden="true" /> },
+  { href: 'https://www.linkedin.com/in/logo-oluwamayowa-cpo-/', label: 'Connect with LOG_ON on LinkedIn', icon: <IconLinkedIn className="w-5 h-5" aria-hidden="true" /> },
+  { href: 'https://github.com/Logonotobscurity/', label: 'View LOG_ON source code on GitHub', icon: <IconGithub className="w-5 h-5" aria-hidden="true" /> },
 ];
 
 const solutions = menuData.find(item => item.key === 'solutions');
@@ -24,7 +22,7 @@ const hasItems = (section: SitemapSection | undefined): section is SitemapSectio
 export function Footer() {
   return (
     <footer className="bg-background border-t relative overflow-hidden" aria-label="Site footer">
-      <AdinkraBackground />
+      <AdinkraBackground aria-hidden="true" />
       <div className="container mx-auto px-4 md:px-6 relative z-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 py-16 md:py-24">
 
@@ -96,15 +94,6 @@ export function Footer() {
                         </Link>
                       </li>
                     ))}
-                    <li>
-                      <Link
-                        href="/contact"
-                        aria-label="Go to Contact"
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        Contact
-                      </Link>
-                    </li>
                   </ul>
                 </nav>
               )}

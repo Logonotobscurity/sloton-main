@@ -91,13 +91,13 @@ export const menuData: SitemapSection[] = [
     "key": "resources",
     "heading": "Resources",
     "intro": "Explore our expert insights, articles, and tools to stay ahead of the technology curve.",
+    "cta": {"label": "All Resources", "href": "/resources"},
     "items": [
+      {"title": "All Resources", "description": "Browse our complete library of guides, tools, and insights.", "shortDescription": "Browse our complete library of resources.", "href": "/resources"},
       {"title": "Insights", "description": "Expert analysis on AI, automation, and tech trends.", "shortDescription": "Expert analysis on AI, automation, and tech trends.", "href": "/insights"},
       {"title": "Use Cases", "description": "Discover how our solutions apply to your industry.", "shortDescription": "Discover how our solutions apply to your industry.", "href": "/use-cases"},
       {"title": "Automation Library", "description": "Browse our library of pre-built workflow templates.", "shortDescription": "Browse our library of pre-built workflow templates.", "href": "/automation"},
       {"title": "Training Programs", "description": "Master in-demand skills with our hands-on curriculum.", "shortDescription": "Master in-demand skills with our hands-on curriculum.", "href": "/training"},
-      {"title": "Ideas Lab", "description": "Experimental concepts and AI prompts we're testing.", "shortDescription": "Experimental concepts and AI prompts we're testing.", "href": "/ideas-lab"},
-      {"title": "Support", "description": "Find help articles and get in touch with our team.", "shortDescription": "Find help articles and get in touch with our team.", "href": "/support"},
     ]
   },
   {
@@ -117,10 +117,5 @@ export const menuData: SitemapSection[] = [
       {"title": "Partners", "description": "Collaborate with us to deliver innovative solutions.", "shortDescription": "Collaborate with us to deliver innovative solutions.", "href": "/partners"},
       {"title": "Contact", "description": "Get in touch with our team to start a project.", "shortDescription": "Get in touch with our team.", "href": "/contact"}
     ]
-  },
-  {
-      "key": "contact",
-      "heading": "Contact Us",
-      "href": "/contact"
   }
 ];

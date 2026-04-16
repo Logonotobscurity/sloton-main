@@ -19,7 +19,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { ThemeToggle } from "@/components/header/theme-toggle";
 import { motion } from "framer-motion";
 import { useUiStore } from "@/hooks/use-ui-store";
-import { IconFacebook, IconX, IconLinkedIn, IconInstagram, IconYouTube } from "@/lib/icons";
+import { IconFacebook, IconX, IconLinkedIn, IconInstagram, IconYouTube, IconGithub } from "@/lib/icons";
 import { cn } from "@/lib/utils";
 
 const hasItems = (section: SitemapSection): section is SectionWithItems => {
@@ -89,54 +89,34 @@ const MobileNavigation = () => {
                             <Mail className="h-5 w-5" />
                         </Link>
                         <Link
-                            href="https://x.com/log_onthepage"
+                            href="https://x.com/Logo_obscurity"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-primary hover:text-primary/80 transition-colors duration-200"
-                            aria-label="Follow us on X (Twitter)"
+                            aria-label="Follow LOG_ON on X (formerly Twitter)"
                             onClick={() => setMenuOpen(false)}
                         >
-                            <IconX className="h-5 w-5" />
+                            <IconX className="h-5 w-5" aria-hidden="true" />
                         </Link>
                         <Link
-                            href="https://www.linkedin.com/company/logon-connecting-advantages"
+                            href="https://www.linkedin.com/in/logo-oluwamayowa-cpo-/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-primary hover:text-primary/80 transition-colors duration-200"
-                            aria-label="Connect with us on LinkedIn"
+                            aria-label="Connect with LOG_ON on LinkedIn"
                             onClick={() => setMenuOpen(false)}
                         >
-                            <IconLinkedIn className="h-5 w-5" />
+                            <IconLinkedIn className="h-5 w-5" aria-hidden="true" />
                         </Link>
                         <Link
-                            href="https://www.instagram.com/logon_thepage/"
+                            href="https://github.com/Logonotobscurity/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-primary hover:text-primary/80 transition-colors duration-200"
-                            aria-label="Follow us on Instagram"
+                            aria-label="View LOG_ON source code on GitHub"
                             onClick={() => setMenuOpen(false)}
                         >
-                            <IconInstagram className="h-5 w-5" />
-                        </Link>
-                        <Link
-                            href="https://www.facebook.com/logonthepage"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-primary hover:text-primary/80 transition-colors duration-200"
-                            aria-label="Like us on Facebook"
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            <IconFacebook className="h-5 w-5" />
-                        </Link>
-                        <Link
-                            href="https://www.youtube.com/@logonthepage"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-primary hover:text-primary/80 transition-colors duration-200"
-                            aria-label="Subscribe to our YouTube channel"
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            <IconYouTube className="h-5 w-5" />
+                            <IconGithub className="h-5 w-5" aria-hidden="true" />
                         </Link>
                     </div>
                 </div>
