@@ -42,7 +42,8 @@ export function NotesColumn() {
               {note.description}
             </p>
             <div className="flex items-center gap-1 mt-2 text-xs text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-              Read more <ArrowRight className="h-3 w-3" />
+              <span className="sr-only">Read more about {note.title}</span>
+              <span aria-hidden="true">Read more</span> <ArrowRight className="h-3 w-3" />
             </div>
           </Link>
         ))}

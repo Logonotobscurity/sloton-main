@@ -89,7 +89,8 @@ export default function NewsroomPage() {
                     </CardContent>
                     <CardFooter className="p-6 pt-0 mt-auto">
                     <Link href={`/insights/${insight.slug}`} className="text-primary font-semibold flex items-center group">
-                        Read More <ArrowRight className="ml-2 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
+                        <span className="sr-only">Read more about {insight.title}</span>
+                        <span aria-hidden="true">Read More</span> <ArrowRight className="ml-2 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
                     </Link>
                     </CardFooter>
                 </div>
