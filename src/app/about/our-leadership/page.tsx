@@ -1,4 +1,3 @@
-
 import { teamMembers } from "@/lib/data/team-members";
 import { PageHero } from "@/components/page-sections/page-hero";
 import { BottomCta } from "@/components/page-sections/bottom-cta";
@@ -8,6 +7,7 @@ import { Linkedin, Github, Mail } from 'lucide-react';
 import { IconX } from '@/lib/icons';
 import type { Metadata } from 'next';
 import { FillImage } from '@/lib/image-utils';
+import { PersonSchema, BreadcrumbSchema } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Our Leadership | AI & Automation Experts',
@@ -17,6 +17,23 @@ export const metadata: Metadata = {
 export default function LeadershipPage() {
     return (
         <div>
+             <BreadcrumbSchema items={[
+               { name: 'Home', url: 'https://logonsolutions.netlify.app' },
+               { name: 'About', url: 'https://logonsolutions.netlify.app/about' },
+               { name: 'Our Leadership', url: 'https://logonsolutions.netlify.app/about/our-leadership' },
+             ]} />
+             {teamMembers.map(member => (
+               <PersonSchema
+                 key={member.name}
+                 name={member.name}
+                 role={member.role}
+                 email={member.email}
+                 linkedin={member.socials.linkedin}
+                 twitter={member.socials.twitter}
+                 github={member.socials.github}
+                 image={member.image}
+               />
+             ))}
              <PageHero 
                 title="Our Leadership"
                 description="Meet the visionaries guiding LOG_ON. Our leadership team brings a wealth of experience from the forefront of technology, business, and research. They are united by a shared passion for innovation and a commitment to our clients' success."

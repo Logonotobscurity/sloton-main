@@ -8,6 +8,7 @@ import type { Metadata } from 'next';
 import { BottomCta } from '@/components/page-sections/bottom-cta';
 import { SidebarNav } from '@/components/sidebar-nav';
 import { industries, sidebarNavItems } from '@/lib/data/industries-data';
+import { IndustryItemListSchema, BreadcrumbSchema } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Workplace Automation Use Cases by Industry in Nigeria',
@@ -17,6 +18,11 @@ export const metadata: Metadata = {
 export default function UseCasesPage() {
   return (
     <div className="bg-background">
+      <IndustryItemListSchema industries={industries.map(i => ({ name: i.name, description: i.description, id: i.id }))} />
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: 'https://logonsolutions.netlify.app' },
+        { name: 'Industry Use Cases', url: 'https://logonsolutions.netlify.app/use-cases' },
+      ]} />
       <PageHero
         title="Solutions For Your Industry"
         description="We combine deep industry knowledge with technological expertise to build solutions that address the unique challenges of your sector. Explore how we empower businesses to innovate and grow."

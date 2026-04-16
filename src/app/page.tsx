@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { generateMetadata, KEYWORD_SETS, WebSiteSchema, ServiceCatalogSchema } from '@/lib/seo';
+import { generateMetadata, KEYWORD_SETS, WebSiteSchema, ServiceCatalogSchema, LocalBusinessSchema, BreadcrumbSchema } from '@/lib/seo';
 import { Hero } from '@/components/page-sections/hero';
 import StrategicPartner from '@/components/page-sections/strategic-partner';
 import { ServicesOffered } from '@/components/page-sections/services-offered';
@@ -38,6 +38,10 @@ export default function Home() {
     <>
       <WebSiteSchema />
       <ServiceCatalogSchema />
+      <LocalBusinessSchema />
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: 'https://logonsolutions.netlify.app' },
+      ]} />
       <Hero />
       <StrategicPartner />
       <ServicesOffered />

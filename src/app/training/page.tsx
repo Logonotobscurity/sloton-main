@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { DialogFormWrapper } from '@/components/dialog-form-wrapper';
-import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema } from '@/lib/seo';
+import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, CourseListSchema, BreadcrumbSchema } from '@/lib/seo';
 import { CommunityLeadForm } from '@/components/community-lead-form';
 import { DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { GlowingCard } from '@/components/ui/glowing-card';
@@ -43,6 +43,11 @@ export default function TrainingPage() {
   return (
     <div className="bg-background">
       <JsonLd data={trainingServiceSchema} />
+      <CourseListSchema courses={trainingPrograms} />
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: 'https://logonsolutions.netlify.app' },
+        { name: 'Training Programs', url: 'https://logonsolutions.netlify.app/training' },
+      ]} />
       <PageHero 
         title="Build Skills That Deliver Immediate ROI"
         description="We believe in building more than just technology; we're dedicated to building skills, fostering leadership, and making a positive community impact. Explore our training programs and our commitment to ethical innovation."
