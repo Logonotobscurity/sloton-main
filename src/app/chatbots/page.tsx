@@ -2,21 +2,45 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Bot, CheckCircle, ArrowRight, MessageSquare, Repeat, Users } from 'lucide-react';
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CaseStudyFeature } from '@/components/page-sections/case-study-feature';
 import { PageHero } from '@/components/page-sections/page-hero';
 import { chatbotServices, chatbotsBenefits } from '@/lib/data/services-data';
+import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, BreadcrumbSchema } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'AI Agent & Chatbot Development Services',
-  description: 'Expert AI agent development for 24/7 engagement. We build intelligent chatbots for websites and WhatsApp to automate support, generate leads, and scale your business in Nigeria.',
-};
+export const metadata = generateMetadata({
+  title: 'AI Chatbot & WhatsApp Bot Development in Nigeria | 24/7 Automation',
+  description: 'Build intelligent AI chatbots and WhatsApp bots for your Nigerian business. LOG_ON designs and deploys conversational AI agents that automate customer support, generate leads, and drive sales around the clock. Based in Lagos, serving all of Nigeria and Africa.',
+  keywords: [
+    ...KEYWORD_SETS.ai,
+    'AI chatbot Nigeria',
+    'WhatsApp bot Nigeria',
+    'chatbot development Lagos',
+    'conversational AI Nigeria',
+    'customer support automation',
+    'lead generation chatbot',
+    'AI virtual assistant Nigeria',
+  ],
+  canonical: 'https://logonsolutions.netlify.app/chatbots',
+});
+
+const chatbotServiceSchema = generateServiceSchema({
+  name: 'AI Chatbot & Virtual Assistant Development',
+  description: 'We design and build intelligent AI chatbots that integrate with your website, WhatsApp, and other platforms to automate customer service, qualify leads, and drive sales 24/7.',
+  url: 'https://logonsolutions.netlify.app/chatbots',
+  provider: 'LOG_ON',
+  areaServed: 'Nigeria',
+});
 
 
 export default function ChatbotsPage() {
   return (
     <div className="bg-background">
+      <JsonLd data={chatbotServiceSchema} />
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: 'https://logonsolutions.netlify.app' },
+        { name: 'AI Chatbots', url: 'https://logonsolutions.netlify.app/chatbots' },
+      ]} />
       <PageHero
         title="AI Chatbots & Virtual Assistants"
         description="Engage every customer, 24/7. We design and build intelligent, AI-powered chatbots that integrate seamlessly with your website, WhatsApp, and other platforms. Automate customer service, qualify leads, and drive sales while your team focuses on what matters most."
@@ -86,15 +110,24 @@ export default function ChatbotsPage() {
          <section className="text-center mt-fluid-md py-fluid-md bg-background rounded-lg px-fluid-sm">
             <h2 className="text-fluid-lg font-bold font-headline">Ready to Automate Your Conversations?</h2>
             <p className="mt-4 text-fluid-base text-muted-foreground max-w-2xl mx-auto">
-                Let's discuss how a custom chatbot can revolutionize your customer engagement. Schedule a free consultation with our AI experts today.
+                Let's discuss how a custom AI chatbot can transform your customer engagement in Nigeria and beyond. Schedule a free consultation today.
             </p>
-            <div className="mt-8 flex justify-center">
+            <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4 flex-wrap">
                 <Button asChild size="lg">
                     <Link href="/contact">
                         Free Consultation <ArrowRight className="ml-2 h-5 w-5" />
                     </Link>
                 </Button>
+                <Button asChild size="lg" variant="outline">
+                    <Link href="/ai-solutions">Explore AI Solutions</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                    <Link href="/automation">See Automation Services</Link>
+                </Button>
             </div>
+            <p className="mt-6 text-sm text-muted-foreground">
+                Read our <Link href="/insights" className="text-primary underline hover:no-underline">AI insights</Link> or explore <Link href="/use-cases" className="text-primary underline hover:no-underline">industry use cases</Link>.
+            </p>
         </section>
 
       </div>

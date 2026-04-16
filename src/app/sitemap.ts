@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/solutions', priority: 0.8, changeFrequency: 'weekly' as const },
     { path: '/insights', priority: 0.8, changeFrequency: 'daily' as const },
     { path: '/use-cases', priority: 0.8, changeFrequency: 'weekly' as const },
+    { path: '/resources', priority: 0.8, changeFrequency: 'weekly' as const },
   ];
 
   // Lower priority pages

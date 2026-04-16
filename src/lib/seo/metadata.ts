@@ -25,7 +25,7 @@ const SITE_CONFIG = {
   name: 'LOG_ON',
   url: 'https://logonsolutions.netlify.app',
   defaultOgImage: '/og-image.png',
-  twitterHandle: '@log_onthepage',
+  twitterHandle: '@Logo_obscurity',
   locale: 'en_US',
   type: 'website',
 } as const;
