@@ -6,7 +6,7 @@ export const teamMembers = [
     name: 'Oluwamayowa Logo',
     role: 'Lead Developer & Automation Solution Architect',
     bio: 'Oluwamayowa is an expert in AI architecture and automation solutions with a focus on innovative technology implementation. He specializes in developing scalable solutions that drive business growth and is dedicated to pushing the boundaries of what AI can achieve in the enterprise space.',
-    image: 'https://i.ibb.co/vbbSN7d/Gemini-Generated-Image-vmn9povmn9povmn9.png',
+    image: '/images/team/oluwamayowa.png',
     width: imageData.authorOluwamayowa.width,
     height: imageData.authorOluwamayowa.height,
     dataAiHint: imageData.authorOluwamayowa.dataAiHint,
