@@ -16,6 +16,8 @@ import { X, TrendingUp, Users, Zap, ArrowRight } from 'lucide-react';
 import { insights } from '@/lib/data/insights';
 import type { Insight } from '@/lib/data/insights';
 import Link from 'next/link';
+import { newsletterSignupAction } from '@/app/actions';
+import { useToast } from '@/hooks/use-toast';
 
 const POPUP_DELAY = 8000; // 8 seconds
 const POPUP_COOLDOWN_KEY = 'newsletter-popup-dismissed';
@@ -27,6 +29,7 @@ export function NewsletterPopup() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [featuredArticle, setFeaturedArticle] = useState<Insight | null>(null);
+  const { toast } = useToast();
 
   useEffect(() => {
     // Check if popup was recently dismissed
@@ -61,17 +64,35 @@ export function NewsletterPopup() {
     setIsSubmitting(true);
 
     try {
-      // TODO: Integrate with your email service (Resend, Mailchimp, etc.)
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
+      // Call server action to handle newsletter signup and send to Automation AI
+      const result = await newsletterSignupAction({ email });
       
-      setIsSuccess(true);
-      
-      // Close after showing success message
-      setTimeout(() => {
-        handleClose();
-      }, 2000);
+      if (result.error) {
+        toast({
+          variant: "destructive",
+          title: "Subscription failed",
+          description: result.error,
+        });
+        logger.error('Newsletter subscription failed', { error: result.error });
+      } else {
+        setIsSuccess(true);
+        toast({
+          title: "Success! 🎉",
+          description: "Check your inbox for a confirmation email.",
+        });
+        
+        // Close after showing success message
+        setTimeout(() => {
+          handleClose();
+        }, 2000);
+      }
     } catch (error) {
       logger.error('Newsletter subscription failed', { error });
+      toast({
+        variant: "destructive",
+        title: "Something went wrong",
+        description: "Please try again later.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -100,7 +121,8 @@ export function NewsletterPopup() {
         {/* Close button */}
         <button
           onClick={handleClose}
-          className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground z-10"
+          className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none z-10"
+          aria-label="Close newsletter popup"
         >
           <X className="h-4 w-4" />
           <span className="sr-only">Close</span>
