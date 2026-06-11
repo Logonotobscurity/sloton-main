@@ -7,6 +7,7 @@ import { Bot, User, FileText, Phone } from 'lucide-react';
 import { ChatBubble, ChatBubbleAvatar, ChatBubbleMessage } from '@/components/ui/chat-bubble';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Message, LeadInfo } from './types';
+import { Button } from '@/components/ui/button';
 
 interface ChatMessagesProps {
     messages: Message[];
@@ -79,13 +80,15 @@ export function ChatMessages({ messages, leadInfo, isLoading, whatsappUrl, onAct
                         {message.suggested_actions && message.suggested_actions.length > 0 && index === messages.length - 1 && !isLoading && (
                             <div className="flex gap-2 flex-wrap pt-1">
                                 {message.suggested_actions.map(action => (
-                                    <button
+                                    <Button
                                         key={action}
                                         onClick={(e) => onActionClick(e, action)}
-                                        className="px-3 py-1.5 rounded-full bg-primary/10 text-primary hover:bg-primary/20 text-xs font-medium text-left transition-colors"
+                                        variant="outline"
+                                        className="px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-medium text-left transition-colors"
+                                        aria-label={`Suggested action: ${action}`}
                                     >
                                         {action}
-                                    </button>
+                                    </Button>
                                 ))}
                             </div>
                         )}
