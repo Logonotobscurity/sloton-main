@@ -28,7 +28,7 @@ jobs:
           NEXT_PUBLIC_SITE_URL: https://preview--logonsolutions.netlify.app
 
       - name: Deploy Preview to Netlify
-        uses: nwtgck/actions-netlify@v3.0
+        uses: nwtgck/actions-netlify@v4.0
         with:
           publish-dir: '.next'
           production-branch: main
