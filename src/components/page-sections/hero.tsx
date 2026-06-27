@@ -46,7 +46,7 @@ export function Hero() {
               className="font-headline text-fluid-hero font-bold !leading-tight my-4"
             >
               <div className="flex flex-col lg:items-start items-center">
-                <span>Do More with Less:</span>
+                <span>AI Agent Development & Workplace Automation</span>
                 <div className="relative inline-block text-primary text-fluid-lg">
                   <span className="invisible whitespace-nowrap">{longestPhrase}</span>
                   <span className="absolute inset-0 flex items-center lg:justify-start justify-center whitespace-nowrap">
