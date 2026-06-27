@@ -38,6 +38,14 @@ const webDevServiceSchema = generateServiceSchema({
 
 const SectionSkeleton = () => (
   <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
+        {/* Answer Block */}
+        <section className="mb-16 bg-secondary/20 p-8 rounded-2xl border border-primary/10">
+          <h2 className="text-2xl font-bold mb-4">What is Custom Web Development?</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Custom web development in Nigeria refers to the creation of bespoke digital platforms—from corporate websites to complex web applications—built using modern frameworks like Next.js and React. Unlike template-based sites, custom development ensures your platform is high-performance, secure, and fully aligned with your specific business goals.
+          </p>
+        </section>
+
     <div className="flex flex-col items-center text-center space-y-4 max-w-3xl mx-auto">
       <Skeleton className="h-8 w-1/2" />
       <Skeleton className="h-6 w-3/4" />
@@ -56,6 +64,14 @@ export default function WebDevelopmentPage() {
             icon={<Code className="h-12 w-12 md:h-16 md:w-16 text-primary" />}
         />
       <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
+        {/* Answer Block */}
+        <section className="mb-16 bg-secondary/20 p-8 rounded-2xl border border-primary/10">
+          <h2 className="text-2xl font-bold mb-4">What is Custom Web Development?</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Custom web development in Nigeria refers to the creation of bespoke digital platforms—from corporate websites to complex web applications—built using modern frameworks like Next.js and React. Unlike template-based sites, custom development ensures your platform is high-performance, secure, and fully aligned with your specific business goals.
+          </p>
+        </section>
+
         <section className="py-16 md:py-24">
              <div className="grid md:grid-cols-2 gap-8">
                 {webDevelopmentServices.map((service) => (

@@ -9,7 +9,7 @@ import { PageHero } from '@/components/page-sections/page-hero';
 import { aiServices, aiSolutionsBenefits } from '@/lib/data/services-data';
 
 export const metadata = generateMetadata({
-  title: 'AI Agent Development & Custom AI Solutions in Nigeria',
+  title: 'AI Agent Development & Custom AI Solutions',
   description: 'Expert AI agent development and custom machine learning solutions in Nigeria. We design and deploy intelligent AI agents for workplace automation, predictive analytics, and business innovation. Transform your operations with cutting-edge AI technology.',
   keywords: [
     ...KEYWORD_SETS.ai,
@@ -47,6 +47,14 @@ export default function AiSolutionsPage() {
         description="At LOG_ON, we don't just use AI—we build it. We specialize in creating bespoke artificial intelligence, AI agents, and machine learning solutions that integrate seamlessly with your operations to solve your most complex challenges. Our expert team partners with you to transform your data into a strategic asset, driving efficiency, innovation, and measurable growth."
       />
       <div className="container mx-auto px-fluid-sm py-fluid-lg">
+        {/* Answer Block */}
+        <section className="mb-16 bg-secondary/20 p-8 rounded-2xl border border-primary/10">
+          <h2 className="text-2xl font-bold mb-4">What is AI Agent Development?</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            AI agent development is the process of building autonomous software entities that can reason, use tools, and execute complex workflows to achieve specific business goals. Unlike traditional chatbots, AI agents can plan multi-step actions, integrate with internal systems, and make decisions independently to solve enterprise challenges in Nigeria.
+          </p>
+        </section>
+
         <section className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
              <div className="space-y-4 pt-4">

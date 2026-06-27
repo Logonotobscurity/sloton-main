@@ -42,6 +42,14 @@ export default function BusinessAnalyticsPage() {
         description="Turn your data into your most valuable asset. We help you move from simply collecting data to actively using it to drive strategy, optimize operations, and uncover new opportunities. Our custom business analytics solutions provide the clarity you need to make confident, data-driven decisions."
       />
       <div className="container mx-auto px-fluid-sm py-fluid-lg">
+        {/* Answer Block */}
+        <section className="mb-16 bg-secondary/20 p-8 rounded-2xl border border-primary/10">
+          <h2 className="text-2xl font-bold mb-4">What are Business Analytics Solutions?</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Business analytics solutions in Nigeria involve the systematic exploration of an organization’s data with an emphasis on statistical analysis. At LOG_ON Solutions, we build custom BI dashboards and reporting systems that turn raw data into actionable insights, helping businesses track KPIs, optimize workflows, and drive growth.
+          </p>
+        </section>
+
         <section className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
              <div className="space-y-4 pt-4">

@@ -78,6 +78,14 @@ export default async function AutomationPage({
         description="Eliminate repetitive, manual work from your operations. LOG_ON designs and deploys custom AI-powered automation and Robotic Process Automation (RPA) solutions that free your team to focus on strategy, relationships, and innovation."
       />
       <div className="container mx-auto px-fluid-sm py-fluid-lg">
+        {/* Answer Block */}
+        <section className="mb-16 bg-secondary/20 p-8 rounded-2xl border border-primary/10">
+          <h2 className="text-2xl font-bold mb-4">What is Workplace Automation?</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Workplace automation in Nigeria is the use of technology to perform tasks that previously required human effort. It spans a spectrum from simple, rule-based Robotic Process Automation (RPA)—where bots execute repetitive tasks—to sophisticated AI-powered automation that can reason, understand natural language, and make decisions from unstructured data.
+          </p>
+        </section>
+
 
         {/* Proof stats */}
         <section aria-label="Automation impact metrics" className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16 md:mb-24">

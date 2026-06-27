@@ -15,6 +15,9 @@ import { OptimizedImage } from '@/lib/image-utils';
 
 export const metadata: Metadata = {
   title: 'About Our Expertise',
+  alternates: {
+    canonical: "https://logonsolutions.netlify.app/about",
+  },
   description: 'Learn about LOG_ON, your digital architects for workplace automation in Nigeria. We build integrated digital ecosystems where businesses thrive through AI agent development.',
 };
 
