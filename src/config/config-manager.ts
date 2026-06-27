@@ -4,7 +4,7 @@
  */
 
 import { logger } from '@/lib/logger';
-import { AppConfig, defaultAppConfig, getAppConfigFromEnvironment, validateAppConfig, getConfigForEnvironment } from '@/config/app.config';
+import { AppConfig, defaultAppConfig, getAppConfigFromEnvironment, validateAppConfig, getConfigForEnvironment } from './app.config';
 
 export class ConfigManager {
   private static instance: ConfigManager;

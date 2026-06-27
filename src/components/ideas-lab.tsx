@@ -2,11 +2,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GlowingCard } from "@/components/ui/glowing-card";
-import { Button } from '@/components/ui/button';
+import { GlowingCard } from "./ui/glowing-card";
+import { Button } from './ui/button';
 import { Check, ArrowRight } from "lucide-react";
 import React from "react";
-import { Card } from "@/components/ui/card";
+import { Card } from "./ui/card";
 import imageData from '@/lib/placeholder-images.json';
 import { useChatbotStore } from "@/hooks/use-chatbot-store";
 import Link from "next/link";

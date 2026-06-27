@@ -1,6 +1,6 @@
 
 import templatesData from '@/lib/data/workflow-templates.json';
-import { slugify } from '@/lib/slugify';
+import { slugify } from '../slugify';
 
 export interface TemplateStep {
     name: string;

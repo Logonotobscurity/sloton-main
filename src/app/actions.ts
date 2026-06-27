@@ -135,41 +135,6 @@ const communityLeadSchema = z.object({
   interest: z.string().optional(),
   date: z.date().optional(),
 });
-
-const newsletterSignupSchema = z.object({
-  email: z.string().email({ message: 'Please enter a valid email address.' }),
-});
-
-export async function newsletterSignupAction(data: z.infer<typeof newsletterSignupSchema>): Promise<FormResult<null>> {
-  const parsed = newsletterSignupSchema.safeParse(data);
-
-  if (!parsed.success) {
-    return { error: parsed.error.errors[0]?.message || 'Please enter a valid email address.' };
-  }
-
-  if (!resend) {
-    logger.warn('[Actions] RESEND_API_KEY is not set. Skipping newsletter notification email.');
-  } else {
-    try {
-      await resend.emails.send({
-        from: 'LOG_ON Newsletter <noreply@logon.com.ng>',
-        to: toEmail,
-        subject: 'New Newsletter Signup',
-        reply_to: parsed.data.email,
-        text: `New newsletter signup: ${parsed.data.email}`,
-      });
-      logger.info('[Actions] Newsletter signup email sent successfully');
-    } catch (error) {
-      const errorResponse = handleError(error, 'Actions.newsletterSignupAction', { logLevel: 'error' });
-      return { error: errorResponse.error.message };
-    }
-  }
-
-  await sendToWebhook(parsed.data, 'Newsletter Signup');
-
-  return { success: true };
-}
-
 export async function communityLeadAction(data: z.infer<typeof communityLeadSchema>): Promise<FormResult<null>> {
    if (!resend) {
       logger.warn('[Actions] RESEND_API_KEY is not set. Skipping enrollment email.');
@@ -198,4 +163,26 @@ export async function communityLeadAction(data: z.infer<typeof communityLeadSche
   await sendToWebhook(data as unknown as Record<string, unknown>, `Lead Form: ${data.interest || 'General Inquiry'}`);
 
   return { success: true };
+}
+
+// Newsletter Signup Action
+const newsletterSchema = z.object({
+  email: z.string().email({ message: 'Please enter a valid email address.' }),
+});
+
+export async function newsletterSignupAction(data: z.infer<typeof newsletterSchema>): Promise<FormResult<null>> {
+  try {
+    // Send data to webhook
+    await sendToWebhook(data as Record<string, unknown>, 'Newsletter Signup');
+
+    // In a real app, you might also add them to a mailing list (e.g. Resend, Mailchimp)
+    if (resend) {
+      // Logic for adding to contact list could go here
+    }
+
+    return { success: true };
+  } catch (error) {
+    const errorResponse = handleError(error, 'Actions.newsletterSignupAction', { logLevel: 'error' });
+    return { error: errorResponse.error.message };
+  }
 }

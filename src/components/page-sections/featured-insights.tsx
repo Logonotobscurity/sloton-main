@@ -6,8 +6,8 @@ import { CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from 
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight } from 'lucide-react';
 import { insights } from '@/lib/data/insights';
-import { Button } from '@/components/ui/button';
-import { GlowingCard } from '@/components/ui/glowing-card';
+import { Button } from '../ui/button';
+import { GlowingCard } from '../ui/glowing-card';
 import { motion } from 'framer-motion';
 import { useMediaQuery } from '@/hooks/use-media-query';
 import {
@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import React from 'react';
-import { ArticleCodeVisual } from '@/components/ui/article-code-visual';
+import { ArticleCodeVisual } from '../ui/article-code-visual';
 import { OptimizedImage } from '@/lib/image-utils';
 
 // Create custom card variant with staggered delay

@@ -38,6 +38,9 @@ export function Hero() {
             animate="visible"
             variants={containerVariants}
           >
+            <motion.div variants={itemVariants} className="text-sm font-normal uppercase tracking-widest text-primary">
+              Connecting Advantages. Delivering Results.
+            </motion.div>
             <motion.h1
               variants={itemVariants}
               className="font-headline text-fluid-hero font-bold !leading-tight my-4"

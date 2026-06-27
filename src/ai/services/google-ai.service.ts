@@ -2,7 +2,7 @@
  * Google AI service implementation using Genkit
  */
 
-import { IAIService } from '@/ai/services/ai-service.interface';
+import { IAIService } from './ai-service.interface';
 import { SolutionRecommendationInput, SolutionRecommendationOutput } from '@/ai/flows/solution-recommendation';
 import { AutomateTaskDesignInput, AutomateTaskDesignOutput } from '@/ai/flows/automated-task-design';
 import { ai } from '@/ai/genkit';

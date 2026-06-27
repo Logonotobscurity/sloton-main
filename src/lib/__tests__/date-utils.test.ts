@@ -20,7 +20,7 @@ import {
   isFuture,
   getDaysDifference,
   DateFormats,
-} from '@/lib/date-utils';
+} from '../date-utils';
 
 describe('date-utils', () => {
   // Use a fixed date for consistent testing

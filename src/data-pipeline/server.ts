@@ -21,7 +21,7 @@ const producer = {
   }
 };
 
-import leadEventSchema from '@/data-pipeline/lead-event.schema.json';
+import leadEventSchema from './lead-event.schema.json';
 
 const app = express();
 app.use(express.json());

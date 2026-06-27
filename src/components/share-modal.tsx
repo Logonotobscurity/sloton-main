@@ -197,7 +197,7 @@ export function ShareModal({ title, description, hashtags }: ShareModalProps) {
 
           {/* Brand Footer */}
           <div className="pt-2 border-t text-center text-xs text-muted-foreground">
-            Shared from <span className="font-semibold">LOG_ON</span>
+            Shared from <span className="font-semibold">LOG_ON - Connecting Advantages</span>
           </div>
         </div>
       </DialogContent>

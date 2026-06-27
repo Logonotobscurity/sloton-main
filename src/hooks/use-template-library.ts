@@ -1,6 +1,6 @@
 'use client';
 
-import { useFilteredData } from '@/hooks/use-filtered-data';
+import { useFilteredData } from './use-filtered-data';
 
 export interface TemplateItem {
   name: string;

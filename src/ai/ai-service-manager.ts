@@ -3,7 +3,7 @@
  * Handles AI service configuration, error handling, and fallback mechanisms
  */
 
-import { IAIService, AIServiceFactory, AIProvider, AIServiceConfig } from '@/ai/services';
+import { IAIService, AIServiceFactory, AIProvider, AIServiceConfig } from './services';
 import { logger } from '@/lib/logger';
 import { AppError, ErrorCode, handleError } from '@/lib/error-handler';
 import type { 

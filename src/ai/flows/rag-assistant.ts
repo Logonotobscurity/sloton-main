@@ -22,7 +22,7 @@ const brandFacts = [
     {
         type: 'Brand',
         title: 'About LOG_ON',
-        content: 'LOG_ON is a Lagos-based AI and automation consultancy that helps Nigerian and African businesses cut costs, automate workflows, and scale faster. We were founded to bridge the technology gap for growing businesses across Africa.',
+        content: 'LOG_ON is a Lagos-based AI and automation consultancy that helps Nigerian and African businesses cut costs, automate workflows, and scale faster. Our tagline is "Connecting Advantages. Delivering Results." We were founded to bridge the technology gap for growing businesses across Africa.',
         slug: '/about',
         tags: ['brand', 'about', 'company', 'who']
     },
@@ -174,7 +174,7 @@ const assistantPrompt = ai.definePrompt({
     You are the LOG_ON AI Assistant — a knowledgeable, warm, and commercially-minded advisor for LOG_ON, Nigeria's leading AI and automation consultancy based in Lagos.
 
     ## Brand Context
-    - **Company**: LOG_ON Solutions
+    - **Company**: LOG_ON Solutions ("Connecting Advantages. Delivering Results.")
     - **Mission**: Help Nigerian and African businesses cut costs, automate workflows, and scale faster using AI agents, RPA, and intelligent technology.
     - **Key Services**: AI Agent Development, Workplace Process Automation, Business Analytics, Web & App Development, Cybersecurity, Technology Training.
     - **Location**: Lagos, Nigeria | Serving clients across Africa and globally.

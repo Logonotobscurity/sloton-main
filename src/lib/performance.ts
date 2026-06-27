@@ -36,7 +36,6 @@ export class PerformanceMonitor {
   private initializeObservers(): void {
     if (typeof window === 'undefined') return;
 
-    // Observe LCP
     new PerformanceObserver((entryList) => {
       const entries = entryList.getEntries();
       if (entries.length > 0) {
@@ -45,7 +44,6 @@ export class PerformanceMonitor {
       }
     }).observe({ entryTypes: ['largest-contentful-paint'] });
 
-    // Observe FID
     new PerformanceObserver((entryList) => {
       const entries = entryList.getEntries();
       entries.forEach(entry => {
@@ -55,7 +53,6 @@ export class PerformanceMonitor {
       });
     }).observe({ entryTypes: ['first-input'] });
 
-    // Observe CLS
     let clsValue = 0;
     new PerformanceObserver((entryList) => {
       const entries = entryList.getEntries();
@@ -67,7 +64,6 @@ export class PerformanceMonitor {
       });
     }).observe({ entryTypes: ['layout-shift'] });
 
-    // Navigation Timing
     window.addEventListener('load', () => {
       setTimeout(() => {
         const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
@@ -76,7 +72,6 @@ export class PerformanceMonitor {
           this.recordMetric('navigationTime', navigation.loadEventEnd - navigation.fetchStart);
         }
 
-        // Resource Timing
         const resources = performance.getEntriesByType('resource');
         const totalResourceTime = resources.reduce((total, resource) => {
           return total + ((resource as PerformanceResourceTiming).responseEnd - resource.startTime);
@@ -132,7 +127,6 @@ export class PerformanceMonitor {
 export function usePerformanceMonitoring(callback: (metrics: PerformanceMetrics) => void): PerformanceMetrics | undefined {
   useEffect(() => {
     if (typeof window === 'undefined') return;
-
     const monitor = PerformanceMonitor.getInstance();
     monitor.addListener(callback);
     return () => monitor.removeListener(callback);

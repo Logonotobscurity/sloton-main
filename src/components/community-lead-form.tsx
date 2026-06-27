@@ -11,7 +11,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import { communityLeadAction } from '@/app/actions';
-import { DatePicker } from '@/components/ui/date-picker';
+import { DatePicker } from './ui/date-picker';
 import { getWhatsAppUrl } from '@/lib/whatsapp';
 
 const formSchema = z.object({

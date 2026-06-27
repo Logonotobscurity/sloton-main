@@ -16,50 +16,17 @@ export default function robots(): MetadataRoute.Robots {
           '/private/',
         ],
       },
-      {
-        userAgent: 'GPTBot',
-        allow: '/',
-      },
-      {
-        userAgent: 'ChatGPT-User',
-        allow: '/',
-      },
-      {
-        userAgent: 'Google-Extended',
-        allow: '/',
-      },
-      {
-        userAgent: 'anthropic-ai',
-        allow: '/',
-      },
-      {
-        userAgent: 'ClaudeBot',
-        allow: '/',
-      },
-      {
-        userAgent: 'PerplexityBot',
-        allow: '/',
-      },
-      {
-        userAgent: 'Perplexity-User',
-        allow: '/',
-      },
-      {
-        userAgent: 'MistralAI-User',
-        allow: '/',
-      },
-      {
-        userAgent: 'Applebot-Extended',
-        allow: '/',
-      },
-      {
-        userAgent: 'Bytespider',
-        allow: '/',
-      },
-      {
-        userAgent: 'Applebot',
-        allow: '/',
-      },
+      { userAgent: 'GPTBot', allow: '/' },
+      { userAgent: 'ChatGPT-User', allow: '/' },
+      { userAgent: 'Google-Extended', allow: '/' },
+      { userAgent: 'anthropic-ai', allow: '/' },
+      { userAgent: 'ClaudeBot', allow: '/' },
+      { userAgent: 'PerplexityBot', allow: '/' },
+      { userAgent: 'Perplexity-User', allow: '/' },
+      { userAgent: 'MistralAI-User', allow: '/' },
+      { userAgent: 'Applebot-Extended', allow: '/' },
+      { userAgent: 'Bytespider', allow: '/' },
+      { userAgent: 'Applebot', allow: '/' },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
     host: baseUrl,

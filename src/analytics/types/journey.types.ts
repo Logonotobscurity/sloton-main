@@ -5,7 +5,7 @@
  * sequences of user interactions through the platform.
  */
 
-import { EventType } from '@/analytics/types/event.types';
+import { EventType } from './event.types';
 
 /**
  * Journey event (simplified event for journey tracking)

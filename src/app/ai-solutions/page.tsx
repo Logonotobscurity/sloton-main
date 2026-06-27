@@ -9,16 +9,7 @@ import { PageHero } from '@/components/page-sections/page-hero';
 import { aiServices, aiSolutionsBenefits } from '@/lib/data/services-data';
 
 
-const faqs = [
-  {
-    question: 'What is AI agent development?',
-    answer: 'AI agent development is the process of building autonomous software entities that can reason, use tools, and execute complex workflows to achieve specific business goals.',
-  },
-  {
-    question: 'How can AI agents improve business efficiency?',
-    answer: 'AI agents automate end-to-end processes, handle complex data analysis, and provide 24/7 intelligent support, reducing manual errors and freeing teams for strategic work.',
-  },
-];
+const faqs = [{'question': 'What is AI agent development?', 'answer': 'AI agent development is the process of building autonomous software entities that can reason, use tools, and execute complex workflows to achieve specific business goals.'}, {'question': 'How can AI agents improve business efficiency?', 'answer': 'AI agents automate end-to-end processes, handle complex data analysis, and provide 24/7 intelligent support, reducing manual errors and freeing teams for strategic work.'}];
 
 export const metadata = generateMetadata({
   title: 'AI Agent Development & Custom AI Solutions',

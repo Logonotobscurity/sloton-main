@@ -4,14 +4,14 @@
  */
 
 // Services
-export * from '@/ai/services';
+export * from './services';
 
 // Configuration
-export * from '@/ai/ai-config';
+export * from './ai-config';
 
 // Service Manager
-export { AIServiceManager } from '@/ai/ai-service-manager';
+export { AIServiceManager } from './ai-service-manager';
 
 // Flow types (for backward compatibility)
-export type { SolutionRecommendationInput, SolutionRecommendationOutput } from '@/ai/flows/solution-recommendation';
-export type { AutomateTaskDesignInput, AutomateTaskDesignOutput } from '@/ai/flows/automated-task-design';
+export type { SolutionRecommendationInput, SolutionRecommendationOutput } from './flows/solution-recommendation';
+export type { AutomateTaskDesignInput, AutomateTaskDesignOutput } from './flows/automated-task-design';

@@ -11,14 +11,14 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "./ui/badge";
 import { caseStudies as allCaseStudies } from "@/lib/data/case-studies";
 import { CaseStudy } from "@/lib/data/case-studies";
 import { CardImage } from "@/lib/image-utils";
-import { DesignThinkingShowcase } from "@/components/design-thinking-showcase";
+import { DesignThinkingShowcase } from "./design-thinking-showcase";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "./ui/button";
 
 interface CaseStudiesCarouselProps {
   studies?: CaseStudy[];

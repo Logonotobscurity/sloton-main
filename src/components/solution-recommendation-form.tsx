@@ -21,7 +21,7 @@ import { Loader2, RefreshCw, Wand2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { getSolutionRecommendationAction } from "@/app/actions";
 import { SolutionRecommendationOutput } from "@/ai/flows/solution-recommendation";
-import { AssessmentResult } from "@/components/chatbot/assessment-result";
+import { AssessmentResult } from "./chatbot/assessment-result";
 import { hoverLift, tapScale } from "@/lib/animation-variants";
 
 const formSchema = z.object({

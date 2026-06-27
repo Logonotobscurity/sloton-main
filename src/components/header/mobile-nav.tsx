@@ -10,7 +10,7 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet";
-import { Logo } from "@/components/header/logo";
+import { Logo } from "./logo";
 import Link from "next/link";
 import { Mail } from "lucide-react";
 import { menuData, SitemapSection, SectionWithItems } from "@/lib/menu-data";

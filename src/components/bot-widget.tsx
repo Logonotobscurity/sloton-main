@@ -10,10 +10,10 @@ import { ChatbotContext } from '@/context/chatbot-provider';
 import { askSupportBot } from '@/app/actions';
 import Image from 'next/image';
 
-import { LeadCaptureForm } from '@/components/chatbot/lead-capture-form';
-import { ChatMessages } from '@/components/chatbot/chat-messages';
-import { ChatInput } from '@/components/chatbot/chat-input';
-import { Message, LeadInfo } from '@/components/chatbot/types';
+import { LeadCaptureForm } from './chatbot/lead-capture-form';
+import { ChatMessages } from './chatbot/chat-messages';
+import { ChatInput } from './chatbot/chat-input';
+import { Message, LeadInfo } from './chatbot/types';
 
 const WHATSAPP_URL = "https://wa.me/2348143066320?text=" + encodeURIComponent("Hi LOG_ON, I'd like to learn more about your AI and automation solutions.");
 

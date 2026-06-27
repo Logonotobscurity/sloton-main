@@ -2,5 +2,5 @@
  * SEO Utilities - Central Export
  */
 
-export * from '@/lib/seo/metadata';
-export * from '@/lib/seo/json-ld';
+export * from './metadata';
+export * from './json-ld';

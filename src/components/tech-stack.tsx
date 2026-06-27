@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import styles from '@/components/tech-stack.module.css';
+import styles from './tech-stack.module.css';
 import { useUIStore } from '@/stores/ui-store';
 import { FillImage, ResponsiveSizes } from '@/lib/image-utils';
 

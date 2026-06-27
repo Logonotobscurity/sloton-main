@@ -3,8 +3,8 @@
  * Supports multiple providers and allows runtime switching
  */
 
-import { IAIService } from '@/ai/services/ai-service.interface';
-import { GoogleAIService } from '@/ai/services/google-ai.service';
+import { IAIService } from './ai-service.interface';
+import { GoogleAIService } from './google-ai.service';
 
 export enum AIProvider {
   GOOGLE_AI = 'google-ai',

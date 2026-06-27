@@ -3,7 +3,7 @@
 
 import { Card, CardTitle } from '@/components/ui/card';
 import { CheckCircle } from 'lucide-react';
-import { AdinkraBackground } from '@/components/ui/adinkra-background';
+import { AdinkraBackground } from './ui/adinkra-background';
 import { motion } from 'framer-motion';
 import { fadeInUp, AnimationDuration } from '@/lib/animation-variants';
 
