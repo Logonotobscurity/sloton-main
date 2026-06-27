@@ -12,15 +12,15 @@ import { LogoImage } from '@/lib/image-utils';
 
 export const metadata: Metadata = {
   title: 'AI & Automation Partner Ecosystem',
-  description: 'Join the LOG_ON Partner Network. Collaborate with us to deliver innovative AI agent development and workplace automation solutions, drive customer success, and grow your business.',
+  description: 'Join the LOG_ON Solutions Partner Network. Collaborate with us to deliver innovative AI agent development and workplace automation solutions, drive customer success, and grow your business.',
 };
 
 export default function PartnersPage() {
   return (
     <div className="bg-background">
       <PageHero
-        title="Join the LOG_ON Partner Network"
-        description="At LOG_ON, we believe that collaboration is the key to innovation. Our partner ecosystem brings together technology leaders, solution providers, and system integrators to deliver exceptional value to customers worldwide. By joining our network, you become part of a community dedicated to solving complex challenges with the power of AI and automation."
+        title="Join the LOG_ON Solutions Partner Network"
+        description="At LOG_ON Solutions, we believe that collaboration is the key to innovation. Our partner ecosystem brings together technology leaders, solution providers, and system integrators to deliver exceptional value to customers worldwide. By joining our network, you become part of a community dedicated to solving complex challenges with the power of AI and automation."
       />
       <div className="container mx-auto px-fluid-sm py-fluid-lg">
         <section className="grid lg:grid-cols-2 gap-12 items-center">
@@ -54,7 +54,7 @@ export default function PartnersPage() {
 
         <section className="py-fluid-lg">
             <div className="text-center max-w-3xl mx-auto mb-fluid-md">
-                <h2 className="text-fluid-xl font-bold font-headline">Why Partner with LOG_ON?</h2>
+                <h2 className="text-fluid-xl font-bold font-headline">Why Partner with LOG_ON Solutions?</h2>
                 <p className="mt-4 text-fluid-base text-muted-foreground">
                     We are committed to building mutually beneficial relationships that foster growth, innovation, and customer success.
                 </p>

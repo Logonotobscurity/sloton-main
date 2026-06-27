@@ -10,7 +10,7 @@ import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, Breadcru
 
 export const metadata = generateMetadata({
   title: 'AI Chatbot & WhatsApp Bot Development in Nigeria | 24/7 Automation',
-  description: 'Build intelligent AI chatbots and WhatsApp bots for your Nigerian business. LOG_ON designs and deploys conversational AI agents that automate customer support, generate leads, and drive sales around the clock. Based in Lagos, serving all of Nigeria and Africa.',
+  description: 'Build intelligent AI chatbots and WhatsApp bots for your Nigerian business. LOG_ON Solutions designs and deploys conversational AI agents that automate customer support, generate leads, and drive sales around the clock. Based in Lagos, serving all of Nigeria and Africa.',
   keywords: [
     ...KEYWORD_SETS.ai,
     'AI chatbot Nigeria',
@@ -28,7 +28,7 @@ const chatbotServiceSchema = generateServiceSchema({
   name: 'AI Chatbot & Virtual Assistant Development',
   description: 'We design and build intelligent AI chatbots that integrate with your website, WhatsApp, and other platforms to automate customer service, qualify leads, and drive sales 24/7.',
   url: 'https://logonsolutions.netlify.app/chatbots',
-  provider: 'LOG_ON',
+  provider: 'LOG_ON Solutions',
   areaServed: 'Nigeria',
 });
 

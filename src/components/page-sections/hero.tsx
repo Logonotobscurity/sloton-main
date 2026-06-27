@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from "react";
@@ -8,23 +7,12 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import SolutionRecommendationForm from "@/components/solution-recommendation-form";
 import { motion } from "framer-motion";
 import { AdinkraBackground } from "@/components/ui/adinkra-background";
-import { TypeAnimation } from "react-type-animation";
 import { HeroCodePreview } from "@/components/ui/hero-code-preview";
-import { staggerContainerCustom, staggerItem, createFadeIn } from "@/lib/animation-variants";
+import { staggerContainerCustom, staggerItem } from "@/lib/animation-variants";
  
 export function Hero() {
   const containerVariants = staggerContainerCustom(0.2, 0.2);
   const itemVariants = staggerItem;
-
-  const animationSequence = [
-    'Smart Automation',
-    2000,
-    'AI Agents',
-    2000,
-    'Actionable Intelligence',
-    2000,
-  ];
-  const longestPhrase = 'Actionable Intelligence';
 
   return (
     <section className="relative w-full min-h-[90vh] md:min-h-screen flex items-center overflow-hidden">
@@ -46,20 +34,9 @@ export function Hero() {
               className="font-headline text-fluid-hero font-bold !leading-tight my-4"
             >
               <div className="flex flex-col lg:items-start items-center">
-                <span>Do More with Less:</span>
-                <div className="relative inline-block text-primary text-fluid-lg">
-                  <span className="invisible whitespace-nowrap">{longestPhrase}</span>
-                  <span className="absolute inset-0 flex items-center lg:justify-start justify-center whitespace-nowrap">
-                      <TypeAnimation
-                          sequence={animationSequence}
-                          wrapper="span"
-                          cursor={false}
-                          repeat={Infinity}
-                      />
-                  </span>
-                </div>
-                <br className="md:hidden" />
-                <span className="text-[clamp(2rem,4vw,3.5rem)] md:whitespace-nowrap">for Growing Businesses.</span>
+                <span>AI Agent Development &</span>
+                <span className="text-primary">Workplace Automation</span>
+                <span className="text-[clamp(2rem,4vw,3.5rem)] md:whitespace-nowrap">for Growing Businesses in Nigeria.</span>
               </div>
             </motion.h1>
             
@@ -67,7 +44,7 @@ export function Hero() {
               variants={itemVariants}
               className="text-muted-foreground text-lg max-w-xl mx-auto lg:mx-0 mt-4"
             >
-              We build AI agents and automation systems that transform how Nigerian businesses operate. Less manual work, more growth.
+              We build intelligent AI agents and automation systems that transform how Nigerian businesses operate. Less manual work, more measurable growth.
             </motion.p>
             
             <motion.div

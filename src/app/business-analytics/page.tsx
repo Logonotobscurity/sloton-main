@@ -1,15 +1,15 @@
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { CheckCircle, ArrowRight, BarChart3 } from 'lucide-react';
 import Link from 'next/link';
-import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema } from '@/lib/seo';
+import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema } from '@/lib/seo';
 import { CaseStudyFeature } from '@/components/page-sections/case-study-feature';
 import { PageHero } from '@/components/page-sections/page-hero';
 import { analyticsServices, businessAnalyticsBenefits } from '@/lib/data/services-data';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 export const metadata = generateMetadata({
-  title: 'Business Analytics & BI Solutions in Nigeria | Dashboards & Reporting',
+  title: 'Business Analytics & BI Solutions',
   description: 'Transform raw data into actionable insights with our business analytics and BI solutions in Nigeria. We build custom dashboards, data reports, and KPI trackers to fuel data-driven growth and strategic decision-making.',
   keywords: [
     ...KEYWORD_SETS.analytics,
@@ -29,20 +29,49 @@ const analyticsServiceSchema = generateServiceSchema({
   name: 'Business Analytics & BI Solutions',
   description: 'Transform raw data into actionable insights with our business analytics and BI solutions. We build custom dashboards, data reports, and KPI trackers to fuel data-driven growth.',
   url: 'https://logonsolutions.netlify.app/business-analytics',
-  provider: 'LOG_ON',
+  provider: 'LOG_ON Solutions',
   areaServed: 'Nigeria',
 });
+
+const faqs = [
+  {
+    question: "What are business analytics solutions?",
+    answer: "Business analytics solutions are tools and processes used to collect, process, and analyze business data to generate actionable insights. These include BI dashboards, KPI tracking, and predictive modeling."
+  },
+  {
+    question: "How does BI reporting help my business?",
+    answer: "BI reporting provides a clear, visual representation of your performance metrics. It allows you to identify trends, spot inefficiencies, and make decisions based on real-time data rather than intuition."
+  },
+  {
+    question: "Can you integrate with my existing data sources?",
+    answer: "Yes. We specialize in connecting disparate data sources—including CRMs, ERPs, Excel files, and cloud databases—into a unified, single source of truth for your business intelligence."
+  }
+];
 
 export default function BusinessAnalyticsPage() {
   return (
     <div className="bg-background">
       <JsonLd data={analyticsServiceSchema} />
+      <JsonLd data={generateFAQSchema(faqs)} />
+      <JsonLd data={generateBreadcrumbSchema([
+        { name: 'Home', url: 'https://logonsolutions.netlify.app' },
+        { name: 'Business Analytics', url: 'https://logonsolutions.netlify.app/business-analytics' },
+      ])} />
       <PageHero
-        title="Business Analytics & Intelligence"
+        title="Business Analytics & Intelligence Solutions in Nigeria"
         description="Turn your data into your most valuable asset. We help you move from simply collecting data to actively using it to drive strategy, optimize operations, and uncover new opportunities. Our custom business analytics solutions provide the clarity you need to make confident, data-driven decisions."
       />
       <div className="container mx-auto px-fluid-sm py-fluid-lg">
-        <section className="grid lg:grid-cols-2 gap-12 items-center">
+
+        {/* Answer Block */}
+        <section className="mb-16 bg-secondary/20 p-8 rounded-2xl border border-primary/10">
+          <h2 className="text-2xl font-bold mb-4">What are Business Analytics Solutions?</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Business analytics solutions in Nigeria involve the systematic exploration of an organization's data with an emphasis on statistical analysis. At LOG_ON Solutions, we build custom BI dashboards and reporting systems that turn raw data into actionable insights, helping businesses track KPIs, optimize workflows, and drive measurable growth through data-driven intelligence.
+          </p>
+        </section>
+
+        <section className="grid lg:grid-cols-2 gap-12 items-center mb-24">
           <div className="space-y-6">
              <div className="space-y-4 pt-4">
                 {businessAnalyticsBenefits.map(benefit => (
@@ -75,6 +104,44 @@ export default function BusinessAnalyticsPage() {
           </div>
         </section>
 
+        {/* Comparison/Decision Table */}
+        <section className="mb-24">
+          <h2 className="text-fluid-lg font-bold font-headline mb-8 text-center">Dashboards vs. BI Reporting</h2>
+          <div className="overflow-x-auto rounded-xl border border-border">
+            <Table>
+              <TableHeader>
+                <TableRow className="bg-secondary/50">
+                  <TableHead className="w-[200px]">Feature</TableHead>
+                  <TableHead>Standard Dashboards</TableHead>
+                  <TableHead className="text-primary font-bold">LOG_ON BI Solutions</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-medium">Data Freshness</TableCell>
+                  <TableCell>Manual/Static updates</TableCell>
+                  <TableCell>Real-time / Automated sync</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Connectivity</TableCell>
+                  <TableCell>Single source (e.g. Excel)</TableCell>
+                  <TableCell>Multi-source ecosystem integration</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Insight Depth</TableCell>
+                  <TableCell>Basic charts & totals</TableCell>
+                  <TableCell>Drill-down & predictive modeling</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Accessibility</TableCell>
+                  <TableCell>Desktop files</TableCell>
+                  <TableCell>Secure, mobile-responsive cloud access</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
+        </section>
+
         <section className="py-fluid-lg">
             <div className="text-center max-w-3xl mx-auto mb-fluid-md">
                 <h2 className="text-fluid-xl font-bold font-headline">Our Business Analytics Services</h2>
@@ -102,6 +169,19 @@ export default function BusinessAnalyticsPage() {
             title="Data-Driven Success Stories"
             description="See how our business analytics and BI solutions have empowered companies to make smarter decisions and drive strategic growth."
         />
+
+        {/* FAQs */}
+        <section className="py-24 max-w-4xl mx-auto">
+          <h2 className="text-fluid-lg font-bold font-headline mb-12 text-center">Frequently Asked Questions</h2>
+          <div className="space-y-8">
+            {faqs.map((faq, i) => (
+              <div key={i} className="border-b border-border pb-6">
+                <h3 className="text-xl font-semibold mb-3">{faq.question}</h3>
+                <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
          <section className="text-center mt-fluid-md py-fluid-md bg-background rounded-lg px-fluid-sm">
             <h2 className="text-fluid-lg font-bold font-headline">Ready to Unlock Your Data's Potential?</h2>

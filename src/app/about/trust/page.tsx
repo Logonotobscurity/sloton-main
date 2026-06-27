@@ -9,7 +9,7 @@ export const metadata: {
   description: string;
 } = {
   title: 'Trust & Compliance',
-  description: 'Learn about LOG_ON\'s commitment to security, data privacy, and compliance. See how we keep your data safe.',
+  description: 'Learn about LOG_ON Solutions\'s commitment to security, data privacy, and compliance. See how we keep your data safe.',
 };
 
 const trustPillars = [

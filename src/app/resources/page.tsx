@@ -9,7 +9,7 @@ import { generateMetadata, KEYWORD_SETS, BreadcrumbSchema, JsonLd } from '@/lib/
 
 export const metadata = generateMetadata({
   title: 'AI & Automation Resources for Nigerian SMEs | Free Guides & Tools',
-  description: 'A curated library of free AI, automation, and digital transformation resources for Nigerian businesses and African SMEs. Guides, tools, frameworks, and thought leadership from LOG_ON and across the ecosystem.',
+  description: 'A curated library of free AI, automation, and digital transformation resources for Nigerian businesses and African SMEs. Guides, tools, frameworks, and thought leadership from LOG_ON Solutions and across the ecosystem.',
   keywords: [
     ...KEYWORD_SETS.ai,
     ...KEYWORD_SETS.automation,
@@ -32,7 +32,7 @@ const resourcesSchema = {
   url: 'https://logonsolutions.netlify.app/resources',
   publisher: {
     '@type': 'Organization',
-    name: 'LOG_ON',
+    name: 'LOG_ON Solutions',
     url: 'https://logonsolutions.netlify.app',
   },
 };
@@ -97,7 +97,7 @@ const resources = [
     icon: GraduationCap,
     items: [
       {
-        title: 'Process Automation Mastery — LOG_ON Programme',
+        title: 'Process Automation Mastery — LOG_ON Solutions Programme',
         description: 'Our expert-led training course covering RPA, BPA, and AI workflow automation. Designed for teams at Nigerian and African enterprises.',
         href: '/training',
         type: 'Course',
@@ -124,7 +124,7 @@ const resources = [
     icon: Globe,
     items: [
       {
-        title: 'LOG_ON Free AI Business Assessment',
+        title: 'LOG_ON Solutions Free AI Business Assessment',
         description: 'Answer 10 questions about your business and receive a tailored AI readiness report identifying your top automation opportunities. Free, no obligation.',
         href: '/solutions',
         type: 'Tool',
@@ -270,7 +270,7 @@ export default function ResourcesPage() {
             Ready to Apply These Insights?
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
-            LOG_ON helps Nigerian and African businesses turn AI and automation knowledge into measurable results.
+            LOG_ON Solutions helps Nigerian and African businesses turn AI and automation knowledge into measurable results.
             Start with a free, no-obligation business assessment.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">

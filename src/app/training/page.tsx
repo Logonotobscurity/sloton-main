@@ -16,7 +16,7 @@ import { trainingPrograms, communityProjects, trainingBenefits } from '@/lib/dat
 
 export const metadata = generateMetadata({
   title: 'AI & Automation Training Courses in Nigeria | Professional Development',
-  description: 'Master in-demand tech skills with expert-led training courses in AI, process automation, and prompt engineering in Nigeria. Accelerate your career and drive business growth with LOG_ON professional development programs.',
+  description: 'Master in-demand tech skills with expert-led training courses in AI, process automation, and prompt engineering in Nigeria. Accelerate your career and drive business growth with LOG_ON Solutions professional development programs.',
   keywords: [
     ...KEYWORD_SETS.training,
     'AI training Nigeria',
@@ -35,7 +35,7 @@ const trainingServiceSchema = generateServiceSchema({
   name: 'AI & Automation Training Programs',
   description: 'Master in-demand tech skills. Expert-led training courses in AI, process automation, and prompt engineering to accelerate your career and drive business growth.',
   url: 'https://logonsolutions.netlify.app/training',
-  provider: 'LOG_ON',
+  provider: 'LOG_ON Solutions',
   areaServed: 'Nigeria',
 });
 
@@ -120,7 +120,7 @@ export default function TrainingPage() {
         <section className="py-16 md:py-24">
              <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6">
-                    <h2 className="text-2xl md:text-3xl font-bold font-headline">Why Train with LOG_ON?</h2>
+                    <h2 className="text-2xl md:text-3xl font-bold font-headline">Why Train with LOG_ON Solutions?</h2>
                     <p className="text-muted-foreground text-lg">We provide more than just courses. We offer a comprehensive learning experience designed for career growth.</p>
                      <ul className="space-y-4 pt-4">
                         {trainingBenefits.map(item => (
@@ -137,7 +137,7 @@ export default function TrainingPage() {
                             <CardTitle>Become a Certified Professional</CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <p className="text-muted-foreground mb-6">Validate your expertise and stand out in the job market with a LOG_ON certification. Our programs are designed to provide you with the credentials to prove your skills.</p>
+                            <p className="text-muted-foreground mb-6">Validate your expertise and stand out in the job market with a LOG_ON Solutions certification. Our programs are designed to provide you with the credentials to prove your skills.</p>
                              <DialogFormWrapper
                                 trigger={<Button>Explore Certifications</Button>}
                                 className="bg-background"

@@ -8,7 +8,7 @@ import { PageHero } from '@/components/page-sections/page-hero';
 
 export const metadata: Metadata = {
   title: 'Analyst Reports',
-  description: 'See why industry analysts recognize LOG_ON as a leader in AI and automation. Access reports from Gartner, Forrester, and more.',
+  description: 'See why industry analysts recognize LOG_ON Solutions as a leader in AI and automation. Access reports from Gartner, Forrester, and more.',
 };
 
 import { Route } from 'next';
@@ -26,14 +26,14 @@ const reports: Report[] = [
         firm: "Gartner®",
         title: "Magic Quadrant™ for Enterprise Conversational AI Platforms",
         date: "July 2024",
-        excerpt: "LOG_ON recognized for its ability to execute and completeness of vision in the rapidly evolving AI landscape.",
+        excerpt: "LOG_ON Solutions recognized for its ability to execute and completeness of vision in the rapidly evolving AI landscape.",
         href: "#"
     },
     {
         firm: "Forrester™",
         title: "The Forrester Wave™: Robotic Process Automation, Q3 2024",
         date: "September 2024",
-        excerpt: "LOG_ON named a Strong Performer in our evaluation of the top RPA vendors, cited for its ease of use and strong partner ecosystem.",
+        excerpt: "LOG_ON Solutions named a Strong Performer in our evaluation of the top RPA vendors, cited for its ease of use and strong partner ecosystem.",
         href: "#"
     }
 ]
@@ -43,7 +43,7 @@ export default function AnalystReportsPage() {
     <div>
         <PageHero 
             title="Industry Analyst Reports"
-            description="Don't just take our word for it. See why leading industry analysts recognize LOG_ON for our innovation, market presence, and ability to deliver results for our customers."
+            description="Don't just take our word for it. See why leading industry analysts recognize LOG_ON Solutions for our innovation, market presence, and ability to deliver results for our customers."
         />
         <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
             <section className="space-y-6">

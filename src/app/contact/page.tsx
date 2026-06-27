@@ -10,8 +10,8 @@ import { PageHero } from '@/components/page-sections/page-hero';
 import { contactReasons } from '@/lib/data/services-data';
 
 export const metadata = generateMetadata({
-  title: 'Contact LOG_ON | AI Agent Development & Automation Experts in Nigeria',
-  description: 'Contact LOG_ON to start your AI agent development or workplace automation project in Nigeria. Our experts in Lagos are ready to help you transform your business with intelligent technology. Schedule a free consultation today.',
+  title: 'Contact Our Team',
+  description: 'Contact LOG_ON Solutions to start your AI agent development or workplace automation project in Nigeria. Our experts in Lagos are ready to help you transform your business with intelligent technology. Schedule a free consultation today.',
   keywords: [
     ...KEYWORD_SETS.ai,
     ...KEYWORD_SETS.automation,
@@ -91,7 +91,7 @@ export default function ContactPage() {
                     <Handshake className="h-8 w-8 text-primary" />
                     <div>
                         <CardTitle>Partnership Opportunities</CardTitle>
-                        <CardDescription>Interested in partnering with LOG_ON? We'd love to hear from you.</CardDescription>
+                        <CardDescription>Interested in partnering with LOG_ON Solutions? We'd love to hear from you.</CardDescription>
                     </div>
                 </CardHeader>
                 <CardContent>

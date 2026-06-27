@@ -1,4 +1,3 @@
-
 "use client";
 
 import {
@@ -53,13 +52,13 @@ const faqItems = [
   {
       value: "item-7",
       question: "What is Generative Engine Optimization (GEO) and how is it different from SEO?",
-      answer: "Traditional SEO optimizes your site for search engines like Google, which rank pages with links. GEO (Generative Engine Optimization) ensures that AI models like ChatGPT, Perplexity, and Google Gemini accurately represent your brand when users ask questions. Unlike SEO, GEO is about creating structured, authoritative content that LLMs can understand and cite. LOG_ON specializes in both — read our guide on <a href='/insights/seo-vs-geo-invisible-in-ai-search' class='text-primary underline'>SEO vs GEO</a>.",
+      answer: "Traditional SEO optimizes your site for search engines like Google, which rank pages with links. GEO (Generative Engine Optimization) ensures that AI models like ChatGPT, Perplexity, and Google Gemini accurately represent your brand when users ask questions. Unlike SEO, GEO is about creating structured, authoritative content that LLMs can understand and cite. LOG_ON Solutions specializes in both — read our guide on <a href='/insights/seo-vs-geo-invisible-in-ai-search' class='text-primary underline'>SEO vs GEO</a>.",
       icon: <BrainCircuit className="h-5 w-5 text-primary" />
   },
   {
       value: "item-8",
       question: "How can AI-powered search engines like ChatGPT or Gemini learn about my business?",
-      answer: "AI models are trained on publicly available web content, structured data (schema.org JSON-LD), and increasingly on files like <a href='/insights/why-llms-txt-matters-for-seo' class='text-primary underline'>llms.txt</a>. To be cited accurately, your website needs clear, factual content, properly structured data, and consistent brand signals across the web. LOG_ON's <a href='/contact' class='text-primary underline'>free AI Business Assessment</a> includes a GEO readiness audit to help your brand show up in AI answers.",
+      answer: "AI models are trained on publicly available web content, structured data (schema.org JSON-LD), and increasingly on files like <a href='/insights/why-llms-txt-matters-for-seo' class='text-primary underline'>llms.txt</a>. To be cited accurately, your website needs clear, factual content, properly structured data, and consistent brand signals across the web. LOG_ON Solutions's <a href='/contact' class='text-primary underline'>free AI Business Assessment</a> includes a GEO readiness audit to help your brand show up in AI answers.",
       icon: <BrainCircuit className="h-5 w-5 text-primary" />
   },
 ];

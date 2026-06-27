@@ -1,5 +1,4 @@
-
-import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, BreadcrumbSchema } from '@/lib/seo';
+import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, BreadcrumbSchema, generateFAQSchema } from '@/lib/seo';
 import { TaskAutomationForm } from '@/components/task-automation-form';
 import { WorkflowTemplateLibrary } from '@/app/automation/_components/workflow-template-library';
 import { PageHero } from '@/components/page-sections/page-hero';
@@ -7,10 +6,11 @@ import Link from 'next/link';
 import { CheckCircle, ArrowRight, Clock, TrendingDown, Users } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 export const metadata = generateMetadata({
-  title: 'Workplace Automation & RPA Solutions in Nigeria | Intelligent Workflows',
-  description: 'Design and deploy workplace automation solutions in Nigeria. Our intelligent RPA platform helps you configure business workflows with AI-powered optimization. Automate repetitive tasks, reduce costs, and boost productivity with LOG_ON automation services.',
+  title: 'Workplace Automation & RPA Solutions',
+  description: 'Design and deploy workplace automation solutions in Nigeria. Our intelligent RPA platform helps you configure business workflows with AI-powered optimization. Automate repetitive tasks, reduce costs, and boost productivity with LOG_ON Solutions automation services.',
   keywords: [
     ...KEYWORD_SETS.automation,
     'workplace automation Nigeria',
@@ -29,7 +29,7 @@ const automationServiceSchema = generateServiceSchema({
   name: 'Workplace Automation & RPA Solutions',
   description: 'Design and deploy workplace automation solutions in Nigeria. Our intelligent automation platform helps you configure RPA & business workflows, with AI-powered optimization.',
   url: 'https://logonsolutions.netlify.app/automation',
-  provider: 'LOG_ON',
+  provider: 'LOG_ON Solutions',
   areaServed: 'Nigeria',
 });
 
@@ -58,6 +58,21 @@ const automationTypes = [
   },
 ];
 
+const faqs = [
+  {
+    question: "What is workplace automation?",
+    answer: "Workplace automation is the use of technology to perform repetitive tasks, freeing up human workers for more strategic activities. This ranges from simple RPA to complex AI-driven workflows."
+  },
+  {
+    question: "What is the difference between RPA and AI automation?",
+    answer: "RPA (Robotic Process Automation) follows strict rules to perform repetitive tasks. AI automation can handle unstructured data, understand natural language, and make complex decisions."
+  },
+  {
+    question: "How long does it take to implement automation?",
+    answer: "Implementation timelines vary depending on complexity. A single task automation can take 2-4 weeks, while end-to-end business process automation typically takes 8-12 weeks."
+  }
+];
+
 export default async function AutomationPage({
   searchParams,
 }: {
@@ -69,13 +84,14 @@ export default async function AutomationPage({
   return (
     <div className="bg-background">
       <JsonLd data={automationServiceSchema} />
+      <JsonLd data={generateFAQSchema(faqs)} />
       <BreadcrumbSchema items={[
         { name: 'Home', url: 'https://logonsolutions.netlify.app' },
         { name: 'Automation', url: 'https://logonsolutions.netlify.app/automation' },
       ]} />
       <PageHero 
-        title="Intelligent Workplace Automation & RPA"
-        description="Eliminate repetitive, manual work from your operations. LOG_ON designs and deploys custom AI-powered automation and Robotic Process Automation (RPA) solutions that free your team to focus on strategy, relationships, and innovation."
+        title="Intelligent Workplace Automation & RPA in Nigeria"
+        description="Eliminate repetitive, manual work from your operations. LOG_ON Solutions designs and deploys custom AI-powered automation and Robotic Process Automation (RPA) solutions that free your team to focus on strategy, relationships, and innovation."
       />
       <div className="container mx-auto px-fluid-sm py-fluid-lg">
 
@@ -94,12 +110,12 @@ export default async function AutomationPage({
         <section className="mb-16 md:mb-24 max-w-4xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold font-headline mb-4">What Is Workplace Automation?</h2>
           <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-            Workplace automation is the use of technology to perform tasks that previously required human effort. It spans a spectrum from simple, rule-based <strong>Robotic Process Automation (RPA)</strong> — where bots execute repetitive, click-by-click tasks — to sophisticated <strong>AI-powered automation</strong> that can reason, understand natural language, and make decisions from unstructured data.
+            Workplace automation in Nigeria is the use of technology to perform tasks that previously required human effort. It spans a spectrum from simple, rule-based <strong>Robotic Process Automation (RPA)</strong> — where bots execute repetitive, click-by-click tasks — to sophisticated <strong>AI-powered automation</strong> that can reason, understand natural language, and make decisions from unstructured data.
           </p>
           <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-            At LOG_ON, our automation engagements always begin with a <Link href="/contact?subject=Automation+Assessment" className="text-primary underline hover:no-underline">free workflow analysis</Link>. We map your existing processes, identify the highest-ROI automation candidates, and design a phased roadmap — so you see measurable results in weeks, not months. Our solutions integrate directly with the systems you already use: CRM, ERP, email platforms, and cloud infrastructure.
+            At LOG_ON Solutions, our automation engagements always begin with a <Link href="/contact?subject=Automation+Assessment" className="text-primary underline hover:no-underline">free workflow analysis</Link>. We map your existing processes, identify the highest-ROI automation candidates, and design a phased roadmap — so you see measurable results in weeks, not months. Our solutions integrate directly with the systems you already use: CRM, ERP, email platforms, and cloud infrastructure.
           </p>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 mb-24">
             {automationTypes.map(type => (
               <Card key={type.title} className="bg-secondary/30">
                 <CardHeader>
@@ -113,6 +129,44 @@ export default async function AutomationPage({
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </section>
+
+        {/* Comparison Table */}
+        <section className="mb-24 max-w-4xl mx-auto">
+          <h2 className="text-fluid-lg font-bold font-headline mb-8 text-center">RPA vs. AI Automation</h2>
+          <div className="overflow-x-auto rounded-xl border border-border">
+            <Table>
+              <TableHeader>
+                <TableRow className="bg-secondary/50">
+                  <TableHead className="w-[200px]">Feature</TableHead>
+                  <TableHead>Robotic Process Automation (RPA)</TableHead>
+                  <TableHead className="text-primary font-bold">AI-Powered Automation</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-medium">Data Type</TableCell>
+                  <TableCell>Structured (spreadsheets, forms)</TableCell>
+                  <TableCell>Unstructured (emails, docs, voice)</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Decision Making</TableCell>
+                  <TableCell>Rule-based (If-Then)</TableCell>
+                  <TableCell>Probabilistic & Reasoned</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Flexibility</TableCell>
+                  <TableCell>Breaks if UI changes</TableCell>
+                  <TableCell>Adapts to context & changes</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Complexity</TableCell>
+                  <TableCell>Simple, repetitive tasks</TableCell>
+                  <TableCell>End-to-end cognitive workflows</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
           </div>
         </section>
 
@@ -132,6 +186,19 @@ export default async function AutomationPage({
         <div className="mt-fluid-lg">
           <WorkflowTemplateLibrary />
         </div>
+
+        {/* FAQs */}
+        <section className="py-24 max-w-4xl mx-auto">
+          <h2 className="text-fluid-lg font-bold font-headline mb-12 text-center">Frequently Asked Questions</h2>
+          <div className="space-y-8">
+            {faqs.map((faq, i) => (
+              <div key={i} className="border-b border-border pb-6">
+                <h3 className="text-xl font-semibold mb-3">{faq.question}</h3>
+                <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* Internal cross-links for topical authority */}
         <section className="mt-16 md:mt-24 py-12 border-t">

@@ -8,7 +8,7 @@ import { benefits, openPositions } from '@/lib/data/careers-data';
 
 export const metadata: Metadata = {
   title: 'Careers',
-  description: 'Join our team of innovators and help us build the future of business efficiency. Explore open positions and learn about our culture at LOG_ON.',
+  description: 'Join our team of innovators and help us build the future of business efficiency. Explore open positions and learn about our culture at LOG_ON Solutions.',
 };
 
 export default function CareersPage() {
@@ -16,7 +16,7 @@ export default function CareersPage() {
     <div>
         <PageHero 
             title="Join Our Team"
-            description="We're looking for passionate, innovative thinkers to join us on our mission to redefine business efficiency. At LOG_ON, you'll work on challenging projects that have a real impact, collaborate with a team of experts, and have opportunities for continuous growth."
+            description="We're looking for passionate, innovative thinkers to join us on our mission to redefine business efficiency. At LOG_ON Solutions, you'll work on challenging projects that have a real impact, collaborate with a team of experts, and have opportunities for continuous growth."
         />
         <div className="container mx-auto px-fluid-sm py-fluid-lg space-y-fluid-md">
             <section>

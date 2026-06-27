@@ -7,7 +7,7 @@ import { PageHero } from '@/components/page-sections/page-hero';
 
 export const metadata: Metadata = {
   title: 'Global Impact',
-  description: 'Learn about LOG_ON\'s commitment to creating a positive global impact through ethical AI, digital skill development, and community support.',
+  description: 'Learn about LOG_ON Solutions\'s commitment to creating a positive global impact through ethical AI, digital skill development, and community support.',
 };
 
 const impactPillars = [
@@ -19,7 +19,7 @@ const impactPillars = [
     {
         icon: <BookOpen className="h-8 w-8 text-primary"/>,
         title: "Digital Skill Development",
-        description: "Through our 'RiseUp with LOG_ON' initiative and free training programs, we aim to equip individuals and communities with the skills needed to thrive in a digital-first economy."
+        description: "Through our 'RiseUp with LOG_ON Solutions' initiative and free training programs, we aim to equip individuals and communities with the skills needed to thrive in a digital-first economy."
     },
     {
         icon: <Globe className="h-8 w-8 text-primary"/>,

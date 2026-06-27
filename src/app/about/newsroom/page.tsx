@@ -12,8 +12,8 @@ import { formatFullDate } from '@/lib/date-utils';
 import { OptimizedImage } from '@/lib/image-utils';
 
 export const metadata: Metadata = {
-  title: 'Newsroom | LOG_ON',
-  description: 'The latest news, announcements, and media resources from LOG_ON. Stay up to date with our company updates and product launches.',
+  title: 'Newsroom',
+  description: 'The latest news, announcements, and media resources from LOG_ON Solutions. Stay up to date with our company updates and product launches.',
 };
 
 export default function NewsroomPage() {
@@ -24,7 +24,7 @@ export default function NewsroomPage() {
     <div>
         <PageHero
             title="Newsroom"
-            description="Welcome to the LOG_ON newsroom. Here you'll find the latest company announcements, press releases, media assets, and our recent features in the news."
+            description="Welcome to the LOG_ON Solutions newsroom. Here you'll find the latest company announcements, press releases, media assets, and our recent features in the news."
         />
         <div className="container mx-auto px-4 md:px-6 py-16 md:py-24 space-y-12">
         {pressReleases.length > 0 && (

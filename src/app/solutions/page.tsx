@@ -17,7 +17,7 @@ import { generateMetadata, KEYWORD_SETS, BreadcrumbSchema, ServiceCatalogSchema 
 export const metadata = generateMetadata({
   title: 'Technology Solutions | Custom AI, Automation & Development in Nigeria',
   description:
-    "Explore LOG_ON's full suite of AI and automation technology solutions in Nigeria: custom AI agents, RPA workplace automation, web development, business analytics, and AI chatbots. Designed to drive efficiency and measurable growth.",
+    "Explore LOG_ON Solutions's full suite of AI and automation technology solutions in Nigeria: custom AI agents, RPA workplace automation, web development, business analytics, and AI chatbots. Designed to drive efficiency and measurable growth.",
   keywords: [
     ...KEYWORD_SETS.ai,
     ...KEYWORD_SETS.automation,

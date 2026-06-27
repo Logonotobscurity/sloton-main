@@ -103,7 +103,7 @@ export async function contactFormAction(data: z.infer<typeof contactFormSchema>)
   } else {
       try {
         await resend.emails.send({
-          from: 'LOG_ON Website <noreply@logon.com.ng>',
+          from: 'LOG_ON Solutions Website <noreply@logon.com.ng>',
           to: toEmail,
           subject: `New Contact Form Submission: ${data.subject}`,
           reply_to: data.email,
@@ -141,7 +141,7 @@ export async function communityLeadAction(data: z.infer<typeof communityLeadSche
    } else {
        try {
         await resend.emails.send({
-          from: 'LOG_ON Community Lead <noreply@logon.com.ng>',
+          from: 'LOG_ON Solutions Community Lead <noreply@logon.com.ng>',
           to: toEmail,
           subject: `New Community/Training Lead: ${data.interest || 'General Inquiry'}`,
           reply_to: data.email,
@@ -161,6 +161,32 @@ export async function communityLeadAction(data: z.infer<typeof communityLeadSche
 
   // Send data to webhook
   await sendToWebhook(data as unknown as Record<string, unknown>, `Lead Form: ${data.interest || 'General Inquiry'}`);
+
+  return { success: true };
+}
+
+// Newsletter Signup Action
+const newsletterSchema = z.object({
+  email: z.string().email({ message: 'Please enter a valid email address.' }),
+});
+export async function newsletterSignupAction(data: z.infer<typeof newsletterSchema>): Promise<FormResult<null>> {
+  // Send data to webhook
+  await sendToWebhook(data as Record<string, unknown>, 'Newsletter Signup');
+
+  if (!resend) {
+      logger.warn('[Actions] RESEND_API_KEY is not set. Skipping newsletter welcome email.');
+  } else {
+      try {
+        await resend.emails.send({
+          from: 'LOG_ON Solutions <noreply@logon.com.ng>',
+          to: data.email,
+          subject: 'Welcome to LOG_ON Solutions Insights',
+          text: 'Thank you for subscribing to our newsletter! You will now receive weekly AI and automation insights.',
+        });
+      } catch (error) {
+        handleError(error, 'Actions.newsletterSignupAction', { logLevel: 'error' });
+      }
+  }
 
   return { success: true };
 }

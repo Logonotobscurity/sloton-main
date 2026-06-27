@@ -9,7 +9,7 @@ import { reports, events } from '@/lib/data/investors-data';
 
 export const metadata: Metadata = {
   title: 'Investor Relations',
-  description: 'Information for LOG_ON investors, including financial reports, event schedules, and corporate governance documents.',
+  description: 'Information for LOG_ON Solutions investors, including financial reports, event schedules, and corporate governance documents.',
 };
 
 export default function InvestorsPage() {
@@ -27,7 +27,7 @@ export default function InvestorsPage() {
                 </CardHeader>
                 <CardContent>
                     <p className="text-4xl font-bold">LOGN (Private)</p>
-                    <p className="text-muted-foreground">As a privately held company, LOG_ON is not currently traded on public stock exchanges. We are focused on sustainable growth and delivering value to our clients and private stakeholders.</p>
+                    <p className="text-muted-foreground">As a privately held company, LOG_ON Solutions is not currently traded on public stock exchanges. We are focused on sustainable growth and delivering value to our clients and private stakeholders.</p>
                 </CardContent>
             </Card>
         </section>

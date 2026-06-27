@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: '404 - Page Not Found',
-  description: 'The page you are looking for could not be found. Return to LOG_ON homepage or explore our solutions.',
+  description: 'The page you are looking for could not be found. Return to LOG_ON Solutions homepage or explore our solutions.',
   robots: {
     index: false,
     follow: true,

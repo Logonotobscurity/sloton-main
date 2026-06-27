@@ -41,6 +41,18 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
       {
+        userAgent: 'Perplexity-User',
+        allow: '/',
+      },
+      {
+        userAgent: 'MistralAI-User',
+        allow: '/',
+      },
+      {
+        userAgent: 'Applebot-Extended',
+        allow: '/',
+      },
+      {
         userAgent: 'Bytespider',
         allow: '/',
       },
