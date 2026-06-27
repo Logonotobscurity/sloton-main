@@ -9,7 +9,16 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
 
-const faqs = [{'q': 'What is workplace automation?', 'a': 'Workplace automation is the use of technology to perform repetitive tasks, ranging from simple RPA to complex AI-driven workflows.'}, {'q': 'What is the difference between RPA and AI automation?', 'a': 'RPA follows strict rules for repetitive tasks, while AI automation can handle unstructured data and make complex decisions.'}];
+const faqs = [
+  {
+    question: 'What is workplace automation?',
+    answer: 'Workplace automation is the use of technology to perform repetitive tasks, ranging from simple RPA to complex AI-driven workflows.',
+  },
+  {
+    question: 'What is the difference between RPA and AI automation?',
+    answer: 'RPA follows strict rules for repetitive tasks, while AI automation can handle unstructured data and make complex decisions.',
+  },
+];
 
 export const metadata = generateMetadata({
   title: 'Workplace Automation & RPA Solutions in Nigeria | Intelligent Workflows',

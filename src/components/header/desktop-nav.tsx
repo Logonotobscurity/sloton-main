@@ -12,7 +12,7 @@ import {
   NavigationMenuLink,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { MegaMenu } from "./mega-menu";
+import { MegaMenu } from "@/components/header/mega-menu";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";

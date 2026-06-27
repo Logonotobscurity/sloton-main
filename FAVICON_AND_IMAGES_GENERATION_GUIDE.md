@@ -62,8 +62,6 @@ This guide provides step-by-step instructions to create all required images for 
 │   AI & Automation for Business     │
 │         Efficiency                  │
 │                                     │
-│   Connecting Advantages.            │
-│   Delivering Results.               │
 │                                     │
 └─────────────────────────────────────┘
 ```
@@ -352,4 +350,3 @@ If you just want to get started quickly:
 - [ ] PWA installation tested
 
 **Estimated Time:** 30-60 minutes (depending on design complexity)
-

@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import React, { ReactNode } from "react";
-import { GridBackground } from "./grid-background";
+import { GridBackground } from "@/components/ui/grid-background";
 
 interface GlowingCardProps {
   children: ReactNode;

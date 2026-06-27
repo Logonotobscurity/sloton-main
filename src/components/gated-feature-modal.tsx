@@ -7,10 +7,10 @@ import {
   DialogDescription,
   DialogFooter,
 } from '@/components/ui/dialog';
-import { Button } from './ui/button';
+import { Button } from '@/components/ui/button';
 import { Lock, MessageCircle } from 'lucide-react';
-import { DialogFormWrapper } from './dialog-form-wrapper';
-import { CommunityLeadForm } from './community-lead-form';
+import { DialogFormWrapper } from '@/components/dialog-form-wrapper';
+import { CommunityLeadForm } from '@/components/community-lead-form';
 
 interface GatedFeatureModalProps {
   trigger: React.ReactNode;

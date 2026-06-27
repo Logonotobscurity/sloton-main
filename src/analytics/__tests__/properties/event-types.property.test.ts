@@ -23,7 +23,7 @@ import {
   DeviceInfo,
   BrowserInfo,
   UTMParams,
-} from '../../types';
+} from '@/analytics/types';
 
 // ============================================================================
 // Arbitraries (Generators for property-based testing)

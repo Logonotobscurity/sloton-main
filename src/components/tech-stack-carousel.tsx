@@ -9,7 +9,7 @@ import { motion, useMotionValue, animate } from 'framer-motion';
 import useMeasure from 'react-use-measure';
 import { useEffect, useRef, useState } from 'react';
 import { Shapes } from 'lucide-react';
-import { GlowingCard } from './ui/glowing-card';
+import { GlowingCard } from '@/components/ui/glowing-card';
 import { getRepeatedTechnologies, type Technology } from '@/lib/data/technologies';
 import { LogoImage } from '@/lib/image-utils';
 

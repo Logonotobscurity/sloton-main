@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Phone } from 'lucide-react';
-import { LeadInfo } from './types';
+import { LeadInfo } from '@/components/chatbot/types';
 
 interface LeadCaptureFormProps {
     onSuccess: (leadInfo: LeadInfo) => void;

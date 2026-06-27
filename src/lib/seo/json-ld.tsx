@@ -54,7 +54,6 @@ export function OrganizationSchema() {
     url: 'https://logonsolutions.netlify.app',
     logo: 'https://logonsolutions.netlify.app/og-image.png',
     description: 'LOG_ON is an AI automation and technology consulting firm helping SMEs and enterprises in Nigeria and across Africa cut costs, automate workflows, and scale with intelligent technology.',
-    slogan: 'Connecting Advantages. Delivering Results.',
     serviceType: [
       'AI Agent Development',
       'Robotic Process Automation (RPA)',

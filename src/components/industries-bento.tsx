@@ -3,9 +3,9 @@
 
 import React from "react";
 import { cn } from "@/lib/utils";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { GlowingCard } from "./ui/glowing-card";
+import { GlowingCard } from "@/components/ui/glowing-card";
 import { industryFeatures } from "@/lib/data/industries";
 
 const FeatureCard = ({

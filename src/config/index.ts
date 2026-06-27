@@ -4,7 +4,7 @@
  */
 
 // Export configuration types and interfaces
-export type { AppConfig } from './app.config';
+export type { AppConfig } from '@/config/app.config';
 
 // Export configuration manager
 export {
@@ -12,7 +12,7 @@ export {
   getConfigManager,
   getConfig,
   initializeConfig,
-} from './config-manager';
+} from '@/config/config-manager';
 
 // Export default configuration for backward compatibility
-export { defaultAppConfig } from './app.config';
+export { defaultAppConfig } from '@/config/app.config';

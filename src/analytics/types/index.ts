@@ -3,16 +3,16 @@
  */
 
 // Event types
-export * from './event.types';
+export * from '@/analytics/types/event.types';
 
 // Profile types
-export * from './profile.types';
+export * from '@/analytics/types/profile.types';
 
 // Journey types
-export * from './journey.types';
+export * from '@/analytics/types/journey.types';
 
 // Analytics types
-export * from './analytics.types';
+export * from '@/analytics/types/analytics.types';
 
 // Common types
-export * from './common.types';
+export * from '@/analytics/types/common.types';

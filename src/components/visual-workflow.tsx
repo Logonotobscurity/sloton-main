@@ -3,10 +3,10 @@
 
 import React from "react";
 import { AutomateTaskDesignOutput } from "@/ai/flows/automated-task-design";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "./ui/card";
-import { Badge } from "./ui/badge";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Workflow, CheckCircle, Lightbulb, BarChart, ExternalLink, ArrowDown, ArrowRight } from 'lucide-react';
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 interface VisualWorkflowProps {

@@ -3,7 +3,7 @@
  * Centralized configuration for AI services with environment-based settings
  */
 
-import { AIProvider } from './services';
+import { AIProvider } from '@/ai/services';
 import { getConfig } from '@/config';
 
 export interface AIConfig {

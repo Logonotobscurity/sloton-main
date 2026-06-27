@@ -4,7 +4,7 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import { technologies, Technology } from '../technologies';
+import { technologies, Technology } from '@/lib/data/technologies';
 
 describe('technologies data', () => {
   it('should export an array of technologies', () => {

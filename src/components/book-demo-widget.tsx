@@ -4,7 +4,7 @@
 import { useState, useContext } from 'react';
 import { Button } from '@/components/ui/button';
 import { Calendar } from 'lucide-react';
-import { CommunityLeadForm } from './community-lead-form';
+import { CommunityLeadForm } from '@/components/community-lead-form';
 import { cn } from '@/lib/utils';
 import {
   Dialog,

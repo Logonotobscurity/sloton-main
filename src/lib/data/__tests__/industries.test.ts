@@ -4,7 +4,7 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import { industryFeatures, industryFeaturesAlt, IndustryFeature } from '../industries';
+import { industryFeatures, industryFeaturesAlt, IndustryFeature } from '@/lib/data/industries';
 
 describe('industries data', () => {
   describe('industryFeatures', () => {

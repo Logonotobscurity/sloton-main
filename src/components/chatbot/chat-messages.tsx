@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Bot, User, FileText, Phone } from 'lucide-react';
 import { ChatBubble, ChatBubbleAvatar, ChatBubbleMessage } from '@/components/ui/chat-bubble';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { Message, LeadInfo } from './types';
+import { Message, LeadInfo } from '@/components/chatbot/types';
 import { Button } from '@/components/ui/button';
 
 interface ChatMessagesProps {

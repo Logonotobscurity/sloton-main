@@ -2,14 +2,14 @@
 "use client";
 
 import Link from "next/link";
-import { SkipToContentLink } from "./header/skip-to-content";
-import { Logo } from "./header/logo";
+import { SkipToContentLink } from "@/components/header/skip-to-content";
+import { Logo } from "@/components/header/logo";
 import { cn } from "@/lib/utils";
 import React from "react";
-import { DesktopNav } from "./header/desktop-nav";
-import { MobileNav } from "./header/mobile-nav";
-import { Button } from "./ui/button";
-import { ThemeToggle } from "./header/theme-toggle";
+import { DesktopNav } from "@/components/header/desktop-nav";
+import { MobileNav } from "@/components/header/mobile-nav";
+import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/header/theme-toggle";
 import { useUiStore } from "@/hooks/use-ui-store";
 
 export function Header() {

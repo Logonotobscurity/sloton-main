@@ -7,8 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, Bot, Check, Cog } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { TaskAutomationForm } from './task-automation-form';
-import { GlowingCard } from './ui/glowing-card';
+import { TaskAutomationForm } from '@/components/task-automation-form';
+import { GlowingCard } from '@/components/ui/glowing-card';
 
 const popularWorkflows = [
     "Automate Lead Conversion & Follow-up",

@@ -18,7 +18,7 @@ import {
   isSuccessResponse,
   type ErrorResponse,
   type SuccessResponse,
-} from '../error-handler';
+} from '@/lib/error-handler';
 
 describe('error-handler', () => {
   beforeEach(() => {

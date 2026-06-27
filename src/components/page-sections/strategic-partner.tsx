@@ -7,7 +7,7 @@ import { BrainCircuit, Cog } from 'lucide-react';
 
 import SolutionRecommendationForm from '@/components/solution-recommendation-form';
 import { TaskAutomationForm } from '@/components/task-automation-form';
-import { InteractiveCard } from './strategic-partner/interactive-card';
+import { InteractiveCard } from '@/components/page-sections/strategic-partner/interactive-card';
 import { staggerContainerCustom, staggerItem } from '@/lib/animation-variants';
 
     

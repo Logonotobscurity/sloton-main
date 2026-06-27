@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { IconFacebook, IconGithub, IconInstagram, IconLinkedIn, IconX, IconYouTube } from '@/lib/icons';
 import { menuData, SitemapSection } from '@/lib/menu-data';
-import { AdinkraBackground } from './ui/adinkra-background';
+import { AdinkraBackground } from '@/components/ui/adinkra-background';
 import { Logo } from '@/components/header/logo';
 
 const socialLinks = [

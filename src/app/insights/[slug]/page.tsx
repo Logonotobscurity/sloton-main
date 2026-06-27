@@ -45,7 +45,7 @@ export async function generateMetadata(
       title: insight.title,
       description: insight.description,
       url: articleUrl,
-      siteName: 'LOG_ON - Connecting Advantages',
+      siteName: 'LOG_ON',
       images: [
         {
           url: absoluteImageUrl,
@@ -93,7 +93,7 @@ export default async function InsightPage({ params }: PageProps) {
     },
     "publisher": {
         "@type": "Organization",
-        "name": "LOG_ON Connecting Advantages",
+        "name": "LOG_ON",
         "logo": {
             "@type": "ImageObject",
             "url": "https://logonsolutions.netlify.app/og-image.png"
