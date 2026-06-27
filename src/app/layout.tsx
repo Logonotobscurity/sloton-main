@@ -29,21 +29,21 @@ const nunito = Nunito({
 export const metadata: Metadata = {
   metadataBase: new URL('https://logonsolutions.netlify.app'),
   title: {
-    default: 'AI Agent Development & Workplace Automation',
-    template: '%s | LOG_ON Solutions',
+    default: 'AI & Automation for Business Efficiency',
+    template: '%s | LOG_ON',
   },
   description: 'We design your digital ecosystem. Get a free AI assessment to discover automation and IT solutions tailored to your business needs.',
   openGraph: {
-    title: 'AI Agent Development & Workplace Automation',
+    title: 'AI & Automation for Business Efficiency | LOG_ON',
     description: 'We design your digital ecosystem.',
     url: 'https://logonsolutions.netlify.app',
-    siteName: 'LOG_ON Solutions',
+    siteName: 'LOG_ON',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'LOG_ON Solutions',
+        alt: 'LOG_ON',
       },
     ],
     locale: 'en_US',
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Agent Development & Workplace Automation',
+    title: 'AI & Automation for Business Efficiency | LOG_ON',
     description: 'We design your digital ecosystem.',
     images: ['/og-image.png'],
   },
@@ -75,7 +75,7 @@ export const viewport: Viewport = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "LOG_ON Solutions",
+  "name": "LOG_ON",
   "url": "https://logonsolutions.netlify.app",
   "logo": "https://logonsolutions.netlify.app/og-image.png",
   "contactPoint": {
@@ -96,7 +96,7 @@ const organizationSchema = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "LOG_ON Solutions",
+  "name": "LOG_ON",
   "image": "https://logonsolutions.netlify.app/og-image.png",
   "@id": "https://logonsolutions.netlify.app",
   "url": "https://logonsolutions.netlify.app",
@@ -112,7 +112,7 @@ const localBusinessSchema = {
     "latitude": 6.5093,
     "longitude": 3.3717
   },
-  "description": "LOG_ON Solutions provides expert AI agent development and workplace automation in Nigeria. We help businesses cut costs, automate processes, and scale faster with intelligent technology solutions.",
+  "description": "LOG_ON provides expert AI agent development and workplace automation in Nigeria. We help businesses cut costs, automate processes, and scale faster with intelligent technology solutions.",
   "priceRange": "$$$",
   "openingHoursSpecification": [
     {
@@ -164,7 +164,7 @@ const localBusinessSchema = {
         "itemOffered": {
           "@type": "Service",
           "name": "Web & Custom Development",
-          "url": "https://logonsolutions.netlify.app/web-development",
+          "url": "https://logonsolutions.netlify.app/solutions#web-development",
           "description": "Scalable websites, e-commerce platforms, and custom applications."
         }
       },
@@ -173,7 +173,7 @@ const localBusinessSchema = {
         "itemOffered": {
           "@type": "Service",
           "name": "Business Analytics",
-          "url": "https://logonsolutions.netlify.app/business-analytics",
+          "url": "https://logonsolutions.netlify.app/solutions#business-analytics",
           "description": "Custom dashboards and BI reporting to turn data into actionable insights."
         }
       },

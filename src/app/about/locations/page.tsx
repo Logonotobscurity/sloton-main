@@ -7,7 +7,7 @@ import { locations } from '@/lib/data/locations-data';
 
 export const metadata: Metadata = {
   title: 'Our Locations',
-  description: 'Find LOG_ON Solutions office information. We operate globally from our virtual headquarters in Lagos, Nigeria.',
+  description: 'Find LOG_ON office information. We operate globally from our virtual headquarters in Lagos, Nigeria.',
 };
 
 export default function LocationsPage() {

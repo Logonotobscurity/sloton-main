@@ -16,7 +16,7 @@ import Faq from '@/components/faq';
 import { IdeasLab } from '@/components/page-sections/ideas-lab';
 
 export const metadata = generateMetadata({
-  title: 'AI Agent Development & Workplace Automation in Nigeria',
+  title: 'AI Agent Development & Workplace Automation in Nigeria | LOG_ON',
   description: 'Transform your business with expert AI agent development and workplace automation in Nigeria. Custom AI solutions, intelligent RPA, and digital transformation services in Lagos. Get a free AI assessment today.',
   keywords: [
     ...KEYWORD_SETS.ai,

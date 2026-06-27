@@ -22,7 +22,7 @@ export interface SEOConfig {
 }
 
 const SITE_CONFIG = {
-  name: 'LOG_ON Solutions',
+  name: 'LOG_ON',
   url: 'https://logonsolutions.netlify.app',
   defaultOgImage: '/og-image.png',
   twitterHandle: '@Logo_obscurity',
@@ -45,7 +45,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
     article,
   } = config;
 
-  const fullTitle = title;
+  const fullTitle = title.includes('LOG_ON') ? title : `${title} | LOG_ON`;
   const canonicalUrl = canonical || SITE_CONFIG.url;
   const imageUrl = ogImage.startsWith('http') ? ogImage : `${SITE_CONFIG.url}${ogImage}`;
 
@@ -53,9 +53,9 @@ export function generateMetadata(config: SEOConfig): Metadata {
     title: fullTitle,
     description,
     keywords: keywords.length > 0 ? keywords.join(', ') : undefined,
-    authors: [{ name: 'LOG_ON Solutions' }],
-    creator: 'LOG_ON Solutions',
-    publisher: 'LOG_ON Solutions',
+    authors: [{ name: 'LOG_ON' }],
+    creator: 'LOG_ON',
+    publisher: 'LOG_ON',
     alternates: {
       canonical: canonicalUrl,
     },
@@ -197,7 +197,7 @@ export function generateArticleSchema(article: {
     },
     publisher: {
       '@type': 'Organization',
-      name: 'LOG_ON Solutions',
+      name: 'LOG_ON',
       logo: {
         '@type': 'ImageObject',
         url: `${SITE_CONFIG.url}/og-image.png`,
@@ -244,7 +244,7 @@ export function generateServiceSchema(service: {
     url: service.url,
     provider: {
       '@type': 'Organization',
-      name: service.provider || 'LOG_ON Solutions',
+      name: service.provider || 'LOG_ON',
       url: SITE_CONFIG.url,
     },
     areaServed: {

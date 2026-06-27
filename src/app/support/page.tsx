@@ -12,14 +12,14 @@ import { supportCategories } from '@/lib/data/support-data';
 
 export const metadata: Metadata = {
   title: 'Support Center',
-  description: 'Welcome to the LOG_ON Solutions Support Center. Find help for our AI agent and workplace automation solutions, or get in touch with our expert support team in Nigeria.',
+  description: 'Welcome to the LOG_ON Support Center. Find help for our AI agent and workplace automation solutions, or get in touch with our expert support team in Nigeria.',
 };
 
 export default function SupportPage() {
   return (
     <div className="bg-background">
       <PageHero 
-        title="LOG_ON Solutions Support Center"
+        title="LOG_ON Support Center"
         description="Welcome! We're here to help you succeed. Find answers, connect with the community, or get in touch with our expert support team."
         icon={<LifeBuoy className="h-12 w-12 md:h-16 md:w-16 text-primary" />}
       >

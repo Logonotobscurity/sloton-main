@@ -1,15 +1,15 @@
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BrainCircuit, CheckCircle, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, BreadcrumbSchema, generateFAQSchema } from '@/lib/seo';
+import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, BreadcrumbSchema } from '@/lib/seo';
 import { CaseStudyFeature } from '@/components/page-sections/case-study-feature';
 import { PageHero } from '@/components/page-sections/page-hero';
 import { aiServices, aiSolutionsBenefits } from '@/lib/data/services-data';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 export const metadata = generateMetadata({
-  title: 'AI Agent Development & Custom AI Solutions',
+  title: 'AI Agent Development & Custom AI Solutions in Nigeria',
   description: 'Expert AI agent development and custom machine learning solutions in Nigeria. We design and deploy intelligent AI agents for workplace automation, predictive analytics, and business innovation. Transform your operations with cutting-edge AI technology.',
   keywords: [
     ...KEYWORD_SETS.ai,
@@ -30,49 +30,24 @@ const aiServiceSchema = generateServiceSchema({
   name: 'AI Agent Development & Custom AI Solutions',
   description: 'Expert AI agent development and custom machine learning solutions. We design and deploy AI agents for workplace automation to solve complex business challenges and drive growth in Nigeria.',
   url: 'https://logonsolutions.netlify.app/ai-solutions',
-  provider: 'LOG_ON Solutions',
+  provider: 'LOG_ON',
   areaServed: 'Nigeria',
 });
-
-const faqs = [
-  {
-    question: "What is AI agent development?",
-    answer: "AI agent development is the process of building autonomous software entities that can reason, use tools, and execute complex workflows to achieve specific business goals. Unlike traditional chatbots, AI agents can plan multi-step actions and integrate with internal systems."
-  },
-  {
-    question: "How can AI agents improve business efficiency?",
-    answer: "AI agents automate end-to-end processes, handle complex data analysis, and provide 24/7 intelligent support. They reduce manual errors and free up human teams for higher-value strategic work."
-  },
-  {
-    question: "Do I need a large dataset to start with AI solutions?",
-    answer: "Not necessarily. Many AI solutions, especially those using RAG (Retrieval-Augmented Generation), can work effectively with your existing company documents and databases to provide immediate value."
-  }
-];
 
 export default function AiSolutionsPage() {
   return (
     <div className="bg-background">
       <JsonLd data={aiServiceSchema} />
-      <JsonLd data={generateFAQSchema(faqs)} />
       <BreadcrumbSchema items={[
         { name: 'Home', url: 'https://logonsolutions.netlify.app' },
         { name: 'AI Solutions', url: 'https://logonsolutions.netlify.app/ai-solutions' },
       ]} />
       <PageHero
-        title="AI Agent Development & Custom AI Solutions in Nigeria"
-        description="At LOG_ON Solutions, we don't just use AI—we build it. We specialize in creating bespoke artificial intelligence, AI agents, and machine learning solutions that integrate seamlessly with your operations to solve your most complex challenges."
+        title="Custom AI Solutions & Agent Development"
+        description="At LOG_ON, we don't just use AI—we build it. We specialize in creating bespoke artificial intelligence, AI agents, and machine learning solutions that integrate seamlessly with your operations to solve your most complex challenges. Our expert team partners with you to transform your data into a strategic asset, driving efficiency, innovation, and measurable growth."
       />
-
       <div className="container mx-auto px-fluid-sm py-fluid-lg">
-        {/* Answer Block */}
-        <section className="mb-16 bg-secondary/20 p-8 rounded-2xl border border-primary/10">
-          <h2 className="text-2xl font-bold mb-4">What is AI Agent Development?</h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            AI agent development is the process of building autonomous software entities that can reason, use tools, and execute complex workflows to achieve specific business goals. Unlike traditional chatbots, AI agents can plan multi-step actions, integrate with internal systems, and make decisions independently to solve enterprise challenges in Nigeria.
-          </p>
-        </section>
-
-        <section className="grid lg:grid-cols-2 gap-12 items-center mb-24">
+        <section className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
              <div className="space-y-4 pt-4">
                 {aiSolutionsBenefits.map(benefit => (
@@ -105,47 +80,9 @@ export default function AiSolutionsPage() {
           </div>
         </section>
 
-        {/* Comparison Table */}
-        <section className="mb-24">
-          <h2 className="text-fluid-lg font-bold font-headline mb-8 text-center">AI Agents vs. Traditional Chatbots</h2>
-          <div className="overflow-x-auto rounded-xl border border-border">
-            <Table>
-              <TableHeader>
-                <TableRow className="bg-secondary/50">
-                  <TableHead className="w-[200px]">Feature</TableHead>
-                  <TableHead>Traditional Chatbots</TableHead>
-                  <TableHead className="text-primary font-bold">LOG_ON Solutions AI Agents</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow>
-                  <TableCell className="font-medium">Reasoning</TableCell>
-                  <TableCell>Rule-based / Scripted</TableCell>
-                  <TableCell>Autonomous reasoning & planning</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">Tool Use</TableCell>
-                  <TableCell>Limited API triggers</TableCell>
-                  <TableCell>Can use any internal or external tool</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">Context</TableCell>
-                  <TableCell>Single session memory</TableCell>
-                  <TableCell>Deep RAG & long-term memory</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">Task Handling</TableCell>
-                  <TableCell>Q&A Only</TableCell>
-                  <TableCell>Multi-step workflow execution</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </div>
-        </section>
-
         <section className="py-fluid-lg">
             <div className="text-center max-w-3xl mx-auto mb-fluid-md">
-                <h2 className="text-fluid-xl font-bold font-headline">How Can AI Agent Development Benefit Your Business?</h2>
+                <h2 className="text-fluid-xl font-bold font-headline">Our AI Development Services</h2>
                 <p className="mt-4 text-fluid-base text-muted-foreground leading-relaxed">
                     We offer a comprehensive suite of AI services designed to address your specific needs and deliver tangible results.
                 </p>
@@ -172,21 +109,8 @@ export default function AiSolutionsPage() {
             showDesignProcess={true}
         />
 
-        {/* FAQs */}
-        <section className="py-24 max-w-4xl mx-auto">
-          <h2 className="text-fluid-lg font-bold font-headline mb-12 text-center">Frequently Asked Questions</h2>
-          <div className="space-y-8">
-            {faqs.map((faq, i) => (
-              <div key={i} className="border-b border-border pb-6">
-                <h3 className="text-xl font-semibold mb-3">{faq.question}</h3>
-                <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
         <section className="text-center mt-fluid-md py-fluid-md bg-background rounded-lg px-fluid-sm">
-            <h2 className="text-fluid-lg font-bold font-headline">Get Your Custom AI Solution Architecture</h2>
+            <h2 className="text-fluid-lg font-bold font-headline">Ready to Unlock Your AI Potential?</h2>
             <p className="mt-4 text-fluid-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Let's discuss how our custom AI solutions can transform your business. Schedule a free, no-obligation consultation with our AI experts today.
             </p>
@@ -203,6 +127,10 @@ export default function AiSolutionsPage() {
                     <Link href="/use-cases">View Industry Use Cases</Link>
                 </Button>
             </div>
+            <p className="mt-8 text-sm text-muted-foreground">
+                Learn more in our <Link href="/insights" className="text-primary underline hover:no-underline">AI insights library</Link> or explore our{' '}
+                <Link href="/training" className="text-primary underline hover:no-underline">AI training programmes</Link>.
+            </p>
         </section>
 
       </div>

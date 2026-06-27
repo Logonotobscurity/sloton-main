@@ -6,7 +6,7 @@ export const runtime = 'edge';
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    const title = searchParams.get('title') || 'LOG_ON Solutions';
+    const title = searchParams.get('title') || 'LOG_ON';
     const description = searchParams.get('description') || 'AI & Automation for Business Efficiency';
 
     return new ImageResponse(

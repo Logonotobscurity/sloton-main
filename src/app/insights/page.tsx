@@ -38,7 +38,7 @@ export default function InsightsPage() {
                 {/* Page Header */}
                 <div className="mb-12 border-b border-border pb-8">
                     <h1 className="text-4xl md:text-6xl font-headline tracking-tight">
-                        Insights: AI Agent Development & Workplace Automation in Nigeria
+                        LOG_ON Insights
                     </h1>
                     <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
                         Updates, guides, and expert perspectives on AI, automation, and digital transformation.

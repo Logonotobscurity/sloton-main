@@ -12,7 +12,7 @@ import { IndustryItemListSchema, BreadcrumbSchema } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Workplace Automation Use Cases by Industry in Nigeria',
-  description: 'Explore how LOG_ON Solutions delivers industry-specific AI agent development and workplace automation solutions for Finance, Healthcare, and E-Commerce in Nigeria to drive growth.',
+  description: 'Explore how LOG_ON delivers industry-specific AI agent development and workplace automation solutions for Finance, Healthcare, and E-Commerce in Nigeria to drive growth.',
 };
 
 export default function UseCasesPage() {

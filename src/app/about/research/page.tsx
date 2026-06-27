@@ -7,8 +7,8 @@ import Link from 'next/link';
 import { PageHero } from '@/components/page-sections/page-hero';
 
 export const metadata: Metadata = {
-  title: 'Research',
-  description: 'Explore how LOG_ON Solutions Research is pushing the boundaries of AI and automation through our labs, academic partnerships, and open-source contributions.',
+  title: 'LOG_ON Research',
+  description: 'Explore how LOG_ON Research is pushing the boundaries of AI and automation through our labs, academic partnerships, and open-source contributions.',
 };
 
 const researchAreas = [
@@ -33,8 +33,8 @@ export default function ResearchPage() {
   return (
     <div>
         <PageHero 
-            title="LOG_ON Solutions Research"
-            description="Innovation is at the core of our DNA. LOG_ON Solutions Research is dedicated to exploring the frontiers of artificial intelligence and automation. Through our internal labs, partnerships with academic institutions, and contributions to open-source projects, we aim to solve fundamental challenges and pioneer the next generation of business technology."
+            title="LOG_ON Research"
+            description="Innovation is at the core of our DNA. LOG_ON Research is dedicated to exploring the frontiers of artificial intelligence and automation. Through our internal labs, partnerships with academic institutions, and contributions to open-source projects, we aim to solve fundamental challenges and pioneer the next generation of business technology."
         />
       <div className="container mx-auto px-4 md:px-6 py-16 md:py-24 space-y-12">
         <section>

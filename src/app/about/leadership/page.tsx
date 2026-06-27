@@ -10,7 +10,7 @@ import { PageHero } from '@/components/page-sections/page-hero';
 
 export const metadata: Metadata = {
   title: 'Our Leadership',
-  description: 'Meet the expert team at LOG_ON Solutions, a dynamic duo of technology experts dedicated to delivering innovative solutions and exceptional service to drive your business forward.',
+  description: 'Meet the expert team at LOG_ON, a dynamic duo of technology experts dedicated to delivering innovative solutions and exceptional service to drive your business forward.',
 };
 
 const teamMembers = [

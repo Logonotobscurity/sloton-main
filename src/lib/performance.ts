@@ -129,16 +129,15 @@ export class PerformanceMonitor {
   }
 }
 
-// Hook to use performance monitoring in components
 export function usePerformanceMonitoring(callback: (metrics: PerformanceMetrics) => void): PerformanceMetrics | undefined {
-  if (typeof window === 'undefined') return;
-
-  const monitor = PerformanceMonitor.getInstance();
-  
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const monitor = PerformanceMonitor.getInstance();
     monitor.addListener(callback);
     return () => monitor.removeListener(callback);
   }, [callback]);
 
-  return monitor.getAverageMetrics();
+  if (typeof window === 'undefined') return undefined;
+  return PerformanceMonitor.getInstance().getAverageMetrics();
 }

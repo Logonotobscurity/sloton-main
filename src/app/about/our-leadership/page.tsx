@@ -11,7 +11,7 @@ import { PersonSchema, BreadcrumbSchema } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Our Leadership | AI & Automation Experts',
-  description: 'Meet the expert team behind LOG_ON Solutions, driving AI agent development and workplace automation solutions in Nigeria. Our leadership is committed to innovation and client success.',
+  description: 'Meet the expert team behind LOG_ON, driving AI agent development and workplace automation solutions in Nigeria. Our leadership is committed to innovation and client success.',
 };
 
 export default function LeadershipPage() {
@@ -36,7 +36,7 @@ export default function LeadershipPage() {
              ))}
              <PageHero 
                 title="Our Leadership"
-                description="Meet the visionaries guiding LOG_ON Solutions. Our leadership team brings a wealth of experience from the forefront of technology, business, and research. They are united by a shared passion for innovation and a commitment to our clients' success."
+                description="Meet the visionaries guiding LOG_ON. Our leadership team brings a wealth of experience from the forefront of technology, business, and research. They are united by a shared passion for innovation and a commitment to our clients' success."
             />
 
             <section className="py-fluid-lg">
