@@ -1,5 +1,5 @@
 
-import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, BreadcrumbSchema } from '@/lib/seo';
+import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, generateFAQSchema, BreadcrumbSchema } from '@/lib/seo';
 import { TaskAutomationForm } from '@/components/task-automation-form';
 import { WorkflowTemplateLibrary } from '@/app/automation/_components/workflow-template-library';
 import { PageHero } from '@/components/page-sections/page-hero';
@@ -7,6 +7,9 @@ import Link from 'next/link';
 import { CheckCircle, ArrowRight, Clock, TrendingDown, Users } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+
+
+const faqs = [{'q': 'What is workplace automation?', 'a': 'Workplace automation is the use of technology to perform repetitive tasks, ranging from simple RPA to complex AI-driven workflows.'}, {'q': 'What is the difference between RPA and AI automation?', 'a': 'RPA follows strict rules for repetitive tasks, while AI automation can handle unstructured data and make complex decisions.'}];
 
 export const metadata = generateMetadata({
   title: 'Workplace Automation & RPA Solutions in Nigeria | Intelligent Workflows',
@@ -68,6 +71,7 @@ export default async function AutomationPage({
 
   return (
     <div className="bg-background">
+      <JsonLd data={generateFAQSchema(faqs)} />
       <JsonLd data={automationServiceSchema} />
       <BreadcrumbSchema items={[
         { name: 'Home', url: 'https://logonsolutions.netlify.app' },

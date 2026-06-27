@@ -3,10 +3,13 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BrainCircuit, CheckCircle, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, BreadcrumbSchema } from '@/lib/seo';
+import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, generateFAQSchema, BreadcrumbSchema } from '@/lib/seo';
 import { CaseStudyFeature } from '@/components/page-sections/case-study-feature';
 import { PageHero } from '@/components/page-sections/page-hero';
 import { aiServices, aiSolutionsBenefits } from '@/lib/data/services-data';
+
+
+const faqs = [{'q': 'What is AI agent development?', 'a': 'AI agent development is the process of building autonomous software entities that can reason, use tools, and execute complex workflows to achieve specific business goals.'}, {'q': 'How can AI agents improve business efficiency?', 'a': 'AI agents automate end-to-end processes, handle complex data analysis, and provide 24/7 intelligent support, reducing manual errors and freeing teams for strategic work.'}];
 
 export const metadata = generateMetadata({
   title: 'AI Agent Development & Custom AI Solutions',
@@ -37,6 +40,7 @@ const aiServiceSchema = generateServiceSchema({
 export default function AiSolutionsPage() {
   return (
     <div className="bg-background">
+      <JsonLd data={generateFAQSchema(faqs)} />
       <JsonLd data={aiServiceSchema} />
       <BreadcrumbSchema items={[
         { name: 'Home', url: 'https://logonsolutions.netlify.app' },
