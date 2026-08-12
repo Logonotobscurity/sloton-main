@@ -15,7 +15,7 @@ export function IdeasLab() {
   return (
     <section className="py-16 md:py-24 bg-secondary/30 relative overflow-hidden">
       {/* Creative Animated Code Pattern Background */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
+      <div className="absolute inset-0 opacity-10 pointer-events-none" aria-hidden="true">
         {/* Floating Code Blocks */}
         <motion.div
           className="absolute top-10 left-10 text-xs font-mono text-primary font-semibold"

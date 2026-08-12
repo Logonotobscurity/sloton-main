@@ -4,10 +4,15 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { ArrowRight, Code } from 'lucide-react';
-import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema } from '@/lib/seo';
+import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, generateFAQSchema } from '@/lib/seo';
 import { PageHero } from '@/components/page-sections/page-hero';
 import { webDevelopmentServices } from '@/lib/data/services-data';
 import { Skeleton } from '@/components/ui/skeleton';
+
+const faqs = [
+  { question: 'What is custom web development?', answer: 'Custom web development is the creation of bespoke digital platforms—from corporate websites to complex web applications—built using modern frameworks like Next.js and React, rather than relying on generic templates.' },
+  { question: 'Do you build e-commerce and publisher platforms as well as corporate sites?', answer: 'Yes. LOG_ON builds scalable, secure, and optimized digital platforms for publishers, e-commerce brands, and corporate clients, tailoring the architecture and stack to each business’s specific goals.' },
+];
 
 const CaseStudyFeature = lazy(() => import('@/components/page-sections/case-study-feature').then(module => ({ default: module.CaseStudyFeature })));
 const Faq = lazy(() => import('@/components/faq').then(module => ({ default: module.Faq })));
@@ -58,6 +63,7 @@ export default function WebDevelopmentPage() {
   return (
     <div className="bg-background">
         <JsonLd data={webDevServiceSchema} />
+        <JsonLd data={generateFAQSchema(faqs)} />
         <PageHero
             title="Web & Custom Development"
             description="We specialize in crafting custom web projects tailored to your specific business needs. Drawing on our deep experience in IT solutions and AI automation, we build scalable, secure, and optimized digital platforms designed to help you grow."

@@ -1,4 +1,4 @@
-# LOG_ON Solutions — Connecting Advantages. Delivering Results.
+# LOG_ON Solutions — AI Agent Development & Workplace Automation
 
 > Last updated: 2026-06-27
 > LOG_ON Solutions is a Lagos-based AI and automation consultancy that helps Nigerian and African businesses cut costs, automate workflows, and scale faster using intelligent technology.
@@ -23,7 +23,6 @@ LOG_ON Solutions is a leading AI and automation consulting firm in Nigeria, spec
 ## Brand Identity
 - **Full Name**: LOG_ON Solutions
 - **Short Name**: LOG_ON
-- **Tagline**: Connecting Advantages. Delivering Results.
 - **Founded**: Lagos, Nigeria
 - **Headquarters**: Lagos, Nigeria (serving clients globally)
 - **Website**: https://logonsolutions.netlify.app

@@ -62,9 +62,6 @@ This guide provides step-by-step instructions to create all required images for 
 │   AI & Automation for Business     │
 │         Efficiency                  │
 │                                     │
-│   Connecting Advantages.            │
-│   Delivering Results.               │
-│                                     │
 └─────────────────────────────────────┘
 ```
 

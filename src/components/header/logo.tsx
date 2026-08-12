@@ -32,10 +32,5 @@ export const Logo = () => (
                 N
             </span>
         </span>
-
-        {/* Tagline */}
-        <span className="text-[9px] md:text-[11px] font-semibold uppercase tracking-[0.3em] text-muted-foreground mt-1 ml-[4px] transition-colors duration-300 group-hover:text-primary" aria-hidden="true">
-            Connecting Advantages
-        </span>
     </Link>
 );

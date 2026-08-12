@@ -1,4 +1,4 @@
-# **App Name**: LOG_ON connecting Advantages
+# **App Name**: LOG_ON
 
 ## Core Features:
 
