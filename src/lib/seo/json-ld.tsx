@@ -28,7 +28,7 @@ export function WebSiteSchema() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'LOG_ON',
+    name: 'LOG_ON Solutions',
     url: 'https://logonsolutions.netlify.app',
     potentialAction: {
       '@type': 'SearchAction',
@@ -49,12 +49,11 @@ export function OrganizationSchema() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'LOG_ON',
+    name: 'LOG_ON Solutions',
     alternateName: 'LOG_ON AI Solutions',
     url: 'https://logonsolutions.netlify.app',
     logo: 'https://logonsolutions.netlify.app/og-image.png',
     description: 'LOG_ON is an AI automation and technology consulting firm helping SMEs and enterprises in Nigeria and across Africa cut costs, automate workflows, and scale with intelligent technology.',
-    slogan: 'Connecting Advantages. Delivering Results.',
     serviceType: [
       'AI Agent Development',
       'Robotic Process Automation (RPA)',
@@ -106,7 +105,7 @@ export function LocalBusinessSchema() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: 'LOG_ON',
+    name: 'LOG_ON Solutions',
     image: 'https://logonsolutions.netlify.app/og-image.png',
     '@id': 'https://logonsolutions.netlify.app',
     url: 'https://logonsolutions.netlify.app',
@@ -160,7 +159,7 @@ export function ServiceCatalogSchema() {
         name: 'AI Solutions & Agent Development',
         url: 'https://logonsolutions.netlify.app/ai-solutions',
         description: 'Custom AI models and AI agent development to solve complex business challenges.',
-        provider: { '@type': 'Organization', name: 'LOG_ON' },
+        provider: { '@type': 'Organization', name: 'LOG_ON Solutions' },
       },
       {
         '@type': 'Service',
@@ -168,7 +167,7 @@ export function ServiceCatalogSchema() {
         name: 'Workplace Process Automation',
         url: 'https://logonsolutions.netlify.app/automation',
         description: 'Intelligent automation and RPA to streamline workflows and increase efficiency.',
-        provider: { '@type': 'Organization', name: 'LOG_ON' },
+        provider: { '@type': 'Organization', name: 'LOG_ON Solutions' },
       },
       {
         '@type': 'Service',
@@ -176,7 +175,7 @@ export function ServiceCatalogSchema() {
         name: 'Web & Custom Development',
         url: 'https://logonsolutions.netlify.app/web-development',
         description: 'Scalable websites, e-commerce platforms, and custom applications.',
-        provider: { '@type': 'Organization', name: 'LOG_ON' },
+        provider: { '@type': 'Organization', name: 'LOG_ON Solutions' },
       },
       {
         '@type': 'Service',
@@ -184,7 +183,7 @@ export function ServiceCatalogSchema() {
         name: 'Business Analytics',
         url: 'https://logonsolutions.netlify.app/business-analytics',
         description: 'Custom dashboards and BI reporting to turn data into actionable insights.',
-        provider: { '@type': 'Organization', name: 'LOG_ON' },
+        provider: { '@type': 'Organization', name: 'LOG_ON Solutions' },
       },
       {
         '@type': 'Service',
@@ -192,7 +191,7 @@ export function ServiceCatalogSchema() {
         name: 'Technology Training Programs',
         url: 'https://logonsolutions.netlify.app/training',
         description: 'Expert-led training in AI, automation, and digital strategy.',
-        provider: { '@type': 'Organization', name: 'LOG_ON' },
+        provider: { '@type': 'Organization', name: 'LOG_ON Solutions' },
       },
     ],
   };
@@ -238,7 +237,7 @@ export function ArticleSchema({
     },
     publisher: {
       '@type': 'Organization',
-      name: 'LOG_ON',
+      name: 'LOG_ON Solutions',
       logo: { '@type': 'ImageObject', url: 'https://logonsolutions.netlify.app/og-image.png' },
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
@@ -322,7 +321,7 @@ export function PersonSchema({ name, role, email, linkedin, twitter, github, ima
     jobTitle: role,
     worksFor: {
       '@type': 'Organization',
-      name: 'LOG_ON',
+      name: 'LOG_ON Solutions',
       url: 'https://logonsolutions.netlify.app',
     },
     url: 'https://logonsolutions.netlify.app/about/our-leadership',
@@ -373,7 +372,7 @@ export function CourseListSchema({ courses }: { courses: CourseListItem[] }) {
         url: 'https://logonsolutions.netlify.app/training',
         provider: {
           '@type': 'Organization',
-          name: 'LOG_ON',
+          name: 'LOG_ON Solutions',
           sameAs: 'https://logonsolutions.netlify.app',
         },
       },

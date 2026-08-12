@@ -13,7 +13,6 @@ async function createMasterLogo() {
       </style>
       <text x="180" y="580" class="title">LOG_</text>
       <text x="740" y="580" class="title">N</text>
-      <text x="512" y="700" class="subtitle">Connecting Advantages</text>
     </svg>
   `;
 

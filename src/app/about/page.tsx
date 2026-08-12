@@ -14,7 +14,10 @@ import React from 'react';
 import { OptimizedImage } from '@/lib/image-utils';
 
 export const metadata: Metadata = {
-  title: 'About Us | AI & Automation Experts in Nigeria',
+  title: 'About Our Expertise',
+  alternates: {
+    canonical: "https://logonsolutions.netlify.app/about",
+  },
   description: 'Learn about LOG_ON, your digital architects for workplace automation in Nigeria. We build integrated digital ecosystems where businesses thrive through AI agent development.',
 };
 
@@ -48,21 +51,34 @@ export default function AboutPage() {
         <section className="container mx-auto px-fluid-sm">
             <div className="grid md:grid-cols-2 gap-8 items-center">
                 <GlowingCard>
-                    <div className="p-6 md:p-8">
-                        <h3 className="text-fluid-md font-bold font-headline flex items-center gap-3"><Globe className="h-8 w-8 text-primary"/> Our Mission</h3>
-                        <p className="text-muted-foreground mt-4">To architect and build integrated digital ecosystems where businesses of all sizes can thrive, automate, and innovate with confidence.</p>
+                    <div className="p-8 md:p-12">
+                        <h2 className="text-3xl font-bold font-headline mb-6 flex items-center gap-3"><Building className="text-primary"/> Our Story</h2>
+                        <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
+                            <p>Founded in Lagos, Nigeria, LOG_ON was born from a simple observation: while the world was racing ahead with AI and automation, many businesses across Africa were being left behind by fragmented, expensive, and overly complex technology.</p>
+                            <p>We set out to change that. We don't just sell software; we design digital ecosystems. Our approach combines the precision of high-end engineering with a deep understanding of the local business landscape.</p>
+                        </div>
                     </div>
                 </GlowingCard>
-                <GlowingCard>
-                    <div className="p-6 md:p-8">
-                        <h3 className="text-fluid-md font-bold font-headline flex items-center gap-3"><Scale className="h-8 w-8 text-primary"/> Our Values</h3>
-                        <ul className="text-muted-foreground mt-4 space-y-2">
-                            <li><strong>Innovation-Driven:</strong> We are constantly exploring new technologies to deliver cutting-edge solutions.</li>
-                            <li><strong>Client-Centric:</strong> Your success is our ultimate metric. We build partnerships based on trust and transparency.</li>
-                            <li><strong>Results-Oriented:</strong> We design solutions focused on delivering measurable, tangible business value.</li>
-                        </ul>
+                <div className="space-y-8">
+                     <div className="flex items-start gap-6">
+                        <div className="bg-primary/10 p-4 rounded-full flex-shrink-0">
+                            <Users className="h-8 w-8 text-primary" />
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-bold font-headline mb-2">Our Mission</h3>
+                            <p className="text-muted-foreground text-lg">To democratize access to advanced AI and automation, empowering African enterprises to scale with confidence and efficiency.</p>
+                        </div>
                     </div>
-                </GlowingCard>
+                    <div className="flex items-start gap-6">
+                        <div className="bg-primary/10 p-4 rounded-full flex-shrink-0">
+                            <Scale className="h-8 w-8 text-primary" />
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-bold font-headline mb-2">Our Values</h3>
+                            <p className="text-muted-foreground text-lg">Integrity, innovation, and impact. We measure our success not by the code we ship, but by the results our partners achieve.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -81,7 +97,7 @@ export default function AboutPage() {
                 </div>
             </div>
         </section>
-        
+
         <section id="news" className="py-fluid-lg">
             <div className="container mx-auto px-fluid-sm space-y-12">
                 <div className="text-center max-w-3xl mx-auto">
@@ -96,8 +112,8 @@ export default function AboutPage() {
                             <Link href={`/insights/${insight.slug}`}>
                                 <div data-ai-hint={insight.dataAiHint} className="relative h-48 overflow-hidden rounded-t-xl">
                                     {insight.codeVisualType ? (
-                                        <ArticleCodeVisual 
-                                            type={insight.codeVisualType} 
+                                        <ArticleCodeVisual
+                                            type={insight.codeVisualType}
                                             className="h-full w-full rounded-none border-0"
                                             animated={false}
                                         />
@@ -143,7 +159,7 @@ export default function AboutPage() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-0 max-w-6xl mx-auto">
                     {analystReports.map((report, i) => (
-                        <GlowingCard 
+                        <GlowingCard
                             key={report.title}
                             className={`border-t border-border/50 ${
                                 i === 0 ? "md:border-l-0" : "md:border-l"

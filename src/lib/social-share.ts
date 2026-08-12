@@ -13,7 +13,7 @@ export interface ShareData {
   via?: string;
 }
 
-const BRAND_NAME = 'LOG_ON - Connecting Advantages';
+const BRAND_NAME = 'LOG_ON Solutions';
 const BRAND_HANDLE = 'logon_ng';
 
 /**

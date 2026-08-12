@@ -94,7 +94,7 @@ export function TrainingCTA() {
               <div className="text-center max-w-3xl mx-auto space-y-4">
                     <p className="text-sm font-normal uppercase tracking-widest text-primary">04/ Community & Learning</p>
                     <h2 className="font-headline text-[clamp(2rem,5vw,3rem)] font-bold !leading-snug">
-                        Building <span className="text-primary">skills</span> and connecting Advantages through <span className="text-primary">community</span>.
+                        Building <span className="text-primary">skills</span> and fostering growth through <span className="text-primary">community</span>.
                     </h2>
                     <p className="text-muted-foreground md:text-lg">
                         We believe in building more than just technology; we're dedicated to building skills, fostering leadership, and making a positive community impact. Explore our training programs and our commitment to ethical innovation.

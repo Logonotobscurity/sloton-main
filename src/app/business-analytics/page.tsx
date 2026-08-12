@@ -3,10 +3,15 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { CheckCircle, ArrowRight, BarChart3 } from 'lucide-react';
 import Link from 'next/link';
-import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema } from '@/lib/seo';
+import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, generateFAQSchema } from '@/lib/seo';
 import { CaseStudyFeature } from '@/components/page-sections/case-study-feature';
 import { PageHero } from '@/components/page-sections/page-hero';
 import { analyticsServices, businessAnalyticsBenefits } from '@/lib/data/services-data';
+
+const faqs = [
+  { question: 'What are business analytics solutions?', answer: 'Business analytics solutions involve the systematic exploration of an organization’s data with an emphasis on statistical analysis. LOG_ON builds custom BI dashboards and reporting systems that turn raw data into actionable insights for tracking KPIs and driving growth.' },
+  { question: 'How long does it take to implement a BI dashboard?', answer: 'Most custom dashboard and reporting projects go from data integration to a working solution within a few weeks, depending on the number of data sources and the complexity of the KPIs being tracked.' },
+];
 
 export const metadata = generateMetadata({
   title: 'Business Analytics & BI Solutions in Nigeria | Dashboards & Reporting',
@@ -37,11 +42,20 @@ export default function BusinessAnalyticsPage() {
   return (
     <div className="bg-background">
       <JsonLd data={analyticsServiceSchema} />
+      <JsonLd data={generateFAQSchema(faqs)} />
       <PageHero
         title="Business Analytics & Intelligence"
         description="Turn your data into your most valuable asset. We help you move from simply collecting data to actively using it to drive strategy, optimize operations, and uncover new opportunities. Our custom business analytics solutions provide the clarity you need to make confident, data-driven decisions."
       />
       <div className="container mx-auto px-fluid-sm py-fluid-lg">
+        {/* Answer Block */}
+        <section className="mb-16 bg-secondary/20 p-8 rounded-2xl border border-primary/10">
+          <h2 className="text-2xl font-bold mb-4">What are Business Analytics Solutions?</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Business analytics solutions in Nigeria involve the systematic exploration of an organization’s data with an emphasis on statistical analysis. At LOG_ON Solutions, we build custom BI dashboards and reporting systems that turn raw data into actionable insights, helping businesses track KPIs, optimize workflows, and drive growth.
+          </p>
+        </section>
+
         <section className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
              <div className="space-y-4 pt-4">

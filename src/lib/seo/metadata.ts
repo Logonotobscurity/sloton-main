@@ -50,7 +50,10 @@ export function generateMetadata(config: SEOConfig): Metadata {
   const imageUrl = ogImage.startsWith('http') ? ogImage : `${SITE_CONFIG.url}${ogImage}`;
 
   const metadata: Metadata = {
-    title: fullTitle,
+    // Root layout applies a `%s | LOG_ON` template to plain title strings, so an
+    // already-suffixed string here would render as "X | LOG_ON | LOG_ON".
+    // `absolute` opts this page out of that template.
+    title: { absolute: fullTitle },
     description,
     keywords: keywords.length > 0 ? keywords.join(', ') : undefined,
     authors: [{ name: 'LOG_ON' }],

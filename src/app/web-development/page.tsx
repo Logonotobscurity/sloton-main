@@ -4,10 +4,15 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { ArrowRight, Code } from 'lucide-react';
-import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema } from '@/lib/seo';
+import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, generateFAQSchema } from '@/lib/seo';
 import { PageHero } from '@/components/page-sections/page-hero';
 import { webDevelopmentServices } from '@/lib/data/services-data';
 import { Skeleton } from '@/components/ui/skeleton';
+
+const faqs = [
+  { question: 'What is custom web development?', answer: 'Custom web development is the creation of bespoke digital platforms—from corporate websites to complex web applications—built using modern frameworks like Next.js and React, rather than relying on generic templates.' },
+  { question: 'Do you build e-commerce and publisher platforms as well as corporate sites?', answer: 'Yes. LOG_ON builds scalable, secure, and optimized digital platforms for publishers, e-commerce brands, and corporate clients, tailoring the architecture and stack to each business’s specific goals.' },
+];
 
 const CaseStudyFeature = lazy(() => import('@/components/page-sections/case-study-feature').then(module => ({ default: module.CaseStudyFeature })));
 const Faq = lazy(() => import('@/components/faq').then(module => ({ default: module.Faq })));
@@ -38,6 +43,14 @@ const webDevServiceSchema = generateServiceSchema({
 
 const SectionSkeleton = () => (
   <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
+        {/* Answer Block */}
+        <section className="mb-16 bg-secondary/20 p-8 rounded-2xl border border-primary/10">
+          <h2 className="text-2xl font-bold mb-4">What is Custom Web Development?</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Custom web development in Nigeria refers to the creation of bespoke digital platforms—from corporate websites to complex web applications—built using modern frameworks like Next.js and React. Unlike template-based sites, custom development ensures your platform is high-performance, secure, and fully aligned with your specific business goals.
+          </p>
+        </section>
+
     <div className="flex flex-col items-center text-center space-y-4 max-w-3xl mx-auto">
       <Skeleton className="h-8 w-1/2" />
       <Skeleton className="h-6 w-3/4" />
@@ -50,12 +63,21 @@ export default function WebDevelopmentPage() {
   return (
     <div className="bg-background">
         <JsonLd data={webDevServiceSchema} />
+        <JsonLd data={generateFAQSchema(faqs)} />
         <PageHero
             title="Web & Custom Development"
             description="We specialize in crafting custom web projects tailored to your specific business needs. Drawing on our deep experience in IT solutions and AI automation, we build scalable, secure, and optimized digital platforms designed to help you grow."
             icon={<Code className="h-12 w-12 md:h-16 md:w-16 text-primary" />}
         />
       <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
+        {/* Answer Block */}
+        <section className="mb-16 bg-secondary/20 p-8 rounded-2xl border border-primary/10">
+          <h2 className="text-2xl font-bold mb-4">What is Custom Web Development?</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Custom web development in Nigeria refers to the creation of bespoke digital platforms—from corporate websites to complex web applications—built using modern frameworks like Next.js and React. Unlike template-based sites, custom development ensures your platform is high-performance, secure, and fully aligned with your specific business goals.
+          </p>
+        </section>
+
         <section className="py-16 md:py-24">
              <div className="grid md:grid-cols-2 gap-8">
                 {webDevelopmentServices.map((service) => (

@@ -1,5 +1,5 @@
 
-import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, BreadcrumbSchema } from '@/lib/seo';
+import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, generateFAQSchema, BreadcrumbSchema } from '@/lib/seo';
 import { TaskAutomationForm } from '@/components/task-automation-form';
 import { WorkflowTemplateLibrary } from '@/app/automation/_components/workflow-template-library';
 import { PageHero } from '@/components/page-sections/page-hero';
@@ -7,6 +7,9 @@ import Link from 'next/link';
 import { CheckCircle, ArrowRight, Clock, TrendingDown, Users } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+
+
+const faqs = [{'question': 'What is workplace automation?', 'answer': 'Workplace automation is the use of technology to perform repetitive tasks, ranging from simple RPA to complex AI-driven workflows.'}, {'question': 'What is the difference between RPA and AI automation?', 'answer': 'RPA follows strict rules for repetitive tasks, while AI automation can handle unstructured data and make complex decisions.'}];
 
 export const metadata = generateMetadata({
   title: 'Workplace Automation & RPA Solutions in Nigeria | Intelligent Workflows',
@@ -68,6 +71,7 @@ export default async function AutomationPage({
 
   return (
     <div className="bg-background">
+      <JsonLd data={generateFAQSchema(faqs)} />
       <JsonLd data={automationServiceSchema} />
       <BreadcrumbSchema items={[
         { name: 'Home', url: 'https://logonsolutions.netlify.app' },
@@ -78,6 +82,14 @@ export default async function AutomationPage({
         description="Eliminate repetitive, manual work from your operations. LOG_ON designs and deploys custom AI-powered automation and Robotic Process Automation (RPA) solutions that free your team to focus on strategy, relationships, and innovation."
       />
       <div className="container mx-auto px-fluid-sm py-fluid-lg">
+        {/* Answer Block */}
+        <section className="mb-16 bg-secondary/20 p-8 rounded-2xl border border-primary/10">
+          <h2 className="text-2xl font-bold mb-4">What is Workplace Automation?</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Workplace automation in Nigeria is the use of technology to perform tasks that previously required human effort. It spans a spectrum from simple, rule-based Robotic Process Automation (RPA)—where bots execute repetitive tasks—to sophisticated AI-powered automation that can reason, understand natural language, and make decisions from unstructured data.
+          </p>
+        </section>
+
 
         {/* Proof stats */}
         <section aria-label="Automation impact metrics" className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16 md:mb-24">

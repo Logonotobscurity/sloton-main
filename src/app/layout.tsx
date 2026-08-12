@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: '/',
+    canonical: 'https://logonsolutions.netlify.app',
     languages: {
       'en-NG': '/',
     },

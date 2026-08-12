@@ -164,3 +164,25 @@ export async function communityLeadAction(data: z.infer<typeof communityLeadSche
 
   return { success: true };
 }
+
+// Newsletter Signup Action
+const newsletterSchema = z.object({
+  email: z.string().email({ message: 'Please enter a valid email address.' }),
+});
+
+export async function newsletterSignupAction(data: z.infer<typeof newsletterSchema>): Promise<FormResult<null>> {
+  try {
+    // Send data to webhook
+    await sendToWebhook(data as Record<string, unknown>, 'Newsletter Signup');
+
+    // In a real app, you might also add them to a mailing list (e.g. Resend, Mailchimp)
+    if (resend) {
+      // Logic for adding to contact list could go here
+    }
+
+    return { success: true };
+  } catch (error) {
+    const errorResponse = handleError(error, 'Actions.newsletterSignupAction', { logLevel: 'error' });
+    return { error: errorResponse.error.message };
+  }
+}

@@ -3,13 +3,16 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BrainCircuit, CheckCircle, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, BreadcrumbSchema } from '@/lib/seo';
+import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, generateFAQSchema, BreadcrumbSchema } from '@/lib/seo';
 import { CaseStudyFeature } from '@/components/page-sections/case-study-feature';
 import { PageHero } from '@/components/page-sections/page-hero';
 import { aiServices, aiSolutionsBenefits } from '@/lib/data/services-data';
 
+
+const faqs = [{'question': 'What is AI agent development?', 'answer': 'AI agent development is the process of building autonomous software entities that can reason, use tools, and execute complex workflows to achieve specific business goals.'}, {'question': 'How can AI agents improve business efficiency?', 'answer': 'AI agents automate end-to-end processes, handle complex data analysis, and provide 24/7 intelligent support, reducing manual errors and freeing teams for strategic work.'}];
+
 export const metadata = generateMetadata({
-  title: 'AI Agent Development & Custom AI Solutions in Nigeria',
+  title: 'AI Agent Development & Custom AI Solutions',
   description: 'Expert AI agent development and custom machine learning solutions in Nigeria. We design and deploy intelligent AI agents for workplace automation, predictive analytics, and business innovation. Transform your operations with cutting-edge AI technology.',
   keywords: [
     ...KEYWORD_SETS.ai,
@@ -37,6 +40,7 @@ const aiServiceSchema = generateServiceSchema({
 export default function AiSolutionsPage() {
   return (
     <div className="bg-background">
+      <JsonLd data={generateFAQSchema(faqs)} />
       <JsonLd data={aiServiceSchema} />
       <BreadcrumbSchema items={[
         { name: 'Home', url: 'https://logonsolutions.netlify.app' },
@@ -47,6 +51,14 @@ export default function AiSolutionsPage() {
         description="At LOG_ON, we don't just use AI—we build it. We specialize in creating bespoke artificial intelligence, AI agents, and machine learning solutions that integrate seamlessly with your operations to solve your most complex challenges. Our expert team partners with you to transform your data into a strategic asset, driving efficiency, innovation, and measurable growth."
       />
       <div className="container mx-auto px-fluid-sm py-fluid-lg">
+        {/* Answer Block */}
+        <section className="mb-16 bg-secondary/20 p-8 rounded-2xl border border-primary/10">
+          <h2 className="text-2xl font-bold mb-4">What is AI Agent Development?</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            AI agent development is the process of building autonomous software entities that can reason, use tools, and execute complex workflows to achieve specific business goals. Unlike traditional chatbots, AI agents can plan multi-step actions, integrate with internal systems, and make decisions independently to solve enterprise challenges in Nigeria.
+          </p>
+        </section>
+
         <section className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
              <div className="space-y-4 pt-4">

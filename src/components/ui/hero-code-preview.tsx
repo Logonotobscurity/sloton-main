@@ -58,7 +58,7 @@ export function HeroCodePreview({ className }: { className?: string }) {
         </div>
 
         {/* Code Content */}
-        <div className="p-3 md:p-4 font-mono text-[11px] md:text-xs lg:text-sm overflow-x-auto max-h-[280px] lg:max-h-[320px]">
+        <div aria-hidden="true" className="p-3 md:p-4 font-mono text-[11px] md:text-xs lg:text-sm overflow-x-auto max-h-[280px] lg:max-h-[320px]">
           {codeLines.map((line, index) => (
             <motion.div
               key={index}

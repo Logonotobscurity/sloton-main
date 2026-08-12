@@ -17,7 +17,7 @@ This document describes the social sharing functionality implemented for LOG_ON 
 ### ✅ Key Features
 
 - **Dynamic URLs**: Automatically uses current page URL
-- **Brand Integration**: All shares include "LOG_ON - Connecting Advantages" branding
+- **Brand Integration**: All shares include "LOG_ON Solutions" branding
 - **Optimized Text**: Platform-specific formatting for best engagement
 - **Copy to Clipboard**: Quick link copying with toast notification
 - **Popup Windows**: Social shares open in centered popup windows
@@ -94,7 +94,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: insight.title,
       description: insight.description,
       url: articleUrl,
-      siteName: 'LOG_ON - Connecting Advantages',
+      siteName: 'LOG_ON Solutions',
       images: [{
         url: absoluteImageUrl,
         width: insight.width,
