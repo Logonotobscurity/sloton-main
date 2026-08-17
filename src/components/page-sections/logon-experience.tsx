@@ -5,7 +5,18 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Copy, Check, Terminal } from "lucide-react";
 
-const pillWords = ["AUTOMATE", "ORCHESTRATE", "AGENT", "INTELLIGENCE"];
+const pillWords = [
+  "AEO",
+  "GEO",
+  "Agentic checkout",
+  "Knowledge graph",
+  "Structured content",
+  "MCP",
+  "Share of voice",
+  "Trust signals",
+  "Feed hygiene",
+  "Citation rate",
+];
 
 const categories = [
   { id: "automate", label: "AUTOMATE", title: "Hands-free invoicing", desc: "From spreadsheets to self-running workflows.", stat: "2.5d → 20m", statLabel: "per close" },
