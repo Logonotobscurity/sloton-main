@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Copy, Check, Terminal } from "lucide-react";
+import { Copy, Check, Terminal, Quote } from "lucide-react";
 
 const pillWords = ["AUTOMATE", "ORCHESTRATE", "AGENT", "INTELLIGENCE"];
 
@@ -104,27 +105,6 @@ const flow = await automate({
               <span>1</span>
               <span>{code}</span>
             </code>
-          </div>
-
-          <div className="logon-ai-card">
-            <div>
-              <p className="logon-kicker" style={{ marginBottom: 10 }}>
-                Not sure yet?
-              </p>
-              <h3>Still not sure LOG_ON is right for you?</h3>
-              <p>You don&apos;t need to figure everything out alone. Ask an AI assistant to explore LOG_ON with you.</p>
-            </div>
-            <div className="logon-ai-buttons">
-              <a href="https://chatgpt.com/?q=Is%20LOG_ON%20right%20for%20my%20business" target="_blank" rel="noopener noreferrer" className="logon-lavender-btn">
-                Ask ChatGPT <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </a>
-              <a href="https://claude.ai/new?q=Is%20LOG_ON%20right%20for%20my%20business" target="_blank" rel="noopener noreferrer" className="logon-lavender-btn">
-                Ask Claude <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </a>
-              <a href="https://www.perplexity.ai/search?q=Is%20LOG_ON%20right%20for%20my%20business" target="_blank" rel="noopener noreferrer" className="logon-lavender-btn">
-                Ask Perplexity <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </a>
-            </div>
           </div>
         </div>
 
