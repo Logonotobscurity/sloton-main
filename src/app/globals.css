@@ -647,6 +647,54 @@
   padding: clamp(24px, 5vw, 46px);
 }
 
+.logon-shared-cta {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(56px, 8vw, 96px) 0;
+  background:
+    linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.46) 100%);
+}
+
+.logon-shared-cta-inner {
+  position: relative;
+  z-index: 20;
+  width: min(940px, calc(100% - 32px));
+  margin: 0 auto;
+  border: 2px solid hsl(var(--foreground));
+  border-radius: 8px;
+  background: hsl(var(--background) / 0.92);
+  padding: clamp(24px, 5vw, 52px);
+  text-align: center;
+  box-shadow: 12px 12px 0 hsl(var(--primary));
+}
+
+.logon-shared-cta-inner::before {
+  content: "";
+  position: absolute;
+  left: clamp(18px, 5vw, 48px);
+  right: clamp(18px, 5vw, 48px);
+  top: 18px;
+  height: 10px;
+  border-block: 1px solid hsl(var(--primary) / 0.5);
+  opacity: 0.72;
+}
+
+.logon-shared-cta h2 {
+  max-width: 780px;
+  margin: 0 auto;
+  color: hsl(var(--foreground));
+  font-family: var(--font-display), var(--font-serif), serif;
+  font-size: clamp(2.1rem, 5vw, 4.8rem);
+  line-height: 0.98;
+}
+
+.logon-shared-cta p:not(.logon-kicker) {
+  max-width: 640px;
+  margin: 18px auto 28px;
+  color: hsl(var(--muted-foreground));
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+}
+
 /* Footer refinement — waveform + grid */
 .logon-footer {
   position: relative;
@@ -712,6 +760,47 @@
   border-color: hsl(var(--primary) / 0.3);
   outline: 2px solid hsl(var(--ring));
   outline-offset: 2px;
+}
+
+.footer-nav-col h3 {
+  color: hsl(var(--primary));
+  font-family: var(--font-mono), monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.footer-nav-col ul {
+  display: grid;
+  gap: 11px;
+}
+
+.footer-nav-col a,
+.footer-legal-row a {
+  color: hsl(var(--muted-foreground));
+  transition: color 0.2s ease;
+}
+
+.footer-nav-col a:hover,
+.footer-legal-row a:hover {
+  color: hsl(var(--primary));
+}
+
+.footer-legal-row {
+  border-top: 1px solid hsl(var(--border));
+  padding: 18px 0 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-legal-row nav {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
 }
 
 @keyframes logon-spin {

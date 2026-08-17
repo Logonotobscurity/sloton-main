@@ -15,6 +15,7 @@ import { BottomCta } from '@/components/page-sections/bottom-cta';
 import { DecisionSupportSection } from '@/components/page-sections/decision-support';
 import { FeaturePanel } from '@/components/page-sections/feature-panel';
 import { TestimonialStrip } from '@/components/ui/testimonial-strip';
+import { LogonExperience } from '@/components/page-sections/logon-experience';
 import Faq from '@/components/faq';
 import { IdeasLab } from '@/components/page-sections/ideas-lab';
 
@@ -76,6 +77,7 @@ export default function Home() {
       <FeaturedInsights />
       <IdeasLab />
       <Faq />
+      <LogonExperience />
       <DecisionSupportSection />
       <BottomCta />
     </>

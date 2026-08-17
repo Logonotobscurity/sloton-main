@@ -72,11 +72,11 @@ export function Hero() {
             
             <motion.div
               variants={itemVariants}
-              className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start w-full max-w-md sm:max-w-none mx-auto lg:mx-0"
             >
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button variant="primary" size="large">Get Your Free Efficiency Assessment</Button>
+                  <Button variant="primary" size="large" className="w-full sm:w-auto max-w-full">Get Your Free Efficiency Assessment</Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-xl md:max-w-2xl bg-background">
                   <DialogHeader>
@@ -88,8 +88,8 @@ export function Hero() {
                   <SolutionRecommendationForm />
                 </DialogContent>
               </Dialog>
-              <Button size="large" variant="outline" asChild>
-                <Link href="/solutions" aria-label="Explore our AI and Automation Solutions">Explore Our AI & Automation Solutions</Link>
+              <Button size="large" variant="outline" asChild className="w-full sm:w-auto max-w-full">
+                <Link href="/solutions" aria-label="Explore our AI and Automation Solutions" className="w-full text-center leading-tight">Explore Our AI & Automation Solutions</Link>
               </Button>
             </motion.div>
           </motion.div>
