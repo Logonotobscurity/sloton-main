@@ -88,9 +88,9 @@ function FooterSection({
 
 export function Footer() {
   const [open, setOpen] = useState<Record<string, boolean>>({
-    solutions: false,
-    company: false,
-    resources: false,
+    solutions: true,
+    company: true,
+    resources: true,
   });
 
   const toggle = (key: string) => setOpen((p) => ({ ...p, [key]: !p[key] }));
