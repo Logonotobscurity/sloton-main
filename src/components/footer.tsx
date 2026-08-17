@@ -43,7 +43,7 @@ function FooterSection({
       data-expanded={expanded ? 'true' : 'false'}
       className="border-b lg:border-0 border-border/50 py-4 lg:py-0"
     >
-      {/* Mobile/Tablet/Mid header — button for accordion, desktop is static at ≥1024 */}
+      {/* Header — always visible, button for mobile/tablet/mid, static at desktop */}
       <button
         data-footer-header
         onClick={onToggle}
@@ -66,15 +66,12 @@ function FooterSection({
         className="lg:!max-h-none lg:!opacity-100 lg:!mt-4"
       >
         <ul className="space-y-3 list-none pt-3 lg:pt-0">
-          <li className="lg:hidden">
-            <span className="text-xs font-mono tracking-wide text-muted-foreground/70">Tap header to expand</span>
-          </li>
           {items.map((item) => (
             <li key={item.title}>
               <Link
                 href={item.href}
                 aria-label={`Go to ${item.title}`}
-                className="text-muted-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm text-sm inline-flex min-h-[32px] items-center px-1 -mx-1"
+                className="text-muted-foreground hover:text-primary hover:underline underline-offset-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm text-sm inline-flex min-h-[32px] items-center px-1 -mx-1 font-medium"
               >
                 {item.title}
               </Link>
