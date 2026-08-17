@@ -38,3 +38,19 @@ yarn-error.log*
 
 # firebase
 .firebase
+
+# build artifacts
+tsconfig.tsbuildinfo
+typecheck.txt
+.modified
+logo_master_*.png
+
+# IDE
+.vscode
+.idea
+
+# OS
+Thumbs.db
+
+# cache
+.cache

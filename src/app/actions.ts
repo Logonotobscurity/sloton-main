@@ -128,6 +128,28 @@ export async function contactFormAction(data: z.infer<typeof contactFormSchema>)
   return { success: true };
 }
 
+// Newsletter Signup Action
+const newsletterSchema = z.object({
+  email: z.string().email({ message: 'Please enter a valid email address.' }),
+});
+
+export async function newsletterSignupAction(
+  data: z.infer<typeof newsletterSchema>
+): Promise<FormResult<null>> {
+  try {
+    const parsed = newsletterSchema.parse(data);
+
+    // Send data to Automation AI webhook for lead routing
+    await sendToWebhook(parsed as unknown as Record<string, unknown>, 'Newsletter Signup');
+
+    logger.info('[Actions] Newsletter signup successful', { email: parsed.email });
+    return { success: true };
+  } catch (error) {
+    const errorResponse = handleError(error, 'Actions.newsletterSignupAction', { logLevel: 'error' });
+    return { error: errorResponse.error.message };
+  }
+}
+
 // Enrollment / Community Lead Form Action
 const communityLeadSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),

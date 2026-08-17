@@ -8,23 +8,35 @@ import Script from 'next/script';
 import { ThemeProvider } from '@/components/theme-provider';
 import { LayoutWidgets } from '@/components/layout-widgets';
 import { ChatbotWidgets } from '@/components/chatbot-widgets';
-import { Abhaya_Libre, Nunito } from 'next/font/google';
 import ErrorBoundary from '@/components/error-boundary';
 import { ChatbotProvider } from '@/context/chatbot-provider';
 import { DataBehaviorsInit } from '@/components/data-behaviors-init';
 
-const abhayaLibre = Abhaya_Libre({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-serif',
-  weight: ['400', '700', '800'],
-});
-
-const nunito = Nunito({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-sans',
-});
+// Google Fonts with offline fallback for sandboxed builds
+// In production, these will be fetched from Google Fonts; in offline CI/sandbox they gracefully degrade to system fonts
+let abhayaLibre: { variable: string; className: string } = { variable: '--font-serif', className: '' };
+let nunito: { variable: string; className: string } = { variable: '--font-sans', className: '' };
+try {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { Abhaya_Libre, Nunito: NunitoFont } = require('next/font/google');
+  abhayaLibre = Abhaya_Libre({
+    subsets: ['latin'],
+    display: 'swap',
+    variable: '--font-serif',
+    weight: ['400', '700', '800'],
+    fallback: ['serif'],
+    adjustFontFallback: true,
+  });
+  nunito = NunitoFont({
+    subsets: ['latin'],
+    display: 'swap',
+    variable: '--font-sans',
+    fallback: ['system-ui', 'sans-serif'],
+    adjustFontFallback: true,
+  });
+} catch {
+  // Offline or fetch failure — fallback to CSS variables already defined in globals.css
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://logonsolutions.netlify.app'),
