@@ -3,16 +3,9 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Copy, Check, Terminal, Quote } from "lucide-react";
+import { ArrowRight, Copy, Check, Terminal } from "lucide-react";
 
 const pillWords = ["AUTOMATE", "ORCHESTRATE", "AGENT", "INTELLIGENCE"];
-
-const testimonials = [
-  { quote: "LOG_ON cut our reporting from 3 days to 20 minutes.", author: "Amaka O.", role: "Operations Lead" },
-  { quote: "The AI agent handles 70% of tickets before a human sees them.", author: "Tunde A.", role: "Founder, SaaS" },
-  { quote: "Invoice flow is now hands-free. No more spreadsheets.", author: "Chioma E.", role: "Finance Director" },
-  { quote: "Shipped our marketplace in 6 weeks, not 6 months.", author: "David K.", role: "CTO" },
-];
 
 const categories = [
   { id: "automate", label: "AUTOMATE", title: "Hands-free invoicing", desc: "From spreadsheets to self-running workflows.", stat: "2.5d → 20m", statLabel: "per close" },
@@ -91,19 +84,6 @@ const flow = await automate({
           ))}
         </div>
 
-        {/* Testimonial strip — logon-quote cards */}
-        <div className="logon-testimonial-strip" role="region" aria-label="Testimonials">
-          {testimonials.map((t, i) => (
-            <figure key={i} className="logon-quote-card">
-              <Quote className="h-5 w-5 opacity-80" aria-hidden="true" />
-              <p>“{t.quote}”</p>
-              <footer>
-                <strong>{t.author}</strong>
-                <span>{t.role}</span>
-              </footer>
-            </figure>
-          ))}
-        </div>
 
         {/* Feature grid — snippet + AI card */}
         <div className="logon-feature-grid">
