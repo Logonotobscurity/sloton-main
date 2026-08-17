@@ -1,14 +1,17 @@
+"use client";
 
 import Link from 'next/link';
-import { IconFacebook, IconGithub, IconInstagram, IconLinkedIn, IconX, IconYouTube } from '@/lib/icons';
+import { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
+import { IconGithub, IconLinkedIn, IconX } from '@/lib/icons';
 import { menuData, SitemapSection } from '@/lib/menu-data';
 import { AdinkraBackground } from './ui/adinkra-background';
 import { Logo } from '@/components/header/logo';
 
 const socialLinks = [
-  { href: 'https://x.com/Logo_obscurity', label: 'Follow LOG_ON on X (formerly Twitter)', icon: <IconX className="w-5 h-5" aria-hidden="true" /> },
-  { href: 'https://www.linkedin.com/in/logo-oluwamayowa-cpo-/', label: 'Connect with LOG_ON on LinkedIn', icon: <IconLinkedIn className="w-5 h-5" aria-hidden="true" /> },
-  { href: 'https://github.com/Logonotobscurity/', label: 'View LOG_ON source code on GitHub', icon: <IconGithub className="w-5 h-5" aria-hidden="true" /> },
+  { href: 'https://x.com/Logo_obscurity', label: 'Follow LOG_ON on X', icon: <IconX className="w-5 h-5" aria-hidden="true" /> },
+  { href: 'https://www.linkedin.com/in/logo-oluwamayowa-cpo-/', label: 'LinkedIn', icon: <IconLinkedIn className="w-5 h-5" aria-hidden="true" /> },
+  { href: 'https://github.com/Logonotobscurity/', label: 'GitHub', icon: <IconGithub className="w-5 h-5" aria-hidden="true" /> },
 ];
 
 const solutions = menuData.find(item => item.key === 'solutions');
@@ -19,38 +22,125 @@ const hasItems = (section: SitemapSection | undefined): section is SitemapSectio
   return section !== undefined && 'items' in section && Array.isArray(section.items);
 };
 
+function FooterSection({
+  title,
+  items,
+  sectionKey,
+  expanded,
+  onToggle,
+}: {
+  title: string;
+  items: any[];
+  sectionKey: string;
+  expanded: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <div
+      data-footer-section
+      data-expanded={expanded ? 'true' : 'false'}
+      className="border-b md:border-0 border-border/50 py-4 md:py-0"
+    >
+      {/* Mobile/Tablet header — button for accordion, desktop is static */}
+      <button
+        data-footer-header
+        onClick={onToggle}
+        aria-expanded={expanded}
+        aria-controls={`footer-panel-${sectionKey}`}
+        className="w-full flex items-center justify-between text-left md:cursor-default md:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md -mx-1 px-1 py-1 min-h-[44px]"
+      >
+        <h3 className="font-semibold text-primary text-[15px] tracking-widest font-mono uppercase">
+          {title}
+        </h3>
+        <ChevronDown
+          className={`h-4 w-4 text-muted-foreground md:hidden transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`}
+          aria-hidden="true"
+        />
+      </button>
+
+      <div
+        id={`footer-panel-${sectionKey}`}
+        data-footer-content
+        className="md:!max-h-none md:!opacity-100 md:!mt-4"
+      >
+        <ul className="space-y-3 list-none pt-2 md:pt-0">
+          {items.map((item) => (
+            <li key={item.title}>
+              <Link
+                href={item.href}
+                aria-label={`Go to ${item.title}`}
+                className="text-muted-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm text-sm inline-flex min-h-[32px] items-center px-1 -mx-1"
+              >
+                {item.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
 export function Footer() {
+  const [open, setOpen] = useState<Record<string, boolean>>({
+    solutions: false,
+    company: false,
+    resources: false,
+  });
+
+  const toggle = (key: string) => setOpen((p) => ({ ...p, [key]: !p[key] }));
+
   return (
     <footer className="bg-background border-t relative overflow-hidden" aria-label="Site footer">
       <AdinkraBackground aria-hidden="true" />
-      <div className="container mx-auto px-fluid-sm relative z-20">
-        <div className="footer-grid gap-8 lg:gap-12 py-16 md:py-24">
 
-          {/* Brand Column — editorial */}
-          <div className="space-y-5 flex flex-col items-center text-center md:items-start md:text-left min-w-0">
-            <div className="w-full max-w-[280px] md:max-w-none overflow-hidden">
+      {/* Waveform top border */}
+      <div aria-hidden="true" className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+
+      <div className="container mx-auto px-fluid-sm relative z-20">
+        {/* Main grid — 1 → 2 → 3 → 4 */}
+        <div className="footer-grid gap-8 lg:gap-10 py-12 md:py-16">
+          {/* Brand — editorial */}
+          <div className="space-y-4 flex flex-col items-center text-center md:items-start md:text-left min-w-0 md:col-span-2 lg:col-span-1">
+            <div className="w-full max-w-[260px] md:max-w-none overflow-hidden">
               <Logo />
             </div>
-            <address className="text-sm text-muted-foreground not-italic font-mono text-xs tracking-wide">
-              Lagos, Nigeria<br />
-              Serving clients worldwide
+
+            {/* Waveform logo accent — SVG wave under wordmark */}
+            <div aria-hidden="true" className="w-full max-w-[280px] md:max-w-[320px] h-6 overflow-hidden opacity-60">
+              <svg viewBox="0 0 320 24" className="w-full h-full" preserveAspectRatio="none">
+                <path
+                  d="M0 12 Q 20 2, 40 12 T 80 12 T 120 12 T 160 12 T 200 12 T 240 12 T 280 12 T 320 12"
+                  fill="none"
+                  stroke="hsl(var(--primary))"
+                  strokeWidth="1.2"
+                  opacity="0.5"
+                />
+                <rect x="0" y="11" width="320" height="0.5" fill="hsl(var(--border))" opacity="0.6" />
+              </svg>
+            </div>
+
+            <address className="text-xs font-mono tracking-wide text-muted-foreground not-italic leading-relaxed">
+              Lagos, Nigeria
+              <br />
+              Serving clients worldwide • 9.0820° N, 8.6753° E
             </address>
             <p
-              className="text-muted-foreground text-[clamp(0.95rem,1.2vw,1.05rem)] leading-relaxed max-w-md mx-auto md:mx-0 text-balance"
+              className="text-muted-foreground text-sm leading-relaxed max-w-md mx-auto md:mx-0 text-balance"
               style={{ fontFamily: 'var(--font-ui)' }}
             >
-              Ready to transform your business with intelligent technology? Let&apos;s build something great together.
+              Intelligent automation for growing businesses. Editorial, technical, human.
             </p>
-            <nav aria-label="LOG_ON social media links" className="w-full">
-              <div className="flex justify-center md:justify-start gap-1 pt-2 flex-wrap">
-                {socialLinks.map(link => (
+            <nav aria-label="LOG_ON social media" className="w-full">
+              <div className="flex justify-center md:justify-start gap-1 pt-1 flex-wrap">
+                {socialLinks.map((link) => (
                   <a
                     key={link.label}
                     href={link.href}
                     aria-label={link.label}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary p-2.5 rounded-full hover:bg-secondary/50 transition-colors min-h-[44px] min-w-[44px] inline-flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    className="text-muted-foreground hover:text-primary border border-transparent hover:border-border hover:bg-secondary/40 p-2.5 rounded-full transition-all min-h-[44px] min-w-[44px] inline-flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   >
                     {link.icon}
                   </a>
@@ -59,74 +149,49 @@ export function Footer() {
             </nav>
           </div>
 
-          {/* Navigation Columns — each is a grid item, so total 4 columns at desktop */}
-
-              {hasItems(solutions) && (
-                <nav aria-label={`Footer navigation: ${solutions.heading}`}>
-                  <h3 className="font-semibold mb-4 text-primary text-lg tracking-wider">
-                    {solutions.heading}
-                  </h3>
-                  <ul className="space-y-3 list-none">
-                    {solutions.items.map((item) => (
-                      <li key={item.title}>
-                        <Link
-                          href={item.href}
-                          aria-label={`Go to ${item.title}`}
-                          className="text-muted-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
-                        >
-                          {item.title}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-              )}
-              {hasItems(company) && (
-                <nav aria-label={`Footer navigation: ${company.heading}`}>
-                  <h3 className="font-semibold mb-4 text-primary text-lg tracking-wider">
-                    {company.heading}
-                  </h3>
-                  <ul className="space-y-3 list-none">
-                    {company.items.map((item) => (
-                      <li key={item.title}>
-                        <Link
-                          href={item.href}
-                          aria-label={`Go to ${item.title}`}
-                          className="text-muted-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
-                        >
-                          {item.title}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-              )}
-              {hasItems(resources) && (
-                <nav aria-label={`Footer navigation: ${resources.heading}`}>
-                  <h3 className="font-semibold mb-4 text-primary text-lg tracking-wider">
-                    {resources.heading}
-                  </h3>
-                  <ul className="space-y-3 list-none">
-                    {resources.items.map((item) => (
-                      <li key={item.title}>
-                        <Link
-                          href={item.href}
-                          aria-label={`Go to ${item.title}`}
-                          className="text-muted-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
-                        >
-                          {item.title}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-              )}
+          {/* Collapsible nav columns — 4th column is brand, so 3 navs = 4 total at lg */}
+          {hasItems(solutions) && (
+            <FooterSection
+              title={solutions.heading}
+              items={solutions.items}
+              sectionKey="solutions"
+              expanded={open.solutions}
+              onToggle={() => toggle('solutions')}
+            />
+          )}
+          {hasItems(company) && (
+            <FooterSection
+              title={company.heading}
+              items={company.items}
+              sectionKey="company"
+              expanded={open.company}
+              onToggle={() => toggle('company')}
+            />
+          )}
+          {hasItems(resources) && (
+            <FooterSection
+              title={resources.heading}
+              items={resources.items}
+              sectionKey="resources"
+              expanded={open.resources}
+              onToggle={() => toggle('resources')}
+            />
+          )}
         </div>
 
-        <div className="border-t py-6 text-center">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} LOG_ON. All Rights Reserved.
+        {/* Legal row */}
+        <div className="border-t border-border/60 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+          <p className="text-xs font-mono tracking-wide text-muted-foreground">
+            © {new Date().getFullYear()} LOG_ON. All Rights Reserved. • Privacy • Terms • <Link href="/sitemap.xml" className="hover:text-primary underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:ring-primary rounded-sm">Sitemap</Link>
           </p>
+          <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
+            <span className="inline-flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-primary animate-pulse" aria-hidden="true" />
+              All systems operational
+            </span>
+            <span aria-hidden="true" className="opacity-30">•</span>
+            <span>Lagos • Remote worldwide</span>
+          </div>
         </div>
       </div>
     </footer>

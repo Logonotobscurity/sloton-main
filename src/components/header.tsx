@@ -56,28 +56,35 @@ export function Header() {
             </div>
           </div>
 
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-3">
             <Button
               asChild
               size="sm"
-              className="header-cta hidden lg:inline-flex rounded-full px-6 font-semibold"
+              className="header-cta hidden lg:inline-flex rounded-full px-6 font-semibold min-h-[44px] hover:shadow-md focus-visible:ring-2"
             >
               <Link href="/contact">Contact Us</Link>
             </Button>
-            <Button
-              asChild
-              size="sm"
-              className="header-cta lg:hidden rounded-full px-5"
-            >
-              <Link href="/contact">Contact</Link>
-            </Button>
-            <div className="ml-1 pl-3 border-l border-border">
+            <div className="ml-1 pl-3 border-l border-border flex items-center">
               <ThemeToggle />
             </div>
           </div>
 
-          <div className="flex items-center justify-end md:hidden gap-2">
+          {/* Medium: show compact CTA + theme, hide desktop nav */}
+          <div className="hidden md:flex lg:hidden items-center gap-2">
+            <Button
+              asChild
+              size="sm"
+              className="header-cta rounded-full px-5 min-h-[44px]"
+            >
+              <Link href="/contact">Contact</Link>
+            </Button>
             <ThemeToggle />
+          </div>
+
+          <div className="flex items-center justify-end lg:hidden gap-2">
+            <span className="md:hidden">
+              <ThemeToggle />
+            </span>
             <MobileNav />
           </div>
         </div>
