@@ -3,8 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Copy, Check, Terminal } from "lucide-react";
-import { Copy, Check, Terminal, Quote } from "lucide-react";
+import { Copy, Check, Terminal } from "lucide-react";
 
 const pillWords = ["AUTOMATE", "ORCHESTRATE", "AGENT", "INTELLIGENCE"];
 
