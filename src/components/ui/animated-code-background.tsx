@@ -90,11 +90,11 @@ export function AnimatedCodeBackground({
   const symbolCount = density === "low" ? 8 : density === "high" ? 20 : 15;
 
   return (
-    <div className={`absolute inset-0 opacity-[0.07] pointer-events-none overflow-hidden ${className}`} aria-hidden="true">
+    <div className={`absolute inset-0 opacity-[0.14] pointer-events-none overflow-hidden ${className}`} aria-hidden="true">
       {/* Floating code blocks - 4 per section, varied positions per variant */}
       <motion.div
         className="absolute top-8 left-6 md:left-10 text-[10px] md:text-xs font-mono text-primary font-semibold max-w-[280px] hidden sm:block"
-        animate={{ y: [0, -14, 0], opacity: [0.4, 0.9, 0.4] }}
+        animate={{ y: [0, -14, 0], opacity: [0.6, 1, 0.6] }}
         transition={{ duration: 7 + (variant.charCodeAt(0) % 3), repeat: Infinity, ease: "easeInOut" }}
       >
         <pre className="leading-relaxed whitespace-pre-wrap break-words">{codes[0]}</pre>
@@ -102,7 +102,7 @@ export function AnimatedCodeBackground({
 
       <motion.div
         className="absolute top-24 right-6 md:right-16 text-[10px] md:text-xs font-mono text-accent font-semibold max-w-[280px] hidden md:block"
-        animate={{ y: [0, 14, 0], opacity: [0.4, 0.9, 0.4] }}
+        animate={{ y: [0, 14, 0], opacity: [0.6, 1, 0.6] }}
         transition={{ duration: 9 + (variant.charCodeAt(1) % 3), repeat: Infinity, ease: "easeInOut", delay: 0.7 }}
       >
         <pre className="leading-relaxed whitespace-pre-wrap break-words">{codes[1]}</pre>
@@ -110,7 +110,7 @@ export function AnimatedCodeBackground({
 
       <motion.div
         className="absolute bottom-16 left-1/4 text-[10px] md:text-xs font-mono text-primary font-semibold max-w-[280px] hidden lg:block"
-        animate={{ y: [0, -10, 0], opacity: [0.4, 0.9, 0.4] }}
+        animate={{ y: [0, -10, 0], opacity: [0.6, 1, 0.6] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
       >
         <pre className="leading-relaxed whitespace-pre-wrap break-words">{codes[2]}</pre>
@@ -118,7 +118,7 @@ export function AnimatedCodeBackground({
 
       <motion.div
         className="absolute bottom-24 right-1/4 text-[10px] md:text-xs font-mono text-accent font-semibold max-w-[280px] hidden lg:block"
-        animate={{ y: [0, 18, 0], opacity: [0.4, 0.9, 0.4] }}
+        animate={{ y: [0, 18, 0], opacity: [0.6, 1, 0.6] }}
         transition={{ duration: 8.5, repeat: Infinity, ease: "easeInOut", delay: 1.8 }}
       >
         <pre className="leading-relaxed whitespace-pre-wrap break-words">{codes[3] ?? codes[0]}</pre>
@@ -134,7 +134,7 @@ export function AnimatedCodeBackground({
             key={i}
             className="absolute text-sm md:text-base font-mono text-foreground font-bold select-none"
             style={{ top: `${top}%`, left: `${left}%` }}
-            animate={{ opacity: [0.15, 0.45, 0.15], scale: [1, 1.15, 1] }}
+            animate={{ opacity: [0.3, 0.65, 0.3], scale: [1, 1.15, 1] }}
             transition={{
               duration: 3 + (i % 4),
               repeat: Infinity,
@@ -152,7 +152,7 @@ export function AnimatedCodeBackground({
         style={{
           backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
           backgroundSize: "60px 60px",
-          opacity: 0.06,
+          opacity: 0.12,
         }}
       />
     </div>
