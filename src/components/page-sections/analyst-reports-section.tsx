@@ -1,5 +1,7 @@
 "use client";
 
+import { AnimatedCodeBackground } from "@/components/ui/animated-code-background";
+
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -53,6 +55,7 @@ const StarRating = ({ rating }: { rating: number }) => {
 export function AnalystReportsSection() {
   return (
     <section className="py-fluid-lg bg-background relative overflow-hidden">
+      <AnimatedCodeBackground variant="insights" density="low" />
       <div className="container mx-auto px-fluid-sm">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-12">

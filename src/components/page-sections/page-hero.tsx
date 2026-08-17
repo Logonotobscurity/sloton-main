@@ -1,5 +1,7 @@
 "use client";
 
+import { AnimatedCodeBackground } from "@/components/ui/animated-code-background";
+
 import React from "react";
 import { cn } from "@/lib/utils";
 import { AdinkraBackground } from "@/components/ui/adinkra-background";
@@ -15,6 +17,7 @@ export function PageHero({ title, description, icon, children }: PageHeroProps) 
   return (
     <div className="relative py-fluid-md text-center bg-background overflow-hidden">
         <AdinkraBackground />
+        <AnimatedCodeBackground variant="hero" density="low" />
         <div className="container px-fluid-sm relative z-20 animate-[fade-in_1s_ease-in-out]">
             {icon && <div className="mb-4 flex justify-center">{icon}</div>}
             <div className="max-w-3xl mx-auto">

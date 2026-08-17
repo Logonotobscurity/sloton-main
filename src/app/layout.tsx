@@ -11,6 +11,7 @@ import { ChatbotWidgets } from '@/components/chatbot-widgets';
 import ErrorBoundary from '@/components/error-boundary';
 import { ChatbotProvider } from '@/context/chatbot-provider';
 import { DataBehaviorsInit } from '@/components/data-behaviors-init';
+import { AnimatedCodeBackground } from '@/components/ui/animated-code-background';
 
 // LOG_ON Design System — Typography (restored per reference)
 let cinzel: { variable: string; className: string } = { variable: '--font-display', className: '' };
@@ -271,7 +272,11 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body suppressHydrationWarning={true}>
+      <body suppressHydrationWarning={true} className="relative">
+        {/* Global creative code background — visible on every page, subtle, behind content */}
+        <div className="fixed inset-0 pointer-events-none -z-10 opacity-100" aria-hidden="true">
+          <AnimatedCodeBackground variant="default" density="low" className="[&_pre]:text-[10px] [&_.text-lg]:text-sm" />
+        </div>
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID || 'GTM-XXXXXXX'}`}
