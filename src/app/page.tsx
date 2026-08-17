@@ -13,6 +13,7 @@ import { TechStackCarousel } from '@/components/page-sections/tech-stack-carouse
 import { FeaturedInsights } from '@/components/page-sections/featured-insights';
 import { BottomCta } from '@/components/page-sections/bottom-cta';
 import { LogonExperience } from '@/components/page-sections/logon-experience';
+import { TestimonialStrip } from '@/components/ui/testimonial-strip';
 import Faq from '@/components/faq';
 import { IdeasLab } from '@/components/page-sections/ideas-lab';
 
@@ -54,6 +55,18 @@ export default function Home() {
       <TrainingCTA />
       <Statement />
       <IndustriesBento />
+
+      {/* VOICES • 5 STORIES — Infinity Motion like IdeasLab, restored per request */}
+      <section className="section-fluid bg-background overflow-hidden">
+        <div className="container-fluid space-y-6">
+          <div className="max-w-3xl mx-auto text-center space-y-3">
+            <p className="kicker kicker-teal">VOICES • 5 STORIES</p>
+            <h2 className="editorial-headline text-fluid-xl text-balance">What changes when work actually flows?</h2>
+            <p className="text-muted-foreground text-balance">Infinite motion at 375, 768 and 1280 — like Ideas Lab.</p>
+          </div>
+          <TestimonialStrip />
+        </div>
+      </section>
 
       <TechStackCarousel />
       <FeaturedInsights />

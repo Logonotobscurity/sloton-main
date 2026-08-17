@@ -238,8 +238,6 @@ export function StudioSection() {
             <AssistCard category={activeCat.label} categoryBrief={`${activeCat.title}. ${activeCat.body}`} />
           </div>
         </div>
-
-        <TestimonialStrip />
       </div>
     </section>
   );
