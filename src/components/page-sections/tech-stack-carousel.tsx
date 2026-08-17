@@ -1,5 +1,7 @@
 "use client";
 
+import { AnimatedCodeBackground } from "@/components/ui/animated-code-background";
+
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
@@ -38,6 +40,7 @@ const technologies = [
 export function TechStackCarousel() {
   return (
     <section className="bg-secondary/20 py-24 md:py-32">
+      <AnimatedCodeBackground variant="tech" density="medium" />
       <div className="container mx-auto px-4 md:px-6">
         <GlowingCard className="p-8 md:p-12 relative">
             <GridBackground />

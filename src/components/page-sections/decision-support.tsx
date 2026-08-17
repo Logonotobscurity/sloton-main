@@ -1,5 +1,7 @@
 "use client";
 
+import { AnimatedCodeBackground } from "@/components/ui/animated-code-background";
+
 import Link from "next/link";
 import { MessageCircle, Sparkles } from "lucide-react";
 
@@ -71,6 +73,7 @@ export function DecisionSupportSection({
       aria-labelledby="decision-support-heading"
       className={`decision-support section-fluid ${className}`}
     >
+      <AnimatedCodeBackground variant="default" density="low" />
       <div className="container-fluid relative z-10">
         <div className="decision-card text-center">
           {/* Kicker — monospace */}

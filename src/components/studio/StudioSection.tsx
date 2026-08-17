@@ -1,5 +1,7 @@
 "use client";
 
+import { AnimatedCodeBackground } from "@/components/ui/animated-code-background";
+
 import { useEffect, useMemo, useState } from "react";
 
 import { testimonials } from "@/data/site";
@@ -214,6 +216,7 @@ export function StudioSection() {
 
   return (
     <section className="studio work-section" aria-labelledby="studio-heading">
+      <AnimatedCodeBackground variant="studio" density="low" />
       <div className="studio-inner">
         <p className="studio-eyebrow">The studio</p>
         <div className="studio-hero">

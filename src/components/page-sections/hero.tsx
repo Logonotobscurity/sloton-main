@@ -1,6 +1,8 @@
 
 "use client";
 
+import { AnimatedCodeBackground } from "@/components/ui/animated-code-background";
+
 import React from "react";
 import { Button } from '@/components/ui/button';
 import Link from "next/link";
@@ -29,6 +31,7 @@ export function Hero() {
   return (
     <section className="relative w-full min-h-[90vh] md:min-h-screen flex items-center overflow-hidden">
       <AdinkraBackground />
+      <AnimatedCodeBackground variant="hero" density="medium" />
       <div className="relative z-10 container px-fluid-sm py-20 md:py-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Side - Text Content */}

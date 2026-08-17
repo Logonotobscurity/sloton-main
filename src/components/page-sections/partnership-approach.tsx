@@ -1,6 +1,8 @@
 
 "use client";
 
+import { AnimatedCodeBackground } from "@/components/ui/animated-code-background";
+
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { CaseStudiesCarousel } from "@/components/case-studies-carousel";
@@ -21,6 +23,7 @@ const itemVariants = staggerItem;
 export function PartnershipApproach() {
   return (
     <section className="py-fluid-lg bg-secondary/20">
+      <AnimatedCodeBackground variant="partnership" density="medium" />
       <div className="container mx-auto px-fluid-sm">
         <motion.div 
           className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"

@@ -1,6 +1,8 @@
 
 "use client";
 
+import { AnimatedCodeBackground } from "@/components/ui/animated-code-background";
+
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -49,6 +51,7 @@ const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
 export function IndustriesBento() {
   return (
     <section className="py-fluid-lg bg-background relative overflow-hidden">
+      <AnimatedCodeBackground variant="industries" density="medium" />
       <div className="container mx-auto px-fluid-sm">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-fluid-xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium font-headline">

@@ -1,5 +1,7 @@
 "use client";
 
+import { AnimatedCodeBackground } from "@/components/ui/animated-code-background";
+
 import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -72,6 +74,7 @@ const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
 export function SmarterAutomation() {
   return (
     <section className="py-fluid-lg bg-background relative overflow-hidden">
+      <AnimatedCodeBackground variant="automation" density="medium" />
       <div className="container mx-auto px-fluid-sm">
         <div className="max-w-3xl mx-auto text-center">
             <p className="text-sm font-normal uppercase tracking-widest text-primary">03/ Our Platform</p>

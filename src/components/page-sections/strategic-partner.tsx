@@ -1,6 +1,8 @@
 
 "use client";
 
+import { AnimatedCodeBackground } from "@/components/ui/animated-code-background";
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BrainCircuit, Cog } from 'lucide-react';
@@ -54,6 +56,7 @@ const StrategicPartnerTextContent = () => (
 export default function StrategicPartner() {
     return (
         <section id="strategic-partner" className="py-fluid-lg bg-secondary/20 scroll-mt-20">
+      <AnimatedCodeBackground variant="default" density="medium" />
             <div className="container mx-auto px-fluid-sm">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                     <StrategicPartnerTextContent />

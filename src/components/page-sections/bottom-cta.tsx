@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { AnimatedCodeBackground } from "@/components/ui/animated-code-background";
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
@@ -31,6 +32,7 @@ export function BottomCta({
       aria-labelledby="final-cta-heading"
       className={`final-cta ${className}`}
     >
+      <AnimatedCodeBackground variant="default" density="low" />
       <div className="final-cta-card">
         {/* Kicker — monospace + teal */}
         <div className="final-cta-kicker">{kicker}</div>

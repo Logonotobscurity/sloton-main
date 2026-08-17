@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { AnimatedCodeBackground } from "@/components/ui/animated-code-background";
 import { generateMetadata, KEYWORD_SETS, WebSiteSchema, ServiceCatalogSchema, LocalBusinessSchema, BreadcrumbSchema } from '@/lib/seo';
 import { Hero } from '@/components/page-sections/hero';
 import StrategicPartner from '@/components/page-sections/strategic-partner';
@@ -58,6 +59,7 @@ export default function Home() {
 
       {/* VOICES • 5 STORIES — Infinity Motion like IdeasLab, restored per request */}
       <section className="section-fluid bg-background overflow-hidden">
+      <AnimatedCodeBackground variant="insights" density="low" />
         <div className="container-fluid space-y-6">
           <div className="max-w-3xl mx-auto text-center space-y-3">
             <p className="kicker kicker-teal">VOICES • 5 STORIES</p>

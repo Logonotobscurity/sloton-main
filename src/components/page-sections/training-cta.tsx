@@ -1,6 +1,8 @@
 
 "use client";
 
+import { AnimatedCodeBackground } from "@/components/ui/animated-code-background";
+
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -78,6 +80,7 @@ const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
 export function TrainingCTA() {
   return (
     <section className="py-fluid-lg bg-background relative overflow-hidden">
+      <AnimatedCodeBackground variant="training" density="medium" />
       <div className="container mx-auto px-fluid-sm">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-sm font-normal uppercase tracking-widest text-primary">04/ Community & Learning</p>

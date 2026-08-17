@@ -1,5 +1,7 @@
 "use client";
 
+import { AnimatedCodeBackground } from "@/components/ui/animated-code-background";
+
 import Link from 'next/link';
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
@@ -95,6 +97,7 @@ export function Footer() {
 
   return (
     <footer className="bg-background border-t relative overflow-hidden" aria-label="Site footer">
+      <AnimatedCodeBackground variant="default" density="low" />
       <AdinkraBackground aria-hidden="true" />
 
       {/* Waveform top border */}

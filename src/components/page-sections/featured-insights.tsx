@@ -1,6 +1,8 @@
 
 "use client";
 
+import { AnimatedCodeBackground } from "@/components/ui/animated-code-background";
+
 import Link from 'next/link';
 import { CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -87,6 +89,7 @@ export function FeaturedInsights() {
 
   return (
     <section className="py-fluid-lg bg-background">
+      <AnimatedCodeBackground variant="insights" density="medium" />
       <div className="container mx-auto px-fluid-sm">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-fluid-lg font-bold font-headline">Practical Business Intelligence</h2>
