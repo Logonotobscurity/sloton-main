@@ -5,6 +5,7 @@ import { ArrowRight, Building, Users, Scale, Globe, Download, Rss } from 'lucide
 import { GlowingCard } from '@/components/ui/glowing-card';
 import { PageHero } from '@/components/page-sections/page-hero';
 import { BottomCta } from '@/components/page-sections/bottom-cta';
+import { DecisionSupportSection } from '@/components/page-sections/decision-support';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { insights } from '@/lib/data/insights';
 import { stats, trustPillars, researchAreas, analystReports } from '@/lib/data/about-page-data';
@@ -227,6 +228,7 @@ export default function AboutPage() {
             </div>
         </section>
 
+      <DecisionSupportSection />
       <BottomCta />
     </div>
   );

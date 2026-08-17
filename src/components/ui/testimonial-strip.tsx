@@ -25,95 +25,40 @@ interface TestimonialStripProps {
 }
 
 /**
- * TestimonialStrip — Infinity Motion Carousel (matches IdeasLab)
- * - Triples testimonials for seamless infinite loop (like IdeasLab)
- * - Framer-motion linear infinite (5s per card) — runs on both mobile + desktop
- * - Hover/focus pauses via state, respects prefers-reduced-motion
- * - Uses same full-teal card as duplicate (logon-quote-card) for consistency
- * - Works at 375, 768, 1280 with no overflow
+ * TestimonialStrip — Infinity Motion Carousel
+ * Exactly like "From the Ideas Lab" — infinite linear motion across ALL screens (375, 768, 1280)
+ * Triples items for seamless loop, framer-motion linear 5s per card, no swipe fallback
  */
 export function TestimonialStrip({ testimonials = defaultTestimonials, className }: TestimonialStripProps) {
-  // Triple for seamless infinite (like IdeasLab) — ensures no gap at any viewport
   const duplicated = [...testimonials, ...testimonials, ...testimonials];
-  const cardWidth = 360 + 16; // 360px card + 16px gap — matches TealQuoteCard min-w + gap-4
-  const [isPaused, setIsPaused] = React.useState(false);
-  const shouldReduceMotion =
-    typeof window !== "undefined" &&
-    window.matchMedia &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  if (shouldReduceMotion) {
-    return (
-      <div className={cn("relative", className)}>
-        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth py-2 px-1 -mx-1">
-          {testimonials.map((t, i) => (
-            <TealQuoteCard key={i} quote={t.quote} author={t.author} role={t.role} className="shrink-0 snap-start" />
-          ))}
-        </div>
-        <div className="mt-3 flex items-center justify-center gap-2">
-          <span className="text-xs font-mono tracking-wide text-muted-foreground">← swipe to explore →</span>
-        </div>
-      </div>
-    );
-  }
 
   return (
-    <div className={cn("relative overflow-hidden", className)}>
-      {/* Fade edges */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 left-0 w-8 md:w-12 bg-gradient-to-r from-background to-transparent z-10 hidden md:block"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 right-0 w-8 md:w-12 bg-gradient-to-l from-background to-transparent z-10 hidden md:block"
-      />
-
-      {/* Infinite track — framer-motion like IdeasLab, runs on both mobile + desktop */}
-      <div
-        role="region"
-        aria-label="Customer testimonials — infinite carousel, hover to pause"
-        tabIndex={0}
-        className={cn(
-          "relative overflow-hidden py-2 group",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-lg"
-        )}
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-        onFocus={() => setIsPaused(true)}
-        onBlur={() => setIsPaused(false)}
-      >
+    <div className={cn("relative", className)}>
+      <div className="overflow-hidden">
         <motion.div
-          className="flex gap-4 w-max will-change-transform"
-          animate={{ x: isPaused ? undefined : [0, -cardWidth * testimonials.length] }}
-          transition={
-            isPaused
-              ? {}
-              : {
-                  x: {
-                    repeat: Infinity,
-                    repeatType: "loop",
-                    duration: testimonials.length * 5, // 5s per card like IdeasLab
-                    ease: "linear",
-                  },
-                }
-          }
-          style={{ x: isPaused ? undefined : 0 } as any}
+          className="flex gap-4"
+          animate={{ x: [0, -(360 + 16) * testimonials.length] }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: testimonials.length * 5,
+              ease: "linear",
+            },
+          }}
         >
           {duplicated.map((t, i) => (
-            <TealQuoteCard
-              key={`${t.author}-${i}`}
-              quote={t.quote}
-              author={t.author}
-              role={t.role}
-              className="shrink-0"
-            />
+            <TealQuoteCard key={`${t.author}-${i}`} quote={t.quote} author={t.author} role={t.role} className="shrink-0" />
           ))}
         </motion.div>
       </div>
 
-      <div className="mt-3 flex items-center justify-center gap-2">
-        <span className="text-xs font-mono tracking-wide text-muted-foreground">∞ infinite motion — hover to pause • swipe on mobile</span>
+      {/* Gradient Overlays — like IdeasLab */}
+      <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent pointer-events-none hidden md:block" />
+      <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent pointer-events-none hidden md:block" />
+
+      <div className="mt-4 flex items-center justify-center gap-2">
+        <span className="text-xs font-mono tracking-wide text-muted-foreground">∞ infinite motion — like Ideas Lab</span>
       </div>
     </div>
   );

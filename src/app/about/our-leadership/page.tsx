@@ -1,6 +1,7 @@
 import { teamMembers } from "@/lib/data/team-members";
 import { PageHero } from "@/components/page-sections/page-hero";
 import { BottomCta } from '@/components/page-sections/bottom-cta';
+import { DecisionSupportSection } from '@/components/page-sections/decision-support';
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Link from "next/link";
 import { Linkedin, Github, Mail } from 'lucide-react';
@@ -71,6 +72,7 @@ export default function LeadershipPage() {
                 </div>
             </section>
 
+      <DecisionSupportSection />
       <BottomCta />
         </div>
     );

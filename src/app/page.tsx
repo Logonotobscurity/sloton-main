@@ -12,6 +12,7 @@ import { IndustriesBento } from '@/components/page-sections/industries-bento';
 import { TechStackCarousel } from '@/components/page-sections/tech-stack-carousel';
 import { FeaturedInsights } from '@/components/page-sections/featured-insights';
 import { BottomCta } from '@/components/page-sections/bottom-cta';
+import { DecisionSupportSection } from '@/components/page-sections/decision-support';
 import { TestimonialStrip } from '@/components/ui/testimonial-strip';
 import { LogonExperience } from '@/components/page-sections/logon-experience';
 import Faq from '@/components/faq';
@@ -73,6 +74,7 @@ export default function Home() {
       <IdeasLab />
       <Faq />
       <LogonExperience />
+      <DecisionSupportSection />
       <BottomCta />
     </>
   );
