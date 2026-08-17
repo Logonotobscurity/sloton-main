@@ -1262,8 +1262,8 @@ body:has([data-state="open"][role="dialog"]) #botpress-webchat {
   user-select: none;
 }
 
-/* Add chevron icon for mobile */
-@media (max-width: 767px) {
+/* Folding Footer — collapses at <1024 (sm + md + mid), expanded at ≥1024 */
+@media (max-width: 1023px) {
   [data-footer-header]::after {
     content: '';
     position: absolute;
@@ -1296,8 +1296,8 @@ body:has([data-state="open"][role="dialog"]) #botpress-webchat {
   }
 }
 
-/* Desktop: Always show footer content */
-@media (min-width: 768px) {
+/* Desktop: Always show footer content at ≥1024 */
+@media (min-width: 1024px) {
   [data-footer-header] {
     cursor: default !important;
   }

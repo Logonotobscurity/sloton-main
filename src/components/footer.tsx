@@ -39,21 +39,21 @@ function FooterSection({
     <div
       data-footer-section
       data-expanded={expanded ? 'true' : 'false'}
-      className="border-b md:border-0 border-border/50 py-4 md:py-0"
+      className="border-b lg:border-0 border-border/50 py-4 lg:py-0"
     >
-      {/* Mobile/Tablet header — button for accordion, desktop is static */}
+      {/* Mobile/Tablet/Mid header — button for accordion, desktop is static at ≥1024 */}
       <button
         data-footer-header
         onClick={onToggle}
         aria-expanded={expanded}
         aria-controls={`footer-panel-${sectionKey}`}
-        className="w-full flex items-center justify-between text-left md:cursor-default md:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md -mx-1 px-1 py-1 min-h-[44px]"
+        className="w-full flex items-center justify-between text-left lg:cursor-default lg:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md -mx-1 px-1 py-2 min-h-[48px] hover:bg-primary/5 lg:hover:bg-transparent transition-colors"
       >
         <h3 className="font-semibold text-primary text-[15px] tracking-widest font-mono uppercase">
           {title}
         </h3>
         <ChevronDown
-          className={`h-4 w-4 text-muted-foreground md:hidden transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`}
+          className={`h-4 w-4 text-muted-foreground lg:hidden transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`}
           aria-hidden="true"
         />
       </button>
@@ -61,9 +61,12 @@ function FooterSection({
       <div
         id={`footer-panel-${sectionKey}`}
         data-footer-content
-        className="md:!max-h-none md:!opacity-100 md:!mt-4"
+        className="lg:!max-h-none lg:!opacity-100 lg:!mt-4"
       >
-        <ul className="space-y-3 list-none pt-2 md:pt-0">
+        <ul className="space-y-3 list-none pt-3 lg:pt-0">
+          <li className="lg:hidden">
+            <span className="text-xs font-mono tracking-wide text-muted-foreground/70">Tap header to expand</span>
+          </li>
           {items.map((item) => (
             <li key={item.title}>
               <Link
