@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { assistCopy } from "@/lib/ai-assist.functions";
 
 type Tone = "plain" | "bold" | "technical";
 
@@ -9,28 +10,6 @@ const tones: { id: Tone; label: string }[] = [
   { id: "bold", label: "Bold" },
   { id: "technical", label: "Technical" },
 ];
-
-// Mock assistCopy — in production replace with real AI endpoint
-async function mockAssistCopy(data: {
-  category: string;
-  categoryBrief: string;
-  mode: "generate" | "refine";
-  tone: Tone;
-  draft?: string;
-}): Promise<{ text: string }> {
-  await new Promise((r) => setTimeout(r, 700));
-  const toneStyle: Record<Tone, string> = {
-    plain: `Clear, helpful copy for ${data.category}: ${data.categoryBrief}`,
-    bold: `**${data.category}** — ${data.categoryBrief} — Built to be quoted.`,
-    technical: `Technical: [${data.category}] { brief: "${data.categoryBrief}", tone: "${data.tone}" }`,
-  };
-  const base = toneStyle[data.tone];
-  const text =
-    data.mode === "refine" && data.draft
-      ? `${data.draft}\n\n— Refined (${data.tone}): ${base.slice(0, 120)}…`
-      : `${base}\n\n— Generated for ${data.category} (${data.tone}) at ${new Date().toLocaleTimeString()}`;
-  return { text };
-}
 
 export function AssistCard({
   category,
@@ -50,12 +29,14 @@ export function AssistCard({
     setError(null);
     setCopied(false);
     try {
-      const res = await mockAssistCopy({
-        category,
-        categoryBrief,
-        mode,
-        tone,
-        ...(mode === "refine" ? { draft: result } : {}),
+      const res = await assistCopy({
+        data: {
+          category,
+          categoryBrief,
+          mode,
+          tone,
+          ...(mode === "refine" ? { draft: result } : {}),
+        },
       });
       setResult(res.text);
     } catch (e) {

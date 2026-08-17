@@ -13,8 +13,7 @@ import { TechStackCarousel } from '@/components/page-sections/tech-stack-carouse
 import { FeaturedInsights } from '@/components/page-sections/featured-insights';
 import { BottomCta } from '@/components/page-sections/bottom-cta';
 import { DecisionSupportSection } from '@/components/page-sections/decision-support';
-import { TestimonialStrip } from '@/components/ui/testimonial-strip';
-import { LogonExperience } from '@/components/page-sections/logon-experience';
+import { StudioSection } from '@/components/studio/StudioSection';
 import Faq from '@/components/faq';
 import { IdeasLab } from '@/components/page-sections/ideas-lab';
 
@@ -57,23 +56,11 @@ export default function Home() {
       <Statement />
       <IndustriesBento />
 
-      {/* Testimonial strip — Infinity Motion Carousel (redesigned to match IdeasLab) */}
-      <section className="section-fluid bg-background overflow-hidden">
-        <div className="container-fluid space-y-6">
-          <div className="max-w-3xl mx-auto text-center space-y-3">
-            <p className="kicker kicker-teal">VOICES • 5 STORIES</p>
-            <h2 className="editorial-headline text-fluid-xl text-balance">What changes when work actually flows?</h2>
-            <p className="text-muted-foreground text-balance">Infinite motion at 375, 768 and 1280 — pause on hover, no overflow.</p>
-          </div>
-          <TestimonialStrip />
-        </div>
-      </section>
-
       <TechStackCarousel />
       <FeaturedInsights />
       <IdeasLab />
+      <StudioSection />
       <Faq />
-      <LogonExperience />
       <DecisionSupportSection />
       <BottomCta />
     </>
