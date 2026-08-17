@@ -12,29 +12,30 @@ interface TealQuoteCardProps {
 }
 
 /**
- * TealQuoteCard — teal left border, quote mark, editorial body
- * Used in testimonial strip and other editorial sections
+ * TealQuoteCard — full teal card, matches duplicate logon-quote-card for Infinity Motion
+ * Used in testimonial strip (both mobile + desktop) — same card as LogonExperience duplicate
+ * Full teal background, primary-foreground text, quote, footer mono uppercase
  */
 export function TealQuoteCard({ quote, author, role, className }: TealQuoteCardProps) {
   return (
     <figure
       className={cn(
-        "tq bg-card border border-border border-l-[4px] border-l-primary rounded-xl p-6 flex flex-col gap-4 min-w-[280px] max-w-[360px] snap-start shrink-0",
-        "shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 focus-within:ring-2 focus-within:ring-primary",
+        "flex flex-col justify-between gap-4 p-6 rounded-lg bg-primary text-primary-foreground min-h-[220px] min-w-[280px] max-w-[360px] w-[min(360px,86vw)] shrink-0 snap-start",
+        "shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 focus-within:ring-2 focus-within:ring-primary-foreground",
         className
       )}
     >
-      <Quote className="h-6 w-6 text-primary/70 shrink-0" aria-hidden="true" />
+      <Quote className="h-6 w-6 text-primary-foreground/80 shrink-0" aria-hidden="true" />
       <blockquote
-        className="text-[15px] leading-relaxed text-foreground text-balance"
-        style={{ fontFamily: "var(--font-editorial)" }}
+        className="text-[1.35rem] leading-[1.25] text-balance"
+        style={{ fontFamily: "var(--font-serif), Georgia, serif" }}
       >
         “{quote}”
       </blockquote>
       {(author || role) && (
-        <figcaption className="mt-auto pt-3 border-t border-border/60 flex flex-col">
-          {author && <span className="text-sm font-semibold">{author}</span>}
-          {role && <span className="text-xs font-mono tracking-wide text-muted-foreground">{role}</span>}
+        <figcaption className="mt-auto pt-3 border-t border-primary-foreground/20 flex flex-col gap-0.5">
+          {author && <span className="text-sm font-semibold text-primary-foreground">{author}</span>}
+          {role && <span className="text-xs font-mono tracking-wide text-primary-foreground/80 uppercase">{role}</span>}
         </figcaption>
       )}
     </figure>

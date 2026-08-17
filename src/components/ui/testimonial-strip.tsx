@@ -3,6 +3,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { TealQuoteCard } from "./teal-quote-card";
+import { motion } from "framer-motion";
 
 interface Testimonial {
   quote: string;
@@ -24,16 +25,37 @@ interface TestimonialStripProps {
 }
 
 /**
- * TestimonialStrip — Infinity Motion Carousel
- * - Duplicates testimonials for seamless infinite loop
- * - CSS animation: translateX(-50%) 40s linear infinite, pauses on hover/focus
- * - Respects prefers-reduced-motion (no animation, becomes scrollable)
- * - Gradient fade edges at 768+, no overflow at 375/768/1280
- * - Keyboard navigable, focus rings, 44px hint
+ * TestimonialStrip — Infinity Motion Carousel (matches IdeasLab)
+ * - Triples testimonials for seamless infinite loop (like IdeasLab)
+ * - Framer-motion linear infinite (5s per card) — runs on both mobile + desktop
+ * - Hover/focus pauses via state, respects prefers-reduced-motion
+ * - Uses same full-teal card as duplicate (logon-quote-card) for consistency
+ * - Works at 375, 768, 1280 with no overflow
  */
 export function TestimonialStrip({ testimonials = defaultTestimonials, className }: TestimonialStripProps) {
-  // Duplicate for seamless infinite loop (2x)
-  const looped = [...testimonials, ...testimonials];
+  // Triple for seamless infinite (like IdeasLab) — ensures no gap at any viewport
+  const duplicated = [...testimonials, ...testimonials, ...testimonials];
+  const cardWidth = 360 + 16; // 360px card + 16px gap — matches TealQuoteCard min-w + gap-4
+  const [isPaused, setIsPaused] = React.useState(false);
+  const shouldReduceMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (shouldReduceMotion) {
+    return (
+      <div className={cn("relative", className)}>
+        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth py-2 px-1 -mx-1">
+          {testimonials.map((t, i) => (
+            <TealQuoteCard key={i} quote={t.quote} author={t.author} role={t.role} className="shrink-0 snap-start" />
+          ))}
+        </div>
+        <div className="mt-3 flex items-center justify-center gap-2">
+          <span className="text-xs font-mono tracking-wide text-muted-foreground">← swipe to explore →</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={cn("relative overflow-hidden", className)}>
@@ -47,35 +69,38 @@ export function TestimonialStrip({ testimonials = defaultTestimonials, className
         className="pointer-events-none absolute inset-y-0 right-0 w-8 md:w-12 bg-gradient-to-l from-background to-transparent z-10 hidden md:block"
       />
 
-      {/* Infinite track — wraps on reduced-motion, animates otherwise */}
+      {/* Infinite track — framer-motion like IdeasLab, runs on both mobile + desktop */}
       <div
         role="region"
-        aria-label="Customer testimonials — infinite carousel, pause on hover"
+        aria-label="Customer testimonials — infinite carousel, hover to pause"
         tabIndex={0}
         className={cn(
-          "group relative flex overflow-hidden py-2",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-lg",
-          "hover:[animation-play-state:paused] focus-within:[animation-play-state:paused]"
+          "relative overflow-hidden py-2 group",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-lg"
         )}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onFocus={() => setIsPaused(true)}
+        onBlur={() => setIsPaused(false)}
       >
-        {/* Scrollable fallback for reduced-motion or no-JS: allow manual scroll */}
-        <div
-          className={cn(
-            "flex gap-4 w-max will-change-transform",
-            // Motion-safe infinite scroll
-            "motion-safe:animate-infinite-scroll motion-safe:group-hover:[animation-play-state:paused] motion-safe:group-focus-within:[animation-play-state:paused]",
-            // Reduced-motion: become horizontally scrollable instead
-            "motion-reduce:animate-none motion-reduce:overflow-x-auto motion-reduce:snap-x motion-reduce:snap-mandatory motion-reduce:scroll-smooth",
-            "motion-reduce:w-full motion-reduce:max-w-full"
-          )}
-          style={
-            {
-              // Ensure animation duration scales with content
-              animationDuration: "40s",
-            } as React.CSSProperties
+        <motion.div
+          className="flex gap-4 w-max will-change-transform"
+          animate={{ x: isPaused ? undefined : [0, -cardWidth * testimonials.length] }}
+          transition={
+            isPaused
+              ? {}
+              : {
+                  x: {
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    duration: testimonials.length * 5, // 5s per card like IdeasLab
+                    ease: "linear",
+                  },
+                }
           }
+          style={{ x: isPaused ? undefined : 0 } as any}
         >
-          {looped.map((t, i) => (
+          {duplicated.map((t, i) => (
             <TealQuoteCard
               key={`${t.author}-${i}`}
               quote={t.quote}
@@ -84,23 +109,12 @@ export function TestimonialStrip({ testimonials = defaultTestimonials, className
               className="shrink-0"
             />
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <div className="mt-3 flex items-center justify-center gap-2">
-        <span className="text-xs font-mono tracking-wide text-muted-foreground">
-          <span className="motion-safe:hidden">← swipe to explore →</span>
-          <span className="hidden motion-safe:inline">↔ infinite motion — hover to pause →</span>
-        </span>
+        <span className="text-xs font-mono tracking-wide text-muted-foreground">∞ infinite motion — hover to pause • swipe on mobile</span>
       </div>
-
-      <style>{`
-        /* Ensure infinite-scroll is defined (fallback if tailwind not loaded) */
-        @keyframes infinite-scroll {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-      `}</style>
     </div>
   );
 }

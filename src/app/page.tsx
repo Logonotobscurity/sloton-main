@@ -12,8 +12,6 @@ import { IndustriesBento } from '@/components/page-sections/industries-bento';
 import { TechStackCarousel } from '@/components/page-sections/tech-stack-carousel';
 import { FeaturedInsights } from '@/components/page-sections/featured-insights';
 import { BottomCta } from '@/components/page-sections/bottom-cta';
-import { DecisionSupportSection } from '@/components/page-sections/decision-support';
-import { FeaturePanel } from '@/components/page-sections/feature-panel';
 import { TestimonialStrip } from '@/components/ui/testimonial-strip';
 import { LogonExperience } from '@/components/page-sections/logon-experience';
 import Faq from '@/components/faq';
@@ -50,9 +48,6 @@ export default function Home() {
       <StrategicPartner />
       <ServicesOffered />
 
-      {/* Feature Panel — category pills update with fade (dense → technical) */}
-      <FeaturePanel />
-
       <SmarterAutomation />
 
       <PartnershipApproach />
@@ -61,13 +56,13 @@ export default function Home() {
       <Statement />
       <IndustriesBento />
 
-      {/* Testimonial strip — teal quote cards (horizontal scroll) */}
-      <section className="section-fluid bg-background">
+      {/* Testimonial strip — Infinity Motion Carousel (redesigned to match IdeasLab) */}
+      <section className="section-fluid bg-background overflow-hidden">
         <div className="container-fluid space-y-6">
           <div className="max-w-3xl mx-auto text-center space-y-3">
             <p className="kicker kicker-teal">VOICES • 5 STORIES</p>
             <h2 className="editorial-headline text-fluid-xl text-balance">What changes when work actually flows?</h2>
-            <p className="text-muted-foreground text-balance">Swipe at 375 • scroll at 768 • breathe at 1280 — no overflow, no clipping.</p>
+            <p className="text-muted-foreground text-balance">Infinite motion at 375, 768 and 1280 — pause on hover, no overflow.</p>
           </div>
           <TestimonialStrip />
         </div>
@@ -78,7 +73,6 @@ export default function Home() {
       <IdeasLab />
       <Faq />
       <LogonExperience />
-      <DecisionSupportSection />
       <BottomCta />
     </>
   );

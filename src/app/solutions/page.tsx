@@ -9,7 +9,6 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter }
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { BottomCta } from '@/components/page-sections/bottom-cta';
-import { DecisionSupportSection } from '@/components/page-sections/decision-support';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import SolutionRecommendationForm from "@/components/solution-recommendation-form";
 import { services, industryApplications } from "@/lib/data/solutions-data";
@@ -179,7 +178,6 @@ export default function SolutionsPage() {
         </section>
 
       </div>
-      <DecisionSupportSection />
       <BottomCta />
     </div>
   );

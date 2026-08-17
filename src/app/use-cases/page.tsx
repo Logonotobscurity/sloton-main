@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { CheckCircle, ArrowRight, BrainCircuit, Zap } from 'lucide-react';
 import type { Metadata } from 'next';
 import { BottomCta } from '@/components/page-sections/bottom-cta';
-import { DecisionSupportSection } from '@/components/page-sections/decision-support';
 import { SidebarNav } from '@/components/sidebar-nav';
 import { industries, sidebarNavItems } from '@/lib/data/industries-data';
 import { IndustryItemListSchema, BreadcrumbSchema } from '@/lib/seo';
@@ -89,7 +88,6 @@ export default function UseCasesPage() {
             </div>
         </div>
       </div>
-      <DecisionSupportSection />
       <BottomCta />
     </div>
   );
