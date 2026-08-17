@@ -46,6 +46,10 @@ const config = {
       fontFamily: {
         headline: ['var(--font-serif)', 'Playfair Display', 'serif'],
         body: ['var(--font-sans)', 'Inter', 'sans-serif'],
+        display: ['var(--font-display)', 'Cinzel', 'serif'],
+        editorial: ['var(--font-editorial)', 'Cormorant Garamond', 'serif'],
+        ui: ['var(--font-ui)', 'DM Sans', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-mono)', 'JetBrains Mono', 'monospace'],
       },
       colors: {
         border: 'hsl(var(--border))',

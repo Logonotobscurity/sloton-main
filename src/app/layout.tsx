@@ -12,14 +12,25 @@ import ErrorBoundary from '@/components/error-boundary';
 import { ChatbotProvider } from '@/context/chatbot-provider';
 import { DataBehaviorsInit } from '@/components/data-behaviors-init';
 
-// Google Fonts with offline fallback for sandboxed builds
-// In production, these will be fetched from Google Fonts; in offline CI/sandbox they gracefully degrade to system fonts
+// LOG_ON Design System — Typography
+// Editorial (Cormorant), Display/Brand (Cinzel), UI (DM Sans), Technical (JetBrains Mono) + legacy fallbacks
 let abhayaLibre: { variable: string; className: string } = { variable: '--font-serif', className: '' };
 let nunito: { variable: string; className: string } = { variable: '--font-sans', className: '' };
+let cinzel: { variable: string; className: string } = { variable: '--font-display', className: '' };
+let cormorant: { variable: string; className: string } = { variable: '--font-editorial', className: '' };
+let dmSans: { variable: string; className: string } = { variable: '--font-ui', className: '' };
+let jetbrains: { variable: string; className: string } = { variable: '--font-mono', className: '' };
 try {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const { Abhaya_Libre, Nunito: NunitoFont } = require('next/font/google');
-  abhayaLibre = Abhaya_Libre({
+  const {
+    Abhaya_Libre: Abhaya,
+    Nunito: NunitoFont,
+    Cinzel: CinzelFont,
+    Cormorant_Garamond: CormorantFont,
+    DM_Sans: DMSansFont,
+    JetBrains_Mono: JetMono,
+  } = require('next/font/google');
+  abhayaLibre = Abhaya({
     subsets: ['latin'],
     display: 'swap',
     variable: '--font-serif',
@@ -32,6 +43,39 @@ try {
     display: 'swap',
     variable: '--font-sans',
     fallback: ['system-ui', 'sans-serif'],
+    adjustFontFallback: true,
+  });
+  cinzel = CinzelFont({
+    subsets: ['latin'],
+    display: 'swap',
+    variable: '--font-display',
+    weight: ['400', '500', '600', '700', '800'],
+    fallback: ['serif'],
+    adjustFontFallback: true,
+  });
+  cormorant = CormorantFont({
+    subsets: ['latin'],
+    display: 'swap',
+    variable: '--font-editorial',
+    weight: ['300', '400', '500', '600', '700'],
+    style: ['normal', 'italic'],
+    fallback: ['serif'],
+    adjustFontFallback: true,
+  });
+  dmSans = DMSansFont({
+    subsets: ['latin'],
+    display: 'swap',
+    variable: '--font-ui',
+    weight: ['400', '500', '600', '700'],
+    fallback: ['system-ui', 'sans-serif'],
+    adjustFontFallback: true,
+  });
+  jetbrains = JetMono({
+    subsets: ['latin'],
+    display: 'swap',
+    variable: '--font-mono',
+    weight: ['400', '500', '600'],
+    fallback: ['monospace'],
     adjustFontFallback: true,
   });
 } catch {
@@ -208,7 +252,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${nunito.variable} ${abhayaLibre.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${nunito.variable} ${abhayaLibre.variable} ${cinzel.variable} ${cormorant.variable} ${dmSans.variable} ${jetbrains.variable}`}
+    >
       <head>
         <meta name="geo.region" content="NG-LA" />
         <meta name="geo.placename" content="Lagos" />

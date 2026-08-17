@@ -35,15 +35,15 @@ const MobileNavigation = () => {
                     {menuData.map((menu) => {
                         if (hasItems(menu)) {
                             return (
-                                <AccordionItem value={menu.key} key={menu.key}>
-                                    <AccordionTrigger className="text-lg font-semibold">{menu.heading}</AccordionTrigger>
+                                <AccordionItem value={menu.key} key={menu.key} className="border-b">
+                                    <AccordionTrigger className="text-lg font-semibold min-h-[48px] py-4 hover:no-underline focus-visible:ring-2 focus-visible:ring-primary rounded-md px-2 -mx-2">{menu.heading}</AccordionTrigger>
                                     <AccordionContent>
-                                        <ul className="flex flex-col space-y-2 py-2">
+                                        <ul className="flex flex-col space-y-1 py-2">
                                             {menu.items.map(item => (
                                                 <li key={item.title}>
-                                                    <Link href={item.href} className="block p-2 rounded-md hover:bg-accent" onClick={() => setMenuOpen(false)}>
-                                                        <span className="font-semibold">{item.title}</span>
-                                                        <p className="text-sm text-muted-foreground">{item.shortDescription}</p>
+                                                    <Link href={item.href} className="block p-3 rounded-lg hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary min-h-[44px] flex flex-col justify-center" onClick={() => setMenuOpen(false)}>
+                                                        <span className="font-semibold leading-tight">{item.title}</span>
+                                                        <p className="text-sm text-muted-foreground leading-snug">{item.shortDescription}</p>
                                                     </Link>
                                                 </li>
                                             ))}
@@ -60,7 +60,7 @@ const MobileNavigation = () => {
                             )
                         } else if ('href' in menu) {
                             return (
-                                <Link key={menu.key} href={menu.href} className="flex border-b text-lg font-semibold p-4" onClick={() => setMenuOpen(false)}>
+                                <Link key={menu.key} href={menu.href} className="flex border-b text-lg font-semibold p-4 min-h-[48px] items-center rounded-lg hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" onClick={() => setMenuOpen(false)}>
                                     {menu.heading}
                                 </Link>
                             );
@@ -159,13 +159,19 @@ export const MobileNav = () => {
         <Sheet open={isMenuOpen} onOpenChange={setMenuOpen}>
             <SheetTrigger asChild>
                 <button
-                    className={cn("hamburger", isMenuOpen && "open")}
-                    aria-label="Open navigation menu"
+                    className={cn(
+                      "hamburger",
+                      "inline-flex items-center justify-center rounded-lg border border-transparent hover:bg-accent hover:border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 active:bg-accent/80",
+                      isMenuOpen && "open bg-accent"
+                    )}
+                    aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
                     aria-expanded={isMenuOpen}
+                    aria-controls="mobile-nav-sheet"
+                    style={{ minWidth: 44, minHeight: 44 }}
                 >
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                 </button>
             </SheetTrigger>
             <SheetContent side="left" className="w-full max-w-sm p-0 flex flex-col" aria-label="Mobile navigation menu">

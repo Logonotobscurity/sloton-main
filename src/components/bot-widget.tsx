@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, X, Sparkles, Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -14,6 +14,8 @@ import { LeadCaptureForm } from './chatbot/lead-capture-form';
 import { ChatMessages } from './chatbot/chat-messages';
 import { ChatInput } from './chatbot/chat-input';
 import { Message, LeadInfo } from './chatbot/types';
+import { useChatThread } from '@/hooks/use-chat-thread';
+import { sanitizeText } from '@/lib/safe-render';
 
 const WHATSAPP_URL = "https://wa.me/2348143066320?text=" + encodeURIComponent("Hi LOG_ON, I'd like to learn more about your AI and automation solutions.");
 
@@ -25,38 +27,109 @@ export function BotWidget({ initialMessage }: { initialMessage: string }) {
     }
 
     const { isChatbotOpen, setChatbotOpen } = context;
+    const { threadId, resetThread } = useChatThread();
 
     // Lead capture state
     const [leadCaptured, setLeadCaptured] = useState(false);
     const [leadInfo, setLeadInfo] = useState<LeadInfo>({ name: '', email: '' });
 
-    // Chat state
-    const getInitialState = (): Message[] => [{
-        role: 'assistant',
-        content: initialMessage,
-        suggested_actions: ["What services do you offer?", "Tell me about AI solutions", "I need help with automation"],
-    }];
-    const [messages, setMessages] = useState<Message[]>(getInitialState());
+    // Chat state — persisted per threadId so conversation survives re-renders & reloads
+    const getInitialState = useCallback(
+      (): Message[] => [
+        {
+          role: 'assistant' as const,
+          content: initialMessage,
+          suggested_actions: [
+            "What services do you offer?",
+            "Tell me about AI solutions",
+            "I need help with automation",
+          ],
+        },
+      ],
+      [initialMessage]
+    );
+
+    const [messages, setMessages] = useState<Message[]>(() => {
+      if (typeof window !== "undefined") {
+        try {
+          const key = `logon-chat-messages-${threadId}`;
+          const stored = localStorage.getItem(key);
+          if (stored) {
+            const parsed = JSON.parse(stored) as Message[];
+            if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+          }
+        } catch {
+          // ignore
+        }
+      }
+      return getInitialState();
+    });
     const [isLoading, setIsLoading] = useState(false);
 
+    // Persist messages per thread (survives page/component re-renders and reloads)
+    useEffect(() => {
+      if (typeof window !== "undefined" && threadId) {
+        try {
+          const key = `logon-chat-messages-${threadId}`;
+          localStorage.setItem(key, JSON.stringify(messages));
+        } catch {}
+      }
+    }, [messages, threadId]);
+
+    // Restore lead state from storage (per thread)
+    useEffect(() => {
+      try {
+        const lk = `logon-chat-lead-${threadId}`;
+        const storedLead = localStorage.getItem(lk);
+        if (storedLead) {
+          const parsed = JSON.parse(storedLead) as LeadInfo;
+          if (parsed?.name && parsed?.email) {
+            setLeadInfo(parsed);
+            setLeadCaptured(true);
+          }
+        }
+      } catch {}
+    }, [threadId]);
+
     const handleClearChat = () => {
-        setMessages(getInitialState());
+      const newId = resetThread();
+      setMessages(getInitialState());
+      setLeadCaptured(false);
+      setLeadInfo({ name: '', email: '' });
+      // Clear old thread storage
+      try {
+        localStorage.removeItem(`logon-chat-messages-${threadId}`);
+        localStorage.removeItem(`logon-chat-lead-${threadId}`);
+        // Also clear new id's messages to ensure fresh start
+        localStorage.removeItem(`logon-chat-messages-${newId}`);
+      } catch {}
     };
 
     const handleLeadSuccess = (info: LeadInfo) => {
-        setLeadInfo(info);
+        const safeName = sanitizeText(info.name);
+        const safeInfo = { name: safeName, email: sanitizeText(info.email) };
+        setLeadInfo(safeInfo);
         setLeadCaptured(true);
-        // Add a personalised welcome message
-        setMessages([{
+        try {
+          localStorage.setItem(`logon-chat-lead-${threadId}`, JSON.stringify(safeInfo));
+        } catch {}
+        // Add a personalised welcome message — SafeMessage will render **bold** safely (no innerHTML)
+        setMessages([
+          {
             role: 'assistant',
-            content: `Welcome, **${info.name}**! 👋 I'm the LOG_ON AI Assistant. I'm here to help you discover how our AI agents and automation solutions can transform your business. What would you like to know?`,
-            suggested_actions: ["What services do you offer?", "Tell me about AI solutions", "I'd like to speak to someone"],
-        }]);
+            content: `Welcome, **${safeName}**! 👋 I'm the LOG_ON AI Assistant. I'm here to help you discover how our AI agents and automation solutions can transform your business. What would you like to know?`,
+            suggested_actions: [
+              "What services do you offer?",
+              "Tell me about AI solutions",
+              "I'd like to speak to someone",
+            ],
+          },
+        ]);
     };
 
     const handleSendMessage = async (e: React.FormEvent | React.MouseEvent, messageText: string) => {
         e.preventDefault();
-        const currentInput = messageText;
+        const currentInput = sanitizeText(messageText);
         if (!currentInput.trim() || isLoading) return;
 
         // Detect WhatsApp handoff intent

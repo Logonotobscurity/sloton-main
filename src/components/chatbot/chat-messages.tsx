@@ -8,6 +8,7 @@ import { ChatBubble, ChatBubbleAvatar, ChatBubbleMessage } from '@/components/ui
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Message, LeadInfo } from './types';
 import { Button } from '@/components/ui/button';
+import { SafeMessage } from './safe-message';
 
 interface ChatMessagesProps {
     messages: Message[];
@@ -41,7 +42,8 @@ export function ChatMessages({ messages, leadInfo, isLoading, whatsappUrl, onAct
                     )}
                     <div className="flex flex-col gap-2 w-full">
                         <ChatBubbleMessage>
-                            {message.content}
+                            {/* XSS-safe: SafeMessage escapes HTML and renders bold and code via React nodes, never innerHTML */}
+                            <SafeMessage content={message.content} />
                         </ChatBubbleMessage>
 
                         {/* WhatsApp Handoff Card */}

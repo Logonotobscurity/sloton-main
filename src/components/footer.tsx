@@ -23,21 +23,26 @@ export function Footer() {
   return (
     <footer className="bg-background border-t relative overflow-hidden" aria-label="Site footer">
       <AdinkraBackground aria-hidden="true" />
-      <div className="container mx-auto px-4 md:px-6 relative z-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 py-16 md:py-24">
+      <div className="container mx-auto px-fluid-sm relative z-20">
+        <div className="footer-grid gap-8 lg:gap-12 py-16 md:py-24">
 
-          {/* Brand Column */}
-          <div className="lg:col-span-5 space-y-6 flex flex-col items-center lg:items-start text-center lg:text-left">
-            <Logo />
-            <address className="text-sm text-muted-foreground not-italic">
+          {/* Brand Column — editorial */}
+          <div className="space-y-5 flex flex-col items-center text-center md:items-start md:text-left min-w-0">
+            <div className="w-full max-w-[280px] md:max-w-none overflow-hidden">
+              <Logo />
+            </div>
+            <address className="text-sm text-muted-foreground not-italic font-mono text-xs tracking-wide">
               Lagos, Nigeria<br />
               Serving clients worldwide
             </address>
-            <p className="text-muted-foreground text-base md:text-lg max-w-md mx-auto lg:mx-0">
+            <p
+              className="text-muted-foreground text-[clamp(0.95rem,1.2vw,1.05rem)] leading-relaxed max-w-md mx-auto md:mx-0 text-balance"
+              style={{ fontFamily: 'var(--font-ui)' }}
+            >
               Ready to transform your business with intelligent technology? Let&apos;s build something great together.
             </p>
-            <nav aria-label="LOG_ON social media links">
-              <div className="flex justify-center lg:justify-start space-x-2 pt-2">
+            <nav aria-label="LOG_ON social media links" className="w-full">
+              <div className="flex justify-center md:justify-start gap-1 pt-2 flex-wrap">
                 {socialLinks.map(link => (
                   <a
                     key={link.label}
@@ -45,7 +50,7 @@ export function Footer() {
                     aria-label={link.label}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary p-2 rounded-full hover:bg-secondary/50 transition-colors"
+                    className="text-muted-foreground hover:text-primary p-2.5 rounded-full hover:bg-secondary/50 transition-colors min-h-[44px] min-w-[44px] inline-flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   >
                     {link.icon}
                   </a>
@@ -54,9 +59,8 @@ export function Footer() {
             </nav>
           </div>
 
-          {/* Navigation Columns */}
-          <div className="lg:col-span-7">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          {/* Navigation Columns — each is a grid item, so total 4 columns at desktop */}
+
               {hasItems(solutions) && (
                 <nav aria-label={`Footer navigation: ${solutions.heading}`}>
                   <h3 className="font-semibold mb-4 text-primary text-lg tracking-wider">
@@ -68,7 +72,7 @@ export function Footer() {
                         <Link
                           href={item.href}
                           aria-label={`Go to ${item.title}`}
-                          className="text-muted-foreground hover:text-primary transition-colors"
+                          className="text-muted-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
                         >
                           {item.title}
                         </Link>
@@ -88,7 +92,7 @@ export function Footer() {
                         <Link
                           href={item.href}
                           aria-label={`Go to ${item.title}`}
-                          className="text-muted-foreground hover:text-primary transition-colors"
+                          className="text-muted-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
                         >
                           {item.title}
                         </Link>
@@ -108,7 +112,7 @@ export function Footer() {
                         <Link
                           href={item.href}
                           aria-label={`Go to ${item.title}`}
-                          className="text-muted-foreground hover:text-primary transition-colors"
+                          className="text-muted-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
                         >
                           {item.title}
                         </Link>
@@ -117,8 +121,6 @@ export function Footer() {
                   </ul>
                 </nav>
               )}
-            </div>
-          </div>
         </div>
 
         <div className="border-t py-6 text-center">

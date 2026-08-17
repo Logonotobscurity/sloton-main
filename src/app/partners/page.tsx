@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { GlowingCard } from '@/components/ui/glowing-card';
 import { PageHero } from '@/components/page-sections/page-hero';
 import { BottomCta } from '@/components/page-sections/bottom-cta';
+import { DecisionSupportSection } from '@/components/page-sections/decision-support';
 import { partnerBenefits, partners } from '@/lib/data/partners-data';
 import { LogoImage } from '@/lib/image-utils';
 
@@ -106,7 +107,8 @@ export default function PartnersPage() {
         </section>
 
       </div>
-       <BottomCta />
+       <DecisionSupportSection />
+      <BottomCta />
     </div>
   );
 }
