@@ -36,7 +36,10 @@ export function CommunityLeadForm({ interest }: { interest?: string }) {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    const result = await communityLeadAction(values);
+    const result = await communityLeadAction({
+      ...values,
+      date: values.date,
+    });
     if(result?.success) {
         toast({
             title: "Let's Talk!",

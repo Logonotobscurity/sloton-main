@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Copy, Check, Terminal } from "lucide-react";
+import { copyToClipboard } from "@/lib/social-share";
 
 const pillWords = [
   "AEO",
@@ -38,7 +39,8 @@ const flow = await automate({
 
   const onCopy = async () => {
     try {
-      await navigator.clipboard.writeText(code);
+      const ok = await copyToClipboard(code);
+      if (!ok) return;
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     } catch {}

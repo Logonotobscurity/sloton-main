@@ -1,0 +1,261 @@
+{
+  "audit_meta": {
+    "project": "logon-web",
+    "actual_stack": "Next.js 16.3.2 + React 19.2.8 + Tailwind 3.4 (not 14.2.5 as in the prompt)",
+    "canonical_host": "https://logonai.netlify.app",
+    "branch": "arena/01a01243-sloton-main",
+    "date": "2026-09-10",
+    "status": "partially_compliant"
+  },
+  "code_conflicts": {
+    "conflicting_areas": [
+      {
+        "id": "CONF-001",
+        "files": ["src/app/globals.css", "tailwind.config.ts"],
+        "issue": "Dual token systems: @layer tokens (--color-*) vs Shadcn HSL (--background/--primary). Marketing uses both; ds-root remaps Tailwind utilities.",
+        "risk": "medium"
+      },
+      {
+        "id": "CONF-002",
+        "files": ["src/app/globals.css"],
+        "issue": "Two @layer components blocks; leftover .font-editorial Cormorant fallback vs --font-family-display Fraunces.",
+        "risk": "low"
+      },
+      {
+        "id": "CONF-003",
+        "files": ["src/components/chrome-shell.tsx", "src/app/layout.tsx"],
+        "issue": "Overlays compete: NewsletterPopup (z-newsletter), VisibilityIntake (210), dialogs (220-240), header (80). Letter can cover intake.",
+        "risk": "medium"
+      },
+      {
+        "id": "CONF-004",
+        "files": ["src/lib/action-guard.ts", "middleware.ts"],
+        "issue": "Rate limits in-memory (AUDIT-003). Middleware no longer imports Node security.ts (Edge-safe) but API routes still process-local.",
+        "risk": "high_at_scale"
+      },
+      {
+        "id": "CONF-005",
+        "files": ["src/app/contact", "src/components/book-demo-widget.tsx"],
+        "issue": "Dual contact: Tally primary + email fallback; Book a Demo is Link /contact not calendar.",
+        "risk": "low_intentional"
+      }
+    ],
+    "duplicate_files": [
+      {
+        "pair": ["src/components/ui/teal-quote-card.tsx", "src/components/studio/StudioSection.tsx quote cards"],
+        "suggestion": "One quote-card primitive."
+      },
+      {
+        "pair": ["src/lib/visibility-profile.ts", "src/lib/visibility/*"],
+        "suggestion": "Old draft key logon-visibility-draft-v1 unused vs logon.intake.draft.v1. Delete or re-export from visibility/."
+      },
+      {
+        "pair": [".logon-footer CSS", "footer.tsx site-footer"],
+        "suggestion": "Footer uses site-footer; logon-footer classes mostly unused."
+      }
+    ],
+    "unused_code": [
+      "src/components/website-loader.tsx (must stay unmounted; overlay removed)",
+      "src/components/ui/animated-code-background.tsx (intentional no-op)",
+      "lodash (dependency unused per prior audit)",
+      "src/ai/examples/ai-service-usage.tsx (tsc leftover)",
+      "Cormorant Garamond string in .font-editorial"
+    ]
+  },
+  "functional_audit": {
+    "button_audit": [
+      {
+        "control": "Header Book a Demo",
+        "status": "ok",
+        "notes": "Plain Link /contact, md+ only; not Button-asChild."
+      },
+      {
+        "control": "ThemeToggle",
+        "status": "ok",
+        "notes": "Radix onSelect; z-200."
+      },
+      {
+        "control": "Footer accordion headers",
+        "status": "ok",
+        "notes": "React data-expanded; CSS fold <1024; min-h-11 links."
+      },
+      {
+        "control": "Visibility Start / Continue",
+        "status": "ok_after_scroll_fix",
+        "notes": "Opens intake; dialog now fixed 92dvh with overflow-y auto on .left."
+      },
+      {
+        "control": "Newsletter Send me the letter",
+        "status": "ok",
+        "notes": "Email-only; dynamic import newsletterSignupAction."
+      },
+      {
+        "control": "Copy snippet / share",
+        "status": "ok_iframe",
+        "notes": "copyToClipboard swallows NotAllowedError; execCommand fallback."
+      },
+      {
+        "control": "Chatbot FAB + BookDemoWidget",
+        "status": "watch",
+        "notes": "Both right-side; demo bottom-24."
+      }
+    ],
+    "form_audit": [
+      {
+        "form": "Tally contact aQpexW",
+        "status": "ok",
+        "notes": "Primary; webhook /api/webhooks/tally; email fallback in details."
+      },
+      {
+        "form": "NewsletterPopup",
+        "status": "ok",
+        "notes": "Named export; barrel @/components; SafeIsland in layout; color-scheme light."
+      },
+      {
+        "form": "Visibility intake 7-step",
+        "status": "phase1",
+        "notes": "localStorage draft; visibilityProfileAction; no Apps Script secret in client; completeness weighted."
+      },
+      {
+        "form": "Hero SolutionRecommendationForm",
+        "status": "ok",
+        "notes": "Dialog + server action getSolutionRecommendationAction + rate limit."
+      }
+    ],
+    "api_audit": [
+      {
+        "route": "src/app/actions.ts",
+        "status": "ok",
+        "notes": "assertActionRateLimit; Resend optional; webhook HMAC header if set."
+      },
+      {
+        "route": "src/app/api/webhooks/tally",
+        "status": "needs_secrets",
+        "notes": "TALLY_SIGNING_SECRET / X-Logon-Webhook-Key live env."
+      },
+      {
+        "route": "middleware.ts",
+        "status": "ok",
+        "notes": "Edge-safe CSP nonce via Web Crypto; in-memory API rate map."
+      }
+    ]
+  },
+  "architecture_audit": {
+    "routing_audit": {
+      "route_structure": "App Router under src/app. Marketing chrome via ChromeShell except SYSTEMS set verda/verdara/vista/tessera/chamfer.",
+      "nested_routes": "/insights/{cluster}/{slug} must redirect to /insights/{slug}; catalogue concat in src/lib/data/insights.ts.",
+      "client_server_sync": "sitemap from site-index + insights. /visibility in menu + SERVICE_PAGES. Insights hub still use client (AUD-UI-014)."
+    },
+    "data_fetching_audit": {
+      "fetching_methods": "Mostly static TS modules (insights, menu-data, site-index). Server actions for forms/AI. No SWR/React Query.",
+      "caching_strategy": "Next fetch cache unused for marketing; Insights static. Rate limits not Redis.",
+      "performance_optimization": "dynamic() for BotWidget, BookDemo, BackToTop. Images next/image except some SVG img."
+    },
+    "state_management_audit": {
+      "state_strategy": "Zustand use-ui-store (mobile menu). React context ChatbotProvider + VisibilityProvider. next-themes storageKey logon-theme.",
+      "context_usage": "VisibilityProvider wraps ChromeShell children. Newsletter not in ChromeShell.",
+      "redux_usage": "None."
+    }
+  },
+  "best_practices": {
+    "coding_standards": {
+      "eslint_adherence": "next/core-web-vitals; no-restricted-imports relative + newsletter barrel + chamfer. eslint key removed from next.config.mjs historically.",
+      "prettier_adherence": "Not enforced in scripts.",
+      "style_guide_adherence": "Named exports preferred; tokens in globals; marketing hex still in tailwind showcase palettes."
+    },
+    "accessibility_audit": {
+      "aria_labels": "Skip link, mega aria-current, footer aria-expanded, intake dialog, newsletter dialog.",
+      "semantic_html": "Single main#main-content in ChromeShell. Header banner. Footer accordion buttons.",
+      "keyboard_navigation": "Escape closes overlays; focus-visible rings; ThemeToggle onSelect. Intake tab order follows DOM."
+    },
+    "performance_audit": {
+      "code_splitting": "dynamic ssr:false widgets; newsletter action dynamic import on submit.",
+      "lazy_loading": "Partial. Insights hub client-heavy.",
+      "resource_optimization": "Remote Picsum blocked historically; local marks. WebsiteLoader must stay unimported."
+    }
+  },
+  "ui_consistency": {
+    "navigation_audit": {
+      "nav_consistency": "menu-data.ts drives header mega, footer columns, mobile accordion. Newsroom /about/newsroom. Visibility under Resources.",
+      "active_states": "pathname + aria-current; nav-pill cream invert on navy.",
+      "mobile_nav": "Sheet right, md breakpoint aligned with desktop nav and Book a Demo."
+    },
+    "header_footer_audit": {
+      "header_consistency": "Vista navy bar h-16 all marketing pages. Standalone systems skip Header.",
+      "footer_consistency": "site-footer tokens; fold <lg; no fake status line.",
+      "global_components": "ChromeShell is the only chrome mount."
+    },
+    "responsiveness_audit": {
+      "breakpoint_consistency": "xs 480 documented; nav md 768; footer lg 1024; intake split 1024. See docs/RESPONSIVE_AUDIT.md.",
+      "mobile_first": "Mostly. Some max-width 900px logon grids.",
+      "touch_targets": "min-h-11 / --touch-min 44px on header, footer, intake, letter."
+    }
+  },
+  "specific_fixes": {
+    "current_issue_fix": {
+      "reported_error": "The `bg-text-dim` class does not exist @ globals.css:341",
+      "status": "not_present_in_this_repo",
+      "actual_line_341": ".btn-primary { @apply inline-flex items-center justify-center bg-primary text-primary-foreground ... }",
+      "if_introduced": "Do not @apply unknown utilities. Use token color:\n.dot {\n  display: inline-block;\n  width: 0.5rem;\n  height: 0.5rem;\n  margin-inline: 0.125rem;\n  border-radius: 999px;\n  background: var(--color-ink-muted);\n}",
+      "explanation": "bg-text-dim is not in tailwind.config.ts. LOG_ON equivalent is --color-ink-muted or hsl(var(--muted-foreground)). Never @apply a class that is not a Tailwind utility or a @layer component."
+    },
+    "additional_critical_fixes": [
+      {
+        "id": "FIX-CLIPBOARD",
+        "status": "done",
+        "file": "src/lib/social-share.ts",
+        "note": "copyToClipboard never throws in e2b iframe."
+      },
+      {
+        "id": "FIX-SITE-IMPORT",
+        "status": "done",
+        "file": "src/app/page.tsx",
+        "note": "import { SITE } from '@/lib/site'."
+      },
+      {
+        "id": "FIX-INTAKE-SCROLL",
+        "status": "done",
+        "file": "src/components/visibility/visibility-intake.module.css",
+        "note": "Dialog height min(92dvh,92vh); .left overflow-y auto min-height 0."
+      },
+      {
+        "id": "FIX-EDGE-CSP",
+        "status": "done",
+        "file": "src/lib/csp.ts",
+        "note": "Web Crypto nonce; middleware does not import shutdown.ts."
+      },
+      {
+        "id": "FIX-CSS-ORPHAN",
+        "status": "done",
+        "file": "src/app/globals.css",
+        "note": "Removed stray `.d;` that broke PostCSS."
+      }
+    ]
+  },
+  "architectural_recommendations": {
+    "structural_improvements": [
+      "P0 keep tokens: paper --background 48 100% 98.4%; accent #BD005B; no Cormorant.",
+      "Delete src/lib/visibility-profile.ts or re-export from src/lib/visibility.",
+      "Split globals.css (>2300 lines) into tokens.css + chrome.css + logon-experience.css.",
+      "Keep five Magic Patterns routes standalone."
+    ],
+    "technical_improvements": [
+      "AUDIT-003: Upstash/Redis for rate limits.",
+      "Phase 2 visibility: Apps Script webhook without client secrets (text/plain POST).",
+      "Insights hub server component (AUD-UI-014).",
+      "npm audit remaining vulns; next-themes peer React 18 vs React 19 --legacy-peer-deps."
+    ],
+    "best_practice_adoption": [
+      "Do not invent login/search/alert.",
+      "Proof figures only LOG_ON delivery records.",
+      "No Matomo unless NEXT_PUBLIC_ENABLE_MATOMO=true.",
+      "Commit/push only arena/01a01243-sloton-main when asked."
+    ]
+  },
+  "global_considerations": {
+    "cross_platform_compatibility": "Preview requires 0.0.0.0:9002; clipboard policy differs in iframes; dvh for iOS.",
+    "internationalization_support": "English only; locale en-NG metadata; no i18n framework.",
+    "scalability": "Static Insights catalogue scales; in-memory rate limit and newsletter cooldown do not.",
+    "deployment_strategies": "Netlify logonai.netlify.app; Tally webhook that host; secrets in Netlify env."
+  }
+}

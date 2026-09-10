@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img">
+  <rect width="1600" height="900" fill="#FCFCF8"/>
+  
+  <rect x="1040" y="360" width="80" height="220" fill="#006B4D" opacity="0.2"/>
+  <rect x="1140" y="280" width="80" height="300" fill="#006B4D" opacity="0.35"/>
+  <rect x="1240" y="320" width="80" height="260" fill="#BD005B" opacity="0.25"/>
+  <circle cx="1180" cy="240" r="20" fill="#006B4D"/>
+  <text x="1000" y="180" font-family="IBM Plex Mono, monospace" font-size="20" fill="#006B4D">LAGOS · 6.5°N 3.4°E</text>
+
+</svg>

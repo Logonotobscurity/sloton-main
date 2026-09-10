@@ -220,6 +220,14 @@ export function createErrorResponse(
 /**
  * Retry function with exponential backoff
  */
+function isRetryableError(error: unknown): boolean {
+  if (error instanceof AppError) {
+    return error.code === ErrorCode.TIMEOUT || error.code === ErrorCode.SERVICE_UNAVAILABLE;
+  }
+  const message = error instanceof Error ? error.message.toLowerCase() : String(error).toLowerCase();
+  return /timeout|econnreset|429|503|unavailable|network|fetch failed/.test(message);
+}
+
 export async function retryWithBackoff<T>(
   fn: () => Promise<T>,
   options: {
@@ -228,6 +236,7 @@ export async function retryWithBackoff<T>(
     maxDelay?: number;
     backoffMultiplier?: number;
     context?: string;
+    shouldRetry?: (error: unknown) => boolean;
   } = {}
 ): Promise<T> {
   const {
@@ -235,7 +244,8 @@ export async function retryWithBackoff<T>(
     initialDelay = 1000,
     maxDelay = 10000,
     backoffMultiplier = 2,
-    context = 'retryWithBackoff'
+    context = 'retryWithBackoff',
+    shouldRetry = isRetryableError,
   } = options;
 
   let lastError: Error;
@@ -250,6 +260,10 @@ export async function retryWithBackoff<T>(
       logger.warn(`[${context}] Attempt ${attempt} failed:`, {
         error: error instanceof Error ? error.message : String(error)
       });
+
+      if (!shouldRetry(error)) {
+        throw error;
+      }
 
       if (attempt < maxRetries) {
         logger.info(`[${context}] Retrying in ${delay}ms...`);

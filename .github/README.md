@@ -183,7 +183,7 @@ Standardized pull request template with:
 - **Documentation:** [WORKFLOWS.md](./WORKFLOWS.md)
 - **Issues:** Use issue templates
 - **Email:** logonthepage@gmail.com
-- **Website:** https://logonsolutions.netlify.app
+- **Website:** https://logonai.netlify.app
 
 ## 📝 License
 

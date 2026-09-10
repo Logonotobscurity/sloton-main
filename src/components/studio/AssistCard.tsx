@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { assistCopy } from "@/lib/ai-assist.functions";
+import { copyToClipboard } from "@/lib/social-share";
 
 type Tone = "plain" | "bold" | "technical";
 

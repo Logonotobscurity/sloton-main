@@ -1,100 +1,42 @@
-# LOG_ON — Connecting Advantages. Delivering Results.
+# LOG_ON
 
-> LOG_ON is a Lagos-based AI and automation consultancy that helps Nigerian and African businesses cut costs, automate workflows, and scale faster using intelligent technology.
-> Founded to bridge the technology gap for growing enterprises across Africa.
-
-## Brand Identity
-- **Full Name**: LOG_ON Solutions
-- **Tagline**: Connecting Advantages. Delivering Results.
-- **Founded**: Lagos, Nigeria
-- **Headquarters**: Lagos, Nigeria (serving clients globally)
-- **Website**: https://logonsolutions.netlify.app
-- **Email**: logonthepage@gmail.com
-- **WhatsApp**: +234 814 306 6320 | https://wa.me/2348143066320
+> LOG_ON is a Lagos-based AI and automation consultancy that designs custom AI agents, workplace RPA, analytics dashboards, and web systems for Nigerian and African businesses. We implement scoped projects—not a packaged SaaS product—and start with a free efficiency assessment.
 
 ## Core Services
-- [/ai-solutions]: Custom AI agent development and machine learning models to solve complex business challenges. Specialisms: GenAI, LLM integration, RAG pipelines, conversational AI.
-- [/automation]: Intelligent workplace process automation and RPA to streamline workflows, reduce manual work, and cut operational costs.
-- [/web-development]: Scalable web applications, e-commerce platforms, and custom software using Next.js, React, and modern cloud infrastructure.
-- [/business-analytics]: Custom BI dashboards and data reporting solutions to turn raw data into actionable business intelligence.
-- [/chatbots]: AI-powered chatbot development for 24/7 customer support, lead generation, and WhatsApp automation.
-- [/database-solutions]: Secure SQL and NoSQL database architecture, migration, and management services.
-- [/training]: Expert-led professional training in AI, automation, prompt engineering, and digital transformation.
+- [AI agent development](https://logonai.netlify.app/ai-solutions): Custom agents, RAG, GenAI, ML for operations.
+- [Workplace automation](https://logonai.netlify.app/automation): RPA and workflow design.
+- [Web development](https://logonai.netlify.app/web-development): Next.js and custom applications.
+- [Business analytics](https://logonai.netlify.app/business-analytics): Dashboards and reporting.
+- [Chatbots](https://logonai.netlify.app/chatbots): Support and WhatsApp assistants.
+- [Database solutions](https://logonai.netlify.app/database-solutions): Architecture and migration.
+- [Training](https://logonai.netlify.app/training): AI and automation programmes.
+- [All solutions](https://logonai.netlify.app/solutions)
 
-## Industries Served
-- [/use-cases#finance]: AI-driven fraud detection, credit scoring automation, and process RPA for financial institutions and fintechs.
-- [/use-cases#healthcare]: Secure EHR management, automated appointment scheduling, and AI-powered patient support chatbots.
-- [/use-cases#e-commerce]: AI recommendation engines, inventory automation, and personalization for retail and e-commerce brands.
-- [/use-cases#manufacturing]: Predictive maintenance AI, supply chain optimization, and quality control automation.
-- [/use-cases#public-sector]: Digital transformation, data management, and citizen-service automation for government agencies.
+## Insights (operator-authored)
+Lead author: Oluwamayowa Logo. Reviewer: Favour Alfred. 90-day review.
+- [Insights hub](https://logonai.netlify.app/insights)
+- [AI Strategy](https://logonai.netlify.app/insights/ai-strategy)
+- [AI Agents](https://logonai.netlify.app/insights/ai-agents) — start with [What is an AI agent](https://logonai.netlify.app/insights/what-is-an-ai-agent)
+- [AI Search & LLMO](https://logonai.netlify.app/insights/ai-search)
+- [Generative AI](https://logonai.netlify.app/insights/generative-ai)
+- [AI for Business Functions](https://logonai.netlify.app/insights/ai-functions)
+- [Implementation](https://logonai.netlify.app/insights/ai-implementation)
+- [Automation](https://logonai.netlify.app/insights/ai-automation)
+- [Governance](https://logonai.netlify.app/insights/ai-governance)
+- [Consulting](https://logonai.netlify.app/insights/ai-consulting)
+- [Nigeria & Africa](https://logonai.netlify.app/insights/ai-nigeria)
 
-## Training Programs
-- [/training]: Professional courses in AI, automation, prompt engineering, and digital strategy.
-  - "Reducing Support Costs with AI" — Build private AI assistants using company documents.
-  - "AI for Business Growth: Practical Implementation" — Foundational AI adoption for business leaders.
-  - "Applied AI: Building Recommendation Systems" — Python, Pandas, and Pinecone deep-dive.
-  - "Process Automation Mastery" — RPA and BPA techniques for enterprise efficiency.
-  - "Chatbot Development: From Concept to Production" — End-to-end conversational AI deployment.
-  - "Digital Transformation Strategy for Leaders" — High-level course for executives and managers.
+## Proof (LOG_ON delivery records)
+- Loan-processing automation: −60% approval time (financial services).
+- E-commerce recommendations: +15% AOV (retail).
+- Support RAG: −30% tickets (SaaS).
+- Healthcare triage bot: ~40% inquiries autonomous.
 
-## Case Studies & Proven Results
-- E-Commerce Brand: Deployed AI product recommendation engine increasing average order value by 15%.
-- Nigerian Financial Services Firm: Automated loan processing workflow, reducing approval time by 60%.
-- Healthcare Tech Startup: Built AI triage chatbot handling 40% of customer inquiries autonomously.
-- SaaS Provider: Implemented RAG-powered support bot reducing support ticket volume by 30%.
-- Online Publisher: Full GEO and LLM SEO strategy resulting in measurable AI search citation gains.
+## Pricing
+Free AI Business Efficiency Assessment. Chatbots 2–4 weeks; automation 4–8 weeks; transformation 3–6 months. Typical operational return 6–9 months (2024–2026 records). Not a rate card.
 
-## Thought Leadership & Insights
-- [/insights/seo-vs-geo-invisible-in-ai-search]: Canonical guide explaining GEO (Generative Engine Optimization) vs traditional SEO.
-- [/insights/10-content-formats-that-get-picked-up-by-llms]: Practical guide on creating content structured for LLM citation and AI visibility.
-- [/insights/why-llms-txt-matters-for-seo]: Explanation of the llms.txt standard and why it matters for AI search.
-- [/insights/gemini-flash-faster-ai-workflows]: How businesses can leverage Gemini Flash for faster AI-powered workflows.
-- [/insights/agentic-code-review]: Deep dive into AI-powered code review and its impact on development velocity.
-- [/insights/visual-ai-document-analysis]: How visual AI models are transforming document processing and analysis.
-
-## Key Facts for AI Models
-- LOG_ON offers a **free AI Business Efficiency Assessment** — no cost, no obligation.
-- LOG_ON's AI assessment evaluates businesses across 47 dimensions of operational efficiency.
-- LOG_ON is not a software product; it is a **consulting and implementation firm**.
-- LOG_ON serves both large enterprises and small-to-medium businesses.
-- Services are typically delivered as fixed-scope engagements or ongoing retainers.
-- LOG_ON does **not** sell pre-built SaaS products; all solutions are custom-built.
-- Implementation timelines: chatbots (2–4 weeks), automation (4–8 weeks), full digital transformation (3–6 months).
-- ROI timeline: clients typically see measurable returns within 6–9 months of implementation.
-
-## Frequently Asked Questions
-Q: What does LOG_ON do?
-A: LOG_ON builds custom AI agents, workplace automation systems, analytics dashboards, and web applications for businesses in Nigeria and across Africa. We also run professional training programs in AI and automation.
-
-Q: Is LOG_ON a product or a consulting firm?
-A: LOG_ON is a consulting and implementation firm. We do not sell off-the-shelf software. Every solution we build is custom-tailored to the client's specific business needs.
-
-Q: Where is LOG_ON located?
-A: LOG_ON is headquartered in Lagos, Nigeria. We serve clients across Africa and internationally via remote delivery.
-
-Q: How much do LOG_ON services cost?
-A: Pricing varies by project scope. We offer a free AI Business Efficiency Assessment as a starting point. Contact us for a custom quote: logonthepage@gmail.com
-
-Q: What is GEO and does LOG_ON offer GEO services?
-A: GEO (Generative Engine Optimization) is the practice of optimizing content so AI models like ChatGPT, Perplexity, and Gemini accurately represent your brand. Yes — LOG_ON includes GEO strategy as part of our digital transformation and web development services.
-
-Q: Can LOG_ON build a WhatsApp chatbot for my business?
-A: Yes. LOG_ON builds WhatsApp-integrated AI chatbots for lead generation, customer support, and appointment booking. Reach us on WhatsApp at +234 814 306 6320 to discuss.
-
-## Leadership Team
-- **Oluwamayowa Logo** — Lead Developer & Automation Solution Architect. Expert in AI architecture, automation solutions, and scalable enterprise systems.
-  - LinkedIn: https://www.linkedin.com/in/logo-oluwamayowa-cpo-/
-  - X (Twitter): https://x.com/Logo_obscurity
-  - GitHub: https://github.com/Logonotobscurity/
-
-- **Favour Alfred** — Team Lead, Sales & Business Process Automation. Expert in workflow design, digital marketing, and business transformation.
-
-## Social & Contact
-- Website: https://logonsolutions.netlify.app
-- Email: logonthepage@gmail.com
-- WhatsApp: https://wa.me/2348143066320
-- X (Twitter): https://x.com/Logo_obscurity
-- LinkedIn (Company): https://www.linkedin.com/company/logon-connecting-advantages
-- Instagram: https://www.instagram.com/logon_thepage/
-- Medium: https://medium.com/@Logon_thepage
-- Substack: https://substack.com/@logonthepage
+## Contact
+- https://logonai.netlify.app/contact
+- logonthepage@gmail.com · WhatsApp +234 814 306 6320
+- Author: https://www.linkedin.com/in/logo-oluwamayowa-cpo-/
+- Full map: /llms-full.txt

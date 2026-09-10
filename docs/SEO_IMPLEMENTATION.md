@@ -65,7 +65,7 @@ export const metadata = generateMetadata({
   title: 'AI Solutions for Business',
   description: 'Transform your business with custom AI solutions...',
   keywords: [...KEYWORD_SETS.ai, ...KEYWORD_SETS.automation],
-  canonical: 'https://logonsolutions.netlify.app/ai-solutions',
+  canonical: 'https://logonai.netlify.app/ai-solutions',
 });
 ```
 
@@ -78,7 +78,7 @@ export default function ServicePage() {
   const serviceSchema = generateServiceSchema({
     name: 'AI Agent Development',
     description: 'Custom AI agents for your business',
-    url: 'https://logonsolutions.netlify.app/ai-solutions',
+    url: 'https://logonai.netlify.app/ai-solutions',
   });
 
   return (
@@ -116,10 +116,10 @@ import { generateArticleSchema, JsonLd } from '@/lib/seo';
 const articleSchema = generateArticleSchema({
   headline: 'The Future of AI in Business',
   description: 'Exploring how AI is transforming...',
-  image: 'https://logonsolutions.netlify.app/article-image.jpg',
+  image: 'https://logonai.netlify.app/article-image.jpg',
   datePublished: '2026-02-20',
   author: 'LOG_ON Team',
-  url: 'https://logonsolutions.netlify.app/insights/future-of-ai',
+  url: 'https://logonai.netlify.app/insights/future-of-ai',
 });
 
 return <JsonLd data={articleSchema} />;
@@ -297,7 +297,7 @@ This ensures your content can be indexed by AI systems for better visibility in 
 
 ```typescript
 export const metadata = generateMetadata({
-  canonical: 'https://logonsolutions.netlify.app/page',
+  canonical: 'https://logonai.netlify.app/page',
 });
 ```
 

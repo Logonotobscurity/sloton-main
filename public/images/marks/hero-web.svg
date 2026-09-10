@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img">
+  <rect width="1600" height="900" fill="#FCFCF8"/>
+  
+  <rect x="920" y="240" width="480" height="320" rx="16" fill="none" stroke="#006B4D" stroke-width="4"/>
+  <rect x="920" y="240" width="480" height="48" fill="#006B4D" opacity="0.15"/>
+  <circle cx="948" cy="264" r="6" fill="#BD005B"/><circle cx="972" cy="264" r="6" fill="#006B4D"/><circle cx="996" cy="264" r="6" fill="#191A16" opacity="0.3"/>
+  <rect x="960" y="320" width="180" height="12" fill="#006B4D" opacity="0.4"/>
+  <rect x="960" y="352" width="280" height="8" fill="#191A16" opacity="0.15"/>
+  <rect x="960" y="376" width="240" height="8" fill="#191A16" opacity="0.15"/>
+  <rect x="1220" y="320" width="140" height="180" rx="8" fill="#BD005B" opacity="0.12"/>
+  <text x="920" y="200" font-family="IBM Plex Mono, monospace" font-size="20" fill="#006B4D">NEXT.JS · PAYSTACK</text>
+
+</svg>

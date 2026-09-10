@@ -12,8 +12,8 @@ export default function GlobalError({
   reset: () => void
 }) {
   return (
-    <html>
-      <body>
+        <html lang="en">
+      <body className="bg-background text-foreground">
         <PageHero
             title="Something went wrong!"
             description="We're sorry, but an unexpected error occurred. You can try to refresh the page or go back to the homepage."

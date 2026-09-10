@@ -10,6 +10,7 @@ import { labValues, submissionProcess, activePilots } from '@/lib/data/ab-testin
 export const metadata: Metadata = {
   title: 'A/B Testing & Innovation Lab for Workplace AI',
   description: 'Join our Ideas Lab to test workplace AI concepts. Explore active pilots and submit your product for data-driven analysis of automation and AI agent performance.',
+  robots: { index: false, follow: false },
 };
 
 export default function ABTestingPage() {

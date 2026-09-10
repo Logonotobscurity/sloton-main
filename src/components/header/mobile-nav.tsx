@@ -1,198 +1,198 @@
-
 "use client";
 
 import * as React from "react";
-import { Button } from "@/components/ui/button";
-import {
-    Sheet,
-    SheetContent,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-} from "@/components/ui/sheet";
-import { Logo } from "./logo";
+import Image from "next/image";
 import Link from "next/link";
 import { Mail } from "lucide-react";
 import { menuData, SitemapSection, SectionWithItems } from "@/lib/menu-data";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ThemeToggle } from "@/components/header/theme-toggle";
-import { motion } from "framer-motion";
 import { useUiStore } from "@/hooks/use-ui-store";
-import { IconFacebook, IconX, IconLinkedIn, IconInstagram, IconYouTube, IconGithub } from "@/lib/icons";
+import { IconX, IconLinkedIn, IconGithub } from "@/lib/icons";
 import { cn } from "@/lib/utils";
+import { Logo } from "./logo";
+import { usePathname } from "next/navigation";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import {
+  BrainCircuit, Workflow, Code2, Bot, LineChart, Database, Library, Newspaper,
+  Building2, LayoutTemplate, GraduationCap, Compass, FileBarChart, Users,
+  Briefcase, Handshake,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
-const hasItems = (section: SitemapSection): section is SectionWithItems => {
-    return 'items' in section && Array.isArray(section.items);
+const ICONS: Record<string, LucideIcon> = {
+  BrainCircuit, Workflow, Code2, Bot, LineChart, Database, Library, Newspaper,
+  Building2, LayoutTemplate, GraduationCap, Compass, FileBarChart, Users,
+  Briefcase, Handshake, Mail,
 };
 
-const MobileNavigation = () => {
-    const { setMenuOpen } = useUiStore();
-    return (
-        <ScrollArea className="flex-1">
-            <div className="flex-grow p-4">
-                <Accordion type="multiple" className="w-full">
-                    {menuData.map((menu) => {
-                        if (hasItems(menu)) {
-                            return (
-                                <AccordionItem value={menu.key} key={menu.key} className="border-b">
-                                    <AccordionTrigger className="text-lg font-semibold min-h-[48px] py-4 hover:no-underline focus-visible:ring-2 focus-visible:ring-primary rounded-md px-2 -mx-2">{menu.heading}</AccordionTrigger>
-                                    <AccordionContent>
-                                        <ul className="flex flex-col space-y-1 py-2">
-                                            {menu.items.map(item => (
-                                                <li key={item.title}>
-                                                    <Link href={item.href} className="block p-3 rounded-lg hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary min-h-[44px] flex flex-col justify-center" onClick={() => setMenuOpen(false)}>
-                                                        <span className="font-semibold leading-tight">{item.title}</span>
-                                                        <p className="text-sm text-muted-foreground leading-snug">{item.shortDescription}</p>
-                                                    </Link>
-                                                </li>
-                                            ))}
-                                            {menu.cta && (
-                                                <li>
-                                                    <Link href={menu.cta.href} className="block p-2 rounded-md font-semibold text-primary hover:bg-accent" onClick={() => setMenuOpen(false)}>
-                                                        {menu.cta.label}
-                                                    </Link>
-                                                </li>
-                                            )}
-                                        </ul>
-                                    </AccordionContent>
-                                </AccordionItem>
-                            )
-                        } else if ('href' in menu) {
-                            return (
-                                <Link key={menu.key} href={menu.href} className="flex border-b text-lg font-semibold p-4 min-h-[48px] items-center rounded-lg hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" onClick={() => setMenuOpen(false)}>
-                                    {menu.heading}
-                                </Link>
-                            );
-                        }
-
-                        return null;
-                    })}
-                </Accordion>
-
-                {/* Theme Toggle - Moved inside ScrollArea */}
-                <div className="flex items-center justify-between w-full py-4 px-2 border-t border-b mt-4">
-                    <span className="text-sm font-semibold text-muted-foreground">Theme</span>
-                    <ThemeToggle />
-                </div>
-
-                {/* Social Media Icons - Moved inside ScrollArea */}
-                <div className="flex flex-col gap-3 w-full py-4 px-2">
-                    <h3 className="text-sm font-semibold text-muted-foreground">Connect With Us</h3>
-                    <div className="flex items-center flex-wrap gap-4">
-                        <Link
-                            href="mailto:logonthepage@gmail.com"
-                            className="text-primary hover:text-primary/80 transition-colors duration-200"
-                            aria-label="Contact us via email"
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            <Mail className="h-5 w-5" />
-                        </Link>
-                        <Link
-                            href="https://x.com/Logo_obscurity"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-primary hover:text-primary/80 transition-colors duration-200"
-                            aria-label="Follow LOG_ON on X (formerly Twitter)"
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            <IconX className="h-5 w-5" aria-hidden="true" />
-                        </Link>
-                        <Link
-                            href="https://www.linkedin.com/in/logo-oluwamayowa-cpo-/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-primary hover:text-primary/80 transition-colors duration-200"
-                            aria-label="Connect with LOG_ON on LinkedIn"
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            <IconLinkedIn className="h-5 w-5" aria-hidden="true" />
-                        </Link>
-                        <Link
-                            href="https://github.com/Logonotobscurity/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-primary hover:text-primary/80 transition-colors duration-200"
-                            aria-label="View LOG_ON source code on GitHub"
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            <IconGithub className="h-5 w-5" aria-hidden="true" />
-                        </Link>
-                    </div>
-                </div>
-            </div>
-        </ScrollArea>
-    );
-};
-
+const hasItems = (section: SitemapSection): section is SectionWithItems =>
+  "items" in section && Array.isArray(section.items);
 
 export const MobileNav = () => {
-    const { isMenuOpen, setMenuOpen } = useUiStore();
+  const { isMenuOpen, setMenuOpen } = useUiStore();
+  const pathname = usePathname();
 
-    React.useEffect(() => {
-        if (isMenuOpen) {
-            document.body.style.overflow = 'hidden';
-            // Hide Botpress widget when menu is open
-            const botpressWidget = document.getElementById('botpress-webchat');
-            if (botpressWidget) {
-                botpressWidget.style.display = 'none';
-            }
-        } else {
-            document.body.style.overflow = '';
-            // Show Botpress widget when menu is closed
-            const botpressWidget = document.getElementById('botpress-webchat');
-            if (botpressWidget) {
-                botpressWidget.style.display = '';
-            }
-        }
-        return () => {
-            document.body.style.overflow = '';
-            // Ensure widget is visible on cleanup
-            const botpressWidget = document.getElementById('botpress-webchat');
-            if (botpressWidget) {
-                botpressWidget.style.display = '';
-            }
-        };
-    }, [isMenuOpen]);
+  return (
+    <Sheet open={isMenuOpen} onOpenChange={setMenuOpen}>
+      <SheetTrigger asChild>
+        <button
+          type="button"
+          className={cn(
+            "relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background/90 shadow-sm",
+            "transition-colors hover:border-primary hover:bg-primary/5",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+            isMenuOpen && "border-primary bg-primary/10"
+          )}
+          aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isMenuOpen}
+        >
+          <span className="sr-only">{isMenuOpen ? "Close" : "Menu"}</span>
+          <span className="relative block h-3.5 w-4" aria-hidden>
+            <span
+              className={cn(
+                "absolute left-0 top-0.5 h-0.5 w-4 rounded-full bg-foreground transition-transform duration-300",
+                isMenuOpen && "top-1.5 rotate-45"
+              )}
+            />
+            <span
+              className={cn(
+                "absolute left-0 top-[7px] h-0.5 w-3 rounded-full bg-foreground transition-all duration-300",
+                isMenuOpen && "opacity-0 translate-x-1"
+              )}
+            />
+            <span
+              className={cn(
+                "absolute left-0 bottom-0.5 h-0.5 w-4 rounded-full bg-foreground transition-transform duration-300",
+                isMenuOpen && "bottom-1.5 -rotate-45"
+              )}
+            />
+          </span>
+        </button>
+      </SheetTrigger>
+      <SheetContent
+        side="right"
+        className="w-full max-w-[420px] p-0 flex flex-col border-l border-border bg-background"
+        aria-label="Mobile navigation menu"
+      >
+        <div className="relative h-36 shrink-0 overflow-hidden">
+          <Image
+            src="/images/marks/hero-default.svg"
+            alt=""
+            fill
+            className="object-cover"
+            sizes="420px"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/55 to-background/10" />
+          <SheetHeader className="absolute inset-x-0 bottom-0 p-4 text-left">
+            <SheetTitle asChild>
+              <span className="inline-block" onClick={() => setMenuOpen(false)}>
+                <Logo compact />
+              </span>
+            </SheetTitle>
+            <p className="text-[11px] uppercase tracking-[0.2em] text-primary">Menu</p>
+          </SheetHeader>
+        </div>
 
-    return (
-        <Sheet open={isMenuOpen} onOpenChange={setMenuOpen}>
-            <SheetTrigger asChild>
-                <button
-                    className={cn(
-                      "hamburger",
-                      "inline-flex items-center justify-center rounded-lg border border-transparent hover:bg-accent hover:border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 active:bg-accent/80",
-                      isMenuOpen && "open bg-accent"
-                    )}
-                    aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-                    aria-expanded={isMenuOpen}
-                    aria-controls="mobile-nav-sheet"
-                    style={{ minWidth: 44, minHeight: 44 }}
-                >
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </button>
-            </SheetTrigger>
-            <SheetContent side="left" className="w-full max-w-sm p-0 flex flex-col" aria-label="Mobile navigation menu">
-                <motion.div
-                    initial={{ x: "-100%" }}
-                    animate={{ x: 0 }}
-                    exit={{ x: "-100%" }}
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    className="h-full flex flex-col"
-                >
-                    <SheetHeader className="p-4 border-b flex flex-row items-center justify-between">
-                        <SheetTitle asChild>
-                            <Link href="/" className="mr-6 flex items-center space-x-2" onClick={() => setMenuOpen(false)} aria-label="LOG_ON Homepage">
-                                <Logo />
-                            </Link>
-                        </SheetTitle>
-                    </SheetHeader>
+        <ScrollArea className="flex-1">
+          <nav className="p-4 pb-8">
+            <Accordion type="multiple" defaultValue={["solutions"]} className="w-full">
+              {menuData.map((menu) => {
+                if (hasItems(menu)) {
+                  return (
+                    <AccordionItem value={menu.key} key={menu.key} className="border-border/60">
+                      <AccordionTrigger className="py-4 text-left text-xl font-headline font-semibold hover:no-underline hover:text-primary">
+                        {menu.heading}
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <ul className="space-y-1 pb-2">
+                          {menu.items.map((item) => {
+                            const Icon = item.icon ? ICONS[item.icon] : undefined;
+                            return (
+                              <li key={item.title}>
+                                <Link
+                                  href={item.href}
+                                  aria-current={pathname === item.href ? "page" : undefined}
+                                  onClick={() => setMenuOpen(false)}
+                                  className={cn(
+                                    "flex gap-3 rounded-xl p-3 transition-colors hover:bg-primary/5 min-h-11",
+                                    pathname === item.href && "bg-primary/5"
+                                  )}
+                                >
+                                  {Icon ? (
+                                    <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border bg-background text-primary">
+                                      <Icon className="h-4 w-4" />
+                                    </span>
+                                  ) : null}
+                                  <span>
+                                    <span className="block font-semibold">{item.title}</span>
+                                    <span className="block text-sm text-muted-foreground">
+                                      {item.shortDescription}
+                                    </span>
+                                  </span>
+                                </Link>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </AccordionContent>
+                    </AccordionItem>
+                  );
+                }
+                if ("href" in menu) {
+                  return (
+                    <Link
+                      key={menu.key}
+                      href={menu.href}
+                      aria-current={pathname === menu.href ? "page" : undefined}
+                      onClick={() => setMenuOpen(false)}
+                      className="flex min-h-14 items-center border-b border-border/60 py-4 text-xl font-headline font-semibold hover:text-primary"
+                    >
+                      {menu.heading}
+                    </Link>
+                  );
+                }
+                return null;
+              })}
+            </Accordion>
 
-                    <MobileNavigation />
-                </motion.div>
-            </SheetContent>
-        </Sheet>
-    );
+            <Link
+              href="/contact"
+              onClick={() => setMenuOpen(false)}
+              className="mt-6 flex min-h-12 items-center justify-center rounded-full border-2 border-primary font-semibold hover:bg-primary/5"
+            >
+              Book a conversation
+            </Link>
+
+            <div className="mt-6 flex items-center justify-between rounded-xl border border-border px-3 py-2">
+              <span className="text-sm text-muted-foreground">Theme</span>
+              <ThemeToggle />
+            </div>
+
+            <div className="mt-6 flex gap-3">
+              <Link href="mailto:logonthepage@gmail.com" aria-label="Email" className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-primary">
+                <Mail className="h-4 w-4" />
+              </Link>
+              <Link href="https://x.com/Logo_obscurity" target="_blank" rel="noopener noreferrer" aria-label="X" className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-primary">
+                <IconX className="h-4 w-4" />
+              </Link>
+              <Link href="https://www.linkedin.com/in/logo-oluwamayowa-cpo-/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-primary">
+                <IconLinkedIn className="h-4 w-4" />
+              </Link>
+              <Link href="https://github.com/Logonotobscurity/" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-primary">
+                <IconGithub className="h-4 w-4" />
+              </Link>
+            </div>
+          </nav>
+        </ScrollArea>
+      </SheetContent>
+    </Sheet>
+  );
 };

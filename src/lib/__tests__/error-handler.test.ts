@@ -133,7 +133,7 @@ describe('error-handler', () => {
 
     it('should retry on failure', async () => {
       const fn = vi.fn()
-        .mockRejectedValueOnce(new Error('Fail 1'))
+        .mockRejectedValueOnce(new Error('timeout'))
         .mockResolvedValue('success');
       
       const result = await retryWithBackoff(fn, { maxRetries: 3, initialDelay: 10 });
@@ -141,8 +141,14 @@ describe('error-handler', () => {
       expect(fn).toHaveBeenCalledTimes(2);
     });
 
+    it('should not retry non-transient errors', async () => {
+      const fn = vi.fn().mockRejectedValue(new Error('Invalid input'));
+      await expect(retryWithBackoff(fn, { maxRetries: 3, initialDelay: 10 })).rejects.toThrow('Invalid input');
+      expect(fn).toHaveBeenCalledTimes(1);
+    });
+
     it('should throw after max retries', async () => {
-      const fn = vi.fn().mockRejectedValue(new Error('Always fails'));
+      const fn = vi.fn().mockRejectedValue(new Error('timeout'));
       
       await expect(
         retryWithBackoff(fn, { maxRetries: 2, initialDelay: 10 })

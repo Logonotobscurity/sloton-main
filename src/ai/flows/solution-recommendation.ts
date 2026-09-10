@@ -77,11 +77,16 @@ const solutionRecommendationFlow = ai.defineFlow(
     outputSchema: SolutionRecommendationOutputSchema,
   },
   async (input) => {
-    const { output } = await solutionRecommendationPrompt(input);
-    return output!;
+    const parsed = SolutionRecommendationInputSchema.parse(input);
+    const { output } = await solutionRecommendationPrompt(parsed);
+    if (!output) {
+      throw new Error("No recommendation generated");
+    }
+    return output;
   }
 );
 
 export async function getSolutionRecommendation(input: SolutionRecommendationInput): Promise<SolutionRecommendationOutput> {
-  return await solutionRecommendationFlow(input);
+  const parsed = SolutionRecommendationInputSchema.parse(input);
+  return await solutionRecommendationFlow(parsed);
 }

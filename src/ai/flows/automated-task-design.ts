@@ -186,11 +186,15 @@ const defaultWorkflow: AutomateTaskDesignOutput = {
 
 
 export async function automateTaskDesign(input: AutomateTaskDesignInput): Promise<AutomateTaskDesignOutput> {
-  // This is a mock implementation.
-  // In a real application, this would use an AI model to generate the workflow.
+  if (!input?.workflowDescription || input.workflowDescription.trim().length < 10) {
+    throw new Error("workflowDescription must be at least 10 characters.");
+  }
+  const workflowDescription = input.workflowDescription.trim().slice(0, 8000);
+  const optimizationSuggestions = input.optimizationSuggestions?.trim().slice(0, 4000);
+
   await new Promise(resolve => setTimeout(resolve, 1000));
 
-  const description = input.workflowDescription.toLowerCase();
+  const description = workflowDescription.toLowerCase();
 
   if (description.includes("onboarding")) {
     return workflowTemplates.onboarding;
@@ -206,6 +210,6 @@ export async function automateTaskDesign(input: AutomateTaskDesignInput): Promis
 
   // Fallback to a generic workflow
   const genericWorkflow = { ...defaultWorkflow };
-  genericWorkflow.description = `A generated workflow based on the description: \"${input.workflowDescription}\"`;
+  genericWorkflow.description = `A generated workflow based on the description: "${workflowDescription}"`;
   return genericWorkflow;
 }

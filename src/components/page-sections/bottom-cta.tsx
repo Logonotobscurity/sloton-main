@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { AnimatedCodeBackground } from "@/components/ui/animated-code-background";
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
@@ -30,17 +30,19 @@ export function BottomCta({
   return (
     <section
       aria-labelledby="final-cta-heading"
-      className={`final-cta ${className}`}
+      className={`final-cta relative overflow-hidden ${className}`}
     >
-      <AnimatedCodeBackground variant="default" density="low" />
-      <div className="final-cta-card">
+      <div className="pointer-events-none absolute inset-0 opacity-30">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/marks/hero-contact.svg" alt="" className="absolute inset-0 h-full w-full object-cover" />
+      </div>
+      <div className="final-cta-card relative z-10">
         {/* Kicker — monospace + teal */}
-        <div className="final-cta-kicker">{kicker}</div>
+        <div className="verdara-kicker final-cta-kicker">{kicker}</div>
 
         <h2
           id="final-cta-heading"
-          className="final-cta-title"
-          style={{ fontFamily: 'var(--font-editorial)' }}
+          className="verdara-title final-cta-title"
         >
           {title}
         </h2>

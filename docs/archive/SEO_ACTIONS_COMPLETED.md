@@ -288,8 +288,8 @@ npm run build
 npm run start
 
 # Test specific pages
-curl -I https://logonsolutions.netlify.app/
-curl -I https://logonsolutions.netlify.app/ai-solutions
+curl -I https://logonai.netlify.app/
+curl -I https://logonai.netlify.app/ai-solutions
 ```
 
 ## 🔍 Validation Tools
@@ -302,7 +302,7 @@ curl -I https://logonsolutions.netlify.app/ai-solutions
 ## 📊 Monitoring Setup
 
 ### Google Search Console
-- Submit sitemap: `https://logonsolutions.netlify.app/sitemap.xml`
+- Submit sitemap: `https://logonai.netlify.app/sitemap.xml`
 - Monitor indexing status
 - Track search performance
 - Check for crawl errors
@@ -342,13 +342,13 @@ export const metadata = generateMetadata({
   title: 'Your Service Name',
   description: 'Compelling description...',
   keywords: [...KEYWORD_SETS.ai, 'custom', 'keywords'],
-  canonical: 'https://logonsolutions.netlify.app/your-page',
+  canonical: 'https://logonai.netlify.app/your-page',
 });
 
 const schema = generateServiceSchema({
   name: 'Your Service',
   description: 'Service description',
-  url: 'https://logonsolutions.netlify.app/your-page',
+  url: 'https://logonai.netlify.app/your-page',
 });
 
 export default function YourPage() {

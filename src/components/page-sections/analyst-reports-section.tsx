@@ -54,20 +54,20 @@ const StarRating = ({ rating }: { rating: number }) => {
 
 export function AnalystReportsSection() {
   return (
-    <section className="py-fluid-lg bg-background relative overflow-hidden">
+    <section className="verdara-section py-fluid-lg relative overflow-hidden">
       <AnimatedCodeBackground variant="insights" density="low" />
       <div className="container mx-auto px-fluid-sm">
-        {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-12">
+        <div className="max-w-3xl mx-auto mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-fluid-xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium font-headline">
-              Industry Analyst Reports
+            <p className="verdara-kicker">Research</p>
+            <h1 className="verdara-title mt-2">
+              Industry analyst <em>reports</em>
             </h1>
-            <p className="text-fluid-base max-w-2xl my-4 mx-auto text-muted-foreground text-center font-normal">
+            <p className="verdara-lede mt-4">
               Comprehensive analysis of our market position, innovation leadership, and delivery excellence across multiple dimensions.
             </p>
           </motion.div>

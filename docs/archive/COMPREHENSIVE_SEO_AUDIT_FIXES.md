@@ -45,7 +45,7 @@ Based on comprehensive codebase analysis, the site has **strong SEO foundation**
 ### 4. ROBOTS.TXT SITEMAP URL ⚠️ LOW PRIORITY
 **Issue:** Outdated URL in public/robots.txt
 **Current:** https://logonsolutionsnetlify.app/sitemap.xml
-**Should be:** https://logonsolutions.netlify.app/sitemap.xml
+**Should be:** https://logonai.netlify.app/sitemap.xml
 
 ### 5. GTM CONFIGURATION ⚠️ LOW PRIORITY
 **Issue:** Placeholder GTM ID: "GTM-XXXXXXX"

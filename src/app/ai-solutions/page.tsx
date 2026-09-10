@@ -7,6 +7,8 @@ import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, Breadcru
 import { CaseStudyFeature } from '@/components/page-sections/case-study-feature';
 import { PageHero } from '@/components/page-sections/page-hero';
 import { aiServices, aiSolutionsBenefits } from '@/lib/data/services-data';
+import { EntityLead, PricingNote } from '@/components/entity-lead';
+import { PageFaq } from '@/components/page-faq';
 
 export const metadata = generateMetadata({
   title: 'AI Agent Development & Custom AI Solutions in Nigeria',
@@ -23,13 +25,13 @@ export const metadata = generateMetadata({
     'NLP solutions',
     'computer vision Nigeria',
   ],
-  canonical: 'https://logonsolutions.netlify.app/ai-solutions',
+  canonical: 'https://logonai.netlify.app/ai-solutions',
 });
 
 const aiServiceSchema = generateServiceSchema({
   name: 'AI Agent Development & Custom AI Solutions',
   description: 'Expert AI agent development and custom machine learning solutions. We design and deploy AI agents for workplace automation to solve complex business challenges and drive growth in Nigeria.',
-  url: 'https://logonsolutions.netlify.app/ai-solutions',
+  url: 'https://logonai.netlify.app/ai-solutions',
   provider: 'LOG_ON',
   areaServed: 'Nigeria',
 });
@@ -39,16 +41,20 @@ export default function AiSolutionsPage() {
     <div className="bg-background">
       <JsonLd data={aiServiceSchema} />
       <BreadcrumbSchema items={[
-        { name: 'Home', url: 'https://logonsolutions.netlify.app' },
-        { name: 'AI Solutions', url: 'https://logonsolutions.netlify.app/ai-solutions' },
+        { name: 'Home', url: 'https://logonai.netlify.app' },
+        { name: 'AI Solutions', url: 'https://logonai.netlify.app/ai-solutions' },
       ]} />
       <PageHero
+        visual="/images/marks/hero-ai.svg"
+        kicker="AI practice"
         title="Custom AI Solutions & Agent Development"
         description="At LOG_ON, we don't just use AI—we build it. We specialize in creating bespoke artificial intelligence, AI agents, and machine learning solutions that integrate seamlessly with your operations to solve your most complex challenges. Our expert team partners with you to transform your data into a strategic asset, driving efficiency, innovation, and measurable growth."
       />
       <div className="container mx-auto px-fluid-sm py-fluid-lg">
         <section className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
+             <EntityLead text="LOG_ON AI solutions cover agent development, RAG over company documents, predictive models, and operational copilots. Work is delivered as a fixed-scope or retainer project after a free efficiency assessment." />
+             <PricingNote />
              <div className="space-y-4 pt-4">
                 {aiSolutionsBenefits.map(benefit => (
                     <div key={benefit} className="flex items-center gap-3">
@@ -80,24 +86,19 @@ export default function AiSolutionsPage() {
           </div>
         </section>
 
-        <section className="py-fluid-lg">
-            <div className="text-center max-w-3xl mx-auto mb-fluid-md">
-                <h2 className="text-fluid-xl font-bold font-headline">Our AI Development Services</h2>
-                <p className="mt-4 text-fluid-base text-muted-foreground leading-relaxed">
+        <section className="verdara-section -mx-fluid-sm px-5 lg:px-10 py-16">
+            <p className="verdara-kicker">Practice</p>
+            <h2 className="verdara-title mt-2">Our AI development <em>services</em></h2>
+            <p className="verdara-lede mt-4">
                     We offer a comprehensive suite of AI services designed to address your specific needs and deliver tangible results.
-                </p>
-            </div>
-             <div className="grid md:grid-cols-2 gap-8">
+            </p>
+             <div className="verdara-grid verdara-grid-2 mt-10">
                 {aiServices.map((service) => (
-                <Card key={service.title} className="bg-secondary/50 flex flex-col transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl">
-                    <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                        <service.icon className="h-8 w-8 text-primary" />
-                        <CardTitle className="text-lg md:text-xl">{service.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <p className="text-muted-foreground text-sm md:text-base leading-relaxed">{service.description}</p>
-                    </CardContent>
-                </Card>
+                <article key={service.title} className="verdara-card">
+                    <span className="verdara-tag verdara-tag-sage">AI</span>
+                    <h3 className="mt-4">{service.title}</h3>
+                    <p className="verdara-lede mt-auto pt-3">{service.description}</p>
+                </article>
                 ))}
             </div>
         </section>
@@ -109,9 +110,34 @@ export default function AiSolutionsPage() {
             showDesignProcess={true}
         />
 
-        <section className="text-center mt-fluid-md py-fluid-md bg-background rounded-lg px-fluid-sm">
-            <h2 className="text-fluid-lg font-bold font-headline">Ready to Unlock Your AI Potential?</h2>
-            <p className="mt-4 text-fluid-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+        <PageFaq
+          items={[
+            {
+              question: 'What is LOG_ON AI agent development?',
+              answer:
+                'LOG_ON designs and deploys custom AI agents for Nigerian and African businesses—document RAG, operational copilots, and workflow bots—as scoped consulting work, not a self-serve SaaS product.',
+            },
+            {
+              question: 'Who is it for?',
+              answer:
+                'Operators in finance, healthcare, commerce, manufacturing, and the public sector who need to cut manual work and keep data on systems they control.',
+            },
+            {
+              question: 'How much does it cost?',
+              answer:
+                'Pricing is scoped after a free AI Business Efficiency Assessment. Chatbot work typically lands in 2–4 weeks; broader automation in 4–8 weeks (LOG_ON delivery records, 2024–2026).',
+            },
+            {
+              question: 'What are the limitations?',
+              answer:
+                'We do not sell a pre-built agent marketplace. Outcomes depend on data quality, process access, and a named owner on the client side. High-risk decisions stay with humans.',
+            },
+          ]}
+        />
+
+        <section className="verdara-section mt-8 px-5 py-16 text-center">
+            <h2 className="verdara-title">Ready to unlock your AI <em>potential</em>?</h2>
+            <p className="verdara-lede mt-4 mx-auto">
                 Let's discuss how our custom AI solutions can transform your business. Schedule a free, no-obligation consultation with our AI experts today.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4 flex-wrap">

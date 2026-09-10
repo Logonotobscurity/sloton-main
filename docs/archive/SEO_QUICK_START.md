@@ -38,7 +38,7 @@ export const metadata = generateMetadata({
   title: 'Your Page Title',
   description: 'Compelling 150-160 character description...',
   keywords: [...KEYWORD_SETS.ai, 'custom', 'keywords'],
-  canonical: 'https://logonsolutions.netlify.app/your-page',
+  canonical: 'https://logonai.netlify.app/your-page',
 });
 ```
 
@@ -50,7 +50,7 @@ import { JsonLd, generateServiceSchema } from '@/lib/seo';
 const schema = generateServiceSchema({
   name: 'Service Name',
   description: 'Service description',
-  url: 'https://logonsolutions.netlify.app/service',
+  url: 'https://logonai.netlify.app/service',
 });
 
 // In your component
@@ -154,14 +154,14 @@ export const metadata = generateMetadata({
     'AI agent development Lagos',
     'custom AI development',
   ],
-  canonical: 'https://logonsolutions.netlify.app/ai-solutions',
+  canonical: 'https://logonai.netlify.app/ai-solutions',
 });
 
 // Structured data
 const serviceSchema = generateServiceSchema({
   name: 'AI Solutions & Agent Development',
   description: 'Custom AI models and AI agent development to solve complex business challenges.',
-  url: 'https://logonsolutions.netlify.app/ai-solutions',
+  url: 'https://logonai.netlify.app/ai-solutions',
 });
 
 export default function AIPage() {

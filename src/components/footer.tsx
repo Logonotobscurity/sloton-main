@@ -1,13 +1,10 @@
 "use client";
 
-import { AnimatedCodeBackground } from "@/components/ui/animated-code-background";
-
 import Link from 'next/link';
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { IconGithub, IconLinkedIn, IconX } from '@/lib/icons';
 import { menuData, SitemapSection } from '@/lib/menu-data';
-import { AdinkraBackground } from './ui/adinkra-background';
 import { Logo } from '@/components/header/logo';
 
 const socialLinks = [
@@ -71,7 +68,7 @@ function FooterSection({
               <Link
                 href={item.href}
                 aria-label={`Go to ${item.title}`}
-                className="text-muted-foreground hover:text-primary hover:underline underline-offset-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm text-sm inline-flex min-h-[32px] items-center px-1 -mx-1 font-medium"
+                className="text-muted-foreground hover:text-primary hover:underline underline-offset-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm text-sm inline-flex min-h-11 items-center px-1 -mx-1 font-medium"
               >
                 {item.title}
               </Link>
@@ -85,17 +82,15 @@ function FooterSection({
 
 export function Footer() {
   const [open, setOpen] = useState<Record<string, boolean>>({
-    solutions: true,
-    company: true,
-    resources: true,
+    solutions: false,
+    company: false,
+    resources: false,
   });
 
   const toggle = (key: string) => setOpen((p) => ({ ...p, [key]: !p[key] }));
 
   return (
-    <footer className="bg-background border-t relative overflow-hidden" aria-label="Site footer">
-      <AnimatedCodeBackground variant="default" density="low" />
-      <AdinkraBackground aria-hidden="true" />
+    <footer className="site-footer relative overflow-hidden" aria-label="Site footer">
 
       {/* Waveform top border */}
       <div aria-hidden="true" className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
@@ -115,11 +110,12 @@ export function Footer() {
                 <path
                   d="M0 12 Q 20 2, 40 12 T 80 12 T 120 12 T 160 12 T 200 12 T 240 12 T 280 12 T 320 12"
                   fill="none"
-                  stroke="hsl(var(--primary))"
+                  stroke="currentColor"
+                  className="text-[var(--color-action)]"
                   strokeWidth="1.2"
                   opacity="0.5"
                 />
-                <rect x="0" y="11" width="320" height="0.5" fill="hsl(var(--border))" opacity="0.6" />
+                <rect x="0" y="11" width="320" height="0.5" fill="currentColor" className="text-[var(--color-border)]" opacity="0.6" />
               </svg>
             </div>
 
@@ -130,7 +126,7 @@ export function Footer() {
             </address>
             <p
               className="text-muted-foreground text-sm leading-relaxed max-w-md mx-auto md:mx-0 text-balance"
-              style={{ fontFamily: 'var(--font-ui)' }}
+              style={{ fontFamily: 'var(--font-family-ui), Inter, sans-serif' }}
             >
               Intelligent automation for growing businesses. Editorial, technical, human.
             </p>
@@ -185,16 +181,14 @@ export function Footer() {
         {/* Legal row */}
         <div className="border-t border-border/60 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
           <p className="text-xs font-mono tracking-wide text-muted-foreground">
-            © {new Date().getFullYear()} LOG_ON. All Rights Reserved. • Privacy • Terms • <Link href="/sitemap.xml" className="hover:text-primary underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:ring-primary rounded-sm">Sitemap</Link>
+            © {new Date().getFullYear()} LOG_ON. All Rights Reserved. •{' '}
+            <Link href="/privacy" className="hover:text-primary underline-offset-4 hover:underline">Privacy</Link>
+            {' • '}
+            <Link href="/terms" className="hover:text-primary underline-offset-4 hover:underline">Terms</Link>
+            {' • '}
+            <Link href="/sitemap.xml" className="hover:text-primary underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:ring-primary rounded-sm">Sitemap</Link>
           </p>
-          <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
-            <span className="inline-flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-primary animate-pulse" aria-hidden="true" />
-              All systems operational
-            </span>
-            <span aria-hidden="true" className="opacity-30">•</span>
-            <span>Lagos • Remote worldwide</span>
-          </div>
+          <p className="text-xs font-mono text-muted-foreground">Lagos • Remote worldwide</p>
         </div>
       </div>
     </footer>

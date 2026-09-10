@@ -1,17 +1,37 @@
-
 "use client";
 
-import React from 'react';
+import { usePathname } from "next/navigation";
+import { insights } from "@/lib/data/insights";
+import { WrittenArticleShell } from "@/components/articles/written-article-shell";
 
-const ArticleContent = () => {
+export default function ArticleContent() {
+  const pathname = usePathname() || "";
+  const slug = pathname.split("/").filter(Boolean).pop() || "";
+  const insight = insights.find((item) => item.slug === slug);
+
+  if (!insight) {
     return (
-        <div>
-            <p className="mb-6 text-lg text-muted-foreground">This is a placeholder for the article content. The full content will be dynamically loaded based on the article's slug.</p>
-            <p className="mb-6">Please check back later or contact support if you believe this is an error.</p>
-            <h2 className="text-2xl font-bold mt-12 mb-4">Coming Soon</h2>
-            <p className="mb-6">More detailed content for this insight will be available shortly.</p>
-        </div>
+      <div>
+        <p className="mb-6 text-lg">This insight could not be found. Return to the hub and pick a live article.</p>
+      </div>
     );
-};
+  }
 
-export default ArticleContent;
+  return (
+    <WrittenArticleShell
+      clusterHref="/insights"
+      clusterLabel="LOG_ON Insights"
+      title={insight.title}
+      description={insight.description}
+      extra={[
+        {
+          heading: "In this article",
+          paragraphs: [
+            `${insight.title} sits in our ${insight.tags.join(", ")} set. It is part of the same operating library as the AI Search and AI Agents clusters: entity-clear, dated, and written so a director can brief a board.`,
+            "Use the related articles at the bottom of this page for adjacent playbooks. If you came here from search, start with the Insights hub for the cluster map.",
+          ],
+        },
+      ]}
+    />
+  );
+}

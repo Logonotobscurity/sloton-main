@@ -19,9 +19,9 @@ export default function LeadershipPage() {
     return (
         <div>
              <BreadcrumbSchema items={[
-               { name: 'Home', url: 'https://logonsolutions.netlify.app' },
-               { name: 'About', url: 'https://logonsolutions.netlify.app/about' },
-               { name: 'Our Leadership', url: 'https://logonsolutions.netlify.app/about/our-leadership' },
+               { name: 'Home', url: 'https://logonai.netlify.app' },
+               { name: 'About', url: 'https://logonai.netlify.app/about' },
+               { name: 'Our Leadership', url: 'https://logonai.netlify.app/about/our-leadership' },
              ]} />
              {teamMembers.map(member => (
                <PersonSchema

@@ -8,12 +8,8 @@ const __dirname = dirname(__filename);
 const nextConfig = {
   // Set the output file tracing root to the project directory to avoid lockfile warnings
   outputFileTracingRoot: __dirname,
-  
-  // Ignore ESLint errors during build (run separately in CI)
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  
+  allowedDevOrigins: ['*.e2b.app', '*.e2b.dev'],
+
   // Ignore TypeScript errors during build for faster deployments
   typescript: {
     ignoreBuildErrors: false, // Keep this false to catch type errors
@@ -98,13 +94,16 @@ const nextConfig = {
   // Redirects for SEO (example - add your specific redirects)
   async redirects() {
     return [
-      // Add any URL redirects here for SEO purposes
-      // Example:
-      // {
-      //   source: '/old-page',
-      //   destination: '/new-page',
-      //   permanent: true, // 301 redirect
-      // },
+      {
+        source: '/about/analyst-reports',
+        destination: '/about/reports',
+        permanent: true,
+      },
+      {
+        source: '/search',
+        destination: '/insights',
+        permanent: false,
+      },
     ];
   },
 };

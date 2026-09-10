@@ -1,5 +1,5 @@
-import crypto from 'crypto';
 import { getConfig } from '@/config';
+import { getCSPPolicy } from '@/lib/csp';
 
 // Security Constants (now loaded from config)
 export const SECURITY_CONSTANTS = {
@@ -7,14 +7,6 @@ export const SECURITY_CONSTANTS = {
     WINDOW: getConfig().security.rateLimitWindow,
     MAX_REQUESTS: getConfig().security.rateLimitMaxRequests,
   },
-  JWT: {
-    EXPIRY: getConfig().security.jwtExpiry,
-    REFRESH_EXPIRY: getConfig().security.jwtRefreshExpiry,
-  },
-  CSRF: {
-    COOKIE_NAME: getConfig().security.csrfCookieName,
-    HEADER_NAME: getConfig().security.csrfHeaderName,
-  }
 };
 
 // Security Headers Configuration
@@ -32,34 +24,12 @@ export const SECURITY_HEADERS = {
   api: {
     'Access-Control-Allow-Credentials': 'true',
     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-    'Access-Control-Allow-Headers': 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
+    'Access-Control-Allow-Headers': 'X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
   }
 };
 
-// Generate CSP Policy
-function getCSPPolicy() {
-  return [
-    "default-src 'self'",
-    "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com",
-    "style-src 'self' 'unsafe-inline'",
-    "img-src 'self' data: https: blob:",
-    "font-src 'self' data:",
-    "connect-src 'self' https://api.logonsolutions.netlify.app https://*.vercel.app",
-    "media-src 'none'",
-    "object-src 'none'",
-    "frame-ancestors 'none'",
-    "base-uri 'self'",
-    "form-action 'self'",
-    "frame-src 'self'",
-    "worker-src 'self' blob:",
-    "manifest-src 'self'",
-  ].join('; ');
-}
 
-// CSRF Protection
-export function generateCSRFToken(): string {
-  return crypto.randomBytes(32).toString('hex');
-}
+
 
 // Rate Limiting
 export class RateLimiter {
@@ -132,20 +102,6 @@ export class RateLimiter {
     clearInterval(this.cleanupInterval);
     this.store.clear();
   }
-}
-
-// Request Validation
-export function validateRequest(request: Request): boolean {
-  const origin = request.headers.get('origin');
-  const referer = request.headers.get('referer');
-  
-  // Check for missing origin/referer in cross-origin requests
-  if (request.mode === 'cors' && !origin && !referer) {
-    return false;
-  }
-  
-  // Add more validation as needed
-  return true;
 }
 
 // Sanitize Input

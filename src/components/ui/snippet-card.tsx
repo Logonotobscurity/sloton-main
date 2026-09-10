@@ -3,6 +3,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Copy, Check, Terminal } from "lucide-react";
+import { copyToClipboard } from "@/lib/social-share";
 
 interface SnippetProps {
   title?: string;
@@ -23,7 +24,8 @@ export function SnippetCard({ title = "AI Agent — RAG Assistant", language = "
 
   const onCopy = async () => {
     try {
-      await navigator.clipboard.writeText(code);
+      const ok = await copyToClipboard(code);
+      if (!ok) return;
       setCopied(true);
       setTimeout(() => setCopied(false), 1600);
     } catch {}

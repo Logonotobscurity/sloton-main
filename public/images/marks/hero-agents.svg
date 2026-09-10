@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img">
+  <rect width="1600" height="900" fill="#FCFCF8"/>
+  
+  <rect x="1040" y="300" width="280" height="200" rx="40" fill="none" stroke="#006B4D" stroke-width="5"/>
+  <circle cx="1120" cy="380" r="16" fill="#006B4D"/>
+  <circle cx="1240" cy="380" r="16" fill="#006B4D"/>
+  <path d="M1140 440 Q1180 470 1220 440" fill="none" stroke="#BD005B" stroke-width="5"/>
+  <line x1="1180" y1="500" x2="1180" y2="580" stroke="#006B4D" stroke-width="4"/>
+  <circle cx="1180" cy="600" r="14" fill="#BD005B"/>
+  <text x="1000" y="220" font-family="IBM Plex Mono, monospace" font-size="20" fill="#006B4D">PERCEIVE · ACT · LOG</text>
+
+</svg>

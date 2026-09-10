@@ -29,41 +29,41 @@ export default function AboutPage() {
   return (
     <div>
         <PageHero 
+            kicker="Company"
+            visual="/images/marks/hero-company.svg"
             title="Your Digital Architects"
             description="LOG_ON is more than a technology provider; we are your strategic partner in growth. Our mission is to empower businesses by building intelligent systems that drive efficiency, spark innovation, and create lasting competitive advantages. We believe in connecting the dots between technology and business goals to deliver integrated solutions that produce real-world results."
         />
 
-        <section className="py-fluid-lg">
-            <div className="container mx-auto px-fluid-sm">
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+        <section className="verdara-section py-16 lg:py-20">
+            <div className="container mx-auto px-5 lg:px-10">
+                <p className="verdara-kicker">Proof</p>
+                <h2 className="verdara-title mt-2">What we have <em>measured</em></h2>
+                <div className="verdara-grid verdara-grid-4 mt-10">
                     {stats.map(stat => (
-                        <div key={stat.label}>
-                            <p className="text-4xl md:text-5xl font-bold text-primary">{stat.value}</p>
-                            <p className="text-muted-foreground mt-2 text-sm md:text-base">{stat.label}</p>
-                        </div>
+                        <article key={stat.label} className="verdara-card">
+                            <p className="verdara-title text-[2rem]">{stat.value}</p>
+                            <p className="verdara-lede mt-2">{stat.label}</p>
+                        </article>
                     ))}
                 </div>
             </div>
         </section>
 
-        <section className="container mx-auto px-fluid-sm">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-                <GlowingCard>
-                    <div className="p-6 md:p-8">
-                        <h3 className="text-fluid-md font-bold font-headline flex items-center gap-3"><Globe className="h-8 w-8 text-primary"/> Our Mission</h3>
-                        <p className="text-muted-foreground mt-4">To architect and build integrated digital ecosystems where businesses of all sizes can thrive, automate, and innovate with confidence.</p>
-                    </div>
-                </GlowingCard>
-                <GlowingCard>
-                    <div className="p-6 md:p-8">
-                        <h3 className="text-fluid-md font-bold font-headline flex items-center gap-3"><Scale className="h-8 w-8 text-primary"/> Our Values</h3>
-                        <ul className="text-muted-foreground mt-4 space-y-2">
+        <section className="verdara-section py-8">
+            <div className="container mx-auto px-5 lg:px-10 verdara-grid verdara-grid-2">
+                <article className="verdara-card">
+                        <h3>Our Mission</h3>
+                        <p className="verdara-lede mt-4">To architect and build integrated digital ecosystems where businesses of all sizes can thrive, automate, and innovate with confidence.</p>
+                </article>
+                <article className="verdara-card">
+                        <h3>Our Values</h3>
+                        <ul className="verdara-lede mt-4 space-y-2">
                             <li><strong>Innovation-Driven:</strong> We are constantly exploring new technologies to deliver cutting-edge solutions.</li>
                             <li><strong>Client-Centric:</strong> Your success is our ultimate metric. We build partnerships based on trust and transparency.</li>
                             <li><strong>Results-Oriented:</strong> We design solutions focused on delivering measurable, tangible business value.</li>
                         </ul>
-                    </div>
-                </GlowingCard>
+                </article>
             </div>
         </section>
 
@@ -187,17 +187,13 @@ export default function AboutPage() {
                 </div>
                 <div>
                     <h3 className="text-2xl font-bold font-headline mb-4 text-center">Our Core Research Areas</h3>
-                    <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                    <div className="verdara-grid verdara-grid-3">
                         {researchAreas.map(area => (
-                            <Card key={area.title}>
-                                <CardHeader>
-                                    <area.icon className="h-8 w-8 text-primary"/>
-                                    <CardTitle className="pt-4">{area.title}</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <p className="text-muted-foreground">{area.description}</p>
-                                </CardContent>
-                            </Card>
+                            <article key={area.title} className="verdara-card">
+                                    <area.icon className="h-5 w-5" aria-hidden />
+                                    <h3 className="mt-3">{area.title}</h3>
+                                    <p className="verdara-lede mt-auto pt-3">{area.description}</p>
+                            </article>
                         ))}
                     </div>
                 </div>
@@ -211,17 +207,13 @@ export default function AboutPage() {
                     <p className="mt-4 text-fluid-base text-muted-foreground">Trust is the foundation of every partnership. We are deeply committed to protecting your data, respecting privacy, and maintaining the highest standards of security and compliance.</p>
                 </div>
                 <div className="max-w-5xl mx-auto">
-                    <div className="grid md:grid-cols-3 gap-8">
+                    <div className="verdara-grid verdara-grid-3">
                         {trustPillars.map(pillar => (
-                            <Card key={pillar.title} className="bg-background">
-                                <CardHeader>
-                                    <pillar.icon className="h-8 w-8 text-primary"/>
-                                    <CardTitle className="pt-4">{pillar.title}</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <p className="text-muted-foreground">{pillar.description}</p>
-                                </CardContent>
-                            </Card>
+                            <article key={pillar.title} className="verdara-card">
+                                    <pillar.icon className="h-5 w-5" aria-hidden />
+                                    <h3 className="mt-3">{pillar.title}</h3>
+                                    <p className="verdara-lede mt-auto pt-3">{pillar.description}</p>
+                            </article>
                         ))}
                     </div>
                 </div>

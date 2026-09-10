@@ -85,7 +85,7 @@ NETLIFY_AUTH_TOKEN=your_netlify_auth_token
 NETLIFY_SITE_ID=your_netlify_site_id
 
 # Required for environment
-NEXT_PUBLIC_SITE_URL=https://logonsolutions.netlify.app
+NEXT_PUBLIC_SITE_URL=https://logonai.netlify.app
 
 # Optional for code coverage
 CODECOV_TOKEN=your_codecov_token
@@ -213,7 +213,7 @@ git push origin test/ci-pipeline
 ### Test Production Deployment
 1. Merge PR to `main`
 2. Watch deployment workflow
-3. Verify site at https://logonsolutions.netlify.app
+3. Verify site at https://logonai.netlify.app
 
 ## 🐛 Troubleshooting
 
@@ -291,7 +291,7 @@ All contributors should:
 - **Documentation:** [.github/WORKFLOWS.md](.github/WORKFLOWS.md)
 - **Issues:** Use issue templates
 - **Email:** logonthepage@gmail.com
-- **Website:** https://logonsolutions.netlify.app
+- **Website:** https://logonai.netlify.app
 
 ---
 

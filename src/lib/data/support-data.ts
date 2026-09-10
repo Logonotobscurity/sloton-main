@@ -12,7 +12,7 @@ export const supportCategories = [
     icon: Users,
     title: 'Community Forums',
     description: 'Connect with other LOG_ON users, ask questions, and share best practices and solutions.',
-    href: '#',
+    href: '/insights',
   },
   {
     icon: MessageSquare,

@@ -19,10 +19,6 @@ export interface AppConfig {
   security: {
     rateLimitWindow: number; // milliseconds
     rateLimitMaxRequests: number;
-    jwtExpiry: string;
-    jwtRefreshExpiry: string;
-    csrfCookieName: string;
-    csrfHeaderName: string;
   };
   
   // Logging
@@ -87,16 +83,12 @@ export const defaultAppConfig: AppConfig = {
   isDevelopment: true,
   isProduction: false,
   
-  baseUrl: 'https://logonsolutions.netlify.app',
-  apiUrl: 'https://api.logonsolutions.netlify.app',
+  baseUrl: 'https://logonai.netlify.app',
+  apiUrl: 'https://logonai.netlify.app',
   
   security: {
     rateLimitWindow: TIMING.MINUTE, // 1 minute
     rateLimitMaxRequests: 60,
-    jwtExpiry: '1h',
-    jwtRefreshExpiry: '7d',
-    csrfCookieName: 'XSRF-TOKEN',
-    csrfHeaderName: 'X-XSRF-TOKEN',
   },
   
   logging: {
@@ -188,12 +180,6 @@ export function getAppConfigFromEnvironment(): Partial<AppConfig> {
   }
   if (process.env.RATE_LIMIT_MAX_REQUESTS) {
     config.security!.rateLimitMaxRequests = parseInt(process.env.RATE_LIMIT_MAX_REQUESTS);
-  }
-  if (process.env.JWT_EXPIRY) {
-    config.security!.jwtExpiry = process.env.JWT_EXPIRY;
-  }
-  if (process.env.JWT_REFRESH_EXPIRY) {
-    config.security!.jwtRefreshExpiry = process.env.JWT_REFRESH_EXPIRY;
   }
   
   // Logging

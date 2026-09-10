@@ -22,38 +22,15 @@ export default function SupportPage() {
         title="LOG_ON Support Center"
         description="Welcome! We're here to help you succeed. Find answers, connect with the community, or get in touch with our expert support team."
         icon={<LifeBuoy className="h-12 w-12 md:h-16 md:w-16 text-primary" />}
-      >
-        <div className="relative max-w-xl mx-auto mt-8">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-            <Input
-              type="text"
-              placeholder="Search our knowledge base..."
-              className="w-full h-12 pl-12 pr-4 rounded-lg bg-secondary/50 border-border/50 shadow-sm"
-            />
-        </div>
-      </PageHero>
+      />
       <div className="container mx-auto px-fluid-sm py-fluid-lg">
         <section className="py-fluid-lg">
-             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+             <div className="verdara-grid verdara-grid-4">
                 {supportCategories.map((category) => (
-                <GlowingCard key={category.title}>
-                    <Link href={category.href} className="block h-full">
-                        <div className="p-6 h-full flex flex-col">
-                            <CardHeader className="p-0">
-                                <category.icon className="h-8 w-8 text-primary" />
-                                <CardTitle className="pt-4 text-lg md:text-xl">{category.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent className="p-0 pt-4 flex-grow">
-                                <p className="text-muted-foreground text-sm md:text-base">{category.description}</p>
-                            </CardContent>
-                             <CardContent className="p-0 pt-4 mt-auto">
-                                <div className="text-primary font-semibold flex items-center group-hover:text-primary transition-colors">
-                                    Go to {category.title} <ArrowRight className="ml-2 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
-                                </div>
-                            </CardContent>
-                        </div>
+                    <Link key={category.title} href={category.href} className="verdara-card">
+                                <h3>{category.title}</h3>
+                                <p className="verdara-lede mt-auto pt-3">{category.description}</p>
                     </Link>
-                </GlowingCard>
                 ))}
             </div>
         </section>

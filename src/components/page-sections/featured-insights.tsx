@@ -37,7 +37,20 @@ const createCardVariants = (index: number) => ({
 
 export function FeaturedInsights() {
   // Memoize array slicing to prevent recalculation on re-renders
-  const featuredInsights = React.useMemo(() => insights.slice(0, 6), []);
+  const featuredInsights = React.useMemo(() => {
+    const originals = [
+      "seo-vs-geo-invisible-in-ai-search",
+      "why-llms-txt-matters-for-seo",
+      "ai-investment-playbook",
+      "how-to-build-ai-agent-guide",
+      "transforming-customer-support-with-ai",
+      "guide-to-business-process-automation",
+    ];
+    const picked = originals
+      .map((slug) => insights.find((i) => i.slug === slug))
+      .filter(Boolean) as typeof insights;
+    return picked.length ? picked : insights.slice(0, 6);
+  }, []);
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const InsightCard = ({ insight }: { insight: typeof insights[0] }) => (
@@ -88,7 +101,7 @@ export function FeaturedInsights() {
   );
 
   return (
-    <section className="py-fluid-lg bg-background">
+    <section className="verdara-section py-16 lg:py-20">
       <AnimatedCodeBackground variant="insights" density="medium" />
       <div className="container mx-auto px-fluid-sm">
         <div className="text-center max-w-3xl mx-auto">
@@ -124,7 +137,7 @@ export function FeaturedInsights() {
               </CarouselContent>
             </Carousel>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="verdara-grid verdara-grid-3">
               {featuredInsights.slice(0, 3).map((insight, i) => (
                 <motion.div
                   key={insight.title}

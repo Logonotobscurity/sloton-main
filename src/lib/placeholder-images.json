@@ -1,198 +1,30 @@
 {
-  "supportChatbot": {
-    "src": "https://picsum.photos/seed/supportChatbot/400/267",
-    "width": 400,
-    "height": 267,
-    "alt": "AI-powered customer support chatbot interface",
-    "dataAiHint": "support chatbot"
-  },
-  "financialData": {
-    "src": "https://picsum.photos/seed/financialData/400/267",
-    "width": 400,
-    "height": 267,
-    "alt": "Financial data analysis dashboard",
-    "dataAiHint": "financial data"
-  },
-  "cloudInfrastructure": {
-    "src": "https://picsum.photos/seed/cloudInfrastructure/400/267",
-    "width": 400,
-    "height": 267,
-    "alt": "Diagram of a scalable cloud infrastructure",
-    "dataAiHint": "cloud infrastructure"
-  },
-  "analyticsDashboard": {
-    "src": "https://picsum.photos/seed/analyticsDashboard/400/267",
-    "width": 400,
-    "height": 267,
-    "alt": "Business intelligence and analytics dashboard",
-    "dataAiHint": "analytics dashboard"
-  },
-  "newsWebsite": {
-    "src": "https://picsum.photos/seed/newsWebsite/400/267",
-    "width": 400,
-    "height": 267,
-    "alt": "Homepage of a modern online news publisher",
-    "dataAiHint": "news website"
-  },
-  "llmsTxtFile": {
-    "src": "https://picsum.photos/seed/llmsTxtFile/400/267",
-    "width": 400,
-    "height": 267,
-    "alt": "An illustration of a text file for LLMs",
-    "dataAiHint": "text file document"
-  },
-  "aiContentFormats": {
-    "src": "https://picsum.photos/seed/aiContentFormats/400/267",
-    "width": 400,
-    "height": 267,
-    "alt": "Diagram showing different AI content formats",
-    "dataAiHint": "ai content formats"
-  },
-  "seoVsGeo": {
-    "src": "https://picsum.photos/seed/seoVsGeo/400/267",
-    "width": 400,
-    "height": 267,
-    "alt": "Diagram comparing SEO and GEO strategies",
-    "dataAiHint": "seo versus geo diagram"
-  },
-  "stockMarketChart": {
-    "src": "https://picsum.photos/seed/stockMarketChart/400/267",
-    "width": 400,
-    "height": 267,
-    "alt": "A chart showing stock market performance for AI companies",
-    "dataAiHint": "stock market chart"
-  },
-  "customerSupportAi": {
-    "src": "https://picsum.photos/seed/customerSupportAi/400/267",
-    "width": 400,
-    "height": 267,
-    "alt": "An AI chatbot helping a customer",
-    "dataAiHint": "customer support chatbot"
-  },
-  "codeOnScreen": {
-    "src": "https://picsum.photos/seed/codeOnScreen/400/267",
-    "width": 400,
-    "height": 267,
-    "alt": "Code on a computer screen related to prompt engineering",
-    "dataAiHint": "code on screen"
-  },
-  "abstractDataNetwork": {
-    "src": "https://picsum.photos/seed/abstractDataNetwork/400/267",
-    "width": 400,
-    "height": 267,
-    "alt": "Abstract visualization of a data network for a recommendation system",
-    "dataAiHint": "abstract data network"
-  },
-  "glowingAiBrain": {
-    "src": "https://picsum.photos/seed/glowingAiBrain/400/267",
-    "width": 400,
-    "height": 267,
-    "alt": "A glowing illustration of an AI brain",
-    "dataAiHint": "glowing ai brain"
-  },
-  "professionalsMeeting": {
-    "src": "https://picsum.photos/seed/professionalsMeeting/400/267",
-    "width": 400,
-    "height": 267,
-    "alt": "Business professionals in a meeting discussing prompt engineering",
-    "dataAiHint": "professionals meeting"
-  },
-  "futuristicAiTech": {
-    "src": "https://picsum.photos/seed/futuristicAiTech/400/267",
-    "width": 400,
-    "height": 267,
-    "alt": "Futuristic AI technology interface",
-    "dataAiHint": "futuristic AI technology"
-  },
-  "workflowAutomation": {
-    "src": "https://picsum.photos/seed/workflowAutomation/400/267",
-    "width": 400,
-    "height": 267,
-    "alt": "A diagram of a business process automation workflow",
-    "dataAiHint": "workflow automation diagram"
-  },
-  "cloudSecurity": {
-    "src": "https://picsum.photos/seed/cloudSecurity/400/267",
-    "width": 400,
-    "height": 267,
-    "alt": "Illustration of secure cloud computing servers",
-    "dataAiHint": "cloud computing servers"
-  },
-  "visualProgramming": {
-    "src": "https://picsum.photos/seed/visualProgramming/400/267",
-    "width": 400,
-    "height": 267,
-    "alt": "A visual programming interface for no-code development",
-    "dataAiHint": "visual programming interface"
-  },
-  "cyberSecurityLock": {
-    "src": "https://picsum.photos/seed/cyberSecurityLock/400/267",
-    "width": 400,
-    "height": 267,
-    "alt": "A digital lock symbolizing cybersecurity",
-    "dataAiHint": "cyber security lock"
-  },
-  "authorOluwamayowa": {
-    "src": "https://picsum.photos/seed/authorOluwamayowa/128/128",
-    "width": 128,
-    "height": 128,
-    "alt": "Oluwamayowa Logo, Lead Developer & Automation Solution Architect",
-    "dataAiHint": "male developer"
-  },
-  "authorFavour": {
-    "src": "https://picsum.photos/seed/authorFavour/128/128",
-    "width": 128,
-    "height": 128,
-    "alt": "Favour Alfred, Team Lead Sales & Business Process Automation",
-    "dataAiHint": "female professional"
-  },
-  "llmsDiagram": {
-    "src": "https://picsum.photos/seed/llmsDiagram/800/450",
-    "width": 800,
-    "height": 450,
-    "alt": "A diagram showing the benefits of llms.txt for SEO",
-    "dataAiHint": "seo diagram"
-  },
-  "howLlmsWork": {
-    "src": "https://picsum.photos/seed/howLlmsWork/600/336",
-    "width": 600,
-    "height": 336,
-    "alt": "Diagram explaining how Large Language Models work",
-    "dataAiHint": "llm diagram"
-  },
-  "toolsGeneratingDocs": {
-    "src": "https://picsum.photos/seed/toolsGeneratingDocs/600/400",
-    "width": 600,
-    "height": 400,
-    "alt": "Abstract image of tools generating documentation",
-    "dataAiHint": "abstract documentation"
-  },
-  "seoChecklist": {
-    "src": "https://picsum.photos/seed/seoChecklist/600/400",
-    "width": 600,
-    "height": 400,
-    "alt": "Checklist of best practices for SEO",
-    "dataAiHint": "seo checklist"
-  },
-  "dataAnalyticsDashboard": {
-    "src": "https://picsum.photos/seed/dataAnalyticsDashboard/800/450",
-    "width": 800,
-    "height": 450,
-    "alt": "Data analytics dashboard with charts and graphs",
-    "dataAiHint": "data dashboard"
-  },
-  "workflowDiagram": {
-    "src": "https://picsum.photos/seed/workflowDiagram/800/450",
-    "width": 800,
-    "height": 450,
-    "alt": "Diagram showing a structured workflow",
-    "dataAiHint": "workflow diagram"
-  },
-  "gigpilotAvatar": {
-    "src": "https://picsum.photos/seed/gigpilotAvatar/40/40",
-    "width": 40,
-    "height": 40,
-    "alt": "GIGPILOT Avatar",
-    "dataAiHint": "robot avatar"
-  }
+  "supportChatbot": { "src": "/images/marks/card-chatbot.svg", "width": 800, "height": 534, "alt": "Support chatbot bubbles", "dataAiHint": "support chatbot" },
+  "financialData": { "src": "/images/marks/card-finance.svg", "width": 800, "height": 534, "alt": "Financial trend line", "dataAiHint": "financial data" },
+  "cloudInfrastructure": { "src": "/images/marks/card-cloud.svg", "width": 800, "height": 534, "alt": "Stacked cloud cylinders", "dataAiHint": "cloud infrastructure" },
+  "analyticsDashboard": { "src": "/images/marks/card-dashboard.svg", "width": 800, "height": 534, "alt": "KPI bars", "dataAiHint": "analytics dashboard" },
+  "newsWebsite": { "src": "/images/marks/card-news.svg", "width": 800, "height": 534, "alt": "Editorial layout", "dataAiHint": "news website" },
+  "llmsTxtFile": { "src": "/images/marks/card-file.svg", "width": 800, "height": 534, "alt": "llms.txt document", "dataAiHint": "text file document" },
+  "aiContentFormats": { "src": "/images/marks/card-formats.svg", "width": 800, "height": 534, "alt": "Content format cards", "dataAiHint": "ai content formats" },
+  "seoVsGeo": { "src": "/images/marks/card-seo.svg", "width": 800, "height": 534, "alt": "SEO versus GEO", "dataAiHint": "seo versus geo diagram" },
+  "stockMarketChart": { "src": "/images/marks/card-chart.svg", "width": 800, "height": 534, "alt": "Rising chart", "dataAiHint": "stock market chart" },
+  "customerSupportAi": { "src": "/images/marks/card-chatbot.svg", "width": 800, "height": 534, "alt": "Customer support conversation", "dataAiHint": "customer support chatbot" },
+  "codeOnScreen": { "src": "/images/marks/card-code.svg", "width": 800, "height": 534, "alt": "Agent code snippet", "dataAiHint": "code on screen" },
+  "abstractDataNetwork": { "src": "/images/marks/card-network.svg", "width": 800, "height": 534, "alt": "Node network", "dataAiHint": "abstract data network" },
+  "glowingAiBrain": { "src": "/images/marks/card-brain.svg", "width": 800, "height": 534, "alt": "Model core", "dataAiHint": "glowing ai brain" },
+  "professionalsMeeting": { "src": "/images/marks/card-meeting.svg", "width": 800, "height": 534, "alt": "Three operators", "dataAiHint": "professionals meeting" },
+  "futuristicAiTech": { "src": "/images/marks/card-future.svg", "width": 800, "height": 534, "alt": "Interface frame", "dataAiHint": "futuristic AI technology" },
+  "workflowAutomation": { "src": "/images/marks/card-workflow.svg", "width": 800, "height": 534, "alt": "Three-step workflow", "dataAiHint": "workflow automation diagram" },
+  "cloudSecurity": { "src": "/images/marks/card-lock.svg", "width": 800, "height": 534, "alt": "Padlock", "dataAiHint": "cloud computing servers" },
+  "visualProgramming": { "src": "/images/marks/card-nocode.svg", "width": 800, "height": 534, "alt": "Block canvas", "dataAiHint": "visual programming interface" },
+  "cyberSecurityLock": { "src": "/images/marks/card-lock.svg", "width": 800, "height": 534, "alt": "Security lock", "dataAiHint": "cyber security lock" },
+  "authorOluwamayowa": { "src": "/images/marks/avatar-oluwamayowa.svg", "width": 128, "height": 128, "alt": "Oluwamayowa Logo", "dataAiHint": "male developer" },
+  "authorFavour": { "src": "/images/marks/avatar-favour.svg", "width": 128, "height": 128, "alt": "Favour Alfred", "dataAiHint": "female professional" },
+  "llmsDiagram": { "src": "/images/marks/card-file.svg", "width": 800, "height": 534, "alt": "llms.txt benefits", "dataAiHint": "seo diagram" },
+  "howLlmsWork": { "src": "/images/marks/card-brain.svg", "width": 800, "height": 534, "alt": "How LLMs work", "dataAiHint": "llm diagram" },
+  "toolsGeneratingDocs": { "src": "/images/marks/card-docs.svg", "width": 800, "height": 534, "alt": "Documentation frame", "dataAiHint": "abstract documentation" },
+  "seoChecklist": { "src": "/images/marks/card-checklist.svg", "width": 800, "height": 534, "alt": "Checklist", "dataAiHint": "seo checklist" },
+  "dataAnalyticsDashboard": { "src": "/images/marks/card-dashboard.svg", "width": 800, "height": 534, "alt": "Analytics bars", "dataAiHint": "data dashboard" },
+  "workflowDiagram": { "src": "/images/marks/card-workflow.svg", "width": 800, "height": 534, "alt": "Workflow steps", "dataAiHint": "workflow diagram" },
+  "gigpilotAvatar": { "src": "/images/marks/avatar-bot.svg", "width": 40, "height": 40, "alt": "Assistant mark", "dataAiHint": "robot avatar" }
 }

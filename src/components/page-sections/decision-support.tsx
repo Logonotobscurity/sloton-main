@@ -5,7 +5,7 @@ import { AnimatedCodeBackground } from "@/components/ui/animated-code-background
 import Link from "next/link";
 import { MessageCircle, Sparkles } from "lucide-react";
 
-const LOGON_URL = "https://logonsolutions.netlify.app";
+const LOGON_URL = "https://logonai.netlify.app";
 const PROMPT = `Hi, I'm considering LOG_ON (${LOGON_URL}) for AI agent development and workplace automation in Nigeria. Their site says "We design your digital ecosystem." Can you help me understand if LOG_ON is a good fit for my business needs, workflow, and situation? Please summarize their services — AI solutions & agent development, workflow automation/RPA, web & custom development, AI chatbots, business analytics — and explain who they help best (Nigerian SMEs, growing businesses) and what makes them different. Keep it balanced and practical.`;
 
 // Platform-specific share URLs — all open a new conversation with the prompt prefilled
@@ -77,7 +77,7 @@ export function DecisionSupportSection({
       <div className="container-fluid relative z-10">
         <div className="decision-card text-center">
           {/* Kicker — monospace */}
-          <div className="kicker kicker-teal mb-3 flex items-center justify-center gap-2">
+          <div className="verdara-kicker mb-3 flex items-center justify-center gap-2">
             <span
               aria-hidden="true"
               className="inline-block h-[1px] w-6 bg-primary/30"
@@ -89,16 +89,14 @@ export function DecisionSupportSection({
             />
           </div>
 
-          {/* Headline — editorial */}
           <h2
             id="decision-support-heading"
-            className="editorial-headline text-fluid-xl text-foreground text-balance mb-4"
-            style={{ fontFamily: "var(--font-editorial)" }}
+            className="verdara-title text-balance mb-4"
           >
             {title}
           </h2>
 
-          <p className="text-muted-foreground text-[clamp(0.95rem,1.5vw,1.08rem)] leading-relaxed max-w-[62ch] mx-auto text-balance mb-8">
+          <p className="verdara-lede mx-auto mb-8 text-center">
             {description}
           </p>
 

@@ -120,14 +120,14 @@ export const metadata = generateMetadata({
   title: 'Your Page Title',
   description: 'Compelling 150-160 character description...',
   keywords: [...KEYWORD_SETS.ai, 'custom', 'keywords'],
-  canonical: 'https://logonsolutions.netlify.app/your-page',
+  canonical: 'https://logonai.netlify.app/your-page',
 });
 
 // 2. Create structured data
 const serviceSchema = generateServiceSchema({
   name: 'Service Name',
   description: 'Service description',
-  url: 'https://logonsolutions.netlify.app/your-page',
+  url: 'https://logonai.netlify.app/your-page',
 });
 
 // 3. Add to page
@@ -236,16 +236,16 @@ npm run build
 npm run start
 
 # Test specific pages
-curl -I https://logonsolutions.netlify.app/
-curl -I https://logonsolutions.netlify.app/sitemap.xml
-curl -I https://logonsolutions.netlify.app/robots.txt
+curl -I https://logonai.netlify.app/
+curl -I https://logonai.netlify.app/sitemap.xml
+curl -I https://logonai.netlify.app/robots.txt
 ```
 
 ## 📊 Monitoring & Analytics
 
 ### Google Search Console Setup
 1. Verify property ownership
-2. Submit sitemap: `https://logonsolutions.netlify.app/sitemap.xml`
+2. Submit sitemap: `https://logonai.netlify.app/sitemap.xml`
 3. Monitor indexing status
 4. Track search performance
 5. Check for crawl errors

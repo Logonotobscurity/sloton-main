@@ -145,18 +145,32 @@ export function CardImage({
   return (
     <div className="overflow-hidden rounded-t-xl group">
       <div data-ai-hint={dataAiHint}>
-        <Image
-          src={src}
-          alt={alt}
-          width={width}
-          height={height}
-          className={cn(
-            'w-full h-48 sm:h-56 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105',
-            className
-          )}
-          sizes={ResponsiveSizes.CARD_GRID}
-          priority={priority}
-        />
+        {src.endsWith('.svg') ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={src}
+            alt={alt}
+            width={width}
+            height={height}
+            className={cn(
+              'w-full h-48 sm:h-56 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105',
+              className
+            )}
+          />
+        ) : (
+          <Image
+            src={src.startsWith('http') ? '/images/marks/hero-default.svg' : src}
+            alt={alt}
+            width={width}
+            height={height}
+            className={cn(
+              'w-full h-48 sm:h-56 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105',
+              className
+            )}
+            sizes={ResponsiveSizes.CARD_GRID}
+            priority={priority}
+          />
+        )}
       </div>
     </div>
   );
@@ -188,6 +202,33 @@ export function LogoImage({
   };
 
   const { width, height, className: sizeClassName } = sizeMap[size];
+
+  // Remote CDNs (icons8, picsum) fail in this environment via /_next/image.
+  if (src.startsWith('http://') || src.startsWith('https://')) {
+    const mark = alt.replace(/ Partner$/i, '').slice(0, 2).toUpperCase();
+    return (
+      <span
+        aria-label={alt}
+        title={alt}
+        className={cn(
+          'inline-flex items-center justify-center rounded-md border border-border bg-secondary/40 font-mono font-semibold text-primary',
+          size === 'sm' && 'h-6 w-6 text-[9px]',
+          size === 'md' && 'h-8 w-8 text-[10px]',
+          size === 'lg' && 'h-12 w-12 text-xs',
+          className
+        )}
+      >
+        {mark}
+      </span>
+    );
+  }
+
+  if (src.endsWith('.svg')) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img src={src} alt={alt} width={width} height={height} className={cn(sizeClassName, className)} />
+    );
+  }
 
   return (
     <Image

@@ -99,7 +99,7 @@ export const metadata = generateMetadata({
   title: 'Your Page Title',
   description: 'Compelling description...',
   keywords: [...KEYWORD_SETS.ai, ...KEYWORD_SETS.automation],
-  canonical: 'https://logonsolutions.netlify.app/page',
+  canonical: 'https://logonai.netlify.app/page',
 });
 ```
 
@@ -111,7 +111,7 @@ import { JsonLd, generateServiceSchema } from '@/lib/seo';
 const schema = generateServiceSchema({
   name: 'AI Solutions',
   description: 'Custom AI development...',
-  url: 'https://logonsolutions.netlify.app/ai-solutions',
+  url: 'https://logonai.netlify.app/ai-solutions',
 });
 
 <JsonLd data={schema} />
@@ -277,7 +277,7 @@ export const metadata = generateMetadata({
   title: 'AI Solutions for Business',
   description: 'Transform your business with custom AI solutions...',
   keywords: [...KEYWORD_SETS.ai, ...KEYWORD_SETS.automation],
-  canonical: 'https://logonsolutions.netlify.app/ai-solutions',
+  canonical: 'https://logonai.netlify.app/ai-solutions',
 });
 ```
 
@@ -289,7 +289,7 @@ import { JsonLd, generateServiceSchema } from '@/lib/seo';
 const serviceSchema = generateServiceSchema({
   name: 'AI Agent Development',
   description: 'Custom AI agents for your business',
-  url: 'https://logonsolutions.netlify.app/ai-solutions',
+  url: 'https://logonai.netlify.app/ai-solutions',
 });
 
 return (
