@@ -13,7 +13,7 @@ export function IdeasLab() {
   const duplicatedProducts = [...products, ...products, ...products];
 
   return (
-    <section className="py-16 md:py-24 bg-secondary/30 relative overflow-hidden">
+    <section className="verdara-section py-16 md:py-24 relative overflow-hidden">
       {/* Creative Animated Code Pattern Background */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         {/* Floating Code Blocks */}
@@ -104,40 +104,28 @@ const pipeline = [
         </motion.div>
 
         {/* Scattered Code Symbols */}
-        {[...Array(15)].map((_, i) => (
+        {Array.from({ length: 15 }).map((_, i) => (
           <motion.div
             key={i}
             className="absolute text-lg font-mono text-foreground font-bold"
             style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
+              top: `${(i * 17) % 100}%`,
+              left: `${(i * 29) % 100}%`,
             }}
             animate={{
               opacity: [0.2, 0.5, 0.2],
               scale: [1, 1.2, 1],
             }}
             transition={{
-              duration: 3 + Math.random() * 4,
+              duration: 3 + (i % 4),
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: (i % 5) * 0.3,
             }}
           >
             {['{ }', '[ ]', '< >', '( )', '=>', '...', '++', '&&', '||', '==='][i % 10]}
           </motion.div>
         ))}
 
-        {/* Grid Pattern Overlay */}
-        <div 
-          className="absolute inset-0" 
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, currentColor 1px, transparent 1px),
-              linear-gradient(to bottom, currentColor 1px, transparent 1px)
-            `,
-            backgroundSize: '60px 60px',
-            opacity: 0.1,
-          }}
-        />
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -148,8 +136,8 @@ const pipeline = [
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-headline">From the Ideas Lab</h2>
-            <p className="mt-4 text-md md:text-lg text-muted-foreground">
+            <h2 className="verdara-title">From the <em>Ideas</em> Lab</h2>
+            <p className="verdara-lede mx-auto mt-4">
               Explore our portfolio of {products.length} innovative projects across {[...new Set(products.map(p => p.category))].length} domains.
             </p>
           </motion.div>

@@ -21,7 +21,7 @@ export const metadata = generateMetadata({
     'llms.txt guide',
     'AI productivity Nigeria',
   ],
-  canonical: 'https://logonsolutions.netlify.app/resources',
+  canonical: '/resources',
 });
 
 const resourcesSchema = {
@@ -29,11 +29,11 @@ const resourcesSchema = {
   '@type': 'CollectionPage',
   name: 'AI & Automation Resources for Nigerian SMEs',
   description: 'A curated library of free AI, automation, and digital transformation resources for businesses in Nigeria and across Africa.',
-  url: 'https://logonsolutions.netlify.app/resources',
+  url: 'https://logonai.netlify.app/resources',
   publisher: {
     '@type': 'Organization',
     name: 'LOG_ON',
-    url: 'https://logonsolutions.netlify.app',
+    url: 'https://logonai.netlify.app',
   },
 };
 
@@ -153,7 +153,7 @@ const resources = [
       },
       {
         title: 'llms.txt Standard Specification',
-        description: 'The emerging standard for providing AI-readable summaries of website content. See our implementation at logonsolutions.netlify.app/llms.txt.',
+        description: 'The emerging standard for providing AI-readable summaries of website content. See our implementation at /llms.txt.',
         href: 'https://llmstxt.org',
         type: 'Standard',
         internal: false,
@@ -205,8 +205,8 @@ export default function ResourcesPage() {
     <div className="bg-background">
       <JsonLd data={resourcesSchema} />
       <BreadcrumbSchema items={[
-        { name: 'Home', url: 'https://logonsolutions.netlify.app' },
-        { name: 'Resources', url: 'https://logonsolutions.netlify.app/resources' },
+        { name: 'Home', url: 'https://logonai.netlify.app' },
+        { name: 'Resources', url: 'https://logonai.netlify.app/resources' },
       ]} />
       <PageHero
         title="AI & Automation Resources"
@@ -214,7 +214,30 @@ export default function ResourcesPage() {
       />
 
       <div className="container mx-auto px-4 md:px-6 py-16 md:py-24 space-y-20">
-
+        <section>
+          <h2 className="text-2xl md:text-3xl font-headline mb-4">Insights clusters</h2>
+          <p className="text-muted-foreground mb-6 max-w-3xl">
+            Operator-authored by Oluwamayowa Logo. Start with the hub, then a cluster.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            {[
+              ['/insights', 'All Insights'],
+              ['/insights/ai-strategy', 'Strategy'],
+              ['/insights/ai-agents', 'Agents'],
+              ['/insights/ai-search', 'LLMO / GEO'],
+              ['/insights/ai-seo', 'AI SEO'],
+              ['/insights/generative-ai', 'GenAI'],
+              ['/insights/ai-functions', 'Functions'],
+              ['/insights/ai-implementation', 'Implementation'],
+              ['/insights/ai-governance', 'Governance'],
+              ['/insights/ai-nigeria', 'Nigeria & Africa'],
+            ].map(([href, label]) => (
+              <Link key={href} href={href} className="rounded-full border border-border px-4 py-2 text-sm hover:border-primary">
+                {label}
+              </Link>
+            ))}
+          </div>
+        </section>
         {resources.map((section) => (
           <section key={section.category} aria-labelledby={`section-${section.category.toLowerCase().replace(/\s+/g, '-')}`}>
             <div className="flex items-center gap-3 mb-8">
@@ -226,39 +249,30 @@ export default function ResourcesPage() {
                 {section.category}
               </h2>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="verdara-grid verdara-grid-3">
               {section.items.map((item) => (
-                <Card key={item.title} className="bg-secondary/30 flex flex-col hover:bg-secondary/50 transition-colors">
-                  <CardHeader className="pb-2">
-                    <div className="flex items-start justify-between gap-2 mb-2">
-                      <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${badgeVariants[item.type] ?? 'bg-secondary text-muted-foreground'}`}>
-                        {item.type}
-                      </span>
-                      {!item.internal && <ExternalLink className="h-4 w-4 text-muted-foreground flex-shrink-0" />}
-                    </div>
-                    <CardTitle className="text-base leading-snug">{item.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex-grow flex flex-col justify-between gap-4">
-                    <CardDescription className="text-sm leading-relaxed">{item.description}</CardDescription>
+                <article key={item.title} className="verdara-card">
+                      <span className="verdara-tag verdara-tag-sky">{item.type}</span>
+                      <h3 className="mt-3">{item.title}</h3>
+                    <p className="verdara-lede mt-auto pt-3">{item.description}</p>
                     {item.internal ? (
                       <Link
                         href={item.href}
-                        className="text-sm text-primary font-medium hover:underline flex items-center gap-1 mt-auto"
+                        className="mt-4 text-sm font-medium underline-offset-4 hover:underline"
                       >
-                        Read more <ArrowRight className="h-3 w-3" />
+                        Read more
                       </Link>
                     ) : (
                       <a
                         href={item.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm text-primary font-medium hover:underline flex items-center gap-1 mt-auto"
+                        className="mt-4 text-sm font-medium underline-offset-4 hover:underline"
                       >
-                        Visit resource <ExternalLink className="h-3 w-3" />
+                        Visit resource
                       </a>
                     )}
-                  </CardContent>
-                </Card>
+                </article>
               ))}
             </div>
           </section>

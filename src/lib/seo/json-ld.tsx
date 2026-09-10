@@ -29,15 +29,7 @@ export function WebSiteSchema() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'LOG_ON',
-    url: 'https://logonsolutions.netlify.app',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: 'https://logonsolutions.netlify.app/search?q={search_term_string}',
-      },
-      'query-input': 'required name=search_term_string',
-    },
+    url: 'https://logonai.netlify.app',
   };
   return <JsonLd data={schema} />;
 }
@@ -51,8 +43,8 @@ export function OrganizationSchema() {
     '@type': 'Organization',
     name: 'LOG_ON',
     alternateName: 'LOG_ON AI Solutions',
-    url: 'https://logonsolutions.netlify.app',
-    logo: 'https://logonsolutions.netlify.app/og-image.png',
+    url: 'https://logonai.netlify.app',
+    logo: 'https://logonai.netlify.app/og-image.png',
     description: 'LOG_ON is an AI automation and technology consulting firm helping SMEs and enterprises in Nigeria and across Africa cut costs, automate workflows, and scale with intelligent technology.',
     slogan: 'Connecting Advantages. Delivering Results.',
     serviceType: [
@@ -80,6 +72,7 @@ export function OrganizationSchema() {
       'https://substack.com/@logonthepage',
       'https://github.com/Logonotobscurity/',
       'https://www.linkedin.com/in/logo-oluwamayowa-cpo-/',
+      'https://www.linkedin.com/company/logon-connecting-advantages',
     ],
     address: {
       '@type': 'PostalAddress',
@@ -107,9 +100,9 @@ export function LocalBusinessSchema() {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'LOG_ON',
-    image: 'https://logonsolutions.netlify.app/og-image.png',
-    '@id': 'https://logonsolutions.netlify.app',
-    url: 'https://logonsolutions.netlify.app',
+    image: 'https://logonai.netlify.app/og-image.png',
+    '@id': 'https://logonai.netlify.app',
+    url: 'https://logonai.netlify.app',
     telephone: '+234 814 306 6320',
     email: 'logonthepage@gmail.com',
     address: {
@@ -158,7 +151,7 @@ export function ServiceCatalogSchema() {
         '@type': 'Service',
         position: 1,
         name: 'AI Solutions & Agent Development',
-        url: 'https://logonsolutions.netlify.app/ai-solutions',
+        url: 'https://logonai.netlify.app/ai-solutions',
         description: 'Custom AI models and AI agent development to solve complex business challenges.',
         provider: { '@type': 'Organization', name: 'LOG_ON' },
       },
@@ -166,7 +159,7 @@ export function ServiceCatalogSchema() {
         '@type': 'Service',
         position: 2,
         name: 'Workplace Process Automation',
-        url: 'https://logonsolutions.netlify.app/automation',
+        url: 'https://logonai.netlify.app/automation',
         description: 'Intelligent automation and RPA to streamline workflows and increase efficiency.',
         provider: { '@type': 'Organization', name: 'LOG_ON' },
       },
@@ -174,7 +167,7 @@ export function ServiceCatalogSchema() {
         '@type': 'Service',
         position: 3,
         name: 'Web & Custom Development',
-        url: 'https://logonsolutions.netlify.app/web-development',
+        url: 'https://logonai.netlify.app/web-development',
         description: 'Scalable websites, e-commerce platforms, and custom applications.',
         provider: { '@type': 'Organization', name: 'LOG_ON' },
       },
@@ -182,7 +175,7 @@ export function ServiceCatalogSchema() {
         '@type': 'Service',
         position: 4,
         name: 'Business Analytics',
-        url: 'https://logonsolutions.netlify.app/business-analytics',
+        url: 'https://logonai.netlify.app/business-analytics',
         description: 'Custom dashboards and BI reporting to turn data into actionable insights.',
         provider: { '@type': 'Organization', name: 'LOG_ON' },
       },
@@ -190,7 +183,7 @@ export function ServiceCatalogSchema() {
         '@type': 'Service',
         position: 5,
         name: 'Technology Training Programs',
-        url: 'https://logonsolutions.netlify.app/training',
+        url: 'https://logonai.netlify.app/training',
         description: 'Expert-led training in AI, automation, and digital strategy.',
         provider: { '@type': 'Organization', name: 'LOG_ON' },
       },
@@ -218,7 +211,7 @@ interface ArticleSchemaProps {
 export function ArticleSchema({
   title, description, url, datePublished, dateModified,
   authorName = 'Oluwamayowa Logo',
-  image = 'https://logonsolutions.netlify.app/og-image.png',
+  image = 'https://logonai.netlify.app/og-image.png',
   keywords = [],
 }: ArticleSchemaProps) {
   const schema = {
@@ -234,12 +227,12 @@ export function ArticleSchema({
     author: {
       '@type': 'Person',
       name: authorName,
-      url: 'https://logonsolutions.netlify.app/about/our-leadership',
+      url: 'https://logonai.netlify.app/about/our-leadership',
     },
     publisher: {
       '@type': 'Organization',
       name: 'LOG_ON',
-      logo: { '@type': 'ImageObject', url: 'https://logonsolutions.netlify.app/og-image.png' },
+      logo: { '@type': 'ImageObject', url: 'https://logonai.netlify.app/og-image.png' },
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
   };
@@ -272,7 +265,7 @@ export function CourseSchema({
     provider: {
       '@type': 'Organization',
       name: provider,
-      sameAs: 'https://logonsolutions.netlify.app',
+      sameAs: 'https://logonai.netlify.app',
     },
     offers: {
       '@type': 'Offer',
@@ -323,9 +316,9 @@ export function PersonSchema({ name, role, email, linkedin, twitter, github, ima
     worksFor: {
       '@type': 'Organization',
       name: 'LOG_ON',
-      url: 'https://logonsolutions.netlify.app',
+      url: 'https://logonai.netlify.app',
     },
-    url: 'https://logonsolutions.netlify.app/about/our-leadership',
+    url: 'https://logonai.netlify.app/about/our-leadership',
     ...(email && { email }),
     ...(image && { image }),
     ...(sameAs.length > 0 && { sameAs }),
@@ -347,7 +340,7 @@ export function IndustryItemListSchema({ industries }: { industries: IndustryIte
       position: index + 1,
       name: industry.name,
       description: industry.description,
-      url: `https://logonsolutions.netlify.app/use-cases#${industry.id}`,
+      url: `https://logonai.netlify.app/use-cases#${industry.id}`,
     })),
   };
   return <JsonLd data={schema} />;
@@ -370,11 +363,11 @@ export function CourseListSchema({ courses }: { courses: CourseListItem[] }) {
         name: course.title,
         description: course.description,
         keywords: course.tags.join(', '),
-        url: 'https://logonsolutions.netlify.app/training',
+        url: 'https://logonai.netlify.app/training',
         provider: {
           '@type': 'Organization',
           name: 'LOG_ON',
-          sameAs: 'https://logonsolutions.netlify.app',
+          sameAs: 'https://logonai.netlify.app',
         },
       },
     })),

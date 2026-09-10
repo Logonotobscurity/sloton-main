@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img">
+  <rect width="1600" height="900" fill="#FCFCF8"/>
+  
+  <circle cx="1180" cy="420" r="220" fill="#006B4D" opacity="0.08"/>
+  <g fill="none" stroke="#006B4D" stroke-width="3">
+    <circle cx="1100" cy="280" r="18"/><circle cx="1280" cy="340" r="14"/><circle cx="1200" cy="520" r="22"/>
+    <circle cx="980" cy="480" r="12"/><circle cx="1340" cy="520" r="16"/>
+    <path d="M1100 280 L1280 340 L1200 520 L980 480 L1100 280 L1200 520"/>
+    <path d="M1280 340 L1340 520"/>
+  </g>
+  <circle cx="1100" cy="280" r="6" fill="#BD005B"/>
+  <circle cx="1200" cy="520" r="7" fill="#006B4D"/>
+  <text x="980" y="200" font-family="IBM Plex Mono, monospace" font-size="22" fill="#006B4D" letter-spacing="4">AGENT · RAG · MODEL</text>
+
+</svg>

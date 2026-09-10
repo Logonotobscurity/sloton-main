@@ -16,8 +16,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Sparkles, Zap, Shield, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Component Library Showcase | Sloton',
-  description: 'Explore our spec-compliant component library with consistent styling, accessibility features, and smooth animations.',
+  title: 'Component Library Showcase | LOG_ON',
+  description: 'Internal component reference. Not indexed.',
+  robots: { index: false, follow: false },
 };
 
 export default function ComponentShowcase() {

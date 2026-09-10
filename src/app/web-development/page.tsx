@@ -8,6 +8,7 @@ import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema } from '@
 import { PageHero } from '@/components/page-sections/page-hero';
 import { webDevelopmentServices } from '@/lib/data/services-data';
 import { Skeleton } from '@/components/ui/skeleton';
+import { ServiceConceptBlock } from '@/components/service-concept-block';
 
 const CaseStudyFeature = lazy(() => import('@/components/page-sections/case-study-feature').then(module => ({ default: module.CaseStudyFeature })));
 const Faq = lazy(() => import('@/components/faq').then(module => ({ default: module.Faq })));
@@ -25,13 +26,13 @@ export const metadata = generateMetadata({
     'corporate website development',
     'scalable web platforms',
   ],
-  canonical: 'https://logonsolutions.netlify.app/web-development',
+  canonical: 'https://logonai.netlify.app/web-development',
 });
 
 const webDevServiceSchema = generateServiceSchema({
   name: 'Custom Web & Application Development',
   description: 'Custom web development for publishers, e-commerce, and corporate clients. We build scalable, secure, and optimized digital platforms using Next.js and React.',
-  url: 'https://logonsolutions.netlify.app/web-development',
+  url: 'https://logonai.netlify.app/web-development',
   provider: 'LOG_ON',
   areaServed: 'Nigeria',
 });
@@ -56,18 +57,16 @@ export default function WebDevelopmentPage() {
             icon={<Code className="h-12 w-12 md:h-16 md:w-16 text-primary" />}
         />
       <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
-        <section className="py-16 md:py-24">
-             <div className="grid md:grid-cols-2 gap-8">
+        <section className="verdara-section -mx-4 px-5 py-16">
+            <p className="verdara-kicker">Build</p>
+            <h2 className="verdara-title mt-2">Web & custom <em>development</em></h2>
+             <div className="verdara-grid verdara-grid-2 mt-10">
                 {webDevelopmentServices.map((service) => (
-                <Card key={service.title} className="bg-secondary/50 flex flex-col transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl">
-                    <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                        <service.icon className="h-8 w-8 text-primary" />
-                        <CardTitle className="text-lg md:text-2xl">{service.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <p className="text-muted-foreground text-sm md:text-base">{service.description}</p>
-                    </CardContent>
-                </Card>
+                <article key={service.title} className="verdara-card">
+                    <span className="verdara-tag verdara-tag-amber">Web</span>
+                    <h3 className="mt-4">{service.title}</h3>
+                    <p className="verdara-lede mt-auto pt-3">{service.description}</p>
+                </article>
                 ))}
             </div>
         </section>
@@ -93,6 +92,8 @@ export default function WebDevelopmentPage() {
                 </Button>
             </div>
         </section>
+
+        <ServiceConceptBlock path="/web-development" />
 
       </div>
     </div>

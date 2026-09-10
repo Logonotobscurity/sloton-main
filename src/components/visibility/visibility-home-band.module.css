@@ -1,0 +1,77 @@
+.band {
+  color-scheme: light;
+  background: var(--color-paper-50);
+  color: var(--color-forest-900);
+  border-block: 1px solid var(--color-rule-200);
+  padding: clamp(2.5rem, 6vw, 4.5rem) var(--container-padding-x);
+}
+
+.inner {
+  width: min(1180px, 100%);
+  margin-inline: auto;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.kicker {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-action);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-family-display), Fraunces, serif;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  line-height: 1.05;
+  font-weight: 600;
+  color: var(--color-forest-900);
+}
+
+.title em {
+  font-style: italic;
+  color: var(--color-emphasis);
+}
+
+.copy {
+  margin: 0;
+  max-width: 52ch;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  font-weight: 500;
+  color: var(--color-ink-muted);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: var(--touch-min);
+  padding: 0 1.4rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-action);
+  color: var(--color-paper-50);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: var(--color-action-hover);
+}
+
+:global(html.dark) .band,
+:global(html.dark) .title,
+:global(html.dark) .copy {
+  background: var(--color-paper-50);
+  color: var(--color-forest-900);
+}
+
+:global(html.dark) .kicker {
+  color: var(--color-action);
+}

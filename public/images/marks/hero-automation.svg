@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img">
+  <rect width="1600" height="900" fill="#FCFCF8"/>
+  
+  <g fill="none" stroke="#006B4D" stroke-width="4" stroke-linecap="round">
+    <rect x="920" y="220" width="160" height="100" rx="12"/>
+    <rect x="1160" y="380" width="160" height="100" rx="12"/>
+    <rect x="980" y="560" width="160" height="100" rx="12"/>
+    <path d="M1080 320 V380 H1240 V380"/>
+    <path d="M1240 480 V560 H1060"/>
+  </g>
+  <circle cx="1080" cy="350" r="8" fill="#BD005B"/>
+  <circle cx="1240" cy="430" r="8" fill="#006B4D"/>
+  <text x="920" y="180" font-family="IBM Plex Mono, monospace" font-size="20" fill="#006B4D" letter-spacing="3">SOP → BOT → QUEUE</text>
+
+</svg>

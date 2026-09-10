@@ -132,11 +132,27 @@ export function getAllShareUrls(data: ShareData) {
  * Copy text to clipboard
  */
 export async function copyToClipboard(text: string): Promise<boolean> {
+  if (typeof window === "undefined") return false;
   try {
-    await navigator.clipboard.writeText(text);
-    return true;
-  } catch (err) {
-    logger.error('Failed to copy to clipboard', { error: err });
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+  } catch {
+    /* iframe / permissions policy — fall through */
+  }
+  try {
+    const el = document.createElement("textarea");
+    el.value = text;
+    el.setAttribute("readonly", "");
+    el.style.position = "fixed";
+    el.style.left = "-9999px";
+    document.body.appendChild(el);
+    el.select();
+    const ok = document.execCommand("copy");
+    document.body.removeChild(el);
+    return ok;
+  } catch {
     return false;
   }
 }

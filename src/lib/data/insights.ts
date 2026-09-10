@@ -1,5 +1,11 @@
 
 import imageData from '@/lib/placeholder-images.json';
+import { llmoToInsights } from '@/lib/data/llmo-articles';
+import { agentToInsights } from '@/lib/data/agent-articles';
+import { functionsToInsights } from '@/lib/data/functions-articles';
+import { genaiToInsights } from '@/lib/data/genai-articles';
+import { strategyToInsights } from '@/lib/data/strategy-articles';
+import { moreClustersToInsights } from '@/lib/data/more-insight-clusters';
 
 export interface Insight {
     title: string;
@@ -315,4 +321,4 @@ export const insights: Insight[] = [
     date: "2024-07-15",
     codeVisualType: 'default' as const,
   }
-].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+].concat(llmoToInsights(), agentToInsights(), functionsToInsights(), genaiToInsights(), strategyToInsights(), moreClustersToInsights()).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());

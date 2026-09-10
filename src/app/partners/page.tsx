@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { GlowingCard } from '@/components/ui/glowing-card';
 import { PageHero } from '@/components/page-sections/page-hero';
 import { BottomCta } from '@/components/page-sections/bottom-cta';
+import { DecisionSupportSection } from '@/components/page-sections/decision-support';
 import { partnerBenefits, partners } from '@/lib/data/partners-data';
 import { LogoImage } from '@/lib/image-utils';
 
@@ -53,27 +54,20 @@ export default function PartnersPage() {
         </section>
 
         <section className="py-fluid-lg">
-            <div className="text-center max-w-3xl mx-auto mb-fluid-md">
-                <h2 className="text-fluid-xl font-bold font-headline">Why Partner with LOG_ON?</h2>
-                <p className="mt-4 text-fluid-base text-muted-foreground">
+            <div className="max-w-3xl mb-10">
+                <p className="verdara-kicker">Programme</p>
+                <h2 className="verdara-title mt-2">Why partner with <em>LOG_ON</em>?</h2>
+                <p className="verdara-lede mt-3">
                     We are committed to building mutually beneficial relationships that foster growth, innovation, and customer success.
                 </p>
             </div>
-             <div className="grid md:grid-cols-3 gap-8">
+             <div className="verdara-grid verdara-grid-3">
                 {partnerBenefits.map((benefit) => (
-                <GlowingCard key={benefit.title}>
-                  <div className="p-6 h-full text-center">
-                    <CardHeader className="p-0 items-center">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-                            <benefit.icon className="h-8 w-8 text-primary" />
-                        </div>
-                        <CardTitle className="pt-4 text-lg md:text-xl">{benefit.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="p-0 pt-4">
-                        <p className="text-muted-foreground text-sm md:text-base">{benefit.description}</p>
-                    </CardContent>
-                  </div>
-                </GlowingCard>
+                <article key={benefit.title} className="verdara-card">
+                        <span className="verdara-tag verdara-tag-amber">Partner</span>
+                        <h3 className="mt-4">{benefit.title}</h3>
+                        <p className="verdara-lede mt-auto pt-3">{benefit.description}</p>
+                </article>
                 ))}
             </div>
         </section>
@@ -106,7 +100,8 @@ export default function PartnersPage() {
         </section>
 
       </div>
-       <BottomCta />
+      <DecisionSupportSection />
+      <BottomCta />
     </div>
   );
 }

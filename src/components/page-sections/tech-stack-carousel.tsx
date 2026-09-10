@@ -1,5 +1,7 @@
 "use client";
 
+import { AnimatedCodeBackground } from "@/components/ui/animated-code-background";
+
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
@@ -11,33 +13,28 @@ import { LogoImage } from '@/lib/image-utils';
 
 
 const technologies = [
-    { name: 'React', icon: 'https://img.icons8.com/color/96/react-native.png', dataAiHint: "React logo", href: "https://react.dev/" },
-    { name: 'Next.js', icon: 'https://cdn.worldvectorlogo.com/logos/next-js.svg', dataAiHint: "Next.js logo", href: "https://nextjs.org/" },
-    { name: 'TypeScript', icon: 'https://img.icons8.com/color/96/typescript.png', dataAiHint: "TypeScript logo", href: "https://www.typescriptlang.org/" },
-    { name: 'Node.js', icon: 'https://img.icons8.com/color/96/nodejs.png', dataAiHint: "Node.js logo", href: "https://nodejs.org/" },
-    { name: 'Python', icon: 'https://img.icons8.com/color/96/python.png', dataAiHint: "Python logo", href: "https://www.python.org/" },
-    { name: 'AWS', icon: 'https://img.icons8.com/color/96/amazon-web-services.png', dataAiHint: "AWS logo", href: "https://aws.amazon.com/" },
-    { name: 'Google Cloud', icon: 'https://img.icons8.com/color/96/google-cloud.png', dataAiHint: "Google Cloud logo", href: "https://cloud.google.com/" },
-    { name: 'Azure', icon: 'https://img.icons8.com/color/96/microsoft-azure.png', dataAiHint: "Microsoft Azure logo", href: "https://azure.microsoft.com/" },
-    { name: 'Firebase', icon: 'https://img.icons8.com/color/96/firebase.png', dataAiHint: "Firebase logo", href: "https://firebase.google.com/" },
-    { name: 'Docker', icon: 'https://img.icons8.com/color/96/docker.png', dataAiHint: "Docker logo", href: "https://www.docker.com/" },
-    { name: 'Kubernetes', icon: 'https://img.icons8.com/color/96/kubernetes.png', dataAiHint: "Kubernetes logo", href: "https://kubernetes.io/" },
-    { name: 'Git', icon: 'https://img.icons8.com/color/96/git.png', dataAiHint: "Git logo", href: "https://git-scm.com/" },
-    { name: 'Figma', icon: 'https://img.icons8.com/color/96/figma.png', dataAiHint: "Figma logo", href: "https://www.figma.com/" },
-    { name: 'Tailwind CSS', icon: 'https://img.icons8.com/color/96/tailwind_css.png', dataAiHint: "Tailwind CSS logo", href: "https://tailwindcss.com/" },
-    { name: 'OpenAI', icon: 'https://www.vectorlogo.zone/logos/openai/openai-icon.svg', dataAiHint: "OpenAI logo", href: "https://openai.com/" },
-    { name: 'Hugging Face', icon: 'https://www.vectorlogo.zone/logos/huggingface/huggingface-icon.svg', dataAiHint: "Hugging Face logo", href: "https://huggingface.co/" },
-    { name: 'Svelte', icon: 'https://astro.build/assets/integrations/svelte.svg', dataAiHint: "Svelte logo", href: "https://svelte.dev/" },
-    { name: 'Preact', icon: 'https://astro.build/assets/integrations/preact.svg', dataAiHint: "Preact logo", href: "https://preactjs.com/" },
-    { name: 'Solid', icon: 'https://astro.build/assets/integrations/solid.svg', dataAiHint: "SolidJS logo", href: "https://www.solidjs.com/" },
-    { name: 'React', icon: 'https://astro.build/assets/integrations/react.svg', dataAiHint: "React logo", href: "https://react.dev/" },
-    { name: 'Vue', icon: 'https://astro.build/assets/integrations/vue.svg', dataAiHint: "Vue.js logo", href: "https://vuejs.org/" },
-    { name: 'Astro', icon: 'https://astro.build/favicon.svg', dataAiHint: "Astro logo", href: "https://astro.build/" }
+    { name: 'React', icon: '/images/marks/tech-react.svg', href: 'https://react.dev/' },
+    { name: 'Next.js', icon: '/images/marks/tech-nextjs.svg', href: 'https://nextjs.org/' },
+    { name: 'TypeScript', icon: '/images/marks/tech-typescript.svg', href: 'https://www.typescriptlang.org/' },
+    { name: 'Node.js', icon: '/images/marks/tech-nodejs.svg', href: 'https://nodejs.org/' },
+    { name: 'Python', icon: '/images/marks/tech-python.svg', href: 'https://www.python.org/' },
+    { name: 'AWS', icon: '/images/marks/tech-aws.svg', href: 'https://aws.amazon.com/' },
+    { name: 'Google Cloud', icon: '/images/marks/tech-gcp.svg', href: 'https://cloud.google.com/' },
+    { name: 'Azure', icon: '/images/marks/tech-azure.svg', href: 'https://azure.microsoft.com/' },
+    { name: 'Firebase', icon: '/images/marks/tech-firebase.svg', href: 'https://firebase.google.com/' },
+    { name: 'Docker', icon: '/images/marks/tech-docker.svg', href: 'https://www.docker.com/' },
+    { name: 'Kubernetes', icon: '/images/marks/tech-k8s.svg', href: 'https://kubernetes.io/' },
+    { name: 'Git', icon: '/images/marks/tech-git.svg', href: 'https://git-scm.com/' },
+    { name: 'Figma', icon: '/images/marks/tech-figma.svg', href: 'https://www.figma.com/' },
+    { name: 'Tailwind CSS', icon: '/images/marks/tech-tailwind.svg', href: 'https://tailwindcss.com/' },
+    { name: 'OpenAI', icon: '/images/marks/tech-openai.svg', href: 'https://openai.com/' },
+    { name: 'Hugging Face', icon: '/images/marks/tech-hf.svg', href: 'https://huggingface.co/' },
 ];
 
 export function TechStackCarousel() {
   return (
     <section className="bg-secondary/20 py-24 md:py-32">
+      <AnimatedCodeBackground variant="tech" density="medium" />
       <div className="container mx-auto px-4 md:px-6">
         <GlowingCard className="p-8 md:p-12 relative">
             <GridBackground />

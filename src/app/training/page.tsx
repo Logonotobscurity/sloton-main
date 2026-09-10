@@ -13,6 +13,7 @@ import { EnrollmentForm } from '@/components/enrollment-form';
 import { PageHero } from '@/components/page-sections/page-hero';
 import { AdinkraBackground } from '@/components/ui/adinkra-background';
 import { trainingPrograms, communityProjects, trainingBenefits } from '@/lib/data/training-data';
+import { ServiceConceptBlock } from '@/components/service-concept-block';
 
 export const metadata = generateMetadata({
   title: 'AI & Automation Training Courses in Nigeria | Professional Development',
@@ -28,13 +29,13 @@ export const metadata = generateMetadata({
     'AI skills training',
     'automation certification',
   ],
-  canonical: 'https://logonsolutions.netlify.app/training',
+  canonical: 'https://logonai.netlify.app/training',
 });
 
 const trainingServiceSchema = generateServiceSchema({
   name: 'AI & Automation Training Programs',
   description: 'Master in-demand tech skills. Expert-led training courses in AI, process automation, and prompt engineering to accelerate your career and drive business growth.',
-  url: 'https://logonsolutions.netlify.app/training',
+  url: 'https://logonai.netlify.app/training',
   provider: 'LOG_ON',
   areaServed: 'Nigeria',
 });
@@ -45,8 +46,8 @@ export default function TrainingPage() {
       <JsonLd data={trainingServiceSchema} />
       <CourseListSchema courses={trainingPrograms} />
       <BreadcrumbSchema items={[
-        { name: 'Home', url: 'https://logonsolutions.netlify.app' },
-        { name: 'Training Programs', url: 'https://logonsolutions.netlify.app/training' },
+        { name: 'Home', url: 'https://logonai.netlify.app' },
+        { name: 'Training Programs', url: 'https://logonai.netlify.app/training' },
       ]} />
       <PageHero 
         title="Build Skills That Deliver Immediate ROI"
@@ -54,28 +55,22 @@ export default function TrainingPage() {
       />
       <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
         
-        <section id="programs" className="py-16 md:py-24">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-                <h2 className="text-2xl md:text-4xl font-bold font-headline">Explore Our Training Programs</h2>
-                <p className="mt-4 text-md md:text-lg text-muted-foreground">Master in-demand skills with our hands-on curriculum in AI, Automation, and Prompt Engineering. Elevate your career with industry-relevant knowledge.</p>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <section id="programs" className="verdara-section -mx-4 px-5 py-16">
+            <p className="verdara-kicker">Curriculum</p>
+            <h2 className="verdara-title mt-2">Explore our training <em>programs</em></h2>
+            <p className="verdara-lede mt-4">Master in-demand skills with our hands-on curriculum in AI, Automation, and Prompt Engineering.</p>
+            <div className="verdara-grid verdara-grid-3 mt-10">
                 {trainingPrograms.map(program => (
-                    <GlowingCard key={program.title}>
-                        <div className="p-6 h-full flex flex-col">
-                            <CardHeader className="p-0">
-                                <program.icon />
-                                <CardTitle className="pt-4 text-xl">{program.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent className="p-0 pt-4 flex-grow">
-                                <p className="text-muted-foreground">{program.description}</p>
-                                 <div className="flex flex-wrap gap-2 mt-4">
-                                    {program.tags.map(tag => (
-                                        <Badge key={tag} variant="outline">{tag}</Badge>
-                                    ))}
-                                </div>
-                            </CardContent>
-                            <CardFooter className="p-0 pt-6">
+                    <article key={program.title} className="verdara-card">
+                        <span className="verdara-tag verdara-tag-amber">Course</span>
+                        <h3 className="mt-4">{program.title}</h3>
+                        <p className="verdara-lede mt-auto pt-3">{program.description}</p>
+                        <div className="flex flex-wrap gap-2 mt-4">
+                            {program.tags.map(tag => (
+                                <span key={tag} className="verdara-tag verdara-tag-sage">{tag}</span>
+                            ))}
+                        </div>
+                        <div className="pt-4">
                                 <DialogFormWrapper
                                     trigger={<Button className="w-full">Register Now</Button>}
                                     className="bg-background"
@@ -88,9 +83,8 @@ export default function TrainingPage() {
                                     </DialogHeader>
                                     <EnrollmentForm programName={program.title} />
                                 </DialogFormWrapper>
-                            </CardFooter>
                         </div>
-                    </GlowingCard>
+                    </article>
                 ))}
             </div>
         </section>
@@ -101,17 +95,12 @@ export default function TrainingPage() {
                     <h2 className="text-2xl md:text-4xl font-bold font-headline">Our Commitment to Community & Global Impact</h2>
                     <p className="mt-4 text-md md:text-lg text-muted-foreground">We actively invest in projects that use technology to create a positive social impact, from promoting mental health accessibility to ensuring ethical AI development.</p>
                 </div>
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="verdara-grid verdara-grid-2">
                      {communityProjects.map(project => (
-                        <Card key={project.title} className="bg-background/50">
-                            <CardHeader>
-                                <project.icon />
-                                <CardTitle className="pt-4">{project.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-muted-foreground">{project.description}</p>
-                            </CardContent>
-                        </Card>
+                        <article key={project.title} className="verdara-card">
+                                <h3>{project.title}</h3>
+                                <p className="verdara-lede mt-auto pt-3">{project.description}</p>
+                        </article>
                      ))}
                 </div>
              </div>
@@ -180,6 +169,8 @@ export default function TrainingPage() {
                 </div>
             </div>
         </section>
+
+        <ServiceConceptBlock path="/training" />
 
       </div>
     </div>

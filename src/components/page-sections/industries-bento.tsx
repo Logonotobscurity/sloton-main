@@ -1,84 +1,38 @@
-
 "use client";
 
 import React from "react";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { GlowingCard } from "@/components/ui/glowing-card";
-import { GridBackground } from "@/components/ui/grid-background";
 import { industryFeaturesAlt } from "@/lib/data/industries";
 
-const FeatureCard = ({
-  children,
-  className,
-}: {
-  children?: React.ReactNode;
-  className?: string;
-}) => {
-  return (
-    <GlowingCard className={cn(`relative overflow-hidden`, className)}>
-      <GridBackground />
-      <div className="relative z-10 h-full">
-        {children}
-      </div>
-    </GlowingCard>
-  );
-};
-
-const FeatureTitle = ({ children }: { children?: React.ReactNode }) => {
-  return (
-    <h3 className="text-lg md:text-xl font-semibold text-foreground">
-      {children}
-    </h3>
-  );
-};
-
-const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
-  return (
-    <p
-      className={cn(
-        "text-sm text-muted-foreground mt-2",
-      )}
-    >
-      {children}
-    </p>
-  );
-};
+const tags = ["amber", "sky", "sage", "coral", "amber", "sky"] as const;
 
 export function IndustriesBento() {
   return (
-    <section className="py-fluid-lg bg-background relative overflow-hidden">
-      <div className="container mx-auto px-fluid-sm">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-fluid-xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium font-headline">
-            Solutions For Your Industry
+    <section className="verdara-section py-16 lg:py-20">
+      <div className="container mx-auto px-5 lg:px-10">
+        <div className="max-w-3xl">
+          <p className="verdara-kicker">Sectors</p>
+          <h2 className="verdara-title mt-3 text-[36px] lg:text-[46px]">
+            Solutions for your <em>industry</em>
           </h2>
-          <p className="text-fluid-base max-w-2xl my-4 mx-auto text-muted-foreground text-center font-normal">
+          <p className="verdara-lede mt-4 max-w-[60ch]">
             We combine deep industry knowledge with technological expertise to build solutions that address the unique challenges of your sector.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-12">
+        <div className="verdara-grid verdara-grid-3 mt-12">
           {industryFeaturesAlt.map((feature, i) => (
-            <FeatureCard key={feature.title} className={cn(feature.className, "border-t border-border/50",
-                i === 0 ? "md:border-l-0" : "md:border-l",
-                i === 1 ? "md:border-l-0" : "",
-                i % 2 !== 0 ? "md:border-l-0" : "md:border-l",
-                "lg:border-l"
-            )}>
-                <div className="flex flex-col h-full p-6">
-                    {feature.icon}
-                    <div className="mt-4">
-                        <FeatureTitle>{feature.title}</FeatureTitle>
-                        <FeatureDescription>{feature.description}</FeatureDescription>
-                    </div>
-                </div>
-            </FeatureCard>
+            <article key={feature.title} className="verdara-card">
+              <span className={`verdara-tag verdara-tag-${tags[i % tags.length]}`}>{feature.title.split(" ")[0]}</span>
+              <div className="mt-4 text-verdara-ink">{feature.icon}</div>
+              <h3 className="mt-3">{feature.title}</h3>
+              <p className="verdara-lede mt-auto pt-3">{feature.description}</p>
+            </article>
           ))}
         </div>
 
-       <div className="mt-16 text-center">
+        <div className="mt-12">
           <Button asChild size="lg">
             <Link href="/use-cases">Explore All Use Cases</Link>
           </Button>

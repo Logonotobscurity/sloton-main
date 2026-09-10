@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img">
+  <rect width="1600" height="900" fill="#FCFCF8"/>
+  
+  <rect x="940" y="240" width="280" height="140" rx="24" fill="#006B4D" opacity="0.12" stroke="#006B4D" stroke-width="3"/>
+  <rect x="1100" y="420" width="300" height="120" rx="24" fill="#BD005B" opacity="0.12" stroke="#BD005B" stroke-width="3"/>
+  <circle cx="980" cy="640" r="36" fill="none" stroke="#006B4D" stroke-width="4"/>
+  <path d="M968 640 h24 M980 628 v24" stroke="#006B4D" stroke-width="4"/>
+  <text x="960" y="200" font-family="IBM Plex Mono, monospace" font-size="20" fill="#006B4D">WHATSAPP · WEB · CRM</text>
+
+</svg>

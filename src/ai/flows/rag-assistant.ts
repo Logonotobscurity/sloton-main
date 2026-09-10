@@ -179,7 +179,7 @@ const assistantPrompt = ai.definePrompt({
     - **Key Services**: AI Agent Development, Workplace Process Automation, Business Analytics, Web & App Development, Cybersecurity, Technology Training.
     - **Location**: Lagos, Nigeria | Serving clients across Africa and globally.
     - **Contact**: WhatsApp +234 814 306 6320 | Email: logonthepage@gmail.com
-    - **Website**: https://logonsolutions.netlify.app
+    - **Website**: https://logonai.netlify.app
 
     ## Personality
     - Expert yet warm and accessible — think senior consultant, not a robot.
@@ -212,7 +212,8 @@ const ragAssistantFlow = ai.defineFlow(
         outputSchema: AssistantResponseSchema,
     },
     async (input) => {
-        const { output } = await assistantPrompt(input);
+        const parsed = AssistantRequestSchema.parse(input);
+        const { output } = await assistantPrompt(parsed);
         
         if (!output) {
             throw new Error("No response from AI engine");
@@ -235,10 +236,11 @@ const createFallbackResponse = (message: string): AssistantResponse => ({
 });
 
 export async function askRagAssistant(input: AssistantRequest): Promise<AssistantResponse> {
+  const parsed = AssistantRequestSchema.parse(input);
   try {
     const result = await retryWithBackoff(
       async () => {
-        const response = await ragAssistantFlow(input);
+        const response = await ragAssistantFlow(parsed);
         return response;
       },
       {

@@ -17,7 +17,7 @@ Name: NETLIFY_SITE_ID
 Value: [Get from Netlify site settings → API ID]
 
 Name: NEXT_PUBLIC_SITE_URL
-Value: https://logonsolutions.netlify.app
+Value: https://logonai.netlify.app
 ```
 
 ### Step 2: Enable Branch Protection (2 minutes)
@@ -113,7 +113,7 @@ git push origin v1.0.0
 
 ### View Deployments
 1. Check PR comments for preview URLs
-2. Visit https://logonsolutions.netlify.app for production
+2. Visit https://logonai.netlify.app for production
 
 ### Review Security
 1. Go to **Security** tab

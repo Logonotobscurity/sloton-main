@@ -1,16 +1,43 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
-    "no-restricted-imports": ["error", {
-      "patterns": [{
-        "group": ["../*", "./*"],
-        "message": "Use @/ alias imports instead of relative imports"
-      }]
-    }],
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": ["../*", "./*"],
+            "message": "Use @/ alias imports instead of relative imports"
+          },
+          {
+            "group": ["**/newsletter-popup", "@/components/newsletter-popup"],
+            "message": "Import NewsletterPopup from the '@/components' barrel."
+          },
+          {
+            "group": ["**/chamfer*", "@/app/chamfer*", "**/chamfer/**"],
+            "message": "Chamfer is showcase-only and must not leak into marketing or hybrid chrome."
+          }
+        ]
+      }
+    ],
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "no-console": ["warn", { "allow": ["warn", "error"] }],
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/no-explicit-any": "warn"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["src/components/index.ts"],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    },
+    {
+      "files": ["src/app/chamfer/**/*", "src/app/chamfer/*"],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ]
 }

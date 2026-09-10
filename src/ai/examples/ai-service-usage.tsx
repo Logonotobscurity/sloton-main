@@ -45,7 +45,7 @@ export function AIServiceExample() {
       // The new actions automatically use the AI service manager with dependency injection
       const response = await getSolutionRecommendationAction(input);
 
-      setResult(response.data);
+      setResult(response.data ?? null);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An unknown error occurred');
     } finally {

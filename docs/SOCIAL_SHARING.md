@@ -123,7 +123,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 Required environment variable:
 
 ```env
-NEXT_PUBLIC_SITE_URL=https://logonsolutions.netlify.app
+NEXT_PUBLIC_SITE_URL=https://logonai.netlify.app
 ```
 
 This is used to generate absolute URLs for social sharing.

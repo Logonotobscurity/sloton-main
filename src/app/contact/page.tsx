@@ -1,8 +1,9 @@
-
+import { Suspense } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { ContactForm } from '@/components/contact-form';
+import { TallyEmbed } from '@/components/tally-embed';
 import { Mail, Phone, Handshake } from 'lucide-react';
-import { Faq } from '@/components/faq';
+import Faq from '@/components/faq';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { generateMetadata, KEYWORD_SETS, LocalBusinessSchema } from '@/lib/seo';
@@ -21,90 +22,87 @@ export const metadata = generateMetadata({
     'technology consulting Lagos',
     'AI project inquiry',
   ],
-  canonical: 'https://logonsolutions.netlify.app/contact',
+  canonical: '/contact',
 });
 
 export default function ContactPage() {
   return (
-    <div className="bg-background">
+    <div className="relative bg-background min-h-screen">
         <LocalBusinessSchema />
         <PageHero 
+            visual="/images/marks/hero-contact.svg"
+            kicker="Contact"
             title="Get In Touch"
             description="We're here to help you navigate your digital transformation journey. Whether you have a specific project in mind, a question about our services, or just want to explore possibilities, our team is ready to connect. Let's start a conversation and build something great together."
         />
-      <div className="container mx-auto px-fluid-sm py-fluid-lg">
+      <div className="verdara-section">
+      <div className="container mx-auto px-5 lg:px-10 py-16">
         
-        <div className="mt-12 md:mt-16 grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
            <div className="space-y-8">
-              <Card className="bg-secondary/50">
-                <CardHeader>
-                  <CardTitle>Contact Form</CardTitle>
-                  <CardDescription>Fill out the form below and we'll get back to you as soon as possible.</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ContactForm />
-                </CardContent>
-              </Card>
-               <div className="border-t border-border pt-8">
-                 <h3 className="text-xl font-semibold mb-4">Why Get In Touch?</h3>
-                 <div className="space-y-4">
+              <article className="verdara-card">
+                  <p className="verdara-kicker">Tally</p>
+                  <h2 className="verdara-title mt-2 text-[1.75rem]">Book a <em>conversation</em></h2>
+                  <p className="verdara-lede mt-2">Primary intake via Tally. We reply from logonthepage@gmail.com.</p>
+                  <div className="mt-4">
+                  <TallyEmbed />
+                  </div>
+              </article>
+              <details className="verdara-card">
+                <summary className="cursor-pointer font-semibold min-h-11 flex items-center">
+                  Email fallback — if the hosted form does not load
+                </summary>
+                <p className="verdara-lede mt-2">
+                  Send the same details here. We reply from logonthepage@gmail.com.
+                </p>
+                <div className="mt-4">
+                  <Suspense fallback={<p className="verdara-lede">Loading form…</p>}>
+                    <ContactForm />
+                  </Suspense>
+                </div>
+              </details>
+               <div>
+                 <h3 className="verdara-title text-[1.5rem]">Why get in <em>touch</em>?</h3>
+                 <div className="verdara-grid verdara-grid-2 mt-4">
                     {contactReasons.map(reason => (
-                        <div key={reason.title} className="flex items-start gap-3">
-                            <div className="flex-shrink-0 pt-1"><reason.icon /></div>
-                            <div>
-                                <h4 className="font-semibold">{reason.title}</h4>
-                                <p className="text-muted-foreground text-sm">{reason.description}</p>
-                            </div>
-                        </div>
+                        <article key={reason.title} className="verdara-card verdara-card-compact">
+                                <h3 className="text-base">{reason.title}</h3>
+                                <p className="verdara-lede mt-2">{reason.description}</p>
+                        </article>
                     ))}
                  </div>
             </div>
            </div>
 
-          <div className="space-y-8">
-             <div className="flex items-start gap-4">
-                <div className="bg-primary/10 p-3 rounded-full flex-shrink-0">
-                    <Mail className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                    <h3 className="text-xl font-semibold">Email</h3>
-                    <p className="text-muted-foreground">Our inbox is always open for your questions and project details.</p>
-                    <a href="mailto:logonthepage@gmail.com" className="text-primary hover:underline break-all">
+          <div className="space-y-4">
+             <article className="verdara-card verdara-card-compact">
+                    <h3>Email</h3>
+                    <p className="verdara-lede mt-2">Our inbox is always open for your questions and project details.</p>
+                    <a href="mailto:logonthepage@gmail.com" className="mt-2 inline-block font-semibold underline-offset-4 hover:underline break-all">
                         logonthepage@gmail.com
                     </a>
-                </div>
-            </div>
-             <div className="flex items-start gap-4">
-                <div className="bg-primary/10 p-3 rounded-full flex-shrink-0">
-                    <Phone className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                    <h3 className="text-xl font-semibold">Phone</h3>
-                    <p className="text-muted-foreground">Give us a call to discuss your needs directly with a consultant.</p>
-                    <a href="tel:+2348143066320" className="text-primary hover:underline">
+             </article>
+             <article className="verdara-card verdara-card-compact">
+                    <h3>Phone</h3>
+                    <p className="verdara-lede mt-2">Give us a call to discuss your needs directly with a consultant.</p>
+                    <a href="tel:+2348143066320" className="mt-2 inline-block font-semibold underline-offset-4 hover:underline">
                         +234 814 306 6320
                     </a>
-                </div>
-            </div>
-             <Card className="bg-secondary/50">
-                <CardHeader className="flex flex-row items-center gap-4">
-                    <Handshake className="h-8 w-8 text-primary" />
-                    <div>
-                        <CardTitle>Partnership Opportunities</CardTitle>
-                        <CardDescription>Interested in partnering with LOG_ON? We'd love to hear from you.</CardDescription>
-                    </div>
-                </CardHeader>
-                <CardContent>
-                  <Button asChild variant="outline">
+             </article>
+             <article className="verdara-card">
+                        <h3>Partnership opportunities</h3>
+                        <p className="verdara-lede mt-2">Interested in partnering with LOG_ON? We'd love to hear from you.</p>
+                  <Button asChild variant="outline" className="mt-4">
                     <Link href="/contact?subject=Partnership+Inquiry">
                         Contact Partner Team
                     </Link>
                   </Button>
-                </CardContent>
-              </Card>
+              </article>
           </div>
         </div>
       </div>
+      </div>
+      <Faq />
     </div>
   );
 }

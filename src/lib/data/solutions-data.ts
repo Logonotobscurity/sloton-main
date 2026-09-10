@@ -174,7 +174,7 @@ export const industryApplications = [
         solution: "We combine **Business Analytics** with **Web & Custom Development** to build intelligent e-commerce platforms. Our analytics track user behaviour, recommendation engines personalize the shopping experience, and integrated AI chatbots handle over 60% of order-related enquiries.",
         cta: {
             text: "See E-Commerce Use Cases",
-            href: "/use-cases#e-commerce"
+            href: "/use-cases#ecommerce"
         }
     }
 ];

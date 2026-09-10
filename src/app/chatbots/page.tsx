@@ -7,6 +7,7 @@ import { CaseStudyFeature } from '@/components/page-sections/case-study-feature'
 import { PageHero } from '@/components/page-sections/page-hero';
 import { chatbotServices, chatbotsBenefits } from '@/lib/data/services-data';
 import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema, BreadcrumbSchema } from '@/lib/seo';
+import { ServiceConceptBlock } from '@/components/service-concept-block';
 
 export const metadata = generateMetadata({
   title: 'AI Chatbot & WhatsApp Bot Development in Nigeria | 24/7 Automation',
@@ -21,13 +22,13 @@ export const metadata = generateMetadata({
     'lead generation chatbot',
     'AI virtual assistant Nigeria',
   ],
-  canonical: 'https://logonsolutions.netlify.app/chatbots',
+  canonical: 'https://logonai.netlify.app/chatbots',
 });
 
 const chatbotServiceSchema = generateServiceSchema({
   name: 'AI Chatbot & Virtual Assistant Development',
   description: 'We design and build intelligent AI chatbots that integrate with your website, WhatsApp, and other platforms to automate customer service, qualify leads, and drive sales 24/7.',
-  url: 'https://logonsolutions.netlify.app/chatbots',
+  url: 'https://logonai.netlify.app/chatbots',
   provider: 'LOG_ON',
   areaServed: 'Nigeria',
 });
@@ -38,8 +39,8 @@ export default function ChatbotsPage() {
     <div className="bg-background">
       <JsonLd data={chatbotServiceSchema} />
       <BreadcrumbSchema items={[
-        { name: 'Home', url: 'https://logonsolutions.netlify.app' },
-        { name: 'AI Chatbots', url: 'https://logonsolutions.netlify.app/chatbots' },
+        { name: 'Home', url: 'https://logonai.netlify.app' },
+        { name: 'AI Chatbots', url: 'https://logonai.netlify.app/chatbots' },
       ]} />
       <PageHero
         title="AI Chatbots & Virtual Assistants"
@@ -79,24 +80,19 @@ export default function ChatbotsPage() {
           </div>
         </section>
 
-        <section className="py-fluid-lg">
-            <div className="text-center max-w-3xl mx-auto mb-fluid-md">
-                <h2 className="text-fluid-xl font-bold font-headline">Our Chatbot Development Services</h2>
-                <p className="mt-4 text-fluid-base text-muted-foreground">
+        <section className="verdara-section -mx-fluid-sm px-5 py-16">
+            <p className="verdara-kicker">Conversational</p>
+            <h2 className="verdara-title mt-2">Chatbot development <em>services</em></h2>
+            <p className="verdara-lede mt-4">
                     From simple FAQ bots to complex, integrated virtual assistants, we offer end-to-end development.
-                </p>
-            </div>
-             <div className="grid md:grid-cols-2 gap-8">
+            </p>
+             <div className="verdara-grid verdara-grid-2 mt-10">
                 {chatbotServices.map((service) => (
-                <Card key={service.title} className="bg-secondary/50 flex flex-col transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl">
-                    <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 md:p-6">
-                        <service.icon className="h-8 w-8 text-primary" />
-                        <CardTitle className="text-lg md:text-xl">{service.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="p-4 md:p-6 pt-0">
-                        <p className="text-muted-foreground text-sm md:text-base">{service.description}</p>
-                    </CardContent>
-                </Card>
+                <article key={service.title} className="verdara-card">
+                    <span className="verdara-tag verdara-tag-sky">Bot</span>
+                    <h3 className="mt-4">{service.title}</h3>
+                    <p className="verdara-lede mt-auto pt-3">{service.description}</p>
+                </article>
                 ))}
             </div>
         </section>
@@ -129,6 +125,8 @@ export default function ChatbotsPage() {
                 Read our <Link href="/insights" className="text-primary underline hover:no-underline">AI insights</Link> or explore <Link href="/use-cases" className="text-primary underline hover:no-underline">industry use cases</Link>.
             </p>
         </section>
+
+        <ServiceConceptBlock path="/chatbots" />
 
       </div>
     </div>

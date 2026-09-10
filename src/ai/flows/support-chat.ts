@@ -81,8 +81,10 @@ const supportChatFlow = ai.defineFlow(
         outputSchema: SupportChatResponseSchema,
     },
     async (input) => {
-        const { output } = await supportChatPrompt(input);
-        return output!;
+        const parsed = SupportChatRequestSchema.parse(input);
+        const { output } = await supportChatPrompt(parsed);
+        if (!output) throw new Error("No support response");
+        return output;
     }
 );
 

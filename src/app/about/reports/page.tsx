@@ -14,13 +14,13 @@ export const metadata = generateMetadata({
     'AI safety research',
     'digital enterprise',
   ],
-  canonical: 'https://logonsolutions.netlify.app/about/reports',
+  canonical: 'https://logonai.netlify.app/about/reports',
 });
 
 export default function ReportsPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background">
       <AnalystReportsBento />
-    </main>
+    </div>
   );
 }

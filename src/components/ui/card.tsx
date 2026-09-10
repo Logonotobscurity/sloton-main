@@ -5,27 +5,6 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-/**
- * Card component with hover effects
- * 
- * Features:
- * - Lift animation on hover (translateY -5px)
- * - Border color change on hover
- * - Green underline animation from left
- * 
- * @example
- * <Card>
- *   <CardHeader>
- *     <CardTitle>Title</CardTitle>
- *     <CardDescription>Description</CardDescription>
- *   </CardHeader>
- *   <CardContent>Content here</CardContent>
- * </Card>
- * 
- * Accessibility:
- * - Respects prefers-reduced-motion
- * - Maintains proper contrast ratios
- */
 const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & { disableHoverEffect?: boolean }
@@ -33,8 +12,8 @@ const Card = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "relative overflow-hidden rounded-xl border bg-card text-card-foreground transition-all duration-300",
-        !disableHoverEffect && "hover:-translate-y-1 hover:border-border2 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-1 after:bg-primary after:scale-x-0 after:transition-transform after:duration-400 after:origin-left hover:after:scale-x-100",
+        "verdara-card relative overflow-hidden transition-colors duration-200 ease-quiet",
+        !disableHoverEffect && "motion-reduce:hover:translate-y-0 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-1 after:bg-primary after:scale-x-0 after:origin-left hover:after:scale-x-100",
         className
       )}
       {...props}

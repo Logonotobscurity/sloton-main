@@ -6,15 +6,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { AIServiceManager } from '@/ai/ai-service-manager';
 import { logger } from '@/lib/logger';
-import { getConfig } from '@/config';
-import { 
-  handleError, 
-  createSuccessResponse, 
-  createErrorResponse, 
-  ErrorCode,
-  type ApiResponse 
-} from '@/lib/error-handler';
-import { formatISODate } from '@/lib/date-utils';
+import { handleError } from '@/lib/error-handler';
 
 // Initialize AI service manager
 const aiServiceManager = AIServiceManager.createFromEnvironment();
@@ -47,8 +39,7 @@ export async function GET(request: NextRequest) {
         status: healthInfo.circuitBreaker ? 'open' : 'closed',
         failureCount: healthInfo.failureCount
       },
-      uptime: process.uptime(),
-      environment: getConfig().environment || 'development'
+      uptime: Math.round(process.uptime()),
     };
 
     logger.info('AI health check performed', { 
@@ -75,8 +66,22 @@ export async function GET(request: NextRequest) {
   }
 }
 
+function authorizeAdmin(request: NextRequest): boolean {
+  const secret = process.env.AI_HEALTH_SECRET || process.env.INTERNAL_API_SECRET;
+  if (!secret) {
+    return process.env.NODE_ENV !== 'production';
+  }
+  const header = request.headers.get('authorization') || '';
+  const token = header.startsWith('Bearer ') ? header.slice(7) : '';
+  return token === secret;
+}
+
 export async function POST(request: NextRequest) {
   try {
+    if (!authorizeAdmin(request)) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const body = await request.json();
     const { action } = body;
 

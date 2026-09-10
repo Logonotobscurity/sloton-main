@@ -7,9 +7,9 @@ import Link from "next/link";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import SolutionRecommendationForm from "@/components/solution-recommendation-form";
 import { motion } from "framer-motion";
-import { AdinkraBackground } from "@/components/ui/adinkra-background";
 import { TypeAnimation } from "react-type-animation";
 import { HeroCodePreview } from "@/components/ui/hero-code-preview";
+import { IsometricStack } from "@/components/ui/isometric-stack";
 import { staggerContainerCustom, staggerItem, createFadeIn } from "@/lib/animation-variants";
  
 export function Hero() {
@@ -27,8 +27,8 @@ export function Hero() {
   const longestPhrase = 'Actionable Intelligence';
 
   return (
-    <section className="relative w-full min-h-[90vh] md:min-h-screen flex items-center overflow-hidden">
-      <AdinkraBackground />
+    <section className="relative w-full min-h-[90vh] md:min-h-screen flex items-center overflow-hidden gradient-wash">
+
       <div className="relative z-10 container px-fluid-sm py-20 md:py-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Side - Text Content */}
@@ -53,6 +53,7 @@ export function Hero() {
                       <TypeAnimation
                           sequence={animationSequence}
                           wrapper="span"
+                          className="headline-pill"
                           cursor={false}
                           repeat={Infinity}
                       />
@@ -72,11 +73,11 @@ export function Hero() {
             
             <motion.div
               variants={itemVariants}
-              className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start w-full max-w-md sm:max-w-none mx-auto lg:mx-0"
             >
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button variant="primary" size="large">Get Your Free Efficiency Assessment</Button>
+                  <Button variant="primary" size="large" className="w-full sm:w-auto max-w-full">Get Your Free Efficiency Assessment</Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-xl md:max-w-2xl bg-background">
                   <DialogHeader>
@@ -88,9 +89,15 @@ export function Hero() {
                   <SolutionRecommendationForm />
                 </DialogContent>
               </Dialog>
-              <Button size="large" variant="outline" asChild>
-                <Link href="/solutions" aria-label="Explore our AI and Automation Solutions">Explore Our AI & Automation Solutions</Link>
+              <Button size="large" variant="outline" asChild className="hidden sm:inline-flex w-full sm:w-auto max-w-full">
+                <Link href="/solutions" aria-label="Explore our AI and Automation Solutions" className="w-full text-center leading-tight">Explore Our AI & Automation Solutions</Link>
               </Button>
+              <Link
+                href="/solutions"
+                className="sm:hidden inline-flex min-h-11 items-center justify-center text-sm font-semibold text-primary underline-offset-4 hover:underline"
+              >
+                Explore our AI &amp; automation solutions
+              </Link>
             </motion.div>
           </motion.div>
 
@@ -101,7 +108,12 @@ export function Hero() {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="hidden lg:flex lg:justify-end"
           >
-            <HeroCodePreview className="w-full" />
+            <div className="tessera-frame chamfer-hero w-full max-w-lg">
+              <div className="tessera-slab chamfer-inset p-6">
+                <IsometricStack className="mx-auto w-48 h-44" />
+                <HeroCodePreview className="w-full mt-4" />
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>

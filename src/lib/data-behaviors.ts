@@ -108,77 +108,22 @@ export function initCounters() {
 }
 
 /**
- * Mobile Footer Folding
- * Makes footer sections collapsible on mobile
- * Usage: Applied automatically to footer sections
+ * Footer folding is owned by `src/components/footer.tsx` (React + data-expanded).
+ * A second click handler here double-toggled sections so the accordion looked broken.
  */
-export function initMobileFoldingFooter() {
-  const footerSections = document.querySelectorAll('[data-footer-section]');
-  
-  if (footerSections.length === 0) return;
-
-  // Only apply on mobile
-  const isMobile = () => window.innerWidth < 768;
-
-  footerSections.forEach((section) => {
-    const header = section.querySelector('[data-footer-header]') as HTMLElement;
-    const content = section.querySelector('[data-footer-content]') as HTMLElement;
-    
-    if (!header || !content) return;
-
-    const toggle = () => {
-      if (!isMobile()) return; // Only work on mobile
-
-      const isExpanded = section.getAttribute('data-expanded') === 'true';
-      section.setAttribute('data-expanded', (!isExpanded).toString());
-      
-      // Update ARIA
-      header.setAttribute('aria-expanded', (!isExpanded).toString());
-    };
-
-    // Make header clickable on mobile
-    header.addEventListener('click', toggle);
-    header.style.cursor = 'pointer';
-    
-    // Set initial state
-    if (isMobile()) {
-      section.setAttribute('data-expanded', 'false');
-      header.setAttribute('aria-expanded', 'false');
-    }
-  });
-
-  // Handle resize
-  let resizeTimer: NodeJS.Timeout;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      const mobile = isMobile();
-      footerSections.forEach((section) => {
-        if (!mobile) {
-          section.setAttribute('data-expanded', 'true');
-          const header = section.querySelector('[data-footer-header]') as HTMLElement;
-          if (header) header.setAttribute('aria-expanded', 'true');
-        }
-      });
-    }, 250);
-  });
-}
 
 /**
  * Initialize all data-attribute behaviors
  * Call this once when the page loads
  */
 export function initDataBehaviors() {
-  // Wait for DOM to be ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       initScrollReveal();
       initCounters();
-      initMobileFoldingFooter();
     });
   } else {
     initScrollReveal();
     initCounters();
-    initMobileFoldingFooter();
   }
 }

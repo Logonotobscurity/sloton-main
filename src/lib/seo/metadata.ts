@@ -4,6 +4,7 @@
  */
 
 import { Metadata } from 'next';
+import { getSiteUrl } from '@/lib/site';
 
 export interface SEOConfig {
   title: string;
@@ -23,7 +24,7 @@ export interface SEOConfig {
 
 const SITE_CONFIG = {
   name: 'LOG_ON',
-  url: 'https://logonsolutions.netlify.app',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://logonai.netlify.app',
   defaultOgImage: '/og-image.png',
   twitterHandle: '@Logo_obscurity',
   locale: 'en_US',
@@ -45,9 +46,14 @@ export function generateMetadata(config: SEOConfig): Metadata {
     article,
   } = config;
 
+  const origin = getSiteUrl();
   const fullTitle = title.includes('LOG_ON') ? title : `${title} | LOG_ON`;
-  const canonicalUrl = canonical || SITE_CONFIG.url;
-  const imageUrl = ogImage.startsWith('http') ? ogImage : `${SITE_CONFIG.url}${ogImage}`;
+  const canonicalUrl = !canonical
+    ? origin
+    : canonical.startsWith('http')
+      ? canonical
+      : `${origin}${canonical.startsWith('/') ? canonical : `/${canonical}`}`;
+  const imageUrl = ogImage.startsWith('http') ? ogImage : `${origin}${ogImage}`;
 
   const metadata: Metadata = {
     title: fullTitle,

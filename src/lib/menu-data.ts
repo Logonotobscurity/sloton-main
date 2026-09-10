@@ -1,9 +1,11 @@
-// -- types --
+import type { LucideIcon } from 'lucide-react';
+
 export type SitemapItem = {
   title: string;
   href: string;
   description: string;
   shortDescription?: string;
+  icon?: string;
 };
 
 type Cta = {
@@ -11,14 +13,14 @@ type Cta = {
   href: string;
 };
 
-// Base shape for most sections
 type SitemapSectionBase = {
   key: string;
   heading: string;
   intro?: string;
+  visual?: string;
+  visualAlt?: string;
 };
 
-// Variants (union)
 export type SectionWithItems = SitemapSectionBase & {
   items: SitemapItem[];
   cta?: Cta;
@@ -26,96 +28,188 @@ export type SectionWithItems = SitemapSectionBase & {
 
 export type SectionWithCta = SitemapSectionBase & {
   cta: Cta;
-  items?: SitemapItem[]; // optional if some CTA sections also have items
+  items?: SitemapItem[];
 };
 
-// A simple link-only section example
 export type SectionLinkOnly = {
   key: string;
   heading: string;
   href: string;
 };
 
-// Union of all possible section shapes.
 export type SitemapSection = SectionWithItems | SectionWithCta | SectionLinkOnly;
 
 export type MenuKey = 'solutions' | 'resources' | 'partners' | 'company' | 'contact';
 
-// -- data (example) --
 export const menuData: SitemapSection[] = [
   {
-     "key": "solutions",
-     "heading": "Solutions",
-     "intro": "Unite people, processes, and systems with AI-powered products for all your workflows.",
-     "cta": {"label": "See All Solutions", "href": "/solutions"},
-     "items": [
-        {
-          title: 'AI Solutions',
-          href: '/ai-solutions',
-          description: 'Custom AI models to solve complex business challenges.',
-          shortDescription: 'Custom AI models to solve complex business challenges.'
-        },
-        {
-          title: 'Process Automation',
-          href: '/automation',
-          description: 'Streamline workflows and boost operational efficiency.',
-          shortDescription: 'Streamline workflows and boost operational efficiency.'
-        },
-        {
-          title: 'Web & Custom Development',
-          href: '/web-development',
-          description: 'Scalable websites and applications tailored to your needs.',
-          shortDescription: 'Scalable websites and applications tailored to your needs.'
-        },
-        {
-          title: 'AI Chatbots',
-          href: '/chatbots',
-          description: 'Engage customers 24/7 with intelligent virtual assistants.',
-          shortDescription: 'Engage customers 24/7 with intelligent virtual assistants.'
-        },
-        {
-          title: 'Business Analytics',
-          href: '/business-analytics',
-          description: 'Turn data into actionable insights with custom dashboards.',
-          shortDescription: 'Turn data into actionable insights with custom dashboards.'
-        },
-        {
-          title: 'Database Solutions',
-          href: '/database-solutions',
-          description: 'Secure, scalable, and high-performance data management.',
-          shortDescription: 'Secure, scalable, and high-performance data management.'
-        }
-      ]
+    key: 'solutions',
+    heading: 'Solutions',
+    intro: 'Custom AI agents, automation, and software built for African operators.',
+    visual: '/images/marks/hero-ai.svg',
+    visualAlt: 'Abstract circuit illustration for LOG_ON solutions',
+    cta: { label: 'Explore all solutions', href: '/solutions' },
+    items: [
+      {
+        title: 'AI Solutions',
+        href: '/ai-solutions',
+        icon: 'BrainCircuit',
+        description: 'Agents, RAG, and models tailored to your data.',
+        shortDescription: 'Custom AI agents and models.',
+      },
+      {
+        title: 'Process Automation',
+        href: '/automation',
+        icon: 'Workflow',
+        description: 'RPA and workflows that cut repetitive work.',
+        shortDescription: 'RPA and workflow design.',
+      },
+      {
+        title: 'Web & Custom Development',
+        href: '/web-development',
+        icon: 'Code2',
+        description: 'Sites and products on modern cloud stacks.',
+        shortDescription: 'Web and custom software.',
+      },
+      {
+        title: 'AI Chatbots',
+        href: '/chatbots',
+        icon: 'Bot',
+        description: 'WhatsApp and web assistants that convert.',
+        shortDescription: '24/7 virtual assistants.',
+      },
+      {
+        title: 'Business Analytics',
+        href: '/business-analytics',
+        icon: 'LineChart',
+        description: 'Dashboards that turn operations into decisions.',
+        shortDescription: 'BI dashboards and reporting.',
+      },
+      {
+        title: 'Database Solutions',
+        href: '/database-solutions',
+        icon: 'Database',
+        description: 'Secure, scalable data architecture.',
+        shortDescription: 'Data architecture and ops.',
+      },
+    ],
   },
   {
-    "key": "resources",
-    "heading": "Resources",
-    "intro": "Explore our expert insights, articles, and tools to stay ahead of the technology curve.",
-    "cta": {"label": "All Resources", "href": "/resources"},
-    "items": [
-      {"title": "All Resources", "description": "Browse our complete library of guides, tools, and insights.", "shortDescription": "Browse our complete library of resources.", "href": "/resources"},
-      {"title": "Insights", "description": "Expert analysis on AI, automation, and tech trends.", "shortDescription": "Expert analysis on AI, automation, and tech trends.", "href": "/insights"},
-      {"title": "Use Cases", "description": "Discover how our solutions apply to your industry.", "shortDescription": "Discover how our solutions apply to your industry.", "href": "/use-cases"},
-      {"title": "Automation Library", "description": "Browse our library of pre-built workflow templates.", "shortDescription": "Browse our library of pre-built workflow templates.", "href": "/automation"},
-      {"title": "Training Programs", "description": "Master in-demand skills with our hands-on curriculum.", "shortDescription": "Master in-demand skills with our hands-on curriculum.", "href": "/training"},
-    ]
+    key: 'resources',
+    heading: 'Resources',
+    intro: 'Guides, templates, and programmes to move from idea to delivery.',
+    visual: '/images/marks/hero-insights.svg',
+    visualAlt: 'Abstract editorial illustration for LOG_ON resources',
+    cta: { label: 'Browse the library', href: '/resources' },
+    items: [
+      {
+        title: 'All Resources',
+        href: '/resources',
+        icon: 'Library',
+        description: 'The full library of tools and writing.',
+        shortDescription: 'Complete resource library.',
+      },
+      {
+        title: 'Insights',
+        href: '/insights',
+        icon: 'Newspaper',
+        description: 'GEO, agents, and workplace AI analysis.',
+        shortDescription: 'Expert analysis and articles.',
+      },
+      {
+        title: 'Use Cases',
+        href: '/use-cases',
+        icon: 'Building2',
+        description: 'How we apply AI by industry.',
+        shortDescription: 'Industry applications.',
+      },
+      {
+        title: 'Automation Library',
+        href: '/automation',
+        icon: 'LayoutTemplate',
+        description: 'Ready workflow patterns you can adapt.',
+        shortDescription: 'Workflow templates.',
+      },
+      {
+        title: 'Training Programs',
+        href: '/training',
+        icon: 'GraduationCap',
+        description: 'Hands-on AI and automation curriculum.',
+        shortDescription: 'Professional training.',
+      },
+      {
+        title: 'Visibility audit',
+        href: '/audit',
+        icon: 'Compass',
+        description: 'Free community give-back: structure your business for Google and AI.',
+        shortDescription: 'Free business profile.',
+      },
+    ],
   },
   {
-      "key": "partners",
-      "heading": "Partners",
-      "href": "/partners"
+    key: 'partners',
+    heading: 'Partners',
+    href: '/partners',
   },
   {
-    "key": "company",
-    "heading": "Company",
-    "intro": "Learn more about our mission, values, and the team driving our innovation.",
-    "items": [
-      {"title": "About Us", "description": "Our mission, values, and company news.", "shortDescription": "Our mission, values, and company news.", "href": "/about"},
-      {"title": "Analyst Reports", "description": "Download comprehensive industry analyst reports.", "shortDescription": "Download comprehensive industry analyst reports.", "href": "/about/reports"},
-      {"title": "Our Leadership", "description": "Meet the LOG_ON leadership team.", "shortDescription": "Meet the LOG_ON leadership team.", "href": "/about/our-leadership"},
-      {"title": "Careers", "description": "Explore open positions and join our team.", "shortDescription": "Explore open positions and join our team.", "href": "/about/careers"},
-      {"title": "Partners", "description": "Collaborate with us to deliver innovative solutions.", "shortDescription": "Collaborate with us to deliver innovative solutions.", "href": "/partners"},
-      {"title": "Contact", "description": "Get in touch with our team to start a project.", "shortDescription": "Get in touch with our team.", "href": "/contact"}
-    ]
-  }
+    key: 'company',
+    heading: 'Company',
+    intro: 'Lagos-based. Built to connect advantages across Africa.',
+    visual: '/images/marks/hero-company.svg',
+    visualAlt: 'Abstract Lagos skyline illustration for LOG_ON',
+    cta: { label: 'About LOG_ON', href: '/about' },
+    items: [
+      {
+        title: 'About Us',
+        href: '/about',
+        icon: 'Compass',
+        description: 'Mission, values, and how we work.',
+        shortDescription: 'Mission and values.',
+      },
+      {
+        title: 'Analyst Reports',
+        href: '/about/reports',
+        icon: 'FileBarChart',
+        description: 'Industry notes and downloadable reports.',
+        shortDescription: 'Analyst reports.',
+      },
+      {
+        title: 'Newsroom',
+        href: '/about/newsroom',
+        icon: 'Newspaper',
+        description: 'Announcements and company updates.',
+        shortDescription: 'Press and updates.',
+      },
+      {
+        title: 'Our Leadership',
+        href: '/about/our-leadership',
+        icon: 'Users',
+        description: 'The people shipping the work.',
+        shortDescription: 'Leadership team.',
+      },
+      {
+        title: 'Careers',
+        href: '/about/careers',
+        icon: 'Briefcase',
+        description: 'Join the practice.',
+        shortDescription: 'Open roles.',
+      },
+      {
+        title: 'Partners',
+        href: '/partners',
+        icon: 'Handshake',
+        description: 'Collaborate on delivery.',
+        shortDescription: 'Partner with us.',
+      },
+      {
+        title: 'Contact',
+        href: '/contact',
+        icon: 'Mail',
+        description: 'Start a scoped conversation.',
+        shortDescription: 'Get in touch.',
+      },
+    ],
+  },
 ];
+
+export type { LucideIcon };

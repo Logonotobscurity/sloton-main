@@ -7,6 +7,7 @@ import { generateMetadata, KEYWORD_SETS, JsonLd, generateServiceSchema } from '@
 import { CaseStudyFeature } from '@/components/page-sections/case-study-feature';
 import { PageHero } from '@/components/page-sections/page-hero';
 import { analyticsServices, businessAnalyticsBenefits } from '@/lib/data/services-data';
+import { ServiceConceptBlock } from '@/components/service-concept-block';
 
 export const metadata = generateMetadata({
   title: 'Business Analytics & BI Solutions in Nigeria | Dashboards & Reporting',
@@ -22,13 +23,13 @@ export const metadata = generateMetadata({
     'KPI tracking',
     'data-driven insights',
   ],
-  canonical: 'https://logonsolutions.netlify.app/business-analytics',
+  canonical: 'https://logonai.netlify.app/business-analytics',
 });
 
 const analyticsServiceSchema = generateServiceSchema({
   name: 'Business Analytics & BI Solutions',
   description: 'Transform raw data into actionable insights with our business analytics and BI solutions. We build custom dashboards, data reports, and KPI trackers to fuel data-driven growth.',
-  url: 'https://logonsolutions.netlify.app/business-analytics',
+  url: 'https://logonai.netlify.app/business-analytics',
   provider: 'LOG_ON',
   areaServed: 'Nigeria',
 });
@@ -75,24 +76,19 @@ export default function BusinessAnalyticsPage() {
           </div>
         </section>
 
-        <section className="py-fluid-lg">
-            <div className="text-center max-w-3xl mx-auto mb-fluid-md">
-                <h2 className="text-fluid-xl font-bold font-headline">Our Business Analytics Services</h2>
-                <p className="mt-4 text-fluid-base text-muted-foreground leading-relaxed">
+        <section className="verdara-section -mx-fluid-sm px-5 py-16">
+            <p className="verdara-kicker">Intelligence</p>
+            <h2 className="verdara-title mt-2">Business analytics <em>services</em></h2>
+            <p className="verdara-lede mt-4">
                     We offer end-to-end analytics services, from data integration to strategic reporting.
-                </p>
-            </div>
-             <div className="grid md:grid-cols-2 gap-8">
+            </p>
+             <div className="verdara-grid verdara-grid-2 mt-10">
                 {analyticsServices.map((service) => (
-                <Card key={service.title} className="bg-secondary/50 flex flex-col transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl">
-                    <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                        <service.icon className="h-8 w-8 text-primary" />
-                        <CardTitle className="text-lg md:text-xl">{service.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <p className="text-muted-foreground text-sm md:text-base leading-relaxed">{service.description}</p>
-                    </CardContent>
-                </Card>
+                <article key={service.title} className="verdara-card">
+                    <span className="verdara-tag verdara-tag-coral">Data</span>
+                    <h3 className="mt-4">{service.title}</h3>
+                    <p className="verdara-lede mt-auto pt-3">{service.description}</p>
+                </article>
                 ))}
             </div>
         </section>
@@ -116,6 +112,8 @@ export default function BusinessAnalyticsPage() {
                 </Button>
             </div>
         </section>
+
+        <ServiceConceptBlock path="/business-analytics" />
 
       </div>
     </div>

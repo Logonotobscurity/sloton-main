@@ -81,7 +81,11 @@ export default async function TemplatePreviewPage({ params }: PageProps) {
           {template.purpose && (
              <section className="mt-12">
                 <h2 className="text-2xl font-bold">The Purpose of {template.name}</h2>
-                <div className="prose dark:prose-invert max-w-none mt-4 text-muted-foreground" dangerouslySetInnerHTML={{ __html: template.purpose.replace(/\n/g, '<br />') }} />
+                <div className="prose dark:prose-invert max-w-none mt-4 text-muted-foreground">
+                  {template.purpose.split('\n').map((line, i) => (
+                    <p key={i} className={i === 0 ? undefined : 'mt-3'}>{line}</p>
+                  ))}
+                </div>
             </section>
           )}
 

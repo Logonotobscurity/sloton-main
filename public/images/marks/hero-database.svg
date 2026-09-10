@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img">
+  <rect width="1600" height="900" fill="#FCFCF8"/>
+  
+  <ellipse cx="1180" cy="280" rx="180" ry="48" fill="none" stroke="#006B4D" stroke-width="5"/>
+  <path d="M1000 280 v220 c0 28 80 48 180 48 s180-20 180-48 V280" fill="none" stroke="#006B4D" stroke-width="5"/>
+  <ellipse cx="1180" cy="390" rx="180" ry="48" fill="none" stroke="#006B4D" stroke-width="3" opacity="0.6"/>
+  <ellipse cx="1180" cy="500" rx="180" ry="48" fill="none" stroke="#BD005B" stroke-width="3"/>
+  <text x="980" y="200" font-family="IBM Plex Mono, monospace" font-size="20" fill="#006B4D">SQL · NOSQL · NDPR</text>
+
+</svg>

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import React from "react";
+import { AnimatedCodeBackground } from "@/components/ui/animated-code-background";
 
 interface CaseStudyFeatureProps {
   tags: string[];
@@ -26,11 +27,13 @@ export function CaseStudyFeature({ tags, title, description, showDesignProcess =
   }
 
   return (
-    <section className="py-16 md:py-24 bg-secondary/30 -mx-4 px-4 sm:mx-0 sm:rounded-lg sm:px-0">
+    <section className="verdara-section py-16 md:py-24 -mx-4 px-4 sm:mx-0 sm:rounded-[26px] sm:px-0">
+      <AnimatedCodeBackground variant="default" density="low" />
         <div className="container mx-auto px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-                <h2 className="text-2xl md:text-4xl font-bold">{title}</h2>
-                <p className="mt-4 text-md md:text-lg text-muted-foreground">
+            <div className="max-w-3xl mx-auto mb-12 md:mb-16">
+                <p className="verdara-kicker">Proof</p>
+                <h2 className="verdara-title mt-2">{title}</h2>
+                <p className="verdara-lede mt-4">
                     {description}
                 </p>
             </div>

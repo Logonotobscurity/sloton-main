@@ -335,7 +335,7 @@ export const metadata = generateMetadata({
   title: 'Your Page Title',
   description: 'Your compelling description...',
   keywords: [...KEYWORD_SETS.ai, 'specific', 'keywords'],
-  canonical: 'https://logonsolutions.netlify.app/your-page',
+  canonical: 'https://logonai.netlify.app/your-page',
 });
 
 export default function YourPage() {
@@ -360,7 +360,7 @@ import { JsonLd, generateServiceSchema } from '@/lib/seo';
 const serviceSchema = generateServiceSchema({
   name: 'Service Name',
   description: 'Service description',
-  url: 'https://logonsolutions.netlify.app/service',
+  url: 'https://logonai.netlify.app/service',
 });
 
 <JsonLd data={serviceSchema} />

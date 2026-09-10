@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { generateMetadata, KEYWORD_SETS } from '@/lib/seo';
 
 export const metadata: Metadata = generateMetadata({
-  title: 'AI & Automation Insights - Expert Articles & Guides',
-  description: 'Explore expert insights on AI, automation, digital transformation, and technology trends. Learn from LOG_ON\'s comprehensive guides and articles on workplace automation, AI agents, and business innovation.',
+  title: 'LOG_ON Insights Hub — AI that moves organizations forward',
+  description: 'Research-backed guides on AI strategy, implementation, LLMO/GEO, agents, statistics and governance for Nigerian, African, and global enterprise leaders. Updated on a 90-day cycle.',
   keywords: [
     ...KEYWORD_SETS.ai,
     ...KEYWORD_SETS.automation,
@@ -15,7 +15,7 @@ export const metadata: Metadata = generateMetadata({
     'automation tutorials',
     'business technology insights',
   ],
-  canonical: 'https://logonsolutions.netlify.app/insights',
+  canonical: 'https://logonai.netlify.app/insights',
 });
 
 export default function InsightsLayout({

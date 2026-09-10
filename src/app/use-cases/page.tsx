@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { CheckCircle, ArrowRight, BrainCircuit, Zap } from 'lucide-react';
 import type { Metadata } from 'next';
 import { BottomCta } from '@/components/page-sections/bottom-cta';
+import { DecisionSupportSection } from '@/components/page-sections/decision-support';
 import { SidebarNav } from '@/components/sidebar-nav';
 import { industries, sidebarNavItems } from '@/lib/data/industries-data';
 import { IndustryItemListSchema, BreadcrumbSchema } from '@/lib/seo';
@@ -20,8 +21,8 @@ export default function UseCasesPage() {
     <div className="bg-background">
       <IndustryItemListSchema industries={industries.map(i => ({ name: i.name, description: i.description, id: i.id }))} />
       <BreadcrumbSchema items={[
-        { name: 'Home', url: 'https://logonsolutions.netlify.app' },
-        { name: 'Industry Use Cases', url: 'https://logonsolutions.netlify.app/use-cases' },
+        { name: 'Home', url: 'https://logonai.netlify.app' },
+        { name: 'Industry Use Cases', url: 'https://logonai.netlify.app/use-cases' },
       ]} />
       <PageHero
         title="Solutions For Your Industry"
@@ -53,14 +54,12 @@ export default function UseCasesPage() {
                       </div>
                       <div>
                         <h3 className="text-xl font-semibold mb-4 flex items-center gap-2"><BrainCircuit className="h-5 w-5 text-accent" /> Our AI-Powered Solutions</h3>
-                        <div className="space-y-4">
+                        <div className="verdara-grid verdara-grid-2">
                           {industry.solutions.map((solution) => (
-                            <Card key={solution.name} className="bg-secondary/50">
-                              <CardHeader>
-                                <CardTitle className="text-base">{solution.name}</CardTitle>
-                                <CardDescription>{solution.description}</CardDescription>
-                              </CardHeader>
-                            </Card>
+                            <article key={solution.name} className="verdara-card">
+                                <h3>{solution.name}</h3>
+                                <p className="verdara-lede mt-auto pt-3">{solution.description}</p>
+                            </article>
                           ))}
                         </div>
                       </div>
@@ -88,6 +87,7 @@ export default function UseCasesPage() {
             </div>
         </div>
       </div>
+      <DecisionSupportSection />
       <BottomCta />
     </div>
   );

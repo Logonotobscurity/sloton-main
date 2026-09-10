@@ -8,11 +8,14 @@ import { PageHero } from "@/components/page-sections/page-hero";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { BottomCta } from "@/components/page-sections/bottom-cta";
+import { BottomCta } from '@/components/page-sections/bottom-cta';
+import { DecisionSupportSection } from '@/components/page-sections/decision-support';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import SolutionRecommendationForm from "@/components/solution-recommendation-form";
 import { services, industryApplications } from "@/lib/data/solutions-data";
 import { generateMetadata, KEYWORD_SETS, BreadcrumbSchema, ServiceCatalogSchema } from "@/lib/seo";
+import { EntityLead, PricingNote } from '@/components/entity-lead';
+import { SITE } from '@/lib/site';
 
 export const metadata = generateMetadata({
   title: 'Technology Solutions | Custom AI, Automation & Development in Nigeria',
@@ -28,7 +31,7 @@ export const metadata = generateMetadata({
     'business analytics Lagos',
     'custom software Nigeria',
   ],
-  canonical: 'https://logonsolutions.netlify.app/solutions',
+  canonical: '/solutions',
 });
 
 export default function SolutionsPage() {
@@ -36,12 +39,13 @@ export default function SolutionsPage() {
     <div className="bg-background">
       <ServiceCatalogSchema />
       <BreadcrumbSchema items={[
-        { name: 'Home', url: 'https://logonsolutions.netlify.app' },
-        { name: 'Solutions', url: 'https://logonsolutions.netlify.app/solutions' },
+        { name: 'Home', url: 'https://logonai.netlify.app' },
+        { name: 'Solutions', url: 'https://logonai.netlify.app/solutions' },
       ]} />
       <PageHero 
+        kicker="Solutions"
         title="Turn Your Biggest Challenges into Growth Opportunities"
-        description="We don't just build solutions; we architect results. Discover how our integrated AI and automation services can transform your business, streamline operations, and unlock new value."
+        description="LOG_ON is a Lagos consultancy. We design custom AI agents, workplace RPA, analytics, and web systems — scoped projects, not a packaged SaaS product. Discover how integrated services can cut grind and unlock measurable return."
       >
         <div className="flex flex-col sm:flex-row items-center gap-4 justify-center mt-8">
             <Dialog>
@@ -64,7 +68,17 @@ export default function SolutionsPage() {
         </div>
       </PageHero>
       <div className="container mx-auto px-4 md:px-6 py-16 md:py-24 space-y-20">
-        
+        <section className="max-w-3xl space-y-4">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">Entity</p>
+          <EntityLead />
+          <PricingNote />
+          <p className="text-sm text-muted-foreground">
+            Free assessment — <a className="text-primary underline" href="/contact">{SITE.email}</a> · WhatsApp {SITE.phone}. Playbooks:{" "}
+            <a className="text-primary underline" href="/insights/ai-implementation">implementation</a>,{" "}
+            <a className="text-primary underline" href="/insights/ai-agents">agents</a>,{" "}
+            <a className="text-primary underline" href="/insights/ai-automation">automation</a>.
+          </p>
+        </section>
         {/* Core Services Section */}
         <div className="space-y-16">
             {services.map((service) => {
@@ -73,11 +87,9 @@ export default function SolutionsPage() {
                 <section key={service.id} id={service.id} className="scroll-mt-20">
                     <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
                         <div className="lg:sticky top-24">
-                           <div className="flex items-center gap-4 mb-4">
-                                <ServiceIcon className="h-8 w-8 text-primary" />
-                                <h2 className="text-3xl md:text-4xl font-bold font-headline">{service.title}</h2>
-                           </div>
-                           <p className="text-muted-foreground md:text-lg">{service.description}</p>
+                           <p className="verdara-kicker">{service.id}</p>
+                           <h2 className="verdara-title mt-2">{service.title}</h2>
+                           <p className="verdara-lede mt-3">{service.description}</p>
                            <Button asChild className="mt-6">
                                <Link href={service.cta.href}>
                                    {service.cta.text} <ArrowRight className="ml-2 h-4 w-4"/>
@@ -145,39 +157,40 @@ export default function SolutionsPage() {
         
         {/* Industry Applications Section */}
         <section>
-            <div className="text-center max-w-3xl mx-auto mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Industry-Specific Solutions</h2>
-                <p className="mt-4 text-md md:text-lg text-muted-foreground">We apply our core services to solve the unique challenges of your industry, turning complex problems into growth opportunities.</p>
+            <div className="max-w-3xl mb-10">
+                <p className="verdara-kicker">Sectors</p>
+                <h2 className="verdara-title mt-2">Industry-specific <em>solutions</em></h2>
+                <p className="verdara-lede mt-3">We apply our core services to solve the unique challenges of your industry.</p>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="verdara-grid verdara-grid-3">
                 {industryApplications.map(app => {
                   const AppIcon = app.icon;
                   return (
-                    <Card key={app.industry} className="bg-background/50 flex flex-col">
-                        <CardHeader>
-                            <div className="flex items-start gap-4 mb-2">
-                                <div className="flex-shrink-0"><AppIcon className="h-8 w-8 text-primary" /></div>
-                                <div className="flex-1">
-                                    <CardTitle className="text-xl leading-snug">{app.industry}</CardTitle>
-                                </div>
-                            </div>
-                            <p className="text-sm font-semibold text-destructive">{app.challenge}</p>
-                        </CardHeader>
-                        <CardContent className="flex-grow">
-                                <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: app.solution.replace(/\*\*(.*?)\*\*/g, '<strong class="text-primary">$1</strong>') }} />
-                        </CardContent>
-                        <CardFooter>
-                            <Button asChild variant="outline" size="sm" className="w-full">
+                    <article key={app.industry} className="verdara-card">
+                        <span className="verdara-tag verdara-tag-sage">{app.industry}</span>
+                        <AppIcon className="mt-4 h-5 w-5" aria-hidden />
+                        <h3 className="mt-3">{app.industry}</h3>
+                        <p className="verdara-lede mt-2 font-semibold text-[var(--color-emphasis)]">{app.challenge}</p>
+                        <p className="verdara-lede mt-auto pt-3">
+                                  {app.solution.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
+                                    part.startsWith('**') && part.endsWith('**') ? (
+                                      <strong key={i}>{part.slice(2, -2)}</strong>
+                                    ) : (
+                                      <span key={i}>{part}</span>
+                                    )
+                                  )}
+                        </p>
+                        <Button asChild variant="outline" size="sm" className="mt-4">
                                 <Link href={app.cta.href}>{app.cta.text}</Link>
-                            </Button>
-                        </CardFooter>
-                    </Card>
+                        </Button>
+                    </article>
                   )
                 })}
             </div>
         </section>
 
       </div>
+      <DecisionSupportSection />
       <BottomCta />
     </div>
   );

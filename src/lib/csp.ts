@@ -3,13 +3,14 @@
  * Provides secure CSP headers with nonce support for inline scripts
  */
 
-import { randomBytes } from 'crypto';
-
-/**
- * Generate a cryptographically secure nonce for CSP
- */
 export function generateNonce(): string {
-  return randomBytes(16).toString('base64');
+  const bytes = new Uint8Array(16);
+  globalThis.crypto.getRandomValues(bytes);
+  let binary = "";
+  for (let i = 0; i < bytes.length; i += 1) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return btoa(binary);
 }
 
 /**
@@ -17,8 +18,8 @@ export function generateNonce(): string {
  */
 export function buildCSPPolicy(nonce?: string): string {
   const scriptSrc = nonce
-    ? `'self' 'nonce-${nonce}' https://www.googletagmanager.com https://cdn.matomo.cloud`
-    : `'self' https://www.googletagmanager.com https://cdn.matomo.cloud`;
+    ? `'self' 'nonce-${nonce}' https://www.googletagmanager.com https://cdn.matomo.cloud https://*.posthog.com`
+    : `'self' https://www.googletagmanager.com https://cdn.matomo.cloud https://*.posthog.com`;
 
   const styleSrc = nonce
     ? `'self' 'nonce-${nonce}' https://fonts.googleapis.com`
@@ -26,14 +27,14 @@ export function buildCSPPolicy(nonce?: string): string {
 
   const directives = [
     `default-src 'self'`,
-    `script-src ${scriptSrc}`,
-    `style-src ${styleSrc}`,
+    `script-src ${scriptSrc} 'unsafe-inline' https://tally.so`,
+    `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com`,
     `img-src 'self' data: https: blob:`,
     `font-src 'self' data: https://fonts.gstatic.com`,
-    `connect-src 'self' https://api.logonsolutions.netlify.app https://*.vercel.app https://www.googletagmanager.com https://*.matomo.cloud`,
+    `connect-src 'self' https://logonai.netlify.app https://*.vercel.app https://www.googletagmanager.com https://*.matomo.cloud https://*.posthog.com https://tally.so`,
     `media-src 'self'`,
     `object-src 'none'`,
-    `frame-src 'self' https://www.googletagmanager.com`,
+    `frame-src 'self' https://www.googletagmanager.com https://tally.so`,
     `frame-ancestors 'none'`,
     `base-uri 'self'`,
     `form-action 'self'`,
@@ -51,14 +52,14 @@ export function buildCSPPolicy(nonce?: string): string {
 export function buildDevCSPPolicy(): string {
   const directives = [
     `default-src 'self'`,
-    `script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://cdn.matomo.cloud`,
+    `script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://cdn.matomo.cloud https://*.posthog.com`,
     `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com`,
     `img-src 'self' data: https: blob:`,
     `font-src 'self' data: https://fonts.gstatic.com`,
     `connect-src 'self' https: ws: wss:`,
     `media-src 'self'`,
     `object-src 'none'`,
-    `frame-src 'self' https:`,
+    `frame-src 'self' https: https://tally.so`,
     `frame-ancestors 'none'`,
     `base-uri 'self'`,
     `form-action 'self'`,

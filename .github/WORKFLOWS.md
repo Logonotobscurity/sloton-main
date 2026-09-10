@@ -63,7 +63,7 @@ This document describes all GitHub Actions workflows configured for the LOG_ON p
 - Notifies deployment status
 
 **Environment:** Production
-**URL:** https://logonsolutions.netlify.app
+**URL:** https://logonai.netlify.app
 
 **Required Secrets:**
 - `NETLIFY_AUTH_TOKEN`
@@ -204,7 +204,7 @@ Add these secrets to your GitHub repository settings:
 
 2. **Environment Variables**
    ```
-   NEXT_PUBLIC_SITE_URL=https://logonsolutions.netlify.app
+   NEXT_PUBLIC_SITE_URL=https://logonai.netlify.app
    ```
 
 3. **Code Coverage (Optional)**

@@ -1,0 +1,153 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483010;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: max(0.75rem, env(safe-area-inset-top)) max(0.75rem, env(safe-area-inset-right)) max(0.75rem, env(safe-area-inset-bottom)) max(0.75rem, env(safe-area-inset-left));
+  background: var(--modal-scrim);
+}
+
+.dialog {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) minmax(7.5rem, 28%);
+  width: min(1100px, 100%);
+  height: min(92dvh, 92vh);
+  max-height: min(92dvh, 92vh);
+  overflow: hidden;
+  isolation: isolate;
+  color-scheme: light;
+  background: var(--color-paper-50);
+  color: var(--color-forest-900);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-rule-200);
+  box-shadow: var(--shadow-elevated);
+}
+
+@media (min-width: 1024px) {
+  .dialog {
+    grid-template-rows: minmax(0, 1fr);
+    grid-template-columns: minmax(0, 7fr) minmax(240px, 5fr);
+  }
+}
+
+.left {
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  padding-bottom: 2.5rem;
+  background: var(--color-paper-50);
+  color: var(--color-forest-900);
+}
+
+.panel {
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.kicker {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-family-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-action);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-family-display), Fraunces, serif;
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-forest-900);
+}
+
+.title em {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--color-emphasis);
+}
+
+.copy {
+  margin: 1rem 0 0;
+  max-width: 42ch;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  font-weight: 500;
+  color: var(--color-ink-muted);
+}
+
+.quote {
+  margin: 1.5rem 0 0;
+  padding: 1rem;
+  border: 1px solid var(--color-rule-200);
+  border-radius: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--color-forest-900);
+  background: var(--color-paper-100);
+}
+
+.button {
+  min-height: var(--touch-min);
+  padding: 0 1.5rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-action);
+  color: var(--color-paper-50);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: var(--color-action-hover);
+}
+
+.ghost {
+  min-height: var(--touch-min);
+  padding: 0 0.75rem;
+  border: 0;
+  background: transparent;
+  color: var(--color-forest-900);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+:global(html.dark) .dialog,
+:global(html.dark) .left,
+:global(html.dark) .title,
+:global(html.dark) .copy,
+:global(html.dark) .quote,
+:global(html.dark) .ghost {
+  background-color: var(--color-paper-50);
+  color: var(--color-forest-900);
+  color-scheme: light;
+}
+
+:global(html.dark) .kicker {
+  color: var(--color-action);
+}
+
+:global(html.dark) .title em {
+  color: var(--color-emphasis);
+}

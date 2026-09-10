@@ -4,9 +4,7 @@ import { PageHero } from '@/components/page-sections/page-hero';
 import { Lightbulb, Rocket, Filter } from 'lucide-react';
 import type { Metadata } from 'next';
 import { Button } from '@/components/ui/button';
-import { GlowingCard } from '@/components/ui/glowing-card';
-import { GridBackground } from '@/components/ui/grid-background';
-import { products, productCategories, getProductsByCategory, getProductStats } from '@/lib/data/ideas-lab-products';
+import { productCategories, getProductsByCategory, getProductStats } from '@/lib/data/ideas-lab-products';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
@@ -34,9 +32,9 @@ export default function IdeasLabPage() {
       />
 
       {/* Stats Section */}
-      <section className="py-fluid-md bg-secondary/20">
+      <section className="verdara-section py-fluid-md">
         <div className="container mx-auto px-fluid-sm">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div className="verdara-grid verdara-grid-4 text-center">
             <div>
               <div className="text-4xl font-bold text-primary">{stats.total}</div>
               <div className="text-sm text-muted-foreground mt-1">Active Builds</div>
@@ -85,11 +83,11 @@ export default function IdeasLabPage() {
       {/* Products Grid */}
       <section className="pb-fluid-lg">
         <div className="container mx-auto px-fluid-sm">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="verdara-grid verdara-grid-3">
             {filteredProducts.map((product, index) => {
               const Icon = product.icon;
               return (
-                <GlowingCard key={product.id} className="h-full">
+                <article key={product.id} className="verdara-card h-full">
                   <div className="p-6 flex flex-col h-full">
                     {/* Icon & Status */}
                     <div className="flex items-start justify-between mb-4">
@@ -137,7 +135,7 @@ export default function IdeasLabPage() {
                       </div>
                     )}
                   </div>
-                </GlowingCard>
+                </article>
               );
             })}
           </div>
@@ -145,11 +143,11 @@ export default function IdeasLabPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-fluid-lg bg-secondary/20">
+      <section className="verdara-section py-fluid-lg">
         <div className="container mx-auto px-fluid-sm text-center">
           <Rocket className="h-12 w-12 text-primary mx-auto mb-4" />
-          <h2 className="text-3xl font-bold mb-4">Ready to Build Together?</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
+          <h2 className="verdara-title mb-4">Ready to build <em>together</em>?</h2>
+          <p className="verdara-lede mx-auto mb-8">
             These products represent our connected ecosystem approach. Each build shares infrastructure, making deployment faster and more reliable. Let's discuss how we can adapt these solutions for your business.
           </p>
           <Button asChild size="lg">

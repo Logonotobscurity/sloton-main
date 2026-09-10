@@ -9,7 +9,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import SolutionRecommendationForm from '@/components/solution-recommendation-form';
 import { createScaleAnimation } from '@/lib/animation-variants';
 
-const MotionCard = motion(Card);
+const MotionCard = motion.create(Card);
 
 // Create custom scale animation with delay based on index
 const createCardVariants = (index: number) => ({

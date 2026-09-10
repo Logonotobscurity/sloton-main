@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img">
+  <rect width="1600" height="900" fill="#FCFCF8"/>
+  
+  <g fill="#006B4D">
+    <rect x="960" y="480" width="48" height="160" rx="6"/>
+    <rect x="1040" y="400" width="48" height="240" rx="6"/>
+    <rect x="1120" y="320" width="48" height="320" rx="6"/>
+    <rect x="1200" y="360" width="48" height="280" rx="6"/>
+    <rect x="1280" y="280" width="48" height="360" rx="6" fill="#BD005B"/>
+  </g>
+  <path d="M960 470 L1040 390 L1120 310 L1200 350 L1328 270" fill="none" stroke="#191A16" stroke-width="3"/>
+  <text x="960" y="200" font-family="IBM Plex Mono, monospace" font-size="20" fill="#006B4D">KPI · CYCLE · COST-TO-SERVE</text>
+
+</svg>

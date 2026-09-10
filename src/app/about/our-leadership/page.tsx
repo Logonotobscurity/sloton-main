@@ -1,6 +1,7 @@
 import { teamMembers } from "@/lib/data/team-members";
 import { PageHero } from "@/components/page-sections/page-hero";
-import { BottomCta } from "@/components/page-sections/bottom-cta";
+import { BottomCta } from '@/components/page-sections/bottom-cta';
+import { DecisionSupportSection } from '@/components/page-sections/decision-support';
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Link from "next/link";
 import { Linkedin, Github, Mail } from 'lucide-react';
@@ -18,9 +19,9 @@ export default function LeadershipPage() {
     return (
         <div>
              <BreadcrumbSchema items={[
-               { name: 'Home', url: 'https://logonsolutions.netlify.app' },
-               { name: 'About', url: 'https://logonsolutions.netlify.app/about' },
-               { name: 'Our Leadership', url: 'https://logonsolutions.netlify.app/about/our-leadership' },
+               { name: 'Home', url: 'https://logonai.netlify.app' },
+               { name: 'About', url: 'https://logonai.netlify.app/about' },
+               { name: 'Our Leadership', url: 'https://logonai.netlify.app/about/our-leadership' },
              ]} />
              {teamMembers.map(member => (
                <PersonSchema
@@ -71,7 +72,8 @@ export default function LeadershipPage() {
                 </div>
             </section>
 
-            <BottomCta />
+      <DecisionSupportSection />
+      <BottomCta />
         </div>
     );
 }

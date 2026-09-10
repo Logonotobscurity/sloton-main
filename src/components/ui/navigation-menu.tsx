@@ -15,7 +15,7 @@ const NavigationMenu = React.forwardRef<
   <NavigationMenuPrimitive.Root
     ref={ref}
     className={cn(
-      "relative z-50 flex max-w-max flex-1 items-center justify-center",
+      "relative z-[90] flex max-w-max flex-1 items-center justify-center",
       className
     )}
     delayDuration={200}
@@ -87,10 +87,10 @@ const NavigationMenuViewport = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
 >(({ className, ...props }, ref) => (
-  <div className={cn("absolute top-full flex justify-center")}>
+  <div className={cn("absolute left-1/2 top-full z-[90] flex -translate-x-1/2 justify-center")}>
     <NavigationMenuPrimitive.Viewport
       className={cn(
-        "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=open]:fade-in data-[state=closed]:animate-out data-[state=closed]:fade-out md:w-[var(--radix-navigation-menu-viewport-width)]",
+        "origin-top-center relative mt-2 h-[var(--radix-navigation-menu-viewport-height)] max-h-[min(70vh,640px)] w-full overflow-auto rounded-[22px] border border-[var(--color-border)] bg-[var(--mega-bg)] text-[var(--mega-fg)] shadow-lg data-[state=open]:animate-in data-[state=open]:fade-in data-[state=closed]:animate-out data-[state=closed]:fade-out md:w-[var(--radix-navigation-menu-viewport-width)] dark:bg-[#162b27] dark:text-[#fbf6ec] dark:border-[#264039]",
         className
       )}
       ref={ref}

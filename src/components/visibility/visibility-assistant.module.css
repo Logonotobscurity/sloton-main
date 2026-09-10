@@ -1,0 +1,98 @@
+.dock,
+.pill {
+  color-scheme: light;
+  isolation: isolate;
+  cursor: pointer;
+  font-family: var(--font-family-ui);
+  border: 1px solid var(--color-rule-200);
+}
+
+.dock {
+  position: fixed;
+  bottom: calc(1.5rem + env(safe-area-inset-bottom));
+  left: calc(1rem + env(safe-area-inset-left));
+  z-index: 100;
+  display: none;
+  width: min(280px, calc(100vw - 2rem));
+  padding: 1rem 1.1rem 1.1rem;
+  text-align: left;
+  background: var(--color-paper-50);
+  color: var(--color-forest-900);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-elevated);
+}
+
+.kicker {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-action);
+}
+
+.title {
+  margin: 0.5rem 0 0;
+  font-family: var(--font-family-display), Fraunces, serif;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  font-weight: 600;
+  color: var(--color-forest-900);
+}
+
+.meta {
+  margin: 0.45rem 0 0;
+  font-family: var(--font-family-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-ink-muted);
+}
+
+.go {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-min);
+  margin-top: 0.35rem;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--color-action);
+}
+
+.pill {
+  position: fixed;
+  bottom: calc(1.5rem + env(safe-area-inset-bottom));
+  left: calc(1rem + env(safe-area-inset-left));
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-min);
+  padding: 0 1.1rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-paper-50);
+  color: var(--color-forest-900);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .dock {
+    display: block;
+  }
+  .pill {
+    display: none;
+  }
+}
+
+:global(html.dark) .dock,
+:global(html.dark) .pill,
+:global(html.dark) .title,
+:global(html.dark) .meta {
+  background: var(--color-paper-50);
+  color: var(--color-forest-900);
+  color-scheme: light;
+}
+
+:global(html.dark) .kicker,
+:global(html.dark) .go {
+  color: var(--color-action);
+}

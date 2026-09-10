@@ -5,7 +5,6 @@ import { Badge } from '@/components/ui/badge';
 import { ArrowRight, Rss } from 'lucide-react';
 import type { Metadata } from 'next';
 import { insights } from '@/lib/data/insights';
-import { GlowingCard } from '@/components/ui/glowing-card';
 import { PageHero } from '@/components/page-sections/page-hero';
 import { ArticleCodeVisual } from '@/components/ui/article-code-visual';
 import { formatFullDate } from '@/lib/date-utils';
@@ -28,11 +27,11 @@ export default function NewsroomPage() {
         />
         <div className="container mx-auto px-4 md:px-6 py-16 md:py-24 space-y-12">
         {pressReleases.length > 0 && (
-            <section>
-                <h2 className="text-2xl md:text-3xl font-bold font-headline mb-4">Press Releases</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <section className="verdara-section rounded-[26px] p-6">
+                <h2 className="verdara-title mb-4">Press <em>releases</em></h2>
+                <div className="verdara-grid verdara-grid-3">
                 {pressReleases.map((insight) => (
-                    <GlowingCard key={insight.title} className="p-6">
+                    <article key={insight.title} className="verdara-card">
                         <div className="space-y-4">
                             <div>
                                 <h3 className="font-semibold text-lg">{insight.title}</h3>
@@ -45,17 +44,17 @@ export default function NewsroomPage() {
                                 ))}
                             </div>
                         </div>
-                    </GlowingCard>
+                    </article>
                 ))}
                 </div>
             </section>
         )}
 
-        <section>
-            <h2 className="text-2xl md:text-3xl font-bold font-headline mb-4">Latest Insights</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <section className="verdara-section rounded-[26px] p-6">
+            <h2 className="verdara-title mb-4">Latest <em>insights</em></h2>
+            <div className="verdara-grid verdara-grid-3">
             {latestArticles.map((insight) => (
-                <GlowingCard key={insight.title}>
+                <article key={insight.title} className="verdara-card p-0 overflow-hidden">
                 <div className="flex flex-col h-full">
                     <CardHeader className="p-0">
                     <Link href={`/insights/${insight.slug}`}>
@@ -94,7 +93,7 @@ export default function NewsroomPage() {
                     </Link>
                     </CardFooter>
                 </div>
-                </GlowingCard>
+                </article>
             ))}
             </div>
         </section>

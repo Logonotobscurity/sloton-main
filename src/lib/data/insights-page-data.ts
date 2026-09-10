@@ -1,9 +1,17 @@
-
 export const topics = [
-    "Artificial Intelligence and Machine Learning",
-    "Business Process Automation (BPA)",
-    "Digital Transformation Strategies",
-    "Cloud Computing and DevOps",
-    "Web and Mobile Development Trends",
-    "Cybersecurity Best Practices"
+  "AI Search & LLMO",
+  "AI Statistics & Data",
+  "AI Tools & Technology",
+  "AI in Nigeria & Africa",
+  "AI Agents",
+  "AI Strategy",
+  "AI Implementation",
+  "AI Automation",
+  "AI for Business Functions",
+  "AI Training & Education",
+  "AI Governance & Compliance",
+  "Generative AI",
+  "AI for Industries",
+  "AI SEO",
+  "AI Consulting",
 ];
